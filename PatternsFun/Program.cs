@@ -59,9 +59,6 @@ namespace PatternsFun
             police.ChaseTheCar(monster);
             police.PrintSuspects();
 
-
-
-            Logger.AddMsgToLog("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█проверка связи , раз два три пять восемь две тысячи пятнадцать 2015 █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
             Console.ReadLine();
             log.SaveToFile();
         }
