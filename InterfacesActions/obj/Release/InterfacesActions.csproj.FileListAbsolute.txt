@@ -1,0 +1,7 @@
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Release\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Release\InterfacesActions.pdb
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Release\Domain.dll
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Release\Domain.pdb
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Release\InterfacesActions.csprojResolveAssemblyReference.cache
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Release\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Release\InterfacesActions.pdb

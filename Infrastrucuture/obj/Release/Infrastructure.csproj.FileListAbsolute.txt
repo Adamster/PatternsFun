@@ -1,0 +1,13 @@
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Infrastrucuture.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Infrastrucuture.pdb
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\ActionImplementation.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Ninject.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Domain.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\ActionImplementation.pdb
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\InterfacesActions.pdb
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Ninject.xml
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Release\Domain.pdb
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\obj\Release\Infrastructure.csprojResolveAssemblyReference.cache
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\obj\Release\Infrastrucuture.dll
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\obj\Release\Infrastrucuture.pdb
