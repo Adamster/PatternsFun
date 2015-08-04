@@ -119,7 +119,6 @@ namespace Domain.Domain.CarTypes
             if (DownForcePressure > 1)
                 DownForcePressure -= 1;
             else DownForcePressure = 0;
-            Console.WriteLine("brake pedal pressed");
             PrintCurrentSpeed();
         }
 

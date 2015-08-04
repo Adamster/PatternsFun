@@ -128,7 +128,6 @@ namespace Domain.Domain.CarTypes
         public override void Brake()
         {
             PressBrakePedal();
-            Console.WriteLine("Car Brake");
         }
 
         public void FillTank(double value)
@@ -156,9 +155,6 @@ namespace Domain.Domain.CarTypes
                 Speed -= Speed;
                 Engine.Stop();
             }
-
-            Console.WriteLine("brake pedal pressed");
-
             PrintCurrentSpeed();
         }
 

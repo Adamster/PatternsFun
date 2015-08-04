@@ -37,7 +37,7 @@ namespace Domain.Domain.Decorator
 
         public override void TunePart()
         {
-            InputComponent.Engine.AddHp(50);
+            InputComponent.Engine.AddHp(100);
             InputComponent.TunePart();
             Console.WriteLine("Engine tuned");
         }
@@ -55,7 +55,7 @@ namespace Domain.Domain.Decorator
 
         public override void TunePart()
         {
-             InputComponent.RemoveWeight(250);
+             InputComponent.RemoveWeight(60);
             InputComponent.TunePart();
             Console.WriteLine("Wheels tuned");
         }
