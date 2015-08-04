@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// File: Boxes.cs in
+// PatternsFun by Serghei Adam 
+// Created 04 08 2015 
+// Edited 04 08 2015
+
+using System;
 using Domain.Domain.Interfaces;
 
 namespace Domain.Domain.Paddock
