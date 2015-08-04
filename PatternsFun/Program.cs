@@ -1,9 +1,9 @@
 ﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
 // Created 27 07 2015 
-// Edited 03 08 2015
+// Edited 04 08 2015
 
-#region
+#region $access$
 
 using System;
 using System.Threading;
@@ -30,9 +30,18 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            Console.Write(new string('▒', 320));
-            Console.Write(new string('█', 320));
-            Console.Write(new string('▒', 320));
+            CarFactoryTestAndOthers();
+
+
+            Console.ReadLine();
+            log.SaveToFile();
+        }
+
+        private static void CarFactoryTestAndOthers()
+        {
+            //Console.Write(new string('▒', 320));
+            //Console.Write(new string('█', 320));
+            //Console.Write(new string('▒', 320));
             Logger.AddMsgToLog("Program launched");
 
             var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
@@ -58,12 +67,6 @@ namespace PatternsFun
             police.ChaseTheCar(ferrari);
             police.ChaseTheCar(monster);
             police.PrintSuspects();
-
-
-
-            Logger.AddMsgToLog("▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█проверка связи , раз два три пять восемь две тысячи пятнадцать 2015 █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-            Console.ReadLine();
-            log.SaveToFile();
         }
     }
 }

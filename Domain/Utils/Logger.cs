@@ -39,7 +39,7 @@ namespace Domain.Utils
         {
             using (FileStream fs = new FileStream("log.txt", FileMode.Append))
             {
-                AddMsgToLog("log saving into file");
+              //  AddMsgToLog("log saving into file");
                 string tmp = LogString.ToString();
                 byte[] buffBytes = Encoding.Unicode.GetBytes(tmp);
                 fs.Write(buffBytes, 0, buffBytes.Length);

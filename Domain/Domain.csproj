@@ -47,6 +47,10 @@
     <Compile Include="Domain\Inspector\Police.cs" />
     <Compile Include="Domain\CarTypes\SportCar.cs" />
     <Compile Include="Domain\ISteeringWheel.cs" />
+    <Compile Include="Domain\Paddock\Boxes.cs" />
+    <Compile Include="Domain\Paddock\PitLane.cs" />
+    <Compile Include="Domain\Persons\Fans.cs" />
+    <Compile Include="Domain\Persons\Pilot.cs" />
     <Compile Include="Domain\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\FuelException.cs" />
