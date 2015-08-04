@@ -11,28 +11,21 @@ using Domain.Domain.Decorator;
 using Domain.Domain.Engines;
 using Domain.Domain.Inspector;
 using Domain.Domain.Interfaces;
+using Domain.Domain.Paddock;
+using Domain.Domain.Persons;
+using Domain.Domain.Proxy;
 using Domain.Utils;
 using Factories;
 using Infrastrucuture.IoC;
-using Domain.Domain.Paddock;
-using Domain.Domain.Persons;
-using  Domain.Domain.Proxy;
 
 namespace PatternsFun
 {
     internal class Program
     {
         private static readonly CarFactory MaranelloCarFactory;
-        static Program()
-        {
-            ServiceLocator.RegisterAll();
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-        }
-
 
         private static List<Boxes> BoxList = new List<Boxes>
         {
-
             new Boxes("Mercedes", 1),
             new Boxes("Ferrari", 2),
             new Boxes("Williams", 3),
@@ -43,8 +36,13 @@ namespace PatternsFun
             new Boxes("McLaren", 8),
             new Boxes("Sauber", 9),
             new Boxes("Marussia", 10)
-
         };
+
+        static Program()
+        {
+            ServiceLocator.RegisterAll();
+            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+        }
 
         private static void Main(string[] args)
         {
@@ -67,8 +65,8 @@ namespace PatternsFun
             var richFan = new Fan("John Doe", PaddockAccessLevels.ClubPaddock);
             var simpleFan = new Fan("Joan Doe", PaddockAccessLevels.Gold);
             var boxes = new BoxesProxy(richFan, BoxList.First());
-            var boxes1 = new BoxesProxy(simpleFan, BoxList[7] );
-            var pilotBoxes  = new BoxesProxy(but, BoxList[7]);
+            var boxes1 = new BoxesProxy(simpleFan, BoxList[7]);
+            var pilotBoxes = new BoxesProxy(but, BoxList[7]);
             pilotBoxes.PilotAcces();
             boxes.GrantAcces();
             boxes1.GrantAcces();
