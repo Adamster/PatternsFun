@@ -1,21 +1,21 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 03 08 2015
+// Edited 04 08 2015
 
 #region
 
 using System;
 using System.Diagnostics;
 using Domain.Domain.Engines;
+using Domain.Domain.Interfaces;
 using Domain.Utils;
-using InterfacesActions;
 
 #endregion
 
 namespace Domain.Domain.CarTypes
 {
-    public class Car : Vehicle, ISteeringWheel
+    public class Car : Vehicle, ISteeringWheel, IVehicleComponent
     {
         public Car()
         {
@@ -36,7 +36,7 @@ namespace Domain.Domain.CarTypes
             FuelTank = fuelTankValue;
             Weight = weightValue;
             Engine = carEngineValue;
-            AccelerationSpeed = Engine.HorsePowers/Weight*100;
+            AccelerationSpeed = GetAccelerationSpeed();
             SpecialAdds = addParam;
         }
 
@@ -61,6 +61,20 @@ namespace Domain.Domain.CarTypes
             Logger.AddMsgToLog("Car beep");
         }
 
+        #region Implementation of IVehicleComponent
+
+        public void TunePart()
+        {
+            Console.WriteLine("Welcome to West Coast Customs!");
+        }
+
+        #endregion
+
+        private double GetAccelerationSpeed()
+        {
+            return Engine.HorsePowers/Weight*100;
+        }
+
         public override void Accelerate(int toSpeed)
         {
             PressThrottle(toSpeed);
@@ -77,8 +91,8 @@ namespace Domain.Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += AccelerationSpeed;
-                        else Speed += AccelerationSpeed - Speed/10;
+                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         Mileage += Speed;
                         PrintCurrentSpeed();
@@ -103,10 +117,17 @@ namespace Domain.Domain.CarTypes
             }
         }
 
+        public void StopTheCar()
+        {
+            while (GetSpeed() != 0)
+            {
+                Brake();
+            }
+        }
+
         public override void Brake()
         {
             PressBrakePedal();
-            Console.WriteLine("Car Brake");
         }
 
         public void FillTank(double value)
@@ -134,9 +155,6 @@ namespace Domain.Domain.CarTypes
                 Speed -= Speed;
                 Engine.Stop();
             }
-
-            Console.WriteLine("brake pedal pressed");
-
             PrintCurrentSpeed();
         }
 

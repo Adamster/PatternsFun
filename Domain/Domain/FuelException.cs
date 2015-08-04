@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Utils
+namespace Domain.Domain
 {
     internal class FuelException : Exception
     {

@@ -1,6 +1,7 @@
-﻿// PatternsFun by Serghei Adam 
+﻿// File: Vehicle.cs in
+// PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 03 08 2015
+// Edited 04 08 2015
 
 using System;
 using Domain.Utils;
@@ -22,7 +23,6 @@ namespace Domain.Domain
         {
             Console.WriteLine(Name + " Speed: " + Speed.ToString("F2") + " km/h");
             Logger.AddMsgToLog(Name + " Speed: " + Speed.ToString("F2") + " km/h");
-           
         }
 
         public double GetSpeed()
@@ -33,6 +33,13 @@ namespace Domain.Domain
         public double GetWeight()
         {
             return Weight;
+        }
+
+        public void RemoveWeight(double weightValue)
+        {
+            if (Weight - weightValue > 0)
+                Weight -= weightValue;
+            else Console.WriteLine("Weight can't be zero or below");
         }
 
         public void ShowVehicleState()
