@@ -1,0 +1,23 @@
+﻿test
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# Changes to be committed:
+#	modified:   ActionImplementation/obj/Debug/ActionImplementation.csproj.FileListAbsolute.txt
+#	modified:   ActionImplementation/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Domain/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Domain/obj/Debug/Domain.csproj.FileListAbsolute.txt
+#	modified:   Factories/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Factories/obj/Debug/Factories.csproj.FileListAbsolute.txt
+#	modified:   Infrastrucuture/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Infrastrucuture/obj/Debug/Infrastructure.csproj.FileListAbsolute.txt
+#	modified:   InterfacesActions/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   InterfacesActions/obj/Debug/InterfacesActions.csproj.FileListAbsolute.txt
+#	modified:   PatternsFun/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   PatternsFun/obj/Debug/PatternsFun.csproj.FileListAbsolute.txt
+#
+
