@@ -30,7 +30,6 @@ namespace Domain.Domain.Decorator
         public TuneEngine(Car car)
             : base(car)
         {
-           
         }
 
         #region Overrides of Tuning
@@ -45,7 +44,7 @@ namespace Domain.Domain.Decorator
         #endregion
     }
 
-    public  class TuneWheels : Tuning<Car>, IVehicleComponent
+    public class TuneWheels : Tuning<Car>, IVehicleComponent
     {
         public TuneWheels(Car car) : base(car)
         {
@@ -55,7 +54,7 @@ namespace Domain.Domain.Decorator
 
         public override void TunePart()
         {
-             InputComponent.RemoveWeight(60);
+            InputComponent.RemoveWeight(60);
             InputComponent.TunePart();
             Console.WriteLine("Wheels tuned");
         }

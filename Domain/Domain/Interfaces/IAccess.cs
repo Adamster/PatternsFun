@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// File: IAccess.cs in
+// PatternsFun by Serghei Adam 
+// Created 04 08 2015 
+// Edited 04 08 2015
 
 namespace Domain.Domain.Interfaces
 {
-   public interface IAccess
+    public interface IAccess
     {
         void GrantAcces();
-       void PilotAcces();
+        void PilotAcces();
     }
 }
