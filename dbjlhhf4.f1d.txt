@@ -1,0 +1,71 @@
+﻿implemented decorator "emulator":)
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   ActionImplementation/obj/Debug/ActionImplementation.csproj.FileListAbsolute.txt
+#	modified:   ActionImplementation/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Domain/Domain.csproj
+#	modified:   Domain/Domain/CarTypes/Car.cs
+#	modified:   Domain/Domain/CarTypes/ElectroCar.cs
+#	modified:   Domain/Domain/CarTypes/SportCar.cs
+#	modified:   Domain/Domain/Engines/Engine.cs
+#	modified:   Domain/Domain/FuelException.cs
+#	deleted:    Domain/Domain/ISteeringWheel.cs
+#	modified:   Domain/Domain/NameVehicleComparer.cs
+#	modified:   Domain/Utils/Logger.cs
+#	modified:   Domain/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   Domain/obj/Debug/Domain.csproj.FileListAbsolute.txt
+#	modified:   Factories/obj/Debug/Factories.csproj.FileListAbsolute.txt
+#	modified:   Infrastrucuture/obj/Debug/Infrastructure.csproj.FileListAbsolute.txt
+#	modified:   InterfacesActions/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+#	modified:   InterfacesActions/obj/Debug/InterfacesActions.csproj.FileListAbsolute.txt
+#	modified:   PatternsFun/Program.cs
+#	modified:   PatternsFun/bin/Debug/log.txt
+#	modified:   PatternsFun/obj/Debug/PatternsFun.csproj.FileListAbsolute.txt
+#
+# Untracked files:
+#	ActionImplementation/bin/Debug/
+#	ActionImplementation/obj/Debug/ActionImplementation.csprojResolveAssemblyReference.cache
+#	ActionImplementation/obj/Debug/ActionImplementation.dll
+#	ActionImplementation/obj/Debug/ActionImplementation.pdb
+#	Domain/Domain/Decorator/
+#	Domain/Domain/Interfaces/
+#	Domain/bin/Debug/
+#	Domain/obj/Debug/Domain.csprojResolveAssemblyReference.cache
+#	Domain/obj/Debug/Domain.dll
+#	Domain/obj/Debug/Domain.pdb
+#	Factories/bin/Debug/
+#	Factories/obj/Debug/Factories.csprojResolveAssemblyReference.cache
+#	Factories/obj/Debug/Factories.dll
+#	Factories/obj/Debug/Factories.pdb
+#	Infrastrucuture/bin/Debug/
+#	Infrastrucuture/obj/Debug/Infrastructure.csprojResolveAssemblyReference.cache
+#	Infrastrucuture/obj/Debug/Infrastrucuture.dll
+#	Infrastrucuture/obj/Debug/Infrastrucuture.pdb
+#	InterfacesActions/IVehicleComponent.cs
+#	InterfacesActions/bin/Debug/
+#	InterfacesActions/obj/Debug/InterfacesActions.csprojResolveAssemblyReference.cache
+#	InterfacesActions/obj/Debug/InterfacesActions.dll
+#	InterfacesActions/obj/Debug/InterfacesActions.pdb
+#	PatternsFun/bin/Debug/ActionImplementation.dll
+#	PatternsFun/bin/Debug/ActionImplementation.pdb
+#	PatternsFun/bin/Debug/Domain.dll
+#	PatternsFun/bin/Debug/Domain.pdb
+#	PatternsFun/bin/Debug/Factories.dll
+#	PatternsFun/bin/Debug/Factories.pdb
+#	PatternsFun/bin/Debug/Infrastrucuture.dll
+#	PatternsFun/bin/Debug/Infrastrucuture.pdb
+#	PatternsFun/bin/Debug/InterfacesActions.dll
+#	PatternsFun/bin/Debug/InterfacesActions.pdb
+#	PatternsFun/bin/Debug/Ninject.dll
+#	PatternsFun/bin/Debug/Ninject.xml
+#	PatternsFun/bin/Debug/PatternsFun.exe
+#	PatternsFun/bin/Debug/PatternsFun.exe.config
+#	PatternsFun/bin/Debug/PatternsFun.pdb
+#	PatternsFun/obj/Debug/PatternsFun.csprojResolveAssemblyReference.cache
+#	PatternsFun/obj/Debug/PatternsFun.exe
+#
+
