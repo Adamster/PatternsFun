@@ -30,42 +30,48 @@ namespace PatternsFun
         }
 
 
-        private static List<Boxes> GetBoxes()
+        private static List<Boxes> BoxList = new List<Boxes>
         {
-            return new List<Boxes>
-            {
-                new Boxes("Mercedes", 1),
-                new Boxes("Ferrari", 2),
-                new Boxes("Williams", 3),
-                new Boxes("Red Bull Racing", 4),
-                new Boxes("Force India", 5),
-                new Boxes("Lotus", 6),
-                new Boxes("Torro Rosso", 7),
-                new Boxes("McLaren", 8),
-                new Boxes("Sauber", 9),
-                new Boxes("Marussia", 10)
-            };
-        }
+
+            new Boxes("Mercedes", 1),
+            new Boxes("Ferrari", 2),
+            new Boxes("Williams", 3),
+            new Boxes("Red Bull Racing", 4),
+            new Boxes("Force India", 5),
+            new Boxes("Lotus", 6),
+            new Boxes("Torro Rosso", 7),
+            new Boxes("McLaren", 8),
+            new Boxes("Sauber", 9),
+            new Boxes("Marussia", 10)
+
+        };
 
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
             // CarFactoryTestAndOthers();
             //DecoratorTune();
-
-            var but = PilotFactory.CreateNewPilot("Jenson Button", DateTime.Parse("12/03/2000"), 35, "McLaren F1");
-            var msc = PilotFactory.CreateNewPilot("Michael Schumaher", DateTime.Parse("25/08/1991"), 46, "Ferrari F1");
-            Console.WriteLine(  msc.ExpierenceTime.Days+ " Days");
-           
-            var richFan = new Fan("John Doe", PaddockAccessLevels.ClubPaddock);
-            var simpleFan = new Fan("Joahn Doe", PaddockAccessLevels.Gold);
-            var boxes = new BoxesProxy(richFan, GetBoxes().First());
-            var boxes1 = new BoxesProxy(simpleFan, GetBoxes()[8]);
-            boxes.GrantAcces();
-            boxes1.GrantAcces();
+            ProxyTest();
 
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void ProxyTest()
+        {
+            var but = PilotFactory.CreateNewPilot("Jenson Button", DateTime.Parse("12/03/2000"), 35, "McLaren F1");
+            var msc = PilotFactory.CreateNewPilot("Michael Schumaher", DateTime.Parse("25/08/1991"), 46, "Ferrari F1");
+            Console.WriteLine("{0} has {1} Days experience", but.Name, but.ExpierenceTime.Days);
+            Console.WriteLine("{0} has {1} Days experience", msc.Name, msc.ExpierenceTime.Days);
+
+            var richFan = new Fan("John Doe", PaddockAccessLevels.ClubPaddock);
+            var simpleFan = new Fan("Joan Doe", PaddockAccessLevels.Gold);
+            var boxes = new BoxesProxy(richFan, BoxList.First());
+            var boxes1 = new BoxesProxy(simpleFan, BoxList[7] );
+            var pilotBoxes  = new BoxesProxy(but, BoxList[7]);
+            pilotBoxes.PilotAcces();
+            boxes.GrantAcces();
+            boxes1.GrantAcces();
         }
 
         private static void DecoratorTune()

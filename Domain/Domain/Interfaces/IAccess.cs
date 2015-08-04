@@ -9,5 +9,6 @@ namespace Domain.Domain.Interfaces
    public interface IAccess
     {
         void GrantAcces();
+       void PilotAcces();
     }
 }

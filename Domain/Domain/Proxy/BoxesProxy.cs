@@ -13,7 +13,7 @@ namespace Domain.Domain.Proxy
     {
         private readonly Boxes _realBoxes;
         private readonly List<Fan> _realFans = new List<Fan>();
-
+        private readonly Pilot _realPilot;
         public BoxesProxy(List<Fan> fan, Boxes boxes)
         {
             _realFans = fan;
@@ -24,6 +24,12 @@ namespace Domain.Domain.Proxy
         {
             _realBoxes = boxes;
             _realFans.Add(fan);
+        }
+
+        public BoxesProxy(Pilot pilot, Boxes boxes)
+        {
+            _realBoxes = boxes;
+            _realPilot = pilot;
         }
 
         #region Implementation of IAccess
@@ -38,11 +44,24 @@ namespace Domain.Domain.Proxy
                 }
                 else
                 {
-                    Console.WriteLine("Sorry you don't have acces to {0} boxes", _realBoxes.Owner);
+                    Console.WriteLine("{1},Sorry you don't have acces to {0} boxes", _realBoxes.Owner, realFan.Name);
                 }
             }
 
         }
+
+        public void PilotAcces()
+        {
+            if (_realPilot.Team.Contains(_realBoxes.Owner))
+            {
+                _realBoxes.PilotAcces();
+            }
+            else
+            {
+                Console.WriteLine("sorry {0},  may be next year :)", _realPilot.Name);
+            }
+        }
+
 
         #endregion
     }

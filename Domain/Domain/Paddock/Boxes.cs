@@ -25,6 +25,11 @@ namespace Domain.Domain.Paddock
             Console.WriteLine("Welcome to {0} team", Owner);
         }
 
+        public void PilotAcces()
+        {
+            Console.WriteLine("Welcome back to {0}", Owner);
+        }
+
         #endregion
     }
 }
