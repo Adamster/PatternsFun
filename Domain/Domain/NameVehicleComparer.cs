@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Domain.Domain;
 
-namespace Domain.Utils
+namespace Domain.Domain
 {
     internal class NameVehicleComparer : IEqualityComparer<Vehicle>
     {

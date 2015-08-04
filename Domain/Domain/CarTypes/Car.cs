@@ -1,21 +1,21 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 03 08 2015
+// Edited 04 08 2015
 
 #region
 
 using System;
 using System.Diagnostics;
 using Domain.Domain.Engines;
+using Domain.Domain.Interfaces;
 using Domain.Utils;
-using InterfacesActions;
 
 #endregion
 
 namespace Domain.Domain.CarTypes
 {
-    public class Car : Vehicle, ISteeringWheel
+    public class Car : Vehicle, ISteeringWheel, IVehicleComponent
     {
         public Car()
         {
@@ -60,6 +60,15 @@ namespace Domain.Domain.CarTypes
             Console.WriteLine("Car beep");
             Logger.AddMsgToLog("Car beep");
         }
+
+        #region Implementation of IVehicleComponent
+
+        public void TunePart()
+        {
+            Console.WriteLine("Welcome to West Coast Customs!");
+        }
+
+        #endregion
 
         public override void Accelerate(int toSpeed)
         {

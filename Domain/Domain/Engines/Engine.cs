@@ -10,6 +10,12 @@ namespace Domain.Domain.Engines
         public int HorsePowers { get; protected set; }
         public abstract void Start();
         public abstract void Stop();
+
+        public void EnginePowerChange(int value)
+        {
+           HorsePowers = 
+        }
+
     }
 
 

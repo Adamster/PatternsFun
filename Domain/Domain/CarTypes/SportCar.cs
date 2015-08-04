@@ -1,3 +1,8 @@
+// File: SportCar.cs in
+// PatternsFun by Serghei Adam 
+// Created 29 07 2015 
+// Edited 04 08 2015
+
 using System;
 using System.Diagnostics;
 using Domain.Domain.Engines;
@@ -62,9 +67,7 @@ namespace Domain.Domain.CarTypes
                         FillTank(addFuel);
                     }
                     else
-                    {
                         break;
-                    }
                 }
 
                 catch (Exception ex)

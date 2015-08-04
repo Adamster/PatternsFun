@@ -41,12 +41,14 @@
   <ItemGroup>
     <Compile Include="Domain\CarTypes\Car.cs" />
     <Compile Include="Domain\CarTypes\ElectroCar.cs" />
+    <Compile Include="Domain\Decorator\Tuning.cs" />
     <Compile Include="Domain\Engines\ElectroEngine.cs" />
     <Compile Include="Domain\Engines\Engine.cs" />
     <Compile Include="Domain\Engines\GasolineEngine.cs" />
     <Compile Include="Domain\Inspector\Police.cs" />
     <Compile Include="Domain\CarTypes\SportCar.cs" />
-    <Compile Include="Domain\ISteeringWheel.cs" />
+    <Compile Include="Domain\Interfaces\ISteeringWheel.cs" />
+    <Compile Include="Domain\Interfaces\IVehicleComponent.cs" />
     <Compile Include="Domain\Paddock\Boxes.cs" />
     <Compile Include="Domain\Paddock\PitLane.cs" />
     <Compile Include="Domain\Persons\Fans.cs" />

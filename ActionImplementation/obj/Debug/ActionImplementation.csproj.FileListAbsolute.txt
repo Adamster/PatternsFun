@@ -7,3 +7,12 @@ E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\ActionImplementation\bin\Debug
 E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.csprojResolveAssemblyReference.cache
 E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.dll
 E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.pdb
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\ActionImplementation.dll
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\ActionImplementation.pdb
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\Domain.dll
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\Domain.pdb
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\InterfacesActions.pdb
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.csprojResolveAssemblyReference.cache
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.dll
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.pdb

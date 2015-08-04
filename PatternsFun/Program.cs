@@ -1,19 +1,17 @@
 ﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
-// Created 27 07 2015 
+// Created 04 08 2015 
 // Edited 04 08 2015
-
-#region $access$
 
 using System;
 using System.Threading;
+using Domain.Domain.Decorator;
 using Domain.Domain.Engines;
 using Domain.Domain.Inspector;
+using Domain.Domain.Interfaces;
 using Domain.Utils;
 using Factories;
 using Infrastrucuture.IoC;
-
-#endregion
 
 namespace PatternsFun
 {
@@ -30,8 +28,14 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            CarFactoryTestAndOthers();
+            // CarFactoryTestAndOthers();
 
+            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+                color => color.WithParams(() => "Color is Red"));
+
+
+            IVehicleComponent engineTune = new TuneEngine(ferrari);
+            engineTune.TunePart();
 
             Console.ReadLine();
             log.SaveToFile();
