@@ -11,9 +11,9 @@ namespace Domain.Domain.Engines
         public abstract void Start();
         public abstract void Stop();
 
-        public void EnginePowerChange(int value)
+        public void AddHp(int value)
         {
-           HorsePowers = 
+            HorsePowers += value;
         }
 
     }

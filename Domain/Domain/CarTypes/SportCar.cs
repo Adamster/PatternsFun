@@ -22,17 +22,20 @@ namespace Domain.Domain.CarTypes
             if (weightValue <= 0) throw new ArgumentException("weight can't be below or equal zero");
             Weight = weightValue;
             Engine = carEngineValue;
-            AccelerationSpeed = Engine.HorsePowers/Weight*100;
+            AccelerationSpeed = GetAccelerationSpeed();
             DownForcePressure = 0;
             SpecialAdds = addspec;
         }
 
         private int DownForcePressure { get; set; }
-        public new GasolineEngine Engine { get; protected set; }
+
+        private double GetAccelerationSpeed()
+        {
+            return (Engine.HorsePowers/Weight*100) + DownForcePressure;
+        }
 
         public override void Accelerate(int toSpeed)
         {
-            GeneretaDownForce();
             PressThrottle(toSpeed);
         }
 
@@ -46,11 +49,12 @@ namespace Domain.Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += AccelerationSpeed;
-                        else Speed += AccelerationSpeed - Speed/10;
+                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         PrintCurrentSpeed();
                         Mileage += Speed;
+                        GeneretaDownForce();
                     }
                 }
                 catch (FuelException ex)
@@ -84,11 +88,8 @@ namespace Domain.Domain.CarTypes
 
         private void GeneretaDownForce()
         {
-            if (Speed != 0)
-            {
-                DownForcePressure++;
-                Console.WriteLine("Generating downforce");
-            }
+            DownForcePressure += 1;
+            Console.WriteLine("Generating downforce");
         }
 
         private bool BurnFuel()
@@ -115,7 +116,9 @@ namespace Domain.Domain.CarTypes
                 Speed -= Speed;
                 Engine.Stop();
             }
-            DownForcePressure -= 1;
+            if (DownForcePressure > 1)
+                DownForcePressure -= 1;
+            else DownForcePressure = 0;
             Console.WriteLine("brake pedal pressed");
             PrintCurrentSpeed();
         }

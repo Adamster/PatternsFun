@@ -36,7 +36,7 @@ namespace Domain.Domain.CarTypes
             FuelTank = fuelTankValue;
             Weight = weightValue;
             Engine = carEngineValue;
-            AccelerationSpeed = Engine.HorsePowers/Weight*100;
+            AccelerationSpeed = GetAccelerationSpeed();
             SpecialAdds = addParam;
         }
 
@@ -70,6 +70,11 @@ namespace Domain.Domain.CarTypes
 
         #endregion
 
+        private double GetAccelerationSpeed()
+        {
+            return Engine.HorsePowers/Weight*100;
+        }
+
         public override void Accelerate(int toSpeed)
         {
             PressThrottle(toSpeed);
@@ -86,8 +91,8 @@ namespace Domain.Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += AccelerationSpeed;
-                        else Speed += AccelerationSpeed - Speed/10;
+                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         Mileage += Speed;
                         PrintCurrentSpeed();
@@ -109,6 +114,14 @@ namespace Domain.Domain.CarTypes
                     }
                     else break;
                 }
+            }
+        }
+
+        public void StopTheCar()
+        {
+            while (GetSpeed() != 0)
+            {
+                Brake();
             }
         }
 

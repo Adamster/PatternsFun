@@ -1,6 +1,7 @@
-﻿// PatternsFun by Serghei Adam 
+﻿// File: ServiceLocator.cs in
+// PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 03 08 2015
+// Edited 04 08 2015
 
 using ActionImplementation;
 using InterfacesActions;

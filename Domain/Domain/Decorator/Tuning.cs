@@ -15,9 +15,9 @@ namespace Domain.Domain.Decorator
 
         protected TVehicleComponent InputComponent;
 
-        protected Tuning(TVehicleComponent part)
+        protected Tuning(TVehicleComponent car)
         {
-            InputComponent = part;
+            InputComponent = car;
         }
 
         public abstract void TunePart();
@@ -27,8 +27,8 @@ namespace Domain.Domain.Decorator
 
     public class TuneEngine : Tuning<Car>, IVehicleComponent
     {
-        public TuneEngine(Car part)
-            : base(part)
+        public TuneEngine(Car car)
+            : base(car)
         {
            
         }
@@ -37,6 +37,7 @@ namespace Domain.Domain.Decorator
 
         public override void TunePart()
         {
+            InputComponent.Engine.AddHp(50);
             InputComponent.TunePart();
             Console.WriteLine("Engine tuned");
         }
@@ -44,9 +45,9 @@ namespace Domain.Domain.Decorator
         #endregion
     }
 
-    public  class TuneSuspension : Tuning<Car>, IVehicleComponent
+    public  class TuneWheels : Tuning<Car>, IVehicleComponent
     {
-        public TuneSuspension(Car part) : base(part)
+        public TuneWheels(Car car) : base(car)
         {
         }
 
@@ -54,8 +55,9 @@ namespace Domain.Domain.Decorator
 
         public override void TunePart()
         {
+             InputComponent.RemoveWeight(250);
             InputComponent.TunePart();
-            Console.WriteLine("Suspension tuned");
+            Console.WriteLine("Wheels tuned");
         }
 
         #endregion

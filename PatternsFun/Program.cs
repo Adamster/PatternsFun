@@ -33,9 +33,24 @@ namespace PatternsFun
             var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
                 color => color.WithParams(() => "Color is Red"));
 
+            Console.WriteLine("Stock version");
+            Console.WriteLine("---------------");
+            ferrari.Accelerate(100);
+            ferrari.StopTheCar();
 
+            Console.WriteLine("Engine tuned version");
+            Console.WriteLine("---------------");
             IVehicleComponent engineTune = new TuneEngine(ferrari);
             engineTune.TunePart();
+            ferrari.Accelerate(100);
+            ferrari.StopTheCar();
+
+
+            Console.WriteLine("WheelsTune version");
+            Console.WriteLine("---------------");
+            IVehicleComponent wheelComponent = new TuneWheels(ferrari);
+            wheelComponent.TunePart();
+            ferrari.Accelerate(100);
 
             Console.ReadLine();
             log.SaveToFile();
