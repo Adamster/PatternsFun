@@ -67,6 +67,8 @@ namespace PatternsFun
             police.ChaseTheCar(ferrari);
             police.ChaseTheCar(monster);
             police.PrintSuspects();
+
+            Console.ReadLine();
         }
     }
 }
