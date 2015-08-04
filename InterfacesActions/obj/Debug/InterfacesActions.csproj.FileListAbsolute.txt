@@ -5,3 +5,10 @@ D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Debug\Domain.pdb
 D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.dll
 D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.pdb
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\bin\Debug\InterfacesActions.dll
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\bin\Debug\InterfacesActions.pdb
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\bin\Debug\Domain.dll
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\bin\Debug\Domain.pdb
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.csprojResolveAssemblyReference.cache
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.dll
+E:\Git\CSharp\Amdaris\ProjectPatterns\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.pdb
