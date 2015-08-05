@@ -1,4 +1,4 @@
-﻿// File: Program.cs in
+﻿ // File: Program.cs in
 // PatternsFun by Serghei Adam 
 // Created 04 08 2015 
 // Edited 05 08 2015
@@ -11,6 +11,7 @@ using Domain.Decorator;
 using Domain.Engines;
 using Domain.Inspector;
 using Domain.Interfaces;
+using Domain.Observer;
 using Domain.Paddock;
 using Domain.Persons;
 using Domain.Proxy;
@@ -51,8 +52,30 @@ namespace PatternsFun
             // DecoratorTune();
             // ProxyTest();
 
+            ObserverTest();
+
+
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void ObserverTest()
+        {
+            var charlieWhiting = new RaceDirector();
+            var but = PilotFactory.CreateNewPilot("Jenson Button", DateTime.Parse("12/03/2000"), 35, "McLaren F1");
+            var msc = PilotFactory.CreateNewPilot("Michael Schumaher", DateTime.Parse("25/08/1991"), 46, "Ferrari F1");
+            charlieWhiting.JoinRace(but);
+            charlieWhiting.JoinRace(msc);
+
+            charlieWhiting.RaceStatus = "Race Started!";
+            charlieWhiting.RaceStatus = "Safety Car";
+            charlieWhiting.RaceStatus = "Red Flag";
+            charlieWhiting.RaceStatus = "Restart";
+
+
+            Console.WriteLine("press any key to continue...");
+            Console.ReadKey();
+
         }
 
         private static void ProxyTest()

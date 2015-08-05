@@ -48,8 +48,10 @@
     <Compile Include="Inspector\Police.cs" />
     <Compile Include="CarTypes\SportCar.cs" />
     <Compile Include="Interfaces\IAccess.cs" />
+    <Compile Include="Interfaces\IPilot.cs" />
     <Compile Include="Interfaces\ISteeringWheel.cs" />
     <Compile Include="Interfaces\IVehicleComponent.cs" />
+    <Compile Include="Observer\RaceDirector.cs" />
     <Compile Include="Paddock\Boxes.cs" />
     <Compile Include="Paddock\PitLane.cs" />
     <Compile Include="Persons\Fan.cs" />

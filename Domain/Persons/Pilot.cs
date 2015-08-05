@@ -4,10 +4,12 @@
 // Edited 05 08 2015
 
 using System;
+using Domain.Interfaces;
+using Utils;
 
 namespace Domain.Persons
 {
-    public class Pilot
+    public class Pilot : IPilot
     {
         public Pilot(string name, DateTime debutDate, int age, string team)
         {
@@ -35,5 +37,15 @@ namespace Domain.Persons
         {
             get { return DateTime.Now.Date - DebutDate.Date; }
         }
+
+        #region Implementation of IPilot
+
+        public void Update(string status)
+        {
+            Console.WriteLine("Race status : {0} for {1}", status, Name);
+            Logger.AddMsgToLog("race status: " + status + " for " + Name);
+        }
+
+        #endregion
     }
 }
