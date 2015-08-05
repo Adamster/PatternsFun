@@ -9,7 +9,7 @@ using System;
 using System.Diagnostics;
 using Domain.Engines;
 using Domain.Interfaces;
-using Domain.Utils;
+using Utils;
 
 #endregion
 
@@ -144,7 +144,7 @@ namespace Domain.CarTypes
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException();
+            throw new FuelException("Run out of fuel!");
         }
 
         private void PressBrakePedal()

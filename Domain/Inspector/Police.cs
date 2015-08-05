@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Domain.Utils;
+using Utils;
 
 #endregion
 

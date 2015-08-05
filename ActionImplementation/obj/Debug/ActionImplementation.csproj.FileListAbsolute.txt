@@ -16,3 +16,5 @@ D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\InterfacesActions.p
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.dll
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.pdb
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\Utils.dll
+D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\Utils.pdb

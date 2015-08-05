@@ -14,9 +14,9 @@ using Domain.Interfaces;
 using Domain.Paddock;
 using Domain.Persons;
 using Domain.Proxy;
-using Domain.Utils;
 using Factories;
 using Infrastrucuture.IoC;
+using Utils;
 
 namespace PatternsFun
 {
@@ -47,16 +47,12 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-             CarFactoryTestAndOthers();
-            DecoratorTune();
-             ProxyTest();
+            // CarFactoryTestAndOthers();
+            // DecoratorTune();
+            // ProxyTest();
 
             Console.ReadLine();
             log.SaveToFile();
-
-
-
-
         }
 
         private static void ProxyTest()
@@ -125,7 +121,7 @@ namespace PatternsFun
             monster.Accelerate(10);
 
 
-            ferrari.Accelerate(30);
+            ferrari.Accelerate(450);
 
 
             var police = Police.Instance;

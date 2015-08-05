@@ -4,7 +4,7 @@
 // Edited 04 08 2015
 
 using System;
-using Domain.Utils;
+using Utils;
 
 namespace Domain
 {

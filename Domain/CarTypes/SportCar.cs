@@ -6,7 +6,7 @@
 using System;
 using System.Diagnostics;
 using Domain.Engines;
-using Domain.Utils;
+using Utils;
 
 namespace Domain.CarTypes
 {
@@ -101,7 +101,7 @@ namespace Domain.CarTypes
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException();
+            throw new FuelException("Run out of fuel!");
         }
 
         private void PressBrakePedal()

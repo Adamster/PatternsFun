@@ -4,8 +4,8 @@
 
 using System;
 using Domain.CarTypes;
-using Domain.Utils;
 using InterfacesActions;
+using Utils;
 
 namespace ActionImplementation
 {

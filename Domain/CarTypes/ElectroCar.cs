@@ -6,7 +6,7 @@
 using System;
 using Domain.Engines;
 using Domain.Interfaces;
-using Domain.Utils;
+using Utils;
 
 namespace Domain.CarTypes
 {
