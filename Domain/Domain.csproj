@@ -39,29 +39,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\CarTypes\Car.cs" />
-    <Compile Include="Domain\CarTypes\ElectroCar.cs" />
-    <Compile Include="Domain\Decorator\Tuning.cs" />
-    <Compile Include="Domain\Engines\ElectroEngine.cs" />
-    <Compile Include="Domain\Engines\Engine.cs" />
-    <Compile Include="Domain\Engines\GasolineEngine.cs" />
-    <Compile Include="Domain\Inspector\Police.cs" />
-    <Compile Include="Domain\CarTypes\SportCar.cs" />
-    <Compile Include="Domain\Interfaces\IAccess.cs" />
-    <Compile Include="Domain\Interfaces\ISteeringWheel.cs" />
-    <Compile Include="Domain\Interfaces\IVehicleComponent.cs" />
-    <Compile Include="Domain\Paddock\Boxes.cs" />
-    <Compile Include="Domain\Paddock\PitLane.cs" />
-    <Compile Include="Domain\Persons\Fan.cs" />
-    <Compile Include="Domain\Persons\Pilot.cs" />
-    <Compile Include="Domain\Proxy\BoxesProxy.cs" />
-    <Compile Include="Domain\Vehicle.cs" />
+    <Compile Include="CarTypes\Car.cs" />
+    <Compile Include="CarTypes\ElectroCar.cs" />
+    <Compile Include="Decorator\Tuning.cs" />
+    <Compile Include="Engines\ElectroEngine.cs" />
+    <Compile Include="Engines\Engine.cs" />
+    <Compile Include="Engines\GasolineEngine.cs" />
+    <Compile Include="Inspector\Police.cs" />
+    <Compile Include="CarTypes\SportCar.cs" />
+    <Compile Include="Interfaces\IAccess.cs" />
+    <Compile Include="Interfaces\ISteeringWheel.cs" />
+    <Compile Include="Interfaces\IVehicleComponent.cs" />
+    <Compile Include="Paddock\Boxes.cs" />
+    <Compile Include="Paddock\PitLane.cs" />
+    <Compile Include="Persons\Fan.cs" />
+    <Compile Include="Persons\Pilot.cs" />
+    <Compile Include="Proxy\BoxesProxy.cs" />
+    <Compile Include="Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\FuelException.cs" />
-    <Compile Include="Domain\NameVehicleComparer.cs" />
-    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="FuelException.cs" />
+    <Compile Include="NameVehicleComparer.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{646374b4-0e49-42e0-8a08-df43546e145d}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

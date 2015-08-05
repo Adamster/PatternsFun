@@ -1,10 +1,10 @@
 ﻿// File: PilotFactory.cs in
 // PatternsFun by Serghei Adam 
 // Created 04 08 2015 
-// Edited 04 08 2015
+// Edited 05 08 2015
 
 using System;
-using Domain.Domain.Persons;
+using Domain.Persons;
 
 namespace Factories
 {

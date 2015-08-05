@@ -7,16 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Domain.Domain.Decorator;
-using Domain.Domain.Engines;
-using Domain.Domain.Inspector;
-using Domain.Domain.Interfaces;
-using Domain.Domain.Paddock;
-using Domain.Domain.Persons;
-using Domain.Domain.Proxy;
-using Domain.Utils;
+using Domain.Decorator;
+using Domain.Engines;
+using Domain.Inspector;
+using Domain.Interfaces;
+using Domain.Paddock;
+using Domain.Persons;
+using Domain.Proxy;
 using Factories;
 using Infrastrucuture.IoC;
+using Utils;
 
 namespace PatternsFun
 {
@@ -48,15 +48,11 @@ namespace PatternsFun
         {
             Logger log = Logger.GetLogger();
             // CarFactoryTestAndOthers();
-            //DecoratorTune();
+            // DecoratorTune();
             // ProxyTest();
 
             Console.ReadLine();
             log.SaveToFile();
-
-
-
-
         }
 
         private static void ProxyTest()
@@ -125,7 +121,7 @@ namespace PatternsFun
             monster.Accelerate(10);
 
 
-            ferrari.Accelerate(30);
+            ferrari.Accelerate(450);
 
 
             var police = Police.Instance;

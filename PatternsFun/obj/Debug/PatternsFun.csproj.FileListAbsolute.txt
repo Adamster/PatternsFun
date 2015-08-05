@@ -34,3 +34,5 @@ D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\ActionImplementation.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.exe
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.pdb
+D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Utils.dll
+D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Utils.pdb

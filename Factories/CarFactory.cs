@@ -1,12 +1,12 @@
 ﻿// File: CarFactory.cs in
 // PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 04 08 2015
+// Edited 05 08 2015
 
 using System;
-using Domain.Domain;
-using Domain.Domain.CarTypes;
-using Domain.Domain.Engines;
+using Domain;
+using Domain.CarTypes;
+using Domain.Engines;
 using InterfacesActions;
 
 namespace Factories

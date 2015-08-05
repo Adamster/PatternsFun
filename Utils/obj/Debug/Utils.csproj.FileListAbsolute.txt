@@ -1,0 +1,4 @@
+D:\ProjectAmdaris\PatternsFun\Utils\bin\Debug\Utils.dll
+D:\ProjectAmdaris\PatternsFun\Utils\bin\Debug\Utils.pdb
+D:\ProjectAmdaris\PatternsFun\Utils\obj\Debug\Utils.dll
+D:\ProjectAmdaris\PatternsFun\Utils\obj\Debug\Utils.pdb
