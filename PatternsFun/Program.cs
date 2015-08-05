@@ -1,7 +1,7 @@
 ﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
 // Created 04 08 2015 
-// Edited 04 08 2015
+// Edited 05 08 2015
 
 using System;
 using System.Collections.Generic;
@@ -49,10 +49,14 @@ namespace PatternsFun
             Logger log = Logger.GetLogger();
             // CarFactoryTestAndOthers();
             //DecoratorTune();
-            ProxyTest();
+            // ProxyTest();
 
             Console.ReadLine();
             log.SaveToFile();
+
+
+
+
         }
 
         private static void ProxyTest()
@@ -99,9 +103,10 @@ namespace PatternsFun
 
         private static void CarFactoryTestAndOthers()
         {
-            //Console.Write(new string('▒', 320));
-            //Console.Write(new string('█', 320));
-            //Console.Write(new string('▒', 320));
+            Console.Write(new string('▒', 320));
+            Console.Write(new string('█', 320));
+            Console.Write(new string('▒', 320));
+
             Logger.AddMsgToLog("Program launched");
 
             var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
