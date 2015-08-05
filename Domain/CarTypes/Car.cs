@@ -7,7 +7,8 @@
 
 using System;
 using System.Diagnostics;
-using Domain.Engines;
+using Domain.EnginesTypes;
+using Domain.FuelTypes;
 using Domain.Interfaces;
 using Utils;
 
@@ -38,7 +39,9 @@ namespace Domain.CarTypes
             Engine = carEngineValue;
             AccelerationSpeed = GetAccelerationSpeed();
             SpecialAdds = addParam;
+            _fuelType = new Petrol();
         }
+
 
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
@@ -69,6 +72,8 @@ namespace Domain.CarTypes
         }
 
         #endregion
+
+        private IFuelConsumeStrategy _fuelType;
 
         private double GetAccelerationSpeed()
         {
@@ -139,12 +144,18 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                FuelTank -= 1;
+                Console.WriteLine("current consume rate = {0}", BurnFuelRate());
+                FuelTank -= BurnFuelRate();
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
             throw new FuelException("Run out of fuel!");
+        }
+
+        protected double BurnFuelRate()
+        {
+            return _fuelType.BurnFuelRate(Engine.HorsePowers, Weight);
         }
 
         private void PressBrakePedal()

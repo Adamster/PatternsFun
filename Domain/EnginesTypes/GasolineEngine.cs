@@ -5,7 +5,7 @@
 
 using System;
 
-namespace Domain.Engines
+namespace Domain.EnginesTypes
 {
     public class GasolineEngine : Engine
     {

@@ -9,7 +9,7 @@ using Domain.Interfaces;
 using Domain.Paddock;
 using Domain.Persons;
 
-namespace Domain.Proxy
+namespace Domain.Patterns.Proxy
 {
     public class BoxesProxy : IAccess
     {

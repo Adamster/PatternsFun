@@ -5,7 +5,7 @@
 
 using System;
 using System.Diagnostics;
-using Domain.Engines;
+using Domain.EnginesTypes;
 using Utils;
 
 namespace Domain.CarTypes
@@ -96,7 +96,7 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                FuelTank -= 5;
+                FuelTank -= BurnFuelRate();
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;

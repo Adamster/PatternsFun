@@ -3,7 +3,7 @@
 // Created 05 08 2015 
 // Edited 05 08 2015
 
-namespace Domain.Engines
+namespace Domain.EnginesTypes
 {
     public abstract class Engine
     {

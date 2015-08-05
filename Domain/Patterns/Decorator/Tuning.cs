@@ -7,7 +7,7 @@ using System;
 using Domain.CarTypes;
 using Domain.Interfaces;
 
-namespace Domain.Decorator
+namespace Domain.Patterns.Decorator
 {
     public abstract class Tuning<TVehicleComponent> : IVehicleComponent where TVehicleComponent : IVehicleComponent
     {

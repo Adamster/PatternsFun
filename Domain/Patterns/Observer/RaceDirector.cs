@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using Domain.Interfaces;
 
-namespace Domain.Observer
+namespace Domain.Patterns.Observer
 {
     public class RaceDirector
     {

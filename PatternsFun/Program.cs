@@ -7,14 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Domain.Decorator;
-using Domain.Engines;
+using Domain.EnginesTypes;
 using Domain.Inspector;
 using Domain.Interfaces;
-using Domain.Observer;
 using Domain.Paddock;
+using Domain.Patterns.Decorator;
+using Domain.Patterns.Observer;
+using Domain.Patterns.Proxy;
 using Domain.Persons;
-using Domain.Proxy;
 using Factories;
 using Infrastrucuture.IoC;
 using Utils;
@@ -51,8 +51,9 @@ namespace PatternsFun
             // CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
-
             ObserverTest();
+
+            
 
 
             Console.ReadLine();
