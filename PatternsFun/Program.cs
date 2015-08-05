@@ -1,6 +1,6 @@
-﻿ // File: Program.cs in
+﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
-// Created 04 08 2015 
+// Created 05 08 2015 
 // Edited 05 08 2015
 
 using System;
@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Domain.EnginesTypes;
+using Domain.FuelTypes;
 using Domain.Inspector;
 using Domain.Interfaces;
 using Domain.Paddock;
@@ -52,7 +53,6 @@ namespace PatternsFun
             // DecoratorTune();
             // ProxyTest();
             //ObserverTest();
-
             StrategyDemonstration();
 
 
@@ -65,10 +65,13 @@ namespace PatternsFun
             var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
                 color => color.WithParams(() => "Color is Red"));
             Logger.AddMsgToLog("Ferrari 14 T created");
+            ferrari.Accelerate(350);
 
-           ferrari.Accelerate(350);
+            var ferrari2 = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T(Diesel)",
+                color => color.WithParams(() => "Color is Red"));
 
-
+            ferrari2.SetFuelType(new Diesel());
+            ferrari2.Accelerate(350);
         }
 
         private static void ObserverTest()
@@ -87,7 +90,6 @@ namespace PatternsFun
 
             Console.WriteLine("press any key to continue...");
             Console.ReadKey();
-
         }
 
         private static void ProxyTest()

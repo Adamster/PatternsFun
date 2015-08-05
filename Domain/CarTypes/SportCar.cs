@@ -71,6 +71,7 @@ namespace Domain.CarTypes
                     Console.WriteLine(ex.Message);
                 }
             }
+            Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
         }
 
         public override void Brake()
@@ -88,6 +89,7 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
+                Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
                 FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);

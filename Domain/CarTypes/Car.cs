@@ -34,7 +34,6 @@ namespace Domain.CarTypes
             _fuelType = new Petrol();
         }
 
-
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
 
@@ -112,6 +111,7 @@ namespace Domain.CarTypes
                     else break;
                 }
             }
+            Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
         }
 
         public void StopTheCar()
