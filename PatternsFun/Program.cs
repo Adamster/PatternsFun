@@ -51,13 +51,24 @@ namespace PatternsFun
             // CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
-            ObserverTest();
+            //ObserverTest();
 
-            
+            StrategyDemonstration();
 
 
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void StrategyDemonstration()
+        {
+            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+                color => color.WithParams(() => "Color is Red"));
+            Logger.AddMsgToLog("Ferrari 14 T created");
+
+           ferrari.Accelerate(350);
+
+
         }
 
         private static void ObserverTest()

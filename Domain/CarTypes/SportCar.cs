@@ -12,19 +12,11 @@ namespace Domain.CarTypes
 {
     public class SportCar : Car
     {
-        public SportCar(double fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
-            string addspec)
+        public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
+            string addParam)
+            : base(fuelTankValue, weightValue, carEngineValue, nameValue, addParam)
         {
-            if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the SportCar!");
-            Name = nameValue;
-            if (fuelTankValue < 0) throw new ArgumentException("fuel tank volume can't be below or equal zero");
-            FuelTank = fuelTankValue;
-            if (weightValue <= 0) throw new ArgumentException("weight can't be below or equal zero");
-            Weight = weightValue;
-            Engine = carEngineValue;
-            AccelerationSpeed = GetAccelerationSpeed();
             DownForcePressure = 0;
-            SpecialAdds = addspec;
         }
 
         private int DownForcePressure { get; set; }
@@ -96,7 +88,7 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                FuelTank -= BurnFuelRate();
+                FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;

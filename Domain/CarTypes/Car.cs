@@ -18,14 +18,6 @@ namespace Domain.CarTypes
 {
     public class Car : Vehicle, ISteeringWheel, IVehicleComponent
     {
-        public Car()
-        {
-            Name = "Undefined";
-            FuelTank = 0;
-            Weight = 0;
-            Engine = null;
-        }
-
         public Car(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
         {
@@ -73,7 +65,7 @@ namespace Domain.CarTypes
 
         #endregion
 
-        private IFuelConsumeStrategy _fuelType;
+        protected IFuelConsumeStrategy _fuelType;
 
         private double GetAccelerationSpeed()
         {
@@ -144,8 +136,8 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                Console.WriteLine("current consume rate = {0}", BurnFuelRate());
-                FuelTank -= BurnFuelRate();
+                Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
+                FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
@@ -153,9 +145,14 @@ namespace Domain.CarTypes
             throw new FuelException("Run out of fuel!");
         }
 
-        protected double BurnFuelRate()
+        protected double BurnFuelRate(IFuelConsumeStrategy fuelType)
         {
-            return _fuelType.BurnFuelRate(Engine.HorsePowers, Weight);
+            return fuelType.BurnFuelRate(Engine.HorsePowers, Weight);
+        }
+
+        public void SetFuelType(IFuelConsumeStrategy fuelType)
+        {
+            _fuelType = fuelType;
         }
 
         private void PressBrakePedal()
