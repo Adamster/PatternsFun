@@ -11,10 +11,10 @@ D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Factories.dll
 D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Factories.pdb
 D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Domain.dll
 D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Utils.dll
 D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Domain.pdb
 D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\InterfacesActions.pdb
+D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Utils.pdb
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.dll
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.pdb
-D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Utils.dll
-D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Utils.pdb

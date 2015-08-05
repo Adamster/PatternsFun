@@ -26,7 +26,7 @@ namespace PatternsFun
     internal class Program
     {
         private static readonly CarFactory MaranelloCarFactory;
-
+        #region private
         private static List<Boxes> BoxList = new List<Boxes>
         {
             new Boxes("Mercedes", 1),
@@ -40,6 +40,7 @@ namespace PatternsFun
             new Boxes("Sauber", 9),
             new Boxes("Marussia", 10)
         };
+#endregion
 
         static Program()
         {
@@ -55,7 +56,7 @@ namespace PatternsFun
             // ProxyTest();
             //ObserverTest();
             //StrategyDemonstration();
-            TemplateMethodTest();
+           // TemplateMethodTest();
             
 
             Console.ReadLine();
