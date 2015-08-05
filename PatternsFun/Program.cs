@@ -7,13 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Domain.Domain.Decorator;
-using Domain.Domain.Engines;
-using Domain.Domain.Inspector;
-using Domain.Domain.Interfaces;
-using Domain.Domain.Paddock;
-using Domain.Domain.Persons;
-using Domain.Domain.Proxy;
+using Domain.Decorator;
+using Domain.Engines;
+using Domain.Inspector;
+using Domain.Interfaces;
+using Domain.Paddock;
+using Domain.Persons;
+using Domain.Proxy;
 using Domain.Utils;
 using Factories;
 using Infrastrucuture.IoC;
@@ -47,9 +47,9 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            // CarFactoryTestAndOthers();
-            //DecoratorTune();
-            // ProxyTest();
+             CarFactoryTestAndOthers();
+            DecoratorTune();
+             ProxyTest();
 
             Console.ReadLine();
             log.SaveToFile();

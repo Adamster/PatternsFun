@@ -4,9 +4,9 @@
 // Edited 04 08 2015
 
 using System;
-using Domain.Domain;
-using Domain.Domain.CarTypes;
-using Domain.Domain.Engines;
+using Domain;
+using Domain.CarTypes;
+using Domain.Engines;
 using InterfacesActions;
 
 namespace Factories
