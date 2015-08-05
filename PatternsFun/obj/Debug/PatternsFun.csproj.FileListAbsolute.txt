@@ -23,12 +23,14 @@ D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Domain.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Factories.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Infrastrucuture.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\InterfacesActions.dll
+D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Utils.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Ninject.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\ActionImplementation.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Domain.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Factories.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Infrastrucuture.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\InterfacesActions.pdb
+D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Utils.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\Ninject.xml
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\ActionImplementation.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.csprojResolveAssemblyReference.cache

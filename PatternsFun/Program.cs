@@ -1,29 +1,32 @@
 ﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
-// Created 04 08 2015 
-// Edited 04 08 2015
+// Created 05 08 2015 
+// Edited 05 08 2015
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Domain.Domain.Decorator;
-using Domain.Domain.Engines;
-using Domain.Domain.Inspector;
-using Domain.Domain.Interfaces;
-using Domain.Domain.Paddock;
-using Domain.Domain.Persons;
-using Domain.Domain.Proxy;
-using Domain.Utils;
+using Domain.CarTypes;
+using Domain.EnginesTypes;
+using Domain.FuelTypes;
+using Domain.Inspector;
+using Domain.Interfaces;
+using Domain.Paddock;
+using Domain.Patterns.Decorator;
+using Domain.Patterns.Observer;
+using Domain.Patterns.Proxy;
+using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
+using Utils;
 
 namespace PatternsFun
 {
     internal class Program
     {
         private static readonly CarFactory MaranelloCarFactory;
-
+        #region private
         private static List<Boxes> BoxList = new List<Boxes>
         {
             new Boxes("Mercedes", 1),
@@ -37,6 +40,7 @@ namespace PatternsFun
             new Boxes("Sauber", 9),
             new Boxes("Marussia", 10)
         };
+#endregion
 
         static Program()
         {
@@ -48,11 +52,59 @@ namespace PatternsFun
         {
             Logger log = Logger.GetLogger();
             // CarFactoryTestAndOthers();
-            //DecoratorTune();
-            ProxyTest();
+            // DecoratorTune();
+            // ProxyTest();
+            //ObserverTest();
+            //StrategyDemonstration();
+           // TemplateMethodTest();
+            
 
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void TemplateMethodTest()
+        {
+            Car ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+                   color => color.WithParams(() => "Color is Red"));
+            Logger.AddMsgToLog("Ferrari 14 T created");
+
+            Car prototypeCar = MaranelloCarFactory.CreateNewCar(0, 1200, 250, EngineTypes.V4, "PrototypeCar", null);
+            ferrari.ChangeOilRequest();
+            prototypeCar.ChangeOilRequest();
+
+        }
+
+        private static void StrategyDemonstration()
+        {
+            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+                color => color.WithParams(() => "Color is Red"));
+            Logger.AddMsgToLog("Ferrari 14 T created");
+            ferrari.Accelerate(350);
+
+            var ferrari2 = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T(Diesel)",
+                color => color.WithParams(() => "Color is Red"));
+
+            ferrari2.SetFuelType(new Diesel());
+            ferrari2.Accelerate(350);
+        }
+
+        private static void ObserverTest()
+        {
+            var charlieWhiting = new RaceDirector();
+            var but = PilotFactory.CreateNewPilot("Jenson Button", DateTime.Parse("12/03/2000"), 35, "McLaren F1");
+            var msc = PilotFactory.CreateNewPilot("Michael Schumaher", DateTime.Parse("25/08/1991"), 46, "Ferrari F1");
+            charlieWhiting.JoinRace(but);
+            charlieWhiting.JoinRace(msc);
+
+            charlieWhiting.RaceStatus = "Race Started!";
+            charlieWhiting.RaceStatus = "Safety Car";
+            charlieWhiting.RaceStatus = "Red Flag";
+            charlieWhiting.RaceStatus = "Restart";
+
+
+            Console.WriteLine("press any key to continue...");
+            Console.ReadKey();
         }
 
         private static void ProxyTest()
@@ -99,9 +151,10 @@ namespace PatternsFun
 
         private static void CarFactoryTestAndOthers()
         {
-            //Console.Write(new string('▒', 320));
-            //Console.Write(new string('█', 320));
-            //Console.Write(new string('▒', 320));
+            Console.Write(new string('▒', 320));
+            Console.Write(new string('█', 320));
+            Console.Write(new string('▒', 320));
+
             Logger.AddMsgToLog("Program launched");
 
             var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
@@ -120,7 +173,7 @@ namespace PatternsFun
             monster.Accelerate(10);
 
 
-            ferrari.Accelerate(30);
+            ferrari.Accelerate(450);
 
 
             var police = Police.Instance;
