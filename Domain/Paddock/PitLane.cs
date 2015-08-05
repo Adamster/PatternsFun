@@ -1,6 +1,11 @@
-﻿namespace Domain.Paddock
+﻿// File: PitLane.cs in
+// PatternsFun by Serghei Adam 
+// Created 05 08 2015 
+// Edited 05 08 2015
+
+namespace Domain.Paddock
 {
-    class PitLane
+    internal class PitLane
     {
         public PitLane(int lenght)
         {

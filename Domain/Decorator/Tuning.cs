@@ -1,6 +1,6 @@
 ﻿// File: Tuning.cs in
 // PatternsFun by Serghei Adam 
-// Created 04 08 2015 
+// Created 05 08 2015 
 // Edited 05 08 2015
 
 using System;

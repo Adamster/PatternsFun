@@ -1,7 +1,7 @@
 // File: SportCar.cs in
 // PatternsFun by Serghei Adam 
-// Created 29 07 2015 
-// Edited 04 08 2015
+// Created 05 08 2015 
+// Edited 05 08 2015
 
 using System;
 using System.Diagnostics;

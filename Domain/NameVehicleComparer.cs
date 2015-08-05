@@ -1,3 +1,8 @@
+// File: NameVehicleComparer.cs in
+// PatternsFun by Serghei Adam 
+// Created 05 08 2015 
+// Edited 05 08 2015
+
 using System.Collections.Generic;
 
 namespace Domain

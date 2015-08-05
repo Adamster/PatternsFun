@@ -1,14 +1,14 @@
 ﻿// File: Logger.cs in
 // PatternsFun by Serghei Adam 
-// Created 03 08 2015 
-// Edited 03 08 2015
+// Created 05 08 2015 
+// Edited 05 08 2015
 
 #region
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
-using System.Diagnostics;
 
 #endregion
 
@@ -27,7 +27,6 @@ namespace Utils
         private Logger()
         {
             Sw.Start();
-           
         }
 
         public static Logger GetLogger()
@@ -51,7 +50,6 @@ namespace Utils
             var preLog = string.Format("{0} {1} | {2} logged at {3} from application launch\n",
                 DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString(), msg, Sw.Elapsed.ToString("g"));
             LogString.Append(preLog);
-
         }
     }
 }

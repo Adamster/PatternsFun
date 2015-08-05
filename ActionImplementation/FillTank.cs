@@ -1,6 +1,7 @@
-﻿// PatternsFun by Serghei Adam 
+﻿// File: FillTank.cs in
+// PatternsFun by Serghei Adam 
 // Created 29 07 2015 
-// Edited 03 08 2015
+// Edited 05 08 2015
 
 using System;
 using Domain.CarTypes;
@@ -15,7 +16,7 @@ namespace ActionImplementation
         {
             car.FillTank(100);
             Console.WriteLine("Tank filled in {0} ", car.Name);
-            Logger.AddMsgToLog("Tank Filled in "+ car.Name);
+            Logger.AddMsgToLog("Tank Filled in " + car.Name);
         }
     }
 }
