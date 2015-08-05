@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using Domain.CarTypes;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Inspector;
@@ -53,11 +54,24 @@ namespace PatternsFun
             // DecoratorTune();
             // ProxyTest();
             //ObserverTest();
-            StrategyDemonstration();
-
+            //StrategyDemonstration();
+            TemplateMethodTest();
+            
 
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void TemplateMethodTest()
+        {
+            Car ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+                   color => color.WithParams(() => "Color is Red"));
+            Logger.AddMsgToLog("Ferrari 14 T created");
+
+            Car prototypeCar = MaranelloCarFactory.CreateNewCar(0, 1200, 250, EngineTypes.V4, "PrototypeCar", null);
+            ferrari.ChangeOilRequest();
+            prototypeCar.ChangeOilRequest();
+
         }
 
         private static void StrategyDemonstration()

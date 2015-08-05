@@ -43,6 +43,7 @@
     <Compile Include="CarTypes\ElectroCar.cs" />
     <Compile Include="FuelTypes\Diesel.cs" />
     <Compile Include="FuelTypes\Petrol.cs" />
+    <Compile Include="Interfaces\IChangeOil.cs" />
     <Compile Include="Interfaces\IFuelConsumeStrategy.cs" />
     <Compile Include="Patterns\Decorator\Tuning.cs" />
     <Compile Include="EnginesTypes\ElectroEngine.cs" />

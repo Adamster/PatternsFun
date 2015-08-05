@@ -6,11 +6,12 @@
 using System;
 using System.Diagnostics;
 using Domain.EnginesTypes;
+using Domain.Interfaces;
 using Utils;
 
 namespace Domain.CarTypes
 {
-    public class SportCar : Car
+    public class SportCar : Car , IChangeOil
     {
         public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
@@ -119,6 +120,16 @@ namespace Domain.CarTypes
         private double GetDeAccelerationSpeed()
         {
             return 10000/Weight;
+        }
+
+        protected override void CloseBonnet()
+        {
+            Console.WriteLine("Close SportCar bonnet");
+        }
+
+        protected override void OpenBonnet()
+        {
+            Console.WriteLine("Open SportCar bonnet");
         }
     }
 }

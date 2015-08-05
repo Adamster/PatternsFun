@@ -16,7 +16,7 @@ using Utils;
 
 namespace Domain.CarTypes
 {
-    public class Car : Vehicle, ISteeringWheel, IVehicleComponent
+    public class Car : Vehicle, ISteeringWheel, IVehicleComponent, IChangeOil
     {
         public Car(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
@@ -170,5 +170,32 @@ namespace Domain.CarTypes
         {
             return 10000/Weight;
         }
+
+        #region Implementation of IChangeOil
+
+        public void ChangeOilRequest()
+        {
+            StopTheCar();
+            OpenBonnet();
+            OilReplace();
+            CloseBonnet();
+        }
+
+        private void OilReplace()
+        {
+            Console.WriteLine("Oil replaced");
+        }
+
+        protected virtual void CloseBonnet()
+        {
+            Console.WriteLine("Close car bonnet");
+        }
+
+        protected virtual void OpenBonnet()
+        {
+            Console.WriteLine("Open car bonnet");
+        }
+
+        #endregion
     }
 }
