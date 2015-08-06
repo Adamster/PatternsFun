@@ -18,28 +18,25 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            _ICarActionOnCreationMock = new Mock<ICarActionOnCreation>();
-            _carFactory = new CarFactory(_ICarActionOnCreationMock.Object);
+            _carActionOnCreationMock = new Mock<ICarActionOnCreation>();
+            _carFactory = new CarFactory(_carActionOnCreationMock.Object);
         }
 
-        private Mock<ICarActionOnCreation> _ICarActionOnCreationMock;
+        private Mock<ICarActionOnCreation> _carActionOnCreationMock;
         private CarFactory _carFactory;
-
 
         public void ActCreateProdcut()
         {
             _carFactory.CreateNewSportCar(0, 1000, 250, EngineTypes.V10, "TestCar", null);
-
         }
 
         [Test]
         public void ItShouldFillTankOnCarCreation()
         {
-            _ICarActionOnCreationMock.Setup(x=> x.FillCarTank(It.IsAny<Car>()));
+            _carActionOnCreationMock.Setup(x => x.FillCarTank(It.IsAny<Car>()));
 
             ActCreateProdcut();
-            _ICarActionOnCreationMock.Verify(creation => creation.FillCarTank(It.IsAny<Car>()), Times.Once);
+            _carActionOnCreationMock.Verify(creation => creation.FillCarTank(It.IsAny<Car>()), Times.Once);
         }
-
     }
 }

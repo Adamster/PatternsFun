@@ -1,7 +1,7 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 06 08 2015
 
 #region
 
@@ -83,7 +83,7 @@ namespace Domain.CarTypes
 
             while (Speed < toSpeed)
             {
-              try
+                try
                 {
                     if (BurnFuel())
                     {
@@ -110,10 +110,7 @@ namespace Domain.CarTypes
                         FillTank(addFuel);
                     }
                     else
-                    {
-                       
                         throw new FuelException();
-                    }
                 }
             }
             Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
@@ -141,13 +138,11 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                //Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
                 FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            //throw new FuelException("Run out of fuel!");
             throw new FuelException();
         }
 

@@ -3,9 +3,7 @@
 // Created 06 08 2015 
 // Edited 06 08 2015
 
-using Domain.CarTypes;
 using Domain.Paddock;
-using Domain.Persons;
 
 namespace Domain.Interfaces
 {

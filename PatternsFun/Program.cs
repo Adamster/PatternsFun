@@ -55,13 +55,13 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-           // CarFactoryTestAndOthers();
+            // CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
-            //ObserverTest();
+            // ObserverTest();
             StrategyDemonstration();
             // TemplateMethodTest();
-            //VisitTest();
+            // VisitTest();
 
 
             Console.ReadLine();
@@ -73,7 +73,7 @@ namespace PatternsFun
             var artefactCollector = new ArtefactCollectorVisitor();
 
             PitLane monacoPitLane = new PitLane(500, "Monaco PitLane");
-           
+
             BoxList[1].Accept(artefactCollector);
             monacoPitLane.Accept(artefactCollector);
 
@@ -83,7 +83,6 @@ namespace PatternsFun
             }
 
             Console.ReadLine();
-
         }
 
         private static void TemplateMethodTest()

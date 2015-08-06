@@ -1,7 +1,7 @@
 // File: SportCar.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 06 08 2015
 
 using System;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ using Utils;
 
 namespace Domain.CarTypes
 {
-    public class SportCar : Car , IChangeOil
+    public class SportCar : Car, IChangeOil
     {
         public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
@@ -71,11 +71,7 @@ namespace Domain.CarTypes
                     }
 
                     else
-                    {
                         throw new FuelException();
-                    }
-                 
-                        
                 }
 
                 catch (Exception ex)
@@ -93,7 +89,7 @@ namespace Domain.CarTypes
 
         private void GeneretaDownForce()
         {
-           DownForcePressure += 1;
+            DownForcePressure += 1;
             Console.WriteLine("Generating downforce");
         }
 
@@ -107,7 +103,7 @@ namespace Domain.CarTypes
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw  new FuelException();
+            throw new FuelException();
         }
 
         private void PressBrakePedal()

@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    public class CarFixture
+    public abstract class CarFixture
     {
         [SetUp]
         public void SetUp()
@@ -21,7 +21,8 @@ namespace Tests
 
         private Car _car;
 
-        public class CarAccelerateIsTargetAchived
+        [TestFixture]
+        public class CarAccelerateIsTargetAchived : CarFixture
         {
             private static readonly object[] TestCar =
             {
@@ -33,8 +34,9 @@ namespace Tests
 
             public void ActAccelerateTheCar()
             {
-                var car = new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "Prototype", null);
-                car.Accelerate(100);
+                _car = new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "Prototype", null);
+
+                _car.Accelerate(100);
             }
 
             [Test, TestCaseSource("TestCar")]
