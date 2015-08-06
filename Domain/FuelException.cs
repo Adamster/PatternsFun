@@ -7,13 +7,15 @@ using System;
 
 namespace Domain
 {
-    internal class FuelException : Exception
+    public class FuelException : Exception
     {
-        public FuelException(string fuelMessage)
+        #region Overrides of Exception
+
+        public override string Message 
         {
-            _fuelMessage = fuelMessage;
+            get { return "Run out of Fuel!"; }
         }
 
-        private string _fuelMessage;
+        #endregion
     }
 }

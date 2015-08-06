@@ -83,7 +83,7 @@ namespace Domain.CarTypes
 
             while (Speed < toSpeed)
             {
-                try
+              try
                 {
                     if (BurnFuel())
                     {
@@ -100,7 +100,8 @@ namespace Domain.CarTypes
                     Logger.AddMsgToLog(ex.Message);
                     Console.WriteLine(ex.Message);
                     Console.WriteLine("Fill the tank?(Y/N:)");
-                    if (Console.ReadLine().ToLower() == "y")
+                    var readLine = Console.ReadLine();
+                    if (readLine != null && readLine.ToLower() == "y")
                     {
                         Console.WriteLine("How much?");
                         var addFuelTmp = Console.ReadLine();
@@ -108,7 +109,11 @@ namespace Domain.CarTypes
                         double.TryParse(addFuelTmp, out addFuel);
                         FillTank(addFuel);
                     }
-                    else break;
+                    else
+                    {
+                       
+                        throw new FuelException();
+                    }
                 }
             }
             Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
@@ -136,13 +141,14 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
+                //Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
                 FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException("Run out of fuel!");
+            //throw new FuelException("Run out of fuel!");
+            throw new FuelException();
         }
 
         protected double BurnFuelRate(IFuelConsumeStrategy fuelType)

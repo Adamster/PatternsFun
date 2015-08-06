@@ -24,7 +24,7 @@ namespace Domain.CarTypes
 
         private double GetAccelerationSpeed()
         {
-            return (Engine.HorsePowers/Weight*100) + DownForcePressure;
+            return (Engine.HorsePowers/Weight*100);
         }
 
         public override void Accelerate(int toSpeed)
@@ -43,7 +43,7 @@ namespace Domain.CarTypes
                     if (BurnFuel())
                     {
                         if (Speed == 0) Speed += GetAccelerationSpeed();
-                        else Speed += GetAccelerationSpeed() - Speed/10;
+                        else Speed += GetAccelerationSpeed() - Speed/20;
                         Console.WriteLine("Car Accelerate");
                         PrintCurrentSpeed();
                         Mileage += Speed;
@@ -55,7 +55,8 @@ namespace Domain.CarTypes
                     Logger.AddMsgToLog(ex.Message);
                     Console.WriteLine(ex.Message);
                     Console.WriteLine("Fill the tank?(Y/N:)");
-                    if (Console.ReadLine().ToLower() == "y")
+                    var readLine = Console.ReadLine();
+                    if (readLine != null && readLine.ToLower() == "y")
                     {
                         Console.WriteLine("How much?");
                         var addFuelTmp = Console.ReadLine();
@@ -63,8 +64,18 @@ namespace Domain.CarTypes
                         double.TryParse(addFuelTmp, out addFuel);
                         FillTank(addFuel);
                     }
-                    else
+                    else if (readLine != null && readLine.ToLower() == "n")
+                    {
+                        FuelTank = 0;
                         break;
+                    }
+
+                    else
+                    {
+                        throw new FuelException();
+                    }
+                 
+                        
                 }
 
                 catch (Exception ex)
@@ -82,7 +93,7 @@ namespace Domain.CarTypes
 
         private void GeneretaDownForce()
         {
-            DownForcePressure += 1;
+           DownForcePressure += 1;
             Console.WriteLine("Generating downforce");
         }
 
@@ -96,7 +107,7 @@ namespace Domain.CarTypes
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException("Run out of fuel!");
+            throw  new FuelException();
         }
 
         private void PressBrakePedal()

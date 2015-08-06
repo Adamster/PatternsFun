@@ -55,13 +55,13 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            // CarFactoryTestAndOthers();
+           // CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
             //ObserverTest();
-            //StrategyDemonstration();
+            StrategyDemonstration();
             // TemplateMethodTest();
-           // VisitTest();
+            //VisitTest();
 
 
             Console.ReadLine();
@@ -70,8 +70,10 @@ namespace PatternsFun
 
         private static void VisitTest()
         {
-            PitLane monacoPitLane = new PitLane(500, "Monaco PitLane");
             var artefactCollector = new ArtefactCollectorVisitor();
+
+            PitLane monacoPitLane = new PitLane(500, "Monaco PitLane");
+           
             BoxList[1].Accept(artefactCollector);
             monacoPitLane.Accept(artefactCollector);
 
@@ -177,7 +179,7 @@ namespace PatternsFun
 
             Logger.AddMsgToLog("Program launched");
 
-            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 1000, EngineTypes.V6, "Ferrari 14 T",
                 color => color.WithParams(() => "Color is Red"));
             Logger.AddMsgToLog("Ferrari 14 T created");
 
@@ -187,13 +189,12 @@ namespace PatternsFun
 
             Thread.Sleep(2000);
 
-            var simpleCar = MaranelloCarFactory.CreateNewCar(0, 200, 200, EngineTypes.V2, "Ferrari 458",
-                opt => opt.WithParams(() => ""));
+            var simpleCar = MaranelloCarFactory.CreateNewCar(0, 200, 200, EngineTypes.V2, "Ferrari 458", null);
             Logger.AddMsgToLog("Ferrari 458 created");
             monster.Accelerate(10);
 
 
-            ferrari.Accelerate(450);
+            ferrari.Accelerate(300);
 
 
             var police = Police.Instance;
