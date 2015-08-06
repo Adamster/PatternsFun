@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarFactoryFixture.cs" />
     <Compile Include="CarFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{25a4e89f-79ba-4d7c-9b09-8a5053c2a0ae}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Factories\Factories.csproj">
+      <Project>{f3acb72a-b2c4-4e16-ba5f-3332a50423f3}</Project>
+      <Name>Factories</Name>
     </ProjectReference>
     <ProjectReference Include="..\InterfacesActions\InterfacesActions.csproj">
       <Project>{bcb6598d-b718-4c52-a00d-98f659751a34}</Project>
