@@ -8,7 +8,7 @@ using Domain.Interfaces;
 
 namespace Domain.Paddock
 {
-    public class Boxes : IAccess
+    public class Boxes : IAccess , IAcceptVisitor
     {
         public Boxes(string owner, int numberInLine)
         {
@@ -29,6 +29,15 @@ namespace Domain.Paddock
         public void PilotAcces()
         {
             Console.WriteLine("Welcome back to {0}", Owner);
+        }
+
+        #endregion
+
+        #region Implementation of IAcceptVisitor
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
 
         #endregion
