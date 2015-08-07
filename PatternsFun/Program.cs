@@ -64,6 +64,7 @@ namespace PatternsFun
             // VisitTest();
 
 
+
             Console.ReadLine();
             log.SaveToFile();
         }

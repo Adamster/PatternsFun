@@ -3,6 +3,11 @@
 // Created 06 08 2015 
 // Edited 06 08 2015
 
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Security.Cryptography;
+using System.Threading;
 using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
@@ -45,6 +50,44 @@ namespace Tests
                 var exception = Assert.Throws<FuelException>(() => ActAccelerateTheCar());
                 Assert.AreEqual("Run out of Fuel!", exception.Message);
             }
+        }
+
+
+        [TestFixture]
+        public class CarCalculateTraveledDistance : CarFixture
+        {
+            private static readonly object[] TestCar =
+            {
+                new object[]
+                {
+                    new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar", null)
+                }
+            };
+           
+            
+            private static  readonly  object Time = TimeSpan.FromSeconds(30);
+
+            public void ActContinousAccelerateForTenSecondsAndStop()
+            {
+               var timer = new Stopwatch();
+                timer.Start();
+                while (timer.Elapsed == TimeSpan.FromSeconds(10))
+                {
+                    _car.Accelerate(); 
+                }
+                _car.StopTheCar();
+                
+            }
+
+            [TestCase("Time")]
+            public void ItShouldTravelFixedDistance(double v , double t, double s)
+            {
+               ActContinousAccelerateForTenSecondsAndStop();
+                Assert.AreEqual(v*t, s);
+            }
+
+        
+
         }
     }
 }
