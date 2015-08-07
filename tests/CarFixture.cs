@@ -12,6 +12,7 @@ using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace Tests
 {
@@ -44,8 +45,8 @@ namespace Tests
                 _car.Accelerate(100);
             }
 
-            [Test, TestCaseSource("TestCar")]
-            public void ItShouldThrowFuelException(Car car)
+            [Test]
+            public void ItShouldThrowFuelException()
             {
                 var exception = Assert.Throws<FuelException>(() => ActAccelerateTheCar());
                 Assert.AreEqual("Run out of Fuel!", exception.Message);
@@ -56,34 +57,61 @@ namespace Tests
         [TestFixture]
         public class CarCalculateTraveledDistance : CarFixture
         {
+            #region TestCar
             private static readonly object[] TestCar =
             {
                 new object[]
                 {
-                    new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar", null)
-                }
-            };
-           
-            
-            private static  readonly  object Time = TimeSpan.FromSeconds(30);
-
-            public void ActContinousAccelerateForTenSecondsAndStop()
-            {
-               var timer = new Stopwatch();
-                timer.Start();
-                while (timer.Elapsed == TimeSpan.FromSeconds(10))
+                    new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "SportCar", null)
+                },
+                new object[]
                 {
-                    _car.Accelerate(); 
+                    new Car(100, 1200, new GasolineEngine(200, EngineTypes.V8), "testCar2", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 1200, new GasolineEngine(1200, EngineTypes.V8), "testCar3", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 1200, new GasolineEngine(120, EngineTypes.V8), "BudgetCar", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 2000, new GasolineEngine(500, EngineTypes.V8), "testCar5", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 3500, new GasolineEngine(900, EngineTypes.V8), "Truck", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar7", null)
+                },
+                 new object[]
+                {
+                    new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar8", null)
                 }
-                _car.StopTheCar();
-                
+
+
+            };
+#endregion
+            
+           
+            public void ActContinousAccelerateThanStop(Car car)
+            {
+                do
+                {
+                    car.ContinousAccelerate();
+                } while (car.Mileage < 1000);
+                car._sw.Stop();
             }
 
-            [TestCase("Time")]
-            public void ItShouldTravelFixedDistance(double v , double t, double s)
+           [Test, TestCaseSource("TestCar")]
+            public void ItShouldTravelLittleMoreThanDistance(Car car)
             {
-               ActContinousAccelerateForTenSecondsAndStop();
-                Assert.AreEqual(v*t, s);
+               ActContinousAccelerateThanStop(car);
+              Assert.Greater(car.Mileage, 1000);
             }
 
         

@@ -7,9 +7,11 @@
 
 using System;
 using System.Diagnostics;
+using System.Threading;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Interfaces;
+using Microsoft.SqlServer.Server;
 using Utils;
 
 #endregion
@@ -36,6 +38,7 @@ namespace Domain.CarTypes
 
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
+        public Stopwatch _sw = new Stopwatch();
 
         public void TurnLeft()
         {
@@ -74,6 +77,39 @@ namespace Domain.CarTypes
         public override void Accelerate(int toSpeed)
         {
             PressThrottle(toSpeed);
+        }
+
+
+        public virtual void ContinousAccelerate()
+        {
+            ContinousPressThrottle();
+        }
+
+        private void ContinousPressThrottle()
+        {
+            if (Mileage == null)
+            {
+                Mileage = 0;
+            }
+            if (!_sw.IsRunning)
+            {
+                _sw.Start();
+                Thread.Sleep(1);
+            }
+            
+            if (BurnFuel())
+            {
+                if (Speed == 0) Speed += GetAccelerationSpeed()/5;
+                else Speed += GetAccelerationSpeed() - Speed / 10;
+                double tmp = Math.Ceiling((double)_sw.Elapsed.Milliseconds);
+                //double.TryParse(_sw.Elapsed.Seconds.ToString(), out tmp);
+                Console.WriteLine( "time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds,tmp);
+                Mileage += tmp * Speed;
+                PrintCurrentSpeed();
+                Console.WriteLine(Mileage);
+                _sw.Reset();
+            }
+           
         }
 
         private void PressThrottle(int toSpeed)

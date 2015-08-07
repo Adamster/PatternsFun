@@ -13,7 +13,7 @@ namespace Domain.FuelTypes
 
         public double BurnFuelRate(int hp, double weight)
         {
-            return weight/hp;
+            return weight/hp/10;
         }
 
         #endregion
