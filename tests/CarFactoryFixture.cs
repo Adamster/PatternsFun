@@ -1,7 +1,7 @@
 ﻿// File: CarFactoryFixture.cs in
 // PatternsFun by Serghei Adam 
 // Created 06 08 2015 
-// Edited 06 08 2015
+// Edited 07 08 2015
 
 using Domain.CarTypes;
 using Domain.EnginesTypes;

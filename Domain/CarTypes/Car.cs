@@ -1,7 +1,7 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 06 08 2015
+// Edited 07 08 2015
 
 #region
 
@@ -11,7 +11,6 @@ using System.Threading;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Interfaces;
-using Microsoft.SqlServer.Server;
 using Utils;
 
 #endregion
@@ -20,6 +19,12 @@ namespace Domain.CarTypes
 {
     public class Car : Vehicle, ISteeringWheel, IVehicleComponent, IChangeOil
     {
+        #region  public items
+
+        public Stopwatch _sw = new Stopwatch();
+
+        #endregion
+
         public Car(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
         {
@@ -38,7 +43,6 @@ namespace Domain.CarTypes
 
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
-        public Stopwatch _sw = new Stopwatch();
 
         public void TurnLeft()
         {
@@ -79,7 +83,6 @@ namespace Domain.CarTypes
             PressThrottle(toSpeed);
         }
 
-
         public virtual void ContinousAccelerate()
         {
             ContinousPressThrottle();
@@ -88,28 +91,24 @@ namespace Domain.CarTypes
         private void ContinousPressThrottle()
         {
             if (Mileage == null)
-            {
                 Mileage = 0;
-            }
             if (!_sw.IsRunning)
             {
                 _sw.Start();
                 Thread.Sleep(1);
             }
-            
+
             if (BurnFuel())
             {
                 if (Speed == 0) Speed += GetAccelerationSpeed()/5;
-                else Speed += GetAccelerationSpeed() - Speed / 10;
-                double tmp = Math.Ceiling((double)_sw.Elapsed.Milliseconds);
-                //double.TryParse(_sw.Elapsed.Seconds.ToString(), out tmp);
-                Console.WriteLine( "time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds,tmp);
-                Mileage += tmp * Speed;
+                else Speed += GetAccelerationSpeed() - Speed/10;
+                double tmp = Math.Ceiling((double) _sw.Elapsed.Milliseconds);
+                Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
+                Mileage += tmp*Speed;
                 PrintCurrentSpeed();
                 Console.WriteLine(Mileage);
                 _sw.Reset();
             }
-           
         }
 
         private void PressThrottle(int toSpeed)

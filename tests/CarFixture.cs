@@ -1,18 +1,12 @@
 ﻿// File: CarFixture.cs in
 // PatternsFun by Serghei Adam 
 // Created 06 08 2015 
-// Edited 06 08 2015
+// Edited 07 08 2015
 
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Security.Cryptography;
-using System.Threading;
 using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace Tests
 {
@@ -53,11 +47,9 @@ namespace Tests
             }
         }
 
-
         [TestFixture]
         public class CarCalculateTraveledDistance : CarFixture
         {
-            #region TestCar
             private static readonly object[] TestCar =
             {
                 new object[]
@@ -68,36 +60,32 @@ namespace Tests
                 {
                     new Car(100, 1200, new GasolineEngine(200, EngineTypes.V8), "testCar2", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 1200, new GasolineEngine(1200, EngineTypes.V8), "testCar3", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 1200, new GasolineEngine(120, EngineTypes.V8), "BudgetCar", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 2000, new GasolineEngine(500, EngineTypes.V8), "testCar5", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 3500, new GasolineEngine(900, EngineTypes.V8), "Truck", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar7", null)
                 },
-                 new object[]
+                new object[]
                 {
                     new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar8", null)
                 }
-
-
             };
-#endregion
-            
-           
+
             public void ActContinousAccelerateThanStop(Car car)
             {
                 do
@@ -107,15 +95,12 @@ namespace Tests
                 car._sw.Stop();
             }
 
-           [Test, TestCaseSource("TestCar")]
+            [Test, TestCaseSource("TestCar")]
             public void ItShouldTravelLittleMoreThanDistance(Car car)
             {
-               ActContinousAccelerateThanStop(car);
-              Assert.Greater(car.Mileage, 1000);
+                ActContinousAccelerateThanStop(car);
+                Assert.Greater(car.Mileage, 1000);
             }
-
-        
-
         }
     }
 }
