@@ -56,14 +56,14 @@ namespace PatternsFun
         {
             Logger log = Logger.GetLogger();
              CarFactoryTestAndOthers();
-            // DecoratorTune();
-            // ProxyTest();
-            // ObserverTest();
-            //StrategyDemonstration();
-            // TemplateMethodTest();
-            // VisitTest();
+             DecoratorTune();
+             ProxyTest();
+             ObserverTest();
+            StrategyDemonstration();
+             TemplateMethodTest();
+             VisitTest();
 
-
+            Console.WriteLine("press enter to exit");
             Console.ReadLine();
             log.SaveToFile();
         }
@@ -81,7 +81,7 @@ namespace PatternsFun
             {
                 Console.WriteLine("artefact: {0}", artefact);
             }
-
+            Console.WriteLine("press enter to continue");
             Console.ReadLine();
         }
 
@@ -143,6 +143,7 @@ namespace PatternsFun
             pilotBoxes.PilotAcces();
             boxes.GrantAcces();
             boxes1.GrantAcces();
+            Console.WriteLine("press enter to continue");
         }
 
         private static void DecoratorTune()
@@ -200,7 +201,7 @@ namespace PatternsFun
             police.ChaseTheCar(ferrari);
             police.ChaseTheCar(monster);
             police.PrintSuspects();
-
+            Console.WriteLine("press enter to continue");
             Console.ReadLine();
         }
     }
