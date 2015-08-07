@@ -55,11 +55,11 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            // CarFactoryTestAndOthers();
+             CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
             // ObserverTest();
-            StrategyDemonstration();
+            //StrategyDemonstration();
             // TemplateMethodTest();
             // VisitTest();
 

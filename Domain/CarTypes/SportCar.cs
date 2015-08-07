@@ -42,8 +42,8 @@ namespace Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += GetAccelerationSpeed();
-                        else Speed += GetAccelerationSpeed() - Speed/20;
+                        if (Speed == 0) Speed += GetAccelerationSpeed()/5;
+                        else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         PrintCurrentSpeed();
                         Mileage += Speed;
@@ -126,7 +126,7 @@ namespace Domain.CarTypes
 
         private double GetDeAccelerationSpeed()
         {
-            return 10000/Weight;
+            return 10000/Weight*5;
         }
 
         protected override void CloseBonnet()

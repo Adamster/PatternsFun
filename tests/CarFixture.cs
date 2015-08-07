@@ -39,7 +39,7 @@ namespace Tests
                 _car.Accelerate(100);
             }
 
-            [Test]
+            [TestCase]
             public void ItShouldThrowFuelException()
             {
                 var exception = Assert.Throws<FuelException>(() => ActAccelerateTheCar());
@@ -50,6 +50,7 @@ namespace Tests
         [TestFixture]
         public class CarCalculateTraveledDistance : CarFixture
         {
+            #region TestCars
             private static readonly object[] TestCar =
             {
                 new object[]
@@ -85,7 +86,7 @@ namespace Tests
                     new Car(100, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar8", null)
                 }
             };
-
+#endregion
             public void ActContinousAccelerateThanStop(Car car)
             {
                 do

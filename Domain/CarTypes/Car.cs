@@ -103,10 +103,11 @@ namespace Domain.CarTypes
                 if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                 else Speed += GetAccelerationSpeed() - Speed/10;
                 double tmp = Math.Ceiling((double) _sw.Elapsed.Milliseconds);
-                Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
+               // Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
                 Mileage += tmp*Speed;
                 PrintCurrentSpeed();
-                Console.WriteLine(Mileage);
+               
+                Console.WriteLine("Distance traveled: {0}",Mileage);
                 _sw.Reset();
             }
         }
@@ -122,7 +123,7 @@ namespace Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                         else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         Mileage += Speed;

@@ -62,7 +62,7 @@ namespace Domain.Inspector
 
         private void TurnOnSirens()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
 
             Console.WriteLine("loud sounds");
             Thread.Sleep(150);
