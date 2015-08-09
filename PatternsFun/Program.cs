@@ -1,6 +1,6 @@
-﻿// File: Program.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
+﻿// File : Program.cs
+// PatternsFun in PatternsFun by Domi Adamster
+// Created 03 08 2015
 // Edited 05 08 2015
 
 using System;
@@ -26,7 +26,9 @@ namespace PatternsFun
     internal class Program
     {
         private static readonly CarFactory MaranelloCarFactory;
+
         #region private
+
         private static List<Boxes> BoxList = new List<Boxes>
         {
             new Boxes("Mercedes", 1),
@@ -40,7 +42,8 @@ namespace PatternsFun
             new Boxes("Sauber", 9),
             new Boxes("Marussia", 10)
         };
-#endregion
+
+        #endregion
 
         static Program()
         {
@@ -56,8 +59,8 @@ namespace PatternsFun
             // ProxyTest();
             //ObserverTest();
             //StrategyDemonstration();
-           // TemplateMethodTest();
-            
+            // TemplateMethodTest();
+
 
             Console.ReadLine();
             log.SaveToFile();
@@ -66,13 +69,12 @@ namespace PatternsFun
         private static void TemplateMethodTest()
         {
             Car ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
-                   color => color.WithParams(() => "Color is Red"));
+                color => color.WithParams(() => "Color is Red"));
             Logger.AddMsgToLog("Ferrari 14 T created");
 
             Car prototypeCar = MaranelloCarFactory.CreateNewCar(0, 1200, 250, EngineTypes.V4, "PrototypeCar", null);
             ferrari.ChangeOilRequest();
             prototypeCar.ChangeOilRequest();
-
         }
 
         private static void StrategyDemonstration()
