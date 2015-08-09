@@ -1,7 +1,7 @@
 // File: SportCar.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 using System;
 using System.Diagnostics;
@@ -11,7 +11,7 @@ using Utils;
 
 namespace Domain.CarTypes
 {
-    public class SportCar : Car , IChangeOil
+    public class SportCar : Car, IChangeOil
     {
         public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
@@ -24,7 +24,7 @@ namespace Domain.CarTypes
 
         private double GetAccelerationSpeed()
         {
-            return (Engine.HorsePowers/Weight*100) + DownForcePressure;
+            return (Engine.HorsePowers/Weight*100);
         }
 
         public override void Accelerate(int toSpeed)
@@ -42,7 +42,7 @@ namespace Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                         else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         PrintCurrentSpeed();
@@ -55,7 +55,8 @@ namespace Domain.CarTypes
                     Logger.AddMsgToLog(ex.Message);
                     Console.WriteLine(ex.Message);
                     Console.WriteLine("Fill the tank?(Y/N:)");
-                    if (Console.ReadLine().ToLower() == "y")
+                    var readLine = Console.ReadLine();
+                    if (readLine != null && readLine.ToLower() == "y")
                     {
                         Console.WriteLine("How much?");
                         var addFuelTmp = Console.ReadLine();
@@ -63,8 +64,14 @@ namespace Domain.CarTypes
                         double.TryParse(addFuelTmp, out addFuel);
                         FillTank(addFuel);
                     }
-                    else
+                    else if (readLine != null && readLine.ToLower() == "n")
+                    {
+                        FuelTank = 0;
                         break;
+                    }
+
+                    else
+                        throw new FuelException();
                 }
 
                 catch (Exception ex)
@@ -96,7 +103,7 @@ namespace Domain.CarTypes
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException("Run out of fuel!");
+            throw new FuelException();
         }
 
         private void PressBrakePedal()
@@ -119,7 +126,7 @@ namespace Domain.CarTypes
 
         private double GetDeAccelerationSpeed()
         {
-            return 10000/Weight;
+            return 10000/Weight*5;
         }
 
         protected override void CloseBonnet()

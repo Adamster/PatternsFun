@@ -1,12 +1,13 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 #region
 
 using System;
 using System.Diagnostics;
+using System.Threading;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Interfaces;
@@ -18,6 +19,12 @@ namespace Domain.CarTypes
 {
     public class Car : Vehicle, ISteeringWheel, IVehicleComponent, IChangeOil
     {
+        #region  public items
+
+        public Stopwatch _sw = new Stopwatch();
+
+        #endregion
+
         public Car(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
         {
@@ -76,6 +83,35 @@ namespace Domain.CarTypes
             PressThrottle(toSpeed);
         }
 
+        public virtual void ContinousAccelerate()
+        {
+            ContinousPressThrottle();
+        }
+
+        private void ContinousPressThrottle()
+        {
+            if (Mileage == null)
+                Mileage = 0;
+            if (!_sw.IsRunning)
+            {
+                _sw.Start();
+                Thread.Sleep(1);
+            }
+
+            if (BurnFuel())
+            {
+                if (Speed == 0) Speed += GetAccelerationSpeed()/5;
+                else Speed += GetAccelerationSpeed() - Speed/10;
+                double tmp = Math.Ceiling((double) _sw.Elapsed.Milliseconds);
+               // Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
+                Mileage += tmp*Speed;
+                PrintCurrentSpeed();
+               
+                Console.WriteLine("Distance traveled: {0}",Mileage);
+                _sw.Reset();
+            }
+        }
+
         private void PressThrottle(int toSpeed)
         {
             Engine.Start();
@@ -87,7 +123,7 @@ namespace Domain.CarTypes
                 {
                     if (BurnFuel())
                     {
-                        if (Speed == 0) Speed += GetAccelerationSpeed();
+                        if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                         else Speed += GetAccelerationSpeed() - Speed/10;
                         Console.WriteLine("Car Accelerate");
                         Mileage += Speed;
@@ -100,7 +136,8 @@ namespace Domain.CarTypes
                     Logger.AddMsgToLog(ex.Message);
                     Console.WriteLine(ex.Message);
                     Console.WriteLine("Fill the tank?(Y/N:)");
-                    if (Console.ReadLine().ToLower() == "y")
+                    var readLine = Console.ReadLine();
+                    if (readLine != null && readLine.ToLower() == "y")
                     {
                         Console.WriteLine("How much?");
                         var addFuelTmp = Console.ReadLine();
@@ -108,7 +145,8 @@ namespace Domain.CarTypes
                         double.TryParse(addFuelTmp, out addFuel);
                         FillTank(addFuel);
                     }
-                    else break;
+                    else
+                        throw new FuelException();
                 }
             }
             Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
@@ -136,13 +174,12 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
                 FuelTank -= BurnFuelRate(_fuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
             }
-            throw new FuelException("Run out of fuel!");
+            throw new FuelException();
         }
 
         protected double BurnFuelRate(IFuelConsumeStrategy fuelType)

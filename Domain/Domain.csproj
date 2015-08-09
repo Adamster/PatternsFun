@@ -43,8 +43,10 @@
     <Compile Include="CarTypes\ElectroCar.cs" />
     <Compile Include="FuelTypes\Diesel.cs" />
     <Compile Include="FuelTypes\Petrol.cs" />
+    <Compile Include="Interfaces\IAcceptVisitor.cs" />
     <Compile Include="Interfaces\IChangeOil.cs" />
     <Compile Include="Interfaces\IFuelConsumeStrategy.cs" />
+    <Compile Include="Interfaces\IVisitor.cs" />
     <Compile Include="Patterns\Decorator\Tuning.cs" />
     <Compile Include="EnginesTypes\ElectroEngine.cs" />
     <Compile Include="EnginesTypes\Engine.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Patterns\Observer\RaceDirector.cs" />
     <Compile Include="Paddock\Boxes.cs" />
     <Compile Include="Paddock\PitLane.cs" />
+    <Compile Include="Patterns\Visitor\ArtefactCollectorVisitor.cs" />
     <Compile Include="Persons\Fan.cs" />
     <Compile Include="Persons\Pilot.cs" />
     <Compile Include="Patterns\Proxy\BoxesProxy.cs" />
@@ -72,6 +75,7 @@
       <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

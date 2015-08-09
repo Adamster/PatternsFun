@@ -1,7 +1,7 @@
 ﻿// File: Police.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 #region
 
@@ -62,7 +62,7 @@ namespace Domain.Inspector
 
         private void TurnOnSirens()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.ForegroundColor = ConsoleColor.Cyan;
 
             Console.WriteLine("loud sounds");
             Thread.Sleep(150);
@@ -75,6 +75,7 @@ namespace Domain.Inspector
         public void PrintSuspects()
         {
             Console.WriteLine("\nVehicles on penaltyParking:\n");
+            Console.ResetColor();
             int i = 0;
             foreach (var vehicle in penaltyParking)
             {

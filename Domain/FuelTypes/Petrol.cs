@@ -1,7 +1,7 @@
 ﻿// File: Petrol.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 using Domain.Interfaces;
 
@@ -13,7 +13,7 @@ namespace Domain.FuelTypes
 
         public double BurnFuelRate(int hp, double weight)
         {
-            return weight/hp;
+            return weight/hp/10;
         }
 
         #endregion

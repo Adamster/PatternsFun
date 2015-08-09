@@ -1,7 +1,7 @@
 ﻿// File: RaceDirector.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 using System.Collections.Generic;
 using Domain.Interfaces;

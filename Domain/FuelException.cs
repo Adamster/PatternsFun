@@ -1,19 +1,21 @@
 ﻿// File: FuelException.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 05 08 2015
+// Edited 07 08 2015
 
 using System;
 
 namespace Domain
 {
-    internal class FuelException : Exception
+    public class FuelException : Exception
     {
-        public FuelException(string fuelMessage)
+        #region Overrides of Exception
+
+        public override string Message
         {
-            _fuelMessage = fuelMessage;
+            get { return "Run out of Fuel!"; }
         }
 
-        private string _fuelMessage;
+        #endregion
     }
 }

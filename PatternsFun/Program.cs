@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 ﻿// File : Program.cs
 // PatternsFun in PatternsFun by Domi Adamster
 // Created 03 08 2015
 // Edited 05 08 2015
+=======
+﻿// File: Program.cs in
+// PatternsFun by Serghei Adam 
+// Created 05 08 2015 
+// Edited 07 08 2015
+>>>>>>> 0e1683ff38f952649dd2624fba99fa164cf7c0bf
 
 using System;
 using System.Collections.Generic;
@@ -16,6 +23,7 @@ using Domain.Paddock;
 using Domain.Patterns.Decorator;
 using Domain.Patterns.Observer;
 using Domain.Patterns.Proxy;
+using Domain.Patterns.Visitor;
 using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
@@ -54,6 +62,7 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
+<<<<<<< HEAD
             // CarFactoryTestAndOthers();
             // DecoratorTune();
             // ProxyTest();
@@ -62,8 +71,36 @@ namespace PatternsFun
             // TemplateMethodTest();
 
 
+=======
+             CarFactoryTestAndOthers();
+             DecoratorTune();
+             ProxyTest();
+             ObserverTest();
+            StrategyDemonstration();
+             TemplateMethodTest();
+             VisitTest();
+
+            Console.WriteLine("press enter to exit");
+>>>>>>> 0e1683ff38f952649dd2624fba99fa164cf7c0bf
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void VisitTest()
+        {
+            var artefactCollector = new ArtefactCollectorVisitor();
+
+            PitLane monacoPitLane = new PitLane(500, "Monaco PitLane");
+
+            BoxList[1].Accept(artefactCollector);
+            monacoPitLane.Accept(artefactCollector);
+
+            foreach (var artefact in artefactCollector.ArtefactList)
+            {
+                Console.WriteLine("artefact: {0}", artefact);
+            }
+            Console.WriteLine("press enter to continue");
+            Console.ReadLine();
         }
 
         private static void TemplateMethodTest()
@@ -124,6 +161,7 @@ namespace PatternsFun
             pilotBoxes.PilotAcces();
             boxes.GrantAcces();
             boxes1.GrantAcces();
+            Console.WriteLine("press enter to continue");
         }
 
         private static void DecoratorTune()
@@ -159,7 +197,7 @@ namespace PatternsFun
 
             Logger.AddMsgToLog("Program launched");
 
-            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 500, EngineTypes.V6, "Ferrari 14 T",
+            var ferrari = MaranelloCarFactory.CreateNewSportCar(0, 1500, 1000, EngineTypes.V6, "Ferrari 14 T",
                 color => color.WithParams(() => "Color is Red"));
             Logger.AddMsgToLog("Ferrari 14 T created");
 
@@ -169,20 +207,19 @@ namespace PatternsFun
 
             Thread.Sleep(2000);
 
-            var simpleCar = MaranelloCarFactory.CreateNewCar(0, 200, 200, EngineTypes.V2, "Ferrari 458",
-                opt => opt.WithParams(() => ""));
+            var simpleCar = MaranelloCarFactory.CreateNewCar(0, 200, 200, EngineTypes.V2, "Ferrari 458", null);
             Logger.AddMsgToLog("Ferrari 458 created");
             monster.Accelerate(10);
 
 
-            ferrari.Accelerate(450);
+            ferrari.Accelerate(300);
 
 
             var police = Police.Instance;
             police.ChaseTheCar(ferrari);
             police.ChaseTheCar(monster);
             police.PrintSuspects();
-
+            Console.WriteLine("press enter to continue");
             Console.ReadLine();
         }
     }
