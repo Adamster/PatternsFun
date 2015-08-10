@@ -1,9 +1,10 @@
 ﻿// File: Vehicle.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 07 08 2015
+// Edited 10 08 2015
 
 using System;
+using System.Collections.Generic;
 using Utils;
 
 namespace Domain
@@ -24,6 +25,36 @@ namespace Domain
             Console.WriteLine(Name + " Speed: " + Speed.ToString("F2") + " km/h");
             Logger.AddMsgToLog(Name + " Speed: " + Speed.ToString("F2") + " km/h");
         }
+
+        public static List<Vehicle> operator +(Vehicle x, Vehicle y)
+        {
+            List<Vehicle> list = new List<Vehicle>();
+
+            list.Add(x);
+            list.Add(y);
+
+            return list;
+        }
+
+        public static bool operator <(Vehicle x, Vehicle y)
+        {
+            return x.GetWeight() < y.GetWeight();
+        }
+
+        public static bool operator >(Vehicle x, Vehicle y)
+        {
+            return x.GetWeight() > y.GetWeight();
+        }
+
+        public static Vehicle operator ~(Vehicle x)
+        {
+            Console.WriteLine("Name: {0}",x.Name);
+            Console.WriteLine("Weight: {0}",x.Weight);
+            Console.WriteLine("Speed: {0}", x.Speed);
+            Console.WriteLine("acceleration speed: {0}", x.AccelerationSpeed);
+            return x;
+        }
+
 
         public double GetSpeed()
         {

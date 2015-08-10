@@ -1,12 +1,15 @@
 ﻿// File: Program.cs in
 // PatternsFun by Serghei Adam 
 // Created 05 08 2015 
-// Edited 07 08 2015
+// Edited 10 08 2015
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading;
+using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
@@ -55,17 +58,47 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-             CarFactoryTestAndOthers();
-             DecoratorTune();
-             ProxyTest();
-             ObserverTest();
-            StrategyDemonstration();
-             TemplateMethodTest();
-             VisitTest();
+            //  CarFactoryTestAndOthers();
+            //  DecoratorTune();
+            //  ProxyTest();
+            //  ObserverTest();
+            //  StrategyDemonstration();
+            //   TemplateMethodTest();
+            //   VisitTest();
+            CSharpFeatures();
 
             Console.WriteLine("press enter to exit");
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void CSharpFeatures()
+        {
+            var cars = CreateNumberOfCars("TestCars");
+            var carsCustom = CreateNumberOfCars("Prototype", 50);
+            var carsCustom2 = CreateNumberOfCars("Car", hpPower: (int) 450.50, count: 15, weight: 1234);
+            cars[1] = new SportCar(100, 1500, new GasolineEngine(150, EngineTypes.V2), "implicitCastSportCar", null);
+
+            var testCar = cars[1] as SportCar;
+
+            var testList = cars[1] + cars[2];
+
+            Console.WriteLine(~cars[4]);
+
+            Console.WriteLine(cars[2] is SportCar);
+            Console.WriteLine(cars[2] is Vehicle);
+        }
+
+        private static List<Car> CreateNumberOfCars(string name, int count = 10, int hpPower = 250, int weight = 1500)
+        {
+            List<Car> freshCars = new List<Car>();
+
+            for (int j = 0; j < count; j++)
+            {
+                freshCars.Add(new Car(0, weight, new GasolineEngine(hpPower, EngineTypes.V2), name+" #" + j, null));
+            }
+
+            return freshCars;
         }
 
         private static void VisitTest()
