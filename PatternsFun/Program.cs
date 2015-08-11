@@ -4,10 +4,8 @@
 // Edited 10 08 2015
 
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading;
 using Domain;
 using Domain.CarTypes;
@@ -58,20 +56,20 @@ namespace PatternsFun
         private static void Main(string[] args)
         {
             Logger log = Logger.GetLogger();
-            //  CarFactoryTestAndOthers();
-            //  DecoratorTune();
-            //  ProxyTest();
-            //  ObserverTest();
-            //  StrategyDemonstration();
-            //   TemplateMethodTest();
-            //   VisitTest();
+            //// CarFactoryTestAndOthers();
+            ////  DecoratorTune();
+            ////  ProxyTest();
+            ////  ObserverTest();
+            ////  StrategyDemonstration();
+            ////   TemplateMethodTest();
+            ////   VisitTest();
             CSharpFeatures();
+
 
             Console.WriteLine("press enter to exit");
             Console.ReadLine();
             log.SaveToFile();
         }
-
         private static void CSharpFeatures()
         {
             var cars = CreateNumberOfCars("TestCars");
@@ -89,13 +87,13 @@ namespace PatternsFun
             Console.WriteLine(cars[2] is Vehicle);
         }
 
-        private static List<Car> CreateNumberOfCars(string name, int count = 10, int hpPower = 250, int weight = 1500)
+        private static List<Car> CreateNumberOfCars(string name, int count = 10, int hpPower = new int(), int weight = 1500)
         {
             List<Car> freshCars = new List<Car>();
 
             for (int j = 0; j < count; j++)
             {
-                freshCars.Add(new Car(0, weight, new GasolineEngine(hpPower, EngineTypes.V2), name+" #" + j, null));
+                freshCars.Add(new Car(0, weight, new GasolineEngine(hpPower, EngineTypes.V2), name + " #" + j, null));
             }
 
             return freshCars;
