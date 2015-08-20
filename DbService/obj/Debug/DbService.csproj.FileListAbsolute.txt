@@ -1,0 +1,9 @@
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\DbService.dll
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\DbService.pdb
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\Domain.dll
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\Utils.dll
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\Domain.pdb
+D:\ProjectAmdaris\PatternsFun\DbService\bin\Debug\Utils.pdb
+D:\ProjectAmdaris\PatternsFun\DbService\obj\Debug\DbService.csprojResolveAssemblyReference.cache
+D:\ProjectAmdaris\PatternsFun\DbService\obj\Debug\DbService.dll
+D:\ProjectAmdaris\PatternsFun\DbService\obj\Debug\DbService.pdb
