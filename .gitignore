@@ -22,6 +22,24 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+PatternsFun/bin/
+PatternsFun/obj/
+ActionImplementantion/bin/
+ActionImplementantion/obj/
+Domain/bin/
+Domain/obj/
+Factories/bin/
+Factories/obj/
+Infrastructure/bin/
+Infrastructure/obj/
+InterfacesActions/bin/
+InterfacesActions/obj/
+tests/bin/
+tests/obj/
+Utils/bin/
+Utils/obj/
+
+
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
