@@ -37,4 +37,3 @@ D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.csprojResolveAss
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.exe
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\DbService.dll
-D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\DbService.pdb
