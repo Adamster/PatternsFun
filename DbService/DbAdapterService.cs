@@ -1,14 +1,12 @@
 ﻿// File: DbAdapterService.cs in
 // PatternsFun by Serghei Adam 
 // Created 20 08 2015 
-// Edited 20 08 2015
+// Edited 21 08 2015
 
 using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using Domain.Persons;
 
 namespace DbService
 {
@@ -27,23 +25,23 @@ namespace DbService
                 DataTable data = new DataTable();
                 dataAdapter.Fill(data);
 
-                
+
                 foreach (DataRow item in data.Rows)
                 {
                     Console.WriteLine(item.ItemArray[1]);
                 }
 
-               
 
                 var sqlInsert = @"INSERT Vehicle(name)  VALUES (@name)";
-               var  sqlInsertCommand = new SqlCommand(sqlInsert, sqlConnection);
+                var sqlInsertCommand = new SqlCommand(sqlInsert, sqlConnection);
                 sqlInsertCommand.Parameters.Add("@name", SqlDbType.VarChar, 50, "Name");
                 dataAdapter.InsertCommand = sqlInsertCommand;
                 var row = data.NewRow();
                 row["Name"] = "TestCarCSharp";
                 data.Rows.Add(row);
                 dataAdapter.Update(data);
-                
+
+
                 sqlConnection.Open();
                 var sqlUpdate = @"UPDATE  Vehicle
                                   SET Mileage = 240
@@ -65,9 +63,7 @@ namespace DbService
                 dataAdapter.DeleteCommand = deleteCommand;
                 dataAdapter.DeleteCommand.ExecuteNonQuery();
                 dataAdapter.Update(data);
-                
             }
         }
-
     }
 }
