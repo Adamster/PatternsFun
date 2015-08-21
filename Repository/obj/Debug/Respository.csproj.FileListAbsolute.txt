@@ -1,0 +1,5 @@
+D:\ProjectAmdaris\PatternsFun\Respository\bin\Debug\Respository.dll
+D:\ProjectAmdaris\PatternsFun\Respository\bin\Debug\Respository.pdb
+D:\ProjectAmdaris\PatternsFun\Respository\obj\Debug\Respository.csprojResolveAssemblyReference.cache
+D:\ProjectAmdaris\PatternsFun\Respository\obj\Debug\Respository.dll
+D:\ProjectAmdaris\PatternsFun\Respository\obj\Debug\Respository.pdb
