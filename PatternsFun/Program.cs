@@ -64,7 +64,8 @@ namespace PatternsFun
            // DbCreateService.ScalarTest();
           //  DbCreateService.ReaderTest();
             //DbCreateService.ParametrQuery(30);
-            DbAdapterService.Adapter();
+          //  DbAdapterService.Adapter();
+            CSharpDemo.GetAFunc();
             Console.WriteLine("press enter to exit");
             Console.ReadLine();
             log.SaveToFile();

@@ -18,3 +18,14 @@ D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Debug\Utils.pdb
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.dll
 D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Debug\ActionImplementation.pdb
+C:\Git\Intership\ActionImplementation\bin\Debug\ActionImplementation.dll
+C:\Git\Intership\ActionImplementation\bin\Debug\ActionImplementation.pdb
+C:\Git\Intership\ActionImplementation\bin\Debug\Domain.dll
+C:\Git\Intership\ActionImplementation\bin\Debug\InterfacesActions.dll
+C:\Git\Intership\ActionImplementation\bin\Debug\Utils.dll
+C:\Git\Intership\ActionImplementation\bin\Debug\Domain.pdb
+C:\Git\Intership\ActionImplementation\bin\Debug\InterfacesActions.pdb
+C:\Git\Intership\ActionImplementation\bin\Debug\Utils.pdb
+C:\Git\Intership\ActionImplementation\obj\Debug\ActionImplementation.csprojResolveAssemblyReference.cache
+C:\Git\Intership\ActionImplementation\obj\Debug\ActionImplementation.dll
+C:\Git\Intership\ActionImplementation\obj\Debug\ActionImplementation.pdb

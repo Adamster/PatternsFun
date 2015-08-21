@@ -18,3 +18,14 @@ D:\ProjectAmdaris\PatternsFun\Factories\bin\Debug\Utils.pdb
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.dll
 D:\ProjectAmdaris\PatternsFun\Factories\obj\Debug\Factories.pdb
+C:\Git\Intership\Factories\bin\Debug\Factories.dll
+C:\Git\Intership\Factories\bin\Debug\Factories.pdb
+C:\Git\Intership\Factories\bin\Debug\Domain.dll
+C:\Git\Intership\Factories\bin\Debug\InterfacesActions.dll
+C:\Git\Intership\Factories\bin\Debug\Utils.dll
+C:\Git\Intership\Factories\bin\Debug\Domain.pdb
+C:\Git\Intership\Factories\bin\Debug\InterfacesActions.pdb
+C:\Git\Intership\Factories\bin\Debug\Utils.pdb
+C:\Git\Intership\Factories\obj\Debug\Factories.csprojResolveAssemblyReference.cache
+C:\Git\Intership\Factories\obj\Debug\Factories.dll
+C:\Git\Intership\Factories\obj\Debug\Factories.pdb
