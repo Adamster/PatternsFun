@@ -38,3 +38,6 @@ D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.exe
 D:\ProjectAmdaris\PatternsFun\PatternsFun\obj\Debug\PatternsFun.pdb
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\DbService.dll
 D:\ProjectAmdaris\PatternsFun\PatternsFun\bin\Debug\DbService.pdb
+C:\Git\Intership\PatternsFun\bin\Debug\PatternsFun.exe.config
+C:\Git\Intership\PatternsFun\obj\Debug\PatternsFun.exe
+C:\Git\Intership\PatternsFun\obj\Debug\PatternsFun.pdb
