@@ -1,9 +1,0 @@
-D:\ProjectAmdaris\PatternsFun\Utils\bin\Debug\Utils.dll
-D:\ProjectAmdaris\PatternsFun\Utils\bin\Debug\Utils.pdb
-D:\ProjectAmdaris\PatternsFun\Utils\obj\Debug\Utils.dll
-D:\ProjectAmdaris\PatternsFun\Utils\obj\Debug\Utils.pdb
-D:\ProjectAmdaris\PatternsFun\Utils\obj\Debug\Utils.csprojResolveAssemblyReference.cache
-C:\Git\Intership\Utils\bin\Debug\Utils.dll
-C:\Git\Intership\Utils\bin\Debug\Utils.pdb
-C:\Git\Intership\Utils\obj\Debug\Utils.dll
-C:\Git\Intership\Utils\obj\Debug\Utils.pdb
