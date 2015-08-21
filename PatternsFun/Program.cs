@@ -5,21 +5,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using DbService;
-using Domain;
-using Domain.CarTypes;
-using Domain.EnginesTypes;
-using Domain.FuelTypes;
-using Domain.Inspector;
-using Domain.Interfaces;
 using Domain.Paddock;
-using Domain.Patterns.Decorator;
-using Domain.Patterns.Observer;
-using Domain.Patterns.Proxy;
-using Domain.Patterns.Visitor;
-using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
 using Utils;
@@ -56,15 +42,15 @@ namespace PatternsFun
 
         private static void Main(string[] args)
         {
-            Logger log = Logger.GetLogger();
-           
+            var log = Logger.GetLogger();
+
             //DbCreateService.CreateDbStrucutre();           
-           // DbCreateService.CreateCustomTable();
-           // DbAdapterService.Adapter();
-           // DbCreateService.ScalarTest();
-          //  DbCreateService.ReaderTest();
+            // DbCreateService.CreateCustomTable();
+            // DbAdapterService.Adapter();
+            // DbCreateService.ScalarTest();
+            //  DbCreateService.ReaderTest();
             //DbCreateService.ParametrQuery(30);
-          //  DbAdapterService.Adapter();
+            //  DbAdapterService.Adapter();
             CSharpDemo.GetAFunc();
             Console.WriteLine("press enter to exit");
             Console.ReadLine();
