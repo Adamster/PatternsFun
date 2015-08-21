@@ -5,6 +5,8 @@
 using ActionImplementation;
 using InterfacesActions;
 using Ninject;
+using Repository.Interfaces;
+using Repository;
 
 namespace Infrastrucuture.IoC
 {
@@ -16,6 +18,8 @@ namespace Infrastrucuture.IoC
         {
             Kernel.Bind<ICarActionOnCreation>()
                 .To<FillTank>();
+            Kernel.Bind<ICarRepository>()
+                .To<CarRepository>();
         }
 
         public static T Get<T>()

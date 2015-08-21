@@ -2,4 +2,3 @@ D:\ProjectAmdaris\PatternsFun\Domain\bin\Debug\Domain.dll
 D:\ProjectAmdaris\PatternsFun\Domain\bin\Debug\Domain.pdb
 D:\ProjectAmdaris\PatternsFun\Domain\obj\Debug\Domain.dll
 D:\ProjectAmdaris\PatternsFun\Domain\obj\Debug\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

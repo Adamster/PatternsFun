@@ -48,6 +48,7 @@
     <Compile Include="Domain\CarTypes\SportCar.cs" />
     <Compile Include="Domain\ISteeringWheel.cs" />
     <Compile Include="Domain\Vehicle.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\FuelException.cs" />
     <Compile Include="Domain\NameVehicleComparer.cs" />

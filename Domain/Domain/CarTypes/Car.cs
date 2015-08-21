@@ -1,7 +1,7 @@
 // File: Car.cs in
 // PatternsFun by Serghei Adam 
-// Created 29 07 2015 
-// Edited 03 08 2015
+// Created 21 08 2015 
+// Edited 21 08 2015
 
 #region
 
@@ -43,6 +43,8 @@ namespace Domain.Domain.CarTypes
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
 
+        #region ISteeringWheel Members
+
         public void TurnLeft()
         {
             Console.WriteLine("Car turning left");
@@ -60,6 +62,8 @@ namespace Domain.Domain.CarTypes
             Console.WriteLine("Car beep");
             Logger.AddMsgToLog("Car beep");
         }
+
+        #endregion
 
         public override void Accelerate(int toSpeed)
         {
