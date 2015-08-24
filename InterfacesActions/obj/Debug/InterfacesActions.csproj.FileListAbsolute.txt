@@ -1,7 +1,0 @@
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Debug\InterfacesActions.dll
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Debug\InterfacesActions.pdb
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Debug\Domain.dll
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\bin\Debug\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.csprojResolveAssemblyReference.cache
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.dll
-D:\ProjectAmdaris\PatternsFun\InterfacesActions\obj\Debug\InterfacesActions.pdb

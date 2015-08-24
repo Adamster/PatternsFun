@@ -1,7 +1,0 @@
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\bin\Debug\Repository.Interfaces.dll
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\bin\Debug\Repository.Interfaces.pdb
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\bin\Debug\Domain.dll
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\bin\Debug\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\obj\Debug\Repository.Interfaces.csprojResolveAssemblyReference.cache
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\obj\Debug\Repository.Interfaces.dll
-D:\ProjectAmdaris\PatternsFun\Repository.Interfaces\obj\Debug\Repository.Interfaces.pdb

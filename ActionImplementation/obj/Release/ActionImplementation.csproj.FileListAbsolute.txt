@@ -1,9 +1,0 @@
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\ActionImplementation.dll
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\ActionImplementation.pdb
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\Domain.dll
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\InterfacesActions.dll
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\bin\Release\InterfacesActions.pdb
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Release\ActionImplementation.csprojResolveAssemblyReference.cache
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Release\ActionImplementation.dll
-D:\ProjectAmdaris\PatternsFun\ActionImplementation\obj\Release\ActionImplementation.pdb
