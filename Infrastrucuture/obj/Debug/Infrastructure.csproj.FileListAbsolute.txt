@@ -24,3 +24,4 @@ D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Debug\Domain.Mapping.pdb
 D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Debug\Iesi.Collections.xml
 D:\ProjectAmdaris\PatternsFun\Infrastrucuture\obj\Debug\Infrastrucuture.dll
 D:\ProjectAmdaris\PatternsFun\Infrastrucuture\obj\Debug\Infrastrucuture.pdb
+D:\ProjectAmdaris\PatternsFun\Infrastrucuture\bin\Debug\HibernatingRhinos.Profiler.Appender.dll

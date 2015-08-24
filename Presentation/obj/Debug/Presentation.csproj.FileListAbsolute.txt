@@ -29,3 +29,4 @@ D:\ProjectAmdaris\PatternsFun\Presentation\bin\Debug\Domain.Mapping.pdb
 D:\ProjectAmdaris\PatternsFun\Presentation\bin\Debug\Iesi.Collections.xml
 D:\ProjectAmdaris\PatternsFun\Presentation\obj\Debug\PatternsFun.exe
 D:\ProjectAmdaris\PatternsFun\Presentation\obj\Debug\PatternsFun.pdb
+D:\ProjectAmdaris\PatternsFun\Presentation\bin\Debug\HibernatingRhinos.Profiler.Appender.dll

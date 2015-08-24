@@ -7,6 +7,7 @@ using Domain.Mapping;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 
@@ -21,6 +22,7 @@ namespace Repository
 
         public ISession GetSession()
         {
+            NHibernateProfiler.Initialize();
             return SessionFactory.OpenSession();
         }
 

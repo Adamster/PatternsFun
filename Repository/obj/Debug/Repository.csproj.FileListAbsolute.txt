@@ -16,3 +16,4 @@ D:\ProjectAmdaris\PatternsFun\Repository\bin\Debug\NHibernate.xml
 D:\ProjectAmdaris\PatternsFun\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 D:\ProjectAmdaris\PatternsFun\Repository\obj\Debug\Repository.dll
 D:\ProjectAmdaris\PatternsFun\Repository\obj\Debug\Repository.pdb
+D:\ProjectAmdaris\PatternsFun\Repository\bin\Debug\HibernatingRhinos.Profiler.Appender.dll
