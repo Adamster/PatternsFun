@@ -59,10 +59,4 @@ namespace Domain
             else Console.WriteLine("\nThis {0} is new!\n", Name);
         }
     }
-
-    public interface IParams
-    {
-        IParams WithParams(Func<string> paramsDelegate);
-        string GetParams();
-    }
 }

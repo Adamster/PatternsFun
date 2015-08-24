@@ -18,6 +18,7 @@ namespace Factories
         public CarFactory(ICarActionOnCreation carActionOnCreation)
         {
             _fillCarTank = carActionOnCreation;
+
         }
 
         public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,

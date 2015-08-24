@@ -13,8 +13,8 @@ namespace Presentation
     internal class Program
     {
         private static CarFactory MaranelloCarFactory;
-        private static ICarRepository CarRepository;
-        private static IPilotRepository PilotRepository;
+        private static readonly ICarRepository CarRepository;
+        private static readonly IPilotRepository PilotRepository;
 
         static Program()
         {

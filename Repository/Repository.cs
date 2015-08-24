@@ -19,9 +19,4 @@ namespace Repository
 
         #endregion
     }
-
-
-    public class CarRepository : Repository, ICarRepository
-    {
-    }
 }
