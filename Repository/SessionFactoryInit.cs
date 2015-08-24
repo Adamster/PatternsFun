@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Mapping;
-using FluentNHibernate.Automapping;
+﻿using Domain.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -15,6 +9,13 @@ namespace Repository
 {
     public class SessionGenerator
     {
+        private static readonly ISessionFactory SessionFactory = CreateSessionFactory();
+        private static readonly SessionGenerator _sessionGenerator = new SessionGenerator();
+
+        private SessionGenerator()
+        {
+        }
+
         public static SessionGenerator Instance
         {
             get { return _sessionGenerator; }
@@ -26,13 +27,9 @@ namespace Repository
             return SessionFactory.OpenSession();
         }
 
-        private static readonly ISessionFactory SessionFactory = CreateSessionFactory();
-
-        private static readonly SessionGenerator _sessionGenerator = new SessionGenerator();
-
         private static ISessionFactory CreateSessionFactory()
         {
-            FluentConfiguration configuration = Fluently.Configure()
+            var configuration = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(builder => builder.Database("Garage")
                         .Server(@"MDDSK40101").TrustedConnection()))
@@ -41,13 +38,6 @@ namespace Repository
 
 
             return configuration.BuildSessionFactory();
-
-        }
-
-        private SessionGenerator()
-        {
-            
         }
     }
 }
-

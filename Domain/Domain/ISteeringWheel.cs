@@ -1,6 +1,6 @@
 ﻿namespace InterfacesActions
 {
-   public interface ISteeringWheel
+    public interface ISteeringWheel
     {
         void TurnLeft();
         void TurnRight();

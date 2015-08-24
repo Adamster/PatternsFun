@@ -62,9 +62,7 @@ namespace Domain.Domain.CarTypes
                         FillTank(addFuel);
                     }
                     else
-                    {
                         break;
-                    }
                 }
 
                 catch (Exception ex)

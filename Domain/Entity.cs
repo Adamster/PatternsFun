@@ -1,9 +1,4 @@
-﻿// File: Entity.cs in
-// PatternsFun by Serghei Adam 
-// Created 21 08 2015 
-// Edited 21 08 2015
-
-using System;
+﻿using System;
 
 namespace Domain
 {
@@ -28,7 +23,6 @@ namespace Domain
             return !(left == right);
         }
 
-
         public virtual bool Equals(Entity other)
         {
             if (ReferenceEquals(other, null))
@@ -36,13 +30,13 @@ namespace Domain
             if (ReferenceEquals(other, this))
                 return true;
 
-            long thisId = Id;
-            long otherId = other.Id;
+            var thisId = Id;
+            var otherId = other.Id;
 
             if (!IsTransistent(this) && !IsTransistent(other) && Equals(thisId, otherId))
             {
-                Type thisType = GetUnproxiedType();
-                Type otherType = GetUnproxiedType();
+                var thisType = GetUnproxiedType();
+                var otherType = GetUnproxiedType();
 
                 return thisType.IsAssignableFrom(otherType) ||
                        otherType.IsAssignableFrom(thisType);

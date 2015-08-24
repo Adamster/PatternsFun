@@ -12,6 +12,8 @@ namespace Domain.Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
+        private readonly ElectroEngine _engine;
+
         public ElectroCar(int chargeLvlValue, int weightValue, ElectroEngine electroEngineValue, string nameValue)
         {
             if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the ElectroCar!");
@@ -28,6 +30,8 @@ namespace Domain.Domain.CarTypes
 
         private int ChargeLevel { get; set; }
 
+        #region ISteeringWheel Members
+
         public void Horn()
         {
             Console.WriteLine("ElectroCar beep");
@@ -43,7 +47,7 @@ namespace Domain.Domain.CarTypes
             Console.WriteLine("ElectroCar turning right");
         }
 
-        private readonly ElectroEngine _engine;
+        #endregion
 
         public override sealed void Accelerate(int toSpeed)
         {

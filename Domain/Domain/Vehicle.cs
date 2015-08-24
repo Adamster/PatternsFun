@@ -10,14 +10,36 @@ namespace Domain.Domain
 {
     public class Vehicle : Entity
     {
+        public Vehicle(string name, double? mileage, double speed, double weight, string specialAdds,
+            double accelerationSpeed)
+        {
+            Name = name;
+            Mileage = mileage;
+            Speed = speed;
+            Weight = weight;
+            SpecialAdds = specialAdds;
+            AccelerationSpeed = accelerationSpeed;
+        }
+
+        [Obsolete]
+        protected Vehicle()
+        {
+        }
+
         public virtual string Name { get; protected set; }
         public virtual double? Mileage { get; protected set; }
         protected virtual double Speed { get; set; }
         protected virtual double Weight { get; set; }
         public virtual string SpecialAdds { get; protected set; }
         protected virtual double AccelerationSpeed { get; set; }
-        public virtual void Accelerate(int toSpeed) {}
-        public virtual void Brake(){}
+
+        public virtual void Accelerate(int toSpeed)
+        {
+        }
+
+        public virtual void Brake()
+        {
+        }
 
         public virtual void PrintCurrentSpeed()
         {
@@ -41,24 +63,6 @@ namespace Domain.Domain
                 Console.WriteLine("\nThis {0} isn't new, " + Mileage.Value.ToString("f3") + "m traveled\n", Name);
             else Console.WriteLine("\nThis {0} is new!\n", Name);
         }
-
-        public Vehicle(string name, double? mileage, double speed, double weight, string specialAdds, double accelerationSpeed)
-        {
-            Name = name;
-            Mileage = mileage;
-            Speed = speed;
-            Weight = weight;
-            SpecialAdds = specialAdds;
-            AccelerationSpeed = accelerationSpeed;
-        }
-
-        
-
-        [Obsolete]
-        protected Vehicle()
-        {    
-        }
-
     }
 
     public interface IParams

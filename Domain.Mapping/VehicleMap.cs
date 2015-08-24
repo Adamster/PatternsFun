@@ -4,7 +4,6 @@
 // Edited 21 08 2015
 
 using Domain.Domain;
-using FluentNHibernate.Data;
 using FluentNHibernate.Mapping;
 
 namespace Domain.Mapping
@@ -27,6 +26,5 @@ namespace Domain.Mapping
             Map(x => x.Mileage);
             Map(x => x.SpecialAdds);
         }
-     
     }
 }

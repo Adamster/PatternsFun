@@ -5,6 +5,8 @@ namespace Domain.Utils
 {
     internal class NameVehicleComparer : IEqualityComparer<Vehicle>
     {
+        #region IEqualityComparer<Vehicle> Members
+
         public bool Equals(Vehicle a, Vehicle b)
         {
             return a.Name == b.Name;
@@ -14,5 +16,7 @@ namespace Domain.Utils
         {
             return (obj.Name).GetHashCode();
         }
+
+        #endregion
     }
 }
