@@ -22,7 +22,7 @@ namespace Domain.Persons
 
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
-        public virtual int Age { get; protected set; }
+        public virtual int Age { get; set; }
         public virtual DateTime DebutDate { get; protected set; }
         public virtual IList<Vehicle> CarVehicles { get; set; }
         public virtual TimeSpan ExpierenceTime

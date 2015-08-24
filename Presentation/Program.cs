@@ -45,7 +45,8 @@ namespace Presentation
 
             PilotRepository.AddPilot(pilot);
 
-
+            PilotRepository.UpdatePilotAge(6, 24);
+            PilotRepository.DeletePilot("Jenson Button");
             Console.ReadLine();
             log.SaveToFile();
         }

@@ -12,7 +12,7 @@ namespace Domain.Mapping
             Map(x => x.Team).Nullable();
             Map(x => x.ExpierenceTime).Not.Nullable();
             HasMany(x => x.CarVehicles).Cascade
-                .SaveUpdate().Inverse();
+                .SaveUpdate();
         }
     }
 }
