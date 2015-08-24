@@ -1,5 +1,0 @@
-D:\ProjectAmdaris\PatternsFun\Domain\bin\Release\Domain.dll
-D:\ProjectAmdaris\PatternsFun\Domain\bin\Release\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\Domain\obj\Release\Domain.dll
-D:\ProjectAmdaris\PatternsFun\Domain\obj\Release\Domain.pdb
-D:\ProjectAmdaris\PatternsFun\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
