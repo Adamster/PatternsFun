@@ -21,7 +21,7 @@ namespace Domain.CarTypes
     {
         #region  public items
 
-        public Stopwatch _sw = new Stopwatch();
+        public Stopwatch Sw = new Stopwatch();
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace Domain.CarTypes
             Engine = carEngineValue;
             AccelerationSpeed = GetAccelerationSpeed();
             SpecialAdds = addParam;
-            _fuelType = new Petrol();
+            FuelType = new Petrol();
         }
 
         protected double FuelTank { get; set; }
@@ -71,7 +71,7 @@ namespace Domain.CarTypes
 
         #endregion
 
-        protected IFuelConsumeStrategy _fuelType;
+        protected IFuelConsumeStrategy FuelType;
 
         private double GetAccelerationSpeed()
         {
@@ -92,9 +92,9 @@ namespace Domain.CarTypes
         {
             if (Mileage == null)
                 Mileage = 0;
-            if (!_sw.IsRunning)
+            if (!Sw.IsRunning)
             {
-                _sw.Start();
+                Sw.Start();
                 Thread.Sleep(1);
             }
 
@@ -102,13 +102,13 @@ namespace Domain.CarTypes
             {
                 if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                 else Speed += GetAccelerationSpeed() - Speed/10;
-                double tmp = Math.Ceiling((double) _sw.Elapsed.Milliseconds);
+                double tmp = Math.Ceiling((double) Sw.Elapsed.Milliseconds);
                // Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
                 Mileage += tmp*Speed;
                 PrintCurrentSpeed();
                
                 Console.WriteLine("Distance traveled: {0}",Mileage);
-                _sw.Reset();
+                Sw.Reset();
             }
         }
 
@@ -174,7 +174,7 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                FuelTank -= BurnFuelRate(_fuelType);
+                FuelTank -= BurnFuelRate(FuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;
@@ -189,7 +189,7 @@ namespace Domain.CarTypes
 
         public void SetFuelType(IFuelConsumeStrategy fuelType)
         {
-            _fuelType = fuelType;
+            FuelType = fuelType;
         }
 
         private void PressBrakePedal()

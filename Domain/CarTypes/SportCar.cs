@@ -11,7 +11,7 @@ using Utils;
 
 namespace Domain.CarTypes
 {
-    public class SportCar : Car, IChangeOil
+    public class SportCar : Car
     {
         public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
             string addParam)
@@ -97,8 +97,8 @@ namespace Domain.CarTypes
         {
             if (FuelTank > 0)
             {
-                Console.WriteLine("current consume rate = {0}", BurnFuelRate(_fuelType));
-                FuelTank -= BurnFuelRate(_fuelType);
+                Console.WriteLine("current consume rate = {0}", BurnFuelRate(FuelType));
+                FuelTank -= BurnFuelRate(FuelType);
                 Console.WriteLine("burning fuel...");
                 Debug.WriteLine("Fuel Burn succesfully, remaining in tank: " + FuelTank);
                 return true;

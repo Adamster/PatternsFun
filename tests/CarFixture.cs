@@ -24,15 +24,7 @@ namespace Tests
         [TestFixture]
         public class CarAccelerateIsTargetAchived : CarFixture
         {
-            private static readonly object[] TestCar =
-            {
-                new object[]
-                {
-                    new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "testCar", null)
-                }
-            };
-
-            public void ActAccelerateTheCar()
+           public void ActAccelerateTheCar()
             {
                 _car = new Car(0, 1200, new GasolineEngine(500, EngineTypes.V8), "Prototype", null);
 
@@ -89,11 +81,13 @@ namespace Tests
 #endregion
             public void ActContinousAccelerateThanStop(Car car)
             {
+
+                
                 do
                 {
                     car.ContinousAccelerate();
                 } while (car.Mileage < 1000);
-                car._sw.Stop();
+                car.Sw.Stop();
             }
 
             [Test, TestCaseSource("TestCar")]
