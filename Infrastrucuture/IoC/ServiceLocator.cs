@@ -1,9 +1,4 @@
-﻿// File: ServiceLocator.cs in
-// PatternsFun by Serghei Adam 
-// Created 21 08 2015 
-// Edited 21 08 2015
-
-using ActionImplementation;
+﻿using ActionImplementation;
 using InterfacesActions;
 using Ninject;
 using Repository;
@@ -21,6 +16,8 @@ namespace Infrastrucuture.IoC
                 .To<FillTank>();
             Kernel.Bind<ICarRepository>()
                 .To<CarRepository>();
+            Kernel.Bind<IPilotRepository>()
+                .To<PilotRepository>();
         }
 
         public static T Get<T>()

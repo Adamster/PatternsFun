@@ -7,13 +7,12 @@
 
 using System;
 using System.Diagnostics;
-using Domain.Domain.Engines;
+using Domain.Engines;
 using Domain.Utils;
-using InterfacesActions;
 
 #endregion
 
-namespace Domain.Domain.CarTypes
+namespace Domain.CarTypes
 {
     public class Car : Vehicle, ISteeringWheel
     {

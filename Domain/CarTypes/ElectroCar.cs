@@ -4,11 +4,10 @@
 // Edited 03 08 2015
 
 using System;
-using Domain.Domain.Engines;
+using Domain.Engines;
 using Domain.Utils;
-using InterfacesActions;
 
-namespace Domain.Domain.CarTypes
+namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {

@@ -1,8 +1,4 @@
-﻿// File: Repository.cs in
-// PatternsFun by Serghei Adam 
-// Created 21 08 2015 
-// Edited 21 08 2015
-
+﻿using System;
 using Domain;
 using NHibernate;
 using Repository.Interfaces;
@@ -17,6 +13,7 @@ namespace Repository
 
         public void Save<TEntity>(TEntity entity) where TEntity : Entity
         {
+            Console.WriteLine("general repository used");
             _session.Save(entity);
         }
 

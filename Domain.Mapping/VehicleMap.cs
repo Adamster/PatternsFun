@@ -1,10 +1,4 @@
-﻿// File: VehicleMap.cs in
-// PatternsFun by Serghei Adam 
-// Created 21 08 2015 
-// Edited 21 08 2015
-
-using Domain.Domain;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 
 namespace Domain.Mapping
 {
@@ -21,7 +15,6 @@ namespace Domain.Mapping
     {
         public VehicleMap()
         {
-            Id(x => x.Id);
             Map(x => x.Name).Not.Nullable();
             Map(x => x.Mileage);
             Map(x => x.SpecialAdds);

@@ -1,6 +1,6 @@
 using System;
 
-namespace Domain.Domain.Engines
+namespace Domain.Engines
 {
     public class ElectroEngine : Engine
     {

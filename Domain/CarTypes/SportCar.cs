@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
-using Domain.Domain.Engines;
+using Domain.Engines;
 using Domain.Utils;
 
-namespace Domain.Domain.CarTypes
+namespace Domain.CarTypes
 {
     public class SportCar : Car
     {

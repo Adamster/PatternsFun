@@ -12,7 +12,7 @@ using Domain.Utils;
 
 #endregion
 
-namespace Domain.Domain.Inspector
+namespace Domain.Inspector
 {
     public class Police
     {

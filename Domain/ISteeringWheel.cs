@@ -1,4 +1,4 @@
-﻿namespace InterfacesActions
+﻿namespace Domain
 {
     public interface ISteeringWheel
     {

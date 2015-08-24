@@ -1,5 +1,5 @@
 ﻿using System;
-using Domain.Domain.CarTypes;
+using Domain.CarTypes;
 using Domain.Utils;
 using InterfacesActions;
 

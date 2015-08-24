@@ -1,12 +1,7 @@
-﻿// File: Vehicle.cs in
-// PatternsFun by Serghei Adam 
-// Created 21 08 2015 
-// Edited 21 08 2015
-
-using System;
+﻿using System;
 using Domain.Utils;
 
-namespace Domain.Domain
+namespace Domain
 {
     public class Vehicle : Entity
     {

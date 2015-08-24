@@ -39,19 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\CarTypes\Car.cs" />
-    <Compile Include="Domain\CarTypes\ElectroCar.cs" />
-    <Compile Include="Domain\Engines\ElectroEngine.cs" />
-    <Compile Include="Domain\Engines\Engine.cs" />
-    <Compile Include="Domain\Engines\GasolineEngine.cs" />
-    <Compile Include="Domain\Inspector\Police.cs" />
-    <Compile Include="Domain\CarTypes\SportCar.cs" />
-    <Compile Include="Domain\ISteeringWheel.cs" />
-    <Compile Include="Domain\Vehicle.cs" />
+    <Compile Include="CarTypes\Car.cs" />
+    <Compile Include="CarTypes\ElectroCar.cs" />
+    <Compile Include="Engines\ElectroEngine.cs" />
+    <Compile Include="Engines\Engine.cs" />
+    <Compile Include="Engines\GasolineEngine.cs" />
+    <Compile Include="Inspector\Police.cs" />
+    <Compile Include="CarTypes\SportCar.cs" />
+    <Compile Include="ISteeringWheel.cs" />
+    <Compile Include="Persons\Pilot.cs" />
+    <Compile Include="Vehicle.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\FuelException.cs" />
-    <Compile Include="Domain\NameVehicleComparer.cs" />
+    <Compile Include="FuelException.cs" />
+    <Compile Include="NameVehicleComparer.cs" />
     <Compile Include="Utils\Logger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

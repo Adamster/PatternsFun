@@ -23,7 +23,7 @@ namespace Repository
 
         public ISession GetSession()
         {
-            NHibernateProfiler.Initialize();
+          
             return SessionFactory.OpenSession();
         }
 
