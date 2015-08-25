@@ -29,13 +29,13 @@ namespace Repository
             }
         }
 
-        public void UpdatePilotAge(long PilotID, int newAge)
+        public void UpdatePilotAge(long pilotId, int newAge)
         {
             using (var tran = _session.BeginTransaction())
             {
                 try
                 {
-                    var pilot = _session.Load<Pilot>(PilotID);
+                    var pilot = _session.Load<Pilot>(pilotId);
                     pilot.Age = newAge;
 
                     Console.WriteLine("trying to update pilot in Database...");
@@ -51,13 +51,13 @@ namespace Repository
             }
         }
 
-        public void DeletePilot(string name)
+        public void DeletePilot(long id)
         {
             using (var tran = _session.BeginTransaction())
             {
                 try
                 {
-                  var pilot =  _session.Get<Pilot>(name);
+                    var pilot = _session.Get<Pilot>(id);
                     Console.WriteLine("trying to delete pilot in Database...");
                     _session.Delete(pilot);
                     Console.WriteLine("Succesfully!");
@@ -73,7 +73,6 @@ namespace Repository
 
         public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
         {
-           
         }
     }
 }

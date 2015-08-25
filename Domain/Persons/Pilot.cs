@@ -7,7 +7,7 @@ namespace Domain.Persons
 {
     public class Pilot : Entity, IPilot
     {
-        public IList<Vehicle> CarVehicles = new List<Vehicle>();
+        protected IList<Vehicle> CarVehicles = new List<Vehicle>();
 
         public Pilot(string name, DateTime debutDate, int age, string team)
         {
@@ -33,6 +33,7 @@ namespace Domain.Persons
         public virtual IList<Vehicle> CarVehiclesList
         {
             get { return CarVehicles; }
+            set { }
         }
 
         public virtual void AddCar(Vehicle car )
@@ -45,14 +46,14 @@ namespace Domain.Persons
             set { }
         }
 
-        public PaddockAccessLevels AccessLevel
+        public virtual PaddockAccessLevels AccessLevel
         {
             get { return PaddockAccessLevels.ClubPaddock; }
         }
 
         #region Implementation of IPilot
 
-        public void Update(string status)
+        public virtual void Update(string status)
         {
             Console.WriteLine("Race status : {0} for {1}", status, Name);
             Logger.AddMsgToLog("race status: " + status + " for " + Name);
