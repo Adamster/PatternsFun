@@ -1,6 +1,7 @@
 using System;
 using Domain.EnginesTypes;
 using Domain.Interfaces;
+using Domain.Persons;
 using Utils;
 
 namespace Domain.CarTypes
@@ -9,40 +10,25 @@ namespace Domain.CarTypes
     {
         private readonly ElectroEngine _engine;
 
-        public ElectroCar(int chargeLvlValue, int weightValue, ElectroEngine electroEngineValue, string nameValue)
+        public ElectroCar(string name, double? mileage, double speed, double weight, string specialAdds,
+            double accelerationSpeed, Pilot pilot, int chargeLevel)
+            : base(name, mileage, speed, weight, specialAdds, accelerationSpeed, pilot)
         {
-            if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the ElectroCar!");
-            if (chargeLvlValue < 0 || chargeLvlValue > 100)
+            if (chargeLevel < 0 || chargeLevel > 100)
                 throw new ArgumentException("Charge lvl can't be below zero or more than 100");
-            if (weightValue <= 0) throw new ArgumentException("weight can't be below or equal zero");
-
-            Name = nameValue;
-            ChargeLevel = chargeLvlValue;
-            Weight = weightValue;
-            _engine = electroEngineValue;
-            AccelerationSpeed = _engine.HorsePowers/Weight*100;
+            ChargeLevel = chargeLevel;
+             AccelerationSpeed = _engine.HorsePowers/Weight*100;
         }
+
+     //   public ElectroCar(int chargeLvlValue, int weightValue, ElectroEngine electroEngineValue, string nameValue)
+        //{
+        //    Name = nameValue;
+        //    ChargeLevel = chargeLvlValue;
+        //    Weight = weightValue;
+        //    _engine = electroEngineValue;    
+        //}
 
         private int ChargeLevel { get; set; }
-
-        #region ISteeringWheel Members
-
-        public void Horn()
-        {
-            Console.WriteLine("ElectroCar beep");
-        }
-
-        public void TurnLeft()
-        {
-            Console.WriteLine("ElectroCar turning left");
-        }
-
-        public void TurnRight()
-        {
-            Console.WriteLine("ElectroCar turning right");
-        }
-
-        #endregion
 
         public override sealed void Accelerate(int toSpeed)
         {
@@ -125,5 +111,24 @@ namespace Domain.CarTypes
         {
             return 10000/Weight;
         }
+
+        #region ISteeringWheel Members
+
+        public void Horn()
+        {
+            Console.WriteLine("ElectroCar beep");
+        }
+
+        public void TurnLeft()
+        {
+            Console.WriteLine("ElectroCar turning left");
+        }
+
+        public void TurnRight()
+        {
+            Console.WriteLine("ElectroCar turning right");
+        }
+
+        #endregion
     }
 }

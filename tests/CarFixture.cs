@@ -87,7 +87,7 @@ namespace Tests
                 {
                     car.ContinousAccelerate();
                 } while (car.Mileage < 1000);
-                car.Sw.Stop();
+                car.StopWatch();
             }
 
             [Test, TestCaseSource("TestCar")]

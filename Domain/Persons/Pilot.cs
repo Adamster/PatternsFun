@@ -7,20 +7,20 @@ namespace Domain.Persons
 {
     public class Pilot : Entity, IPilot
     {
-        protected IList<Vehicle> CarVehicles = new List<Vehicle>();
+        private readonly IList<Vehicle> _carVehicles = new List<Vehicle>();
 
-        public Pilot(string name, DateTime debutDate, int age, string team)
+        public Pilot(string name, string debutDate, int age, string team)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new Exception("Pilot need a name!");
             if (age < 17) throw new Exception("Too young age for a pilot!");
             if (string.IsNullOrWhiteSpace(team)) throw new Exception("Team name can't be empty");
 
             Name = name;
-            DebutDate = debutDate;
+            DebutDate = DateTime.Parse(debutDate);
             Age = age;
             Team = team;
         }
-
+        [Obsolete]
         protected Pilot()
         {
         }
@@ -30,15 +30,14 @@ namespace Domain.Persons
         public virtual int Age { get; set; }
         public virtual DateTime DebutDate { get; protected set; }
 
-        public virtual IList<Vehicle> CarVehiclesList
+        public virtual IList<Vehicle> CarVehicles
         {
-            get { return CarVehicles; }
-            set { }
+            get { return _carVehicles; }
         }
 
         public virtual void AddCar(Vehicle car )
         {
-            CarVehicles.Add(car);
+            _carVehicles.Add(car);
         }
         public virtual TimeSpan ExpierenceTime
         {

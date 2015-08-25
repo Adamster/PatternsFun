@@ -2,6 +2,7 @@
 using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
+using Domain.Persons;
 using InterfacesActions;
 
 namespace Factories
@@ -17,10 +18,10 @@ namespace Factories
         }
 
         public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam)
+            EngineTypes engineType, string name, Action<IParams> optionalParam, string pilotName, string debutDate, int pilotAge, string team)
         {
-            var car = new Car(fuelTankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
-                OptParamStr(optionalParam));
+            var car = new Car(name, 0, fuelTankVolume, weight, null, 0, new Pilot(pilotName, debutDate, pilotAge, team),
+                0, new GasolineEngine(horsePower, engineType));
             OnCarCreation(car);
 
             return car;
@@ -37,14 +38,14 @@ namespace Factories
             return optParamStr;
         }
 
-        public SportCar CreateNewSportCar(int fueltankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam)
-        {
-            var sportCar = new SportCar(fueltankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
-                OptParamStr(optionalParam));
-            OnCarCreation(sportCar);
-            return sportCar;
-        }
+        //public SportCar CreateNewSportCar(int fueltankVolume, double weight, int horsePower,
+        //    EngineTypes engineType, string name, Action<IParams> optionalParam)
+        //{
+        //    var sportCar = new SportCar(fueltankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
+        //        OptParamStr(optionalParam));
+        //    OnCarCreation(sportCar);
+        //    return sportCar;
+        //}
 
         private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineType)
         {

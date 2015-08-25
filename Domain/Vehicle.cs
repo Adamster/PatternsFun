@@ -1,19 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using Domain.Persons;
 using Utils;
 
 namespace Domain
 {
-    public  class Vehicle : Entity
+    public class Vehicle : Entity
     {
+        [Obsolete]
+        protected Vehicle()
+        {
+        }
+
+        public Vehicle(string name, double? mileage, double speed, double weight, string specialAdds,
+            double accelerationSpeed, Pilot pilot)
+        {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("please name the Vehicle!");
+            if (weight <= 0) throw new ArgumentException("weight can't be below or equal zero");
+
+            Name = name;
+            Mileage = mileage;
+            Speed = speed;
+            Weight = weight;
+            SpecialAdds = specialAdds;
+            
+            OwnerPilot = pilot;
+        }
+        
+
+        
+
         public virtual string Name { get; set; }
         public virtual double? Mileage { get; set; }
         protected virtual double Speed { get; set; }
         protected virtual double Weight { get; set; }
         public virtual string SpecialAdds { get; protected set; }
-        protected virtual double AccelerationSpeed { get;  set; }
-        public virtual void Accelerate(int toSpeed) { }
-        public virtual void Brake() { }
+        protected virtual double AccelerationSpeed { get; set; }
+        public virtual Pilot OwnerPilot { get; set; }
+
+        public virtual void Accelerate(int toSpeed)
+        {
+        }
+
+        public virtual void Brake()
+        {
+        }
 
         public virtual void PrintCurrentSpeed()
         {
@@ -23,7 +54,7 @@ namespace Domain
 
         public static List<Vehicle> operator +(Vehicle x, Vehicle y)
         {
-            List<Vehicle> list = new List<Vehicle>();
+            var list = new List<Vehicle>();
 
             list.Add(x);
             list.Add(y);
@@ -43,13 +74,12 @@ namespace Domain
 
         public static Vehicle operator ~(Vehicle x)
         {
-            Console.WriteLine("Name: {0}",x.Name);
-            Console.WriteLine("Weight: {0}",x.Weight);
+            Console.WriteLine("Name: {0}", x.Name);
+            Console.WriteLine("Weight: {0}", x.Weight);
             Console.WriteLine("Speed: {0}", x.Speed);
             Console.WriteLine("acceleration speed: {0}", x.AccelerationSpeed);
             return x;
         }
-
 
         public virtual double GetSpeed()
         {
@@ -59,6 +89,11 @@ namespace Domain
         public virtual double GetWeight()
         {
             return Weight;
+        }
+
+        public virtual void SetWeight(double value)
+        {
+            Weight = value;
         }
 
         public virtual void RemoveWeight(double weightValue)
@@ -75,5 +110,4 @@ namespace Domain
             else Console.WriteLine("\nThis {0} is new!\n", Name);
         }
     }
-
 }

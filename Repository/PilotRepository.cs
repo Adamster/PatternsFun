@@ -1,23 +1,22 @@
 ﻿using System;
-using Domain;
 using Domain.Persons;
 using NHibernate;
 using Repository.Interfaces;
 
 namespace Repository
 {
-    public class PilotRepository : IPilotRepository
+    public class PilotRepository : Repository, IPilotRepository
     {
         private readonly ISession _session = SessionGenerator.Instance.GetSession();
 
-        public void AddPilot<TEntity>(TEntity entity) where TEntity : Entity
+        public void AddPilot(Pilot pilot)
         {
             using (var tran = _session.BeginTransaction())
             {
                 try
                 {
                     Console.WriteLine("trying to add pilot in Database...");
-                    _session.Save(entity);
+                    _session.Save(pilot);
                     Console.WriteLine("Succesfully!");
                     tran.Commit();
                 }
@@ -37,7 +36,10 @@ namespace Repository
                 {
                     var pilot = _session.Load<Pilot>(pilotId);
                     pilot.Age = newAge;
-
+                    foreach (var vehicle in pilot.CarVehicles)
+                    {
+                        Console.WriteLine(vehicle.Name);
+                    }
                     Console.WriteLine("trying to update pilot in Database...");
                     _session.Update(pilot);
                     Console.WriteLine("Succesfully!");
@@ -69,10 +71,6 @@ namespace Repository
                     tran.Rollback();
                 }
             }
-        }
-
-        public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
-        {
         }
     }
 }

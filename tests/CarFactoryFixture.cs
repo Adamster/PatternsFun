@@ -27,7 +27,7 @@ namespace Tests
 
         public void ActCreateProdcut()
         {
-            _carFactory.CreateNewSportCar(0, 1000, 250, EngineTypes.V10, "TestCar", null);
+         //   _carFactory.CreateNewSportCar(0, 1000, 250, EngineTypes.V10, "TestCar", null);
         }
 
         [Test]

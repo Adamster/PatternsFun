@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using Domain.CarTypes;
+using FluentNHibernate.Mapping;
 
 namespace Domain.Mapping
 {
@@ -15,9 +16,19 @@ namespace Domain.Mapping
     {
         public VehicleMap()
         {
+            References(x => x.OwnerPilot);
             Map(x => x.Name).Not.Nullable();
             Map(x => x.Mileage);
+        }
+    }
+
+    public class CarMap : SubclassMap<Car>
+    {
+        public CarMap()
+        {
+            Map(x => x.FuelTank).Not.Nullable();
             Map(x => x.SpecialAdds);
+           
         }
     }
 }

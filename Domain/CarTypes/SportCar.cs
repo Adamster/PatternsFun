@@ -7,12 +7,9 @@ namespace Domain.CarTypes
 {
     public class SportCar : Car
     {
-        public SportCar(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
-            string addParam)
-            : base(fuelTankValue, weightValue, carEngineValue, nameValue, addParam)
-        {
-            DownForcePressure = 0;
-        }
+       
+
+        
 
         private int DownForcePressure { get; set; }
 

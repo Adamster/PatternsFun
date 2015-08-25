@@ -119,7 +119,7 @@ ALTER TABLE ElectroEngine
     ADD CONSTRAINT [ElectroEngine.ID] FOREIGN KEY ([Engine_ID]) REFERENCES Engine ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 Alter table vehicle 
-add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;";
+add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references OwnerPilot ([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;";
 	
 #endregion
                 using (var sqlcommand = new SqlCommand(sqlCommandText, sqlConnection))
@@ -150,7 +150,7 @@ add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([i
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "Select Count(*) from pilot";
+                var sqlText = "Select Count(*) from OwnerPilot";
                 using (var sqlCommand = new SqlCommand(sqlText, sqlConn))
                 {
                   var count =  sqlCommand.ExecuteScalar();
@@ -164,7 +164,7 @@ add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([i
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "select * from pilot";
+                var sqlText = "select * from OwnerPilot";
                 using (var command = new SqlCommand(sqlText, sqlConn))
                 {
                      SqlDataReader reader =  command.ExecuteReader();
@@ -185,7 +185,7 @@ add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([i
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "select * from pilot where id > @ID";
+                var sqlText = "select * from OwnerPilot where id > @ID";
                 using (var sqlCommand = new SqlCommand(sqlText, sqlConn))
                 {
                     sqlCommand.Parameters.Add("@ID", SqlDbType.Int);
