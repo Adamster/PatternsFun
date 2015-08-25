@@ -1,9 +1,3 @@
-// File: Car.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-#region
 
 using System;
 using System.Diagnostics;
@@ -13,7 +7,6 @@ using Domain.FuelTypes;
 using Domain.Interfaces;
 using Utils;
 
-#endregion
 
 namespace Domain.CarTypes
 {
@@ -43,6 +36,8 @@ namespace Domain.CarTypes
 
         protected double FuelTank { get; set; }
         public GasolineEngine Engine { get; protected set; }
+
+   
 
         public void TurnLeft()
         {

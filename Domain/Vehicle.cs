@@ -1,15 +1,10 @@
-﻿// File: Vehicle.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 10 08 2015
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Utils;
 
 namespace Domain
 {
-    public abstract class Vehicle
+    public abstract class Vehicle : Entity
     {
         public string Name { get; set; }
         public double? Mileage { get; set; }
@@ -81,9 +76,4 @@ namespace Domain
         }
     }
 
-    public interface IParams
-    {
-        IParams WithParams(Func<string> paramsDelegate);
-        string GetParams();
-    }
 }

@@ -1,9 +1,4 @@
-﻿// File: CarFactory.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-using System;
+﻿using System;
 using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
@@ -13,12 +8,13 @@ namespace Factories
 {
     public class CarFactory
     {
+        private readonly ICarActionOnCreation _fillCarTank;
+
         public CarFactory(ICarActionOnCreation carActionOnCreation)
         {
             _fillCarTank = carActionOnCreation;
-        }
 
-        private readonly ICarActionOnCreation _fillCarTank;
+        }
 
         public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
             EngineTypes engineType, string name, Action<IParams> optionalParam)
@@ -73,8 +69,14 @@ namespace Factories
             _fillCarTank.FillCarTank(car);
         }
 
+        #region Nested type: VehicleParams
+
         public class VehicleParams : IParams
         {
+            private string _params;
+
+            #region IParams Members
+
             public IParams WithParams(Func<string> paramsDelegate)
             {
                 _params = paramsDelegate();
@@ -86,7 +88,9 @@ namespace Factories
                 return _params;
             }
 
-            private string _params;
+            #endregion
         }
+
+        #endregion
     }
 }

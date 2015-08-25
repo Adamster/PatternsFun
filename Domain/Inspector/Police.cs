@@ -17,6 +17,8 @@ namespace Domain.Inspector
     public class Police
     {
         private static readonly Police InstancePolice = new Police();
+        private readonly List<Vehicle> penaltyParking;
+        private TimeSpan TimeArrested = TimeSpan.FromDays(7);
 
         static Police()
         {
@@ -31,9 +33,6 @@ namespace Domain.Inspector
         {
             get { return InstancePolice; }
         }
-
-        private TimeSpan TimeArrested = TimeSpan.FromDays(7);
-        private List<Vehicle> penaltyParking;
 
         public void ChaseTheCar(Vehicle suspectVehicle)
         {
@@ -77,6 +76,7 @@ namespace Domain.Inspector
             Console.WriteLine("\nVehicles on penaltyParking:\n");
             Console.ResetColor();
             int i = 0;
+
             foreach (var vehicle in penaltyParking)
             {
                 i++;

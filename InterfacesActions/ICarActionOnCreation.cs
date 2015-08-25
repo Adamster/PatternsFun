@@ -1,9 +1,4 @@
-﻿// File: ICarActionOnCreation.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-using Domain.CarTypes;
+﻿using Domain.CarTypes;
 
 namespace InterfacesActions
 

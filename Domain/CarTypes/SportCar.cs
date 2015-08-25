@@ -1,14 +1,8 @@
-// File: SportCar.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
 using System;
 using System.Diagnostics;
 using Domain.EnginesTypes;
 using Domain.Interfaces;
 using Utils;
-
 namespace Domain.CarTypes
 {
     public class SportCar : Car

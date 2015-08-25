@@ -1,8 +1,3 @@
-// File: ElectroCar.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
 using System;
 using Domain.EnginesTypes;
 using Domain.Interfaces;
@@ -12,6 +7,8 @@ namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
+        private readonly ElectroEngine _engine;
+
         public ElectroCar(int chargeLvlValue, int weightValue, ElectroEngine electroEngineValue, string nameValue)
         {
             if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the ElectroCar!");
@@ -28,6 +25,8 @@ namespace Domain.CarTypes
 
         private int ChargeLevel { get; set; }
 
+        #region ISteeringWheel Members
+
         public void Horn()
         {
             Console.WriteLine("ElectroCar beep");
@@ -43,7 +42,7 @@ namespace Domain.CarTypes
             Console.WriteLine("ElectroCar turning right");
         }
 
-        private readonly ElectroEngine _engine;
+        #endregion
 
         public override sealed void Accelerate(int toSpeed)
         {
