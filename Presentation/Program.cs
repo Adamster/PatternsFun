@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain.EnginesTypes;
 using Factories;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using Infrastrucuture.IoC;
@@ -39,6 +40,15 @@ namespace Presentation
             // CSharpDemo.GetAFunc();
 
             #endregion
+
+            var pilot = PilotFactory.CreateNewPilot("TestPilot", DateTime.Parse("24/04/1999"), 22, "team");
+
+            PilotRepository.AddPilot(pilot);
+
+            var car = MaranelloCarFactory.CreateNewCar(100, 1000, 1000, EngineTypes.V12, "Ferrari", null);
+            PilotRepository.AddCar(pilot,car);
+
+
 
             Console.ReadLine();
             log.SaveToFile();

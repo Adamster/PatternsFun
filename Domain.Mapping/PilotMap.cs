@@ -13,6 +13,7 @@ namespace Domain.Mapping
             Map(x => x.ExpierenceTime).Not.Nullable();
             HasMany(x => x.CarVehiclesList).Cascade
                 .SaveUpdate();
+
         }
     }
 }

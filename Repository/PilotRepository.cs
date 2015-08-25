@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain;
+using Domain.CarTypes;
 using Domain.Persons;
 using NHibernate;
 using Repository.Interfaces;
@@ -61,6 +62,25 @@ namespace Repository
                     Console.WriteLine("trying to delete pilot in Database...");
                     _session.Delete(pilot);
                     Console.WriteLine("Succesfully!");
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    tran.Rollback();
+                }
+            }
+        }
+
+        public void AddCar(Pilot pilot, Car car)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    pilot = _session.Load<Pilot>(pilot.Id);
+
+                    pilot.AddCar(car);
                     tran.Commit();
                 }
                 catch (Exception ex)
