@@ -7,5 +7,6 @@ namespace Repository.Interfaces
         void AddPilot(Pilot pilot);
         void UpdatePilotAge(long pilotId, int newAge);
         void DeletePilot(long id);
+        void AddCar(Domain.Persons.Pilot pilot, Domain.CarTypes.Car car);
     }
 }

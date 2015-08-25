@@ -1,4 +1,9 @@
 ﻿using System;
+<<<<<<< HEAD
+=======
+using Domain;
+using Domain.CarTypes;
+>>>>>>> mapWoConstructor
 using Domain.Persons;
 using NHibernate;
 using Repository.Interfaces;
@@ -71,6 +76,28 @@ namespace Repository
                     tran.Rollback();
                 }
             }
+        }
+        public void AddCar(Pilot pilot, Car car)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    pilot = _session.Load<Pilot>(pilot.Id);
+
+                    pilot.AddCar(car);
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    tran.Rollback();
+                }
+            }
+        }
+
+        public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
+        {
         }
     }
 }

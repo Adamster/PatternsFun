@@ -12,8 +12,9 @@ namespace Domain.Mapping
             Map(x => x.DebutDate).Not.Nullable();
             Map(x => x.Team).Nullable();
             Map(x => x.ExpierenceTime).Not.Nullable();
-            HasMany(x => x.CarVehicles).Access.ReadOnlyPropertyThroughCamelCaseField(Prefix.Underscore).Inverse().Cascade.All();
-            //  .Inverse().Cascade.SaveUpdate();//.Fetch.Select();
+
+            HasMany(x => x.CarVehiclesList).Cascade
+                .SaveUpdate();
         }
     }
 }
