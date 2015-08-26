@@ -14,6 +14,8 @@ namespace Infrastrucuture.IoC
         {
             Kernel.Bind<ICarActionOnCreation>()
                 .To<FillTank>();
+            Kernel.Bind<IElectroCarActionOnCreation>()
+                .To<ElectroActions>();
             Kernel.Bind<ICarRepository>()
                 .To<CarRepository>();
             Kernel.Bind<IPilotRepository>()

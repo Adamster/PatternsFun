@@ -19,9 +19,9 @@ namespace Domain.CarTypes
         {
         }
 
-        public Car(string name, double? mileage, double speed, double weight, string specialAdds,
-            double accelerationSpeed, Pilot pilot, double fuelTank, GasolineEngine engine)
-            : base(name, mileage, speed, weight, specialAdds, accelerationSpeed, pilot)
+        public Car(string name, double? mileage, double weight, string specialAdds,
+            Pilot pilot, double fuelTank, GasolineEngine engine)
+            : base(name, mileage, weight, specialAdds, pilot)
         {
             if (fuelTank < 0) throw new ArgumentException("fuel tank volume can't be below or equal zero");
             FuelTank = fuelTank;

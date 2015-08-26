@@ -6,5 +6,7 @@ namespace Repository.Interfaces
     {
 
         void Save<TEntity>(TEntity entity) where TEntity : Entity;
+        void Update(long id);
+        void Delete(long id);
     }
 }

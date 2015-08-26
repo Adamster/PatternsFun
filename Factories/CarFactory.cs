@@ -1,5 +1,4 @@
 ﻿using System;
-using Domain;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
 using Domain.Persons;
@@ -9,19 +8,20 @@ namespace Factories
 {
     public class CarFactory
     {
+        private readonly IElectroCarActionOnCreation _chargeCar;
         private readonly ICarActionOnCreation _fillCarTank;
 
-        public CarFactory(ICarActionOnCreation carActionOnCreation)
+        public CarFactory(ICarActionOnCreation carActionOnCreation, IElectroCarActionOnCreation eCarActionOnCreation)
         {
             _fillCarTank = carActionOnCreation;
-
+            _chargeCar = eCarActionOnCreation;
         }
 
         public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
             EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
         {
-            var car = new Car(name, 0, fuelTankVolume, weight, null, 0, pilot,
-                0, new GasolineEngine(horsePower, engineType));
+            var car = new Car(name, fuelTankVolume, weight, null, pilot,
+                0, CreateGasolineEngine(horsePower, engineType));
             OnCarCreation(car);
 
             return car;
@@ -38,14 +38,14 @@ namespace Factories
             return optParamStr;
         }
 
-        //public SportCar CreateNewSportCar(int fueltankVolume, double weight, int horsePower,
-        //    EngineTypes engineType, string name, Action<IParams> optionalParam)
-        //{
-        //    var sportCar = new SportCar(fueltankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
-        //        OptParamStr(optionalParam));
-        //    OnCarCreation(sportCar);
-        //    return sportCar;
-        //}
+        public SportCar CreateNewSportCar(int fuelTankVolume, double weight, int horsePower,
+            EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
+        {
+            var sportCar = new SportCar(name, null, weight, null, pilot, fuelTankVolume,
+                CreateGasolineEngine(horsePower, engineType));
+            OnCarCreation(sportCar);
+            return sportCar;
+        }
 
         private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineType)
         {
@@ -68,6 +68,18 @@ namespace Factories
         private void OnCarCreation(Car car)
         {
             _fillCarTank.FillCarTank(car);
+        }
+
+        public ElectroCar CreateNewElectroCar(string name, double weight, int hpValue, Pilot pilot)
+        {
+            var electro = new ElectroCar(name, null, CreateElectroEngine(hpValue), weight, null, pilot, 0);
+            ChargeCar(electro);
+            return electro;
+        }
+
+        private void ChargeCar(ElectroCar electroCar)
+        {
+            _chargeCar.ChargeCar(electroCar);
         }
 
         #region Nested type: VehicleParams

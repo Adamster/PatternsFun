@@ -1,19 +1,28 @@
 using System;
 using System.Diagnostics;
 using Domain.EnginesTypes;
-using Domain.Interfaces;
+using Domain.Persons;
 using Utils;
+
 namespace Domain.CarTypes
 {
     public class SportCar : Car
     {
-       
+        [Obsolete]
+        protected SportCar()
+        {
+        }
 
-        
+        public SportCar(string name, double? mileage, double weight, string specialAdds,
+            Pilot pilot, double fuelTank, GasolineEngine engine)
+            : base(name, mileage, weight, specialAdds, pilot, fuelTank, engine)
+        {
+            DownForcePressure = 0;
+        }
 
-        private int DownForcePressure { get; set; }
+        public virtual int DownForcePressure { get; protected set; }
 
-        private double GetAccelerationSpeed()
+        protected override double GetAccelerationSpeed()
         {
             return (Engine.HorsePowers/Weight*100);
         }
@@ -23,7 +32,7 @@ namespace Domain.CarTypes
             PressThrottle(toSpeed);
         }
 
-        private void PressThrottle(int toSpeed)
+        protected override void PressThrottle(int toSpeed)
         {
             Engine.Start();
             Mileage = 0;
@@ -78,13 +87,13 @@ namespace Domain.CarTypes
             PressBrakePedal();
         }
 
-        private void GeneretaDownForce()
+        protected virtual void GeneretaDownForce()
         {
             DownForcePressure += 1;
             Console.WriteLine("Generating downforce");
         }
 
-        private bool BurnFuel()
+        protected virtual bool BurnFuel()
         {
             if (FuelTank > 0)
             {
@@ -97,7 +106,7 @@ namespace Domain.CarTypes
             throw new FuelException();
         }
 
-        private void PressBrakePedal()
+        protected virtual void PressBrakePedal()
         {
             if (Speed > GetDeAccelerationSpeed())
             {
@@ -115,7 +124,7 @@ namespace Domain.CarTypes
             PrintCurrentSpeed();
         }
 
-        private double GetDeAccelerationSpeed()
+        protected virtual double GetDeAccelerationSpeed()
         {
             return 10000/Weight*5;
         }

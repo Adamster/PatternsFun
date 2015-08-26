@@ -11,22 +11,23 @@ namespace Presentation
 {
     internal class Program
     {
-        private static readonly CarFactory MaranelloCarFactory;
+        private static CarFactory MaranelloCarFactory;
         private static ICarRepository CarRepository;
-        private static readonly IPilotRepository PilotRepository;
+        private static IPilotRepository PilotRepository;
 
         static Program()
         {
             ServiceLocator.RegisterAll();
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            CarRepository = ServiceLocator.Get<CarRepository>();
-            PilotRepository = ServiceLocator.Get<PilotRepository>();
+
             NHibernateProfiler.Initialize();
         }
 
         private static void Main(string[] args)
         {
             var log = Logger.GetLogger();
+            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+            CarRepository = ServiceLocator.Get<CarRepository>();
+            PilotRepository = ServiceLocator.Get<PilotRepository>();
 
             #region comments
 
@@ -44,12 +45,20 @@ namespace Presentation
             var pilot = PilotFactory.CreateNewPilot("Richman", "20/03/1999", 124, "TestTeam");
 
             var ferrari = MaranelloCarFactory.CreateNewCar(100, 100, 100, EngineTypes.V10, "TestCar", null, pilot);
-            var ferrari2 = MaranelloCarFactory.CreateNewCar(100, 100, 100, EngineTypes.V10, "TestCar2", null, pilot);
+            var ferrari2 = MaranelloCarFactory.CreateNewSportCar(100, 100, 100, EngineTypes.V10, "TestSportCar2", null,
+                pilot);
 
             pilot.AddCar(ferrari);
             pilot.AddCar(ferrari2);
 
             PilotRepository.AddPilot(pilot);
+
+            var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
+            var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
+
+            electroPilot.AddCar(tesla);
+
+            PilotRepository.AddPilot(electroPilot);
             Console.ReadLine();
             log.SaveToFile();
         }

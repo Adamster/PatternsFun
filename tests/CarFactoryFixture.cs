@@ -1,10 +1,4 @@
-﻿// File: CarFactoryFixture.cs in
-// PatternsFun by Serghei Adam 
-// Created 06 08 2015 
-// Edited 07 08 2015
-
-using Domain.CarTypes;
-using Domain.EnginesTypes;
+﻿using Domain.CarTypes;
 using Factories;
 using InterfacesActions;
 using Moq;
@@ -19,15 +13,17 @@ namespace Tests
         public void SetUp()
         {
             _carActionOnCreationMock = new Mock<ICarActionOnCreation>();
-            _carFactory = new CarFactory(_carActionOnCreationMock.Object);
+            _electroACtion = new Mock<IElectroCarActionOnCreation>();
+            _carFactory = new CarFactory(_carActionOnCreationMock.Object, _electroACtion.Object);
         }
 
         private Mock<ICarActionOnCreation> _carActionOnCreationMock;
         private CarFactory _carFactory;
+        private Mock<IElectroCarActionOnCreation> _electroACtion;
 
         public void ActCreateProdcut()
         {
-         //   _carFactory.CreateNewSportCar(0, 1000, 250, EngineTypes.V10, "TestCar", null);
+            //   _carFactory.CreateNewSportCar(0, 1000, 250, EngineTypes.V10, "TestCar", null);
         }
 
         [Test]

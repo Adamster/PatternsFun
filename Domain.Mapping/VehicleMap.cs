@@ -19,6 +19,7 @@ namespace Domain.Mapping
             References(x => x.OwnerPilot);
             Map(x => x.Name).Not.Nullable();
             Map(x => x.Mileage);
+            Map(x => x.Weight).Not.Nullable();
         }
     }
 
@@ -28,7 +29,23 @@ namespace Domain.Mapping
         {
             Map(x => x.FuelTank).Not.Nullable();
             Map(x => x.SpecialAdds);
-           
+        }
+    }
+
+    public class SportCarMap : SubclassMap<SportCar>
+    {
+        public SportCarMap()
+        {
+            Map(x => x.DownForcePressure);
+        }
+    }
+
+    public class ElectroCarMap : SubclassMap<ElectroCar>
+    {
+        public ElectroCarMap()
+        {
+            Map(x => x.ChargeLevel);
+            
         }
     }
 }

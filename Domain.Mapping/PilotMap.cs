@@ -1,5 +1,4 @@
 using Domain.Persons;
-using FluentNHibernate.Mapping;
 
 namespace Domain.Mapping
 {

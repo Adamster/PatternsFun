@@ -7,8 +7,6 @@ namespace Repository
 {
     public abstract class Repository : IRepository
     {
-        #region Implementation of IRepository
-
         private readonly ISession _session = SessionGenerator.Instance.GetSession();
 
         public void Save<TEntity>(TEntity entity) where TEntity : Entity
@@ -30,6 +28,14 @@ namespace Repository
             }
         }
 
-        #endregion
+        public void Update(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
