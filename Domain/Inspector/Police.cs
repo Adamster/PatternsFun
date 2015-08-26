@@ -75,7 +75,7 @@ namespace Domain.Inspector
         {
             Console.WriteLine("\nVehicles on penaltyParking:\n");
             Console.ResetColor();
-            int i = 0;
+            var i = 0;
 
             foreach (var vehicle in penaltyParking)
             {

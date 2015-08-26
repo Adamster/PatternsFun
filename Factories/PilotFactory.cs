@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Persons;
+﻿using Domain.Persons;
 
 namespace Factories
 {

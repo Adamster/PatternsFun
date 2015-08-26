@@ -8,8 +8,6 @@ namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
-        public virtual ElectroEngine Engine { get; protected set; }
-
         public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string specialAdds,
             Pilot pilot, int chargeLevel)
             : base(name, mileage, weight, specialAdds, pilot)
@@ -26,6 +24,7 @@ namespace Domain.CarTypes
         {
         }
 
+        public virtual ElectroEngine Engine { get; protected set; }
         public virtual int ChargeLevel { get; protected set; }
 
         public override void Accelerate(int toSpeed)
@@ -70,7 +69,7 @@ namespace Domain.CarTypes
             throw new Exception("\nLow Battery!\n");
         }
 
-        public override  void Brake()
+        public override void Brake()
         {
             ChargeBatteryByBrakes();
             PrintCurrentSpeed();

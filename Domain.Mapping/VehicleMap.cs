@@ -18,7 +18,6 @@ namespace Domain.Mapping
     {
         public CarMap()
         {
-
             References(x => x.Engine).Cascade.All();
 
 

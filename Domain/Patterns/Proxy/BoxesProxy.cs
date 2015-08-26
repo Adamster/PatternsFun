@@ -13,6 +13,10 @@ namespace Domain.Patterns.Proxy
 {
     public class BoxesProxy : IAccess
     {
+        private readonly Boxes _realBoxes;
+        private readonly List<Fan> _realFans = new List<Fan>();
+        private readonly Pilot _realPilot;
+
         public BoxesProxy(List<Fan> fan, Boxes boxes)
         {
             _realFans = fan;
@@ -30,10 +34,6 @@ namespace Domain.Patterns.Proxy
             _realBoxes = boxes;
             _realPilot = pilot;
         }
-
-        private readonly Boxes _realBoxes;
-        private readonly List<Fan> _realFans = new List<Fan>();
-        private readonly Pilot _realPilot;
 
         #region Implementation of IAccess
 

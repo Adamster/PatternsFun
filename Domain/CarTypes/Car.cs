@@ -37,7 +37,7 @@ namespace Domain.CarTypes
         }
 
         public virtual double FuelTank { get; protected set; }
-        public virtual GasolineEngine Engine { get;  set; }
+        public virtual GasolineEngine Engine { get; set; }
 
         public virtual void TurnLeft()
         {

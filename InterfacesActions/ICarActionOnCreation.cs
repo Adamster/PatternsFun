@@ -6,6 +6,5 @@ namespace InterfacesActions
     public interface ICarActionOnCreation
     {
         void FillCarTank(Car car);
-       
     }
 }

@@ -20,9 +20,9 @@ namespace DbService
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 var sqlCommandText = "SELECT * from Vehicle";
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommandText, sqlConnection);
+                var dataAdapter = new SqlDataAdapter(sqlCommandText, sqlConnection);
 
-                DataTable data = new DataTable();
+                var data = new DataTable();
                 dataAdapter.Fill(data);
 
 
@@ -46,7 +46,7 @@ namespace DbService
                 var sqlUpdate = @"UPDATE  Vehicle
                                   SET Mileage = 240
                                   WHERE   id > @id;";
-                SqlCommand updateCommand = new SqlCommand(sqlUpdate, sqlConnection);
+                var updateCommand = new SqlCommand(sqlUpdate, sqlConnection);
                 updateCommand.Parameters.Add("@id", SqlDbType.Int);
                 updateCommand.Parameters["@id"].Value = 22;
 
@@ -59,7 +59,7 @@ namespace DbService
 
                 var sqlDelete = @"DELETE FROM Vehicle
                                  WHERE ID > 22";
-                SqlCommand deleteCommand = new SqlCommand(sqlDelete, sqlConnection);
+                var deleteCommand = new SqlCommand(sqlDelete, sqlConnection);
                 dataAdapter.DeleteCommand = deleteCommand;
                 dataAdapter.DeleteCommand.ExecuteNonQuery();
                 dataAdapter.Update(data);

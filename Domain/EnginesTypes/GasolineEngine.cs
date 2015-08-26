@@ -5,8 +5,6 @@ namespace Domain.EnginesTypes
 {
     public class GasolineEngine : Engine
     {
-        public virtual Car Car { get;  set; }
-
         public GasolineEngine(int hpValue, EngineTypes engineType)
         {
             HorsePowers = hpValue;
@@ -17,6 +15,8 @@ namespace Domain.EnginesTypes
         protected GasolineEngine()
         {
         }
+
+        public virtual Car Car { get; set; }
         public virtual int NumberOfCylinders { get; protected set; }
 
         public override void Start()

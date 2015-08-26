@@ -10,6 +10,9 @@ namespace Domain.Patterns.Observer
 {
     public class RaceDirector
     {
+        private readonly List<IPilot> _pilots;
+        private string _raceStatus;
+
         public RaceDirector()
         {
             _pilots = new List<IPilot>();
@@ -24,9 +27,6 @@ namespace Domain.Patterns.Observer
                 Notify();
             }
         }
-
-        private readonly List<IPilot> _pilots;
-        private string _raceStatus;
 
         public void JoinRace(IPilot pilot)
         {

@@ -24,7 +24,7 @@ namespace Repository
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message+"\n"+ ex.StackTrace);
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -38,8 +38,8 @@ namespace Repository
                 {
                     var pilot = _session.Load<Pilot>(pilotId);
                     pilot.Age = newAge;
-                   Console.WriteLine("Pilot cars count : {0} ", pilot.CarVehicles.Count);
-                    
+                    Console.WriteLine("Pilot cars count : {0} ", pilot.CarVehicles.Count);
+
                     foreach (var vehicle in pilot.CarVehicles)
                     {
                         Console.WriteLine(vehicle.Name);
@@ -76,6 +76,7 @@ namespace Repository
                 }
             }
         }
+
         public void AddCar(Pilot pilot, Car car)
         {
             using (var tran = _session.BeginTransaction())

@@ -3,7 +3,6 @@ using Domain.CarTypes;
 using InterfacesActions;
 using Utils;
 
-
 namespace ActionImplementation
 {
     public class FillTank : ICarActionOnCreation
@@ -18,6 +17,5 @@ namespace ActionImplementation
         }
 
         #endregion
-
     }
 }

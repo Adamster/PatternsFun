@@ -1,5 +1,4 @@
 ﻿using System;
-using Domain.CarTypes;
 
 namespace Domain.EnginesTypes
 {
@@ -9,6 +8,7 @@ namespace Domain.EnginesTypes
         protected Engine()
         {
         }
+
         public virtual int HorsePowers { get; protected set; }
 
         public virtual void Start()

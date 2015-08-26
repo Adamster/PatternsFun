@@ -20,6 +20,7 @@ namespace Domain.Persons
             Age = age;
             Team = team;
         }
+
         [Obsolete]
         protected Pilot()
         {
@@ -35,10 +36,6 @@ namespace Domain.Persons
             get { return _carVehicles; }
         }
 
-        public virtual void AddCar(Vehicle car )
-        {
-            _carVehicles.Add(car);
-        }
         public virtual TimeSpan ExpierenceTime
         {
             get { return DateTime.Now.Date - DebutDate.Date; }
@@ -59,5 +56,10 @@ namespace Domain.Persons
         }
 
         #endregion
+
+        public virtual void AddCar(Vehicle car)
+        {
+            _carVehicles.Add(car);
+        }
     }
 }

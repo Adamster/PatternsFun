@@ -7,7 +7,6 @@ namespace Domain.Mapping
     {
         public EngineMap()
         {
-            
             Map(x => x.HorsePowers);
         }
     }
@@ -16,9 +15,8 @@ namespace Domain.Mapping
     {
         public GasolineEngineMap()
         {
-            
             HasOne(x => x.Car.Engine).PropertyRef(x => x.Id)
-                             .Fetch.Join();
+                .Fetch.Join();
 
             Map(x => x.NumberOfCylinders);
         }

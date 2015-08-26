@@ -17,6 +17,7 @@ namespace Domain.EnginesTypes
 
         // dlea liudei ECE == KPD
         public virtual double ECE { get; protected set; }
+
         public override void Start()
         {
             Console.WriteLine("ElectroEngine Start");

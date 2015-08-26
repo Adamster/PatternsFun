@@ -4,6 +4,6 @@ namespace InterfacesActions
 {
     public interface IElectroCarActionOnCreation
     {
-        void ChargeCar(ElectroCar eCar); 
+        void ChargeCar(ElectroCar eCar);
     }
 }

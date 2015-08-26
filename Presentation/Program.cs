@@ -49,18 +49,18 @@ namespace Presentation
                 pilot);
 
 
-          //CarRepository.Save(ferrari2);
-           pilot.AddCar(ferrari);
+            //CarRepository.Save(ferrari2);
+            pilot.AddCar(ferrari);
             pilot.AddCar(ferrari2);
 
-           PilotRepository.AddPilot(pilot);
+            PilotRepository.AddPilot(pilot);
 
             var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
             var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
-         //   electroPilot.AddCar(tesla);
+            //   electroPilot.AddCar(tesla);
             //PilotRepository.UpdatePilotAge(101, 244);
-           // PilotRepository.DeletePilot(2121);
-           PilotRepository.AddPilot(electroPilot);
+            // PilotRepository.DeletePilot(2121);
+            PilotRepository.AddPilot(electroPilot);
             Console.ReadLine();
             log.SaveToFile();
         }
