@@ -5,6 +5,7 @@ namespace Domain
     public abstract class Entity
     {
         public virtual long Id { get; protected set; }
+        public virtual long Version { get; protected set; }
 
         public static bool operator ==(Entity left, Entity right)
         {
