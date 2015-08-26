@@ -1,5 +1,6 @@
 ﻿using Domain.CarTypes;
 using FluentNHibernate.Mapping;
+using NHibernate.Mapping;
 
 namespace Domain.Mapping
 {
@@ -18,11 +19,12 @@ namespace Domain.Mapping
     {
         public CarMap()
         {
-            References(x => x.Engine).Cascade.All();
+            References(x => x.Engine).Cascade.All().Unique();
 
 
             Map(x => x.FuelTank).Not.Nullable();
             Map(x => x.SpecialAdds);
+            
         }
     }
 
