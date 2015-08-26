@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EngineMap.cs" />
+    <Compile Include="EntityMap.cs" />
     <Compile Include="PilotMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehicleMap.cs" />

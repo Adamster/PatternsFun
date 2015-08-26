@@ -48,17 +48,18 @@ namespace Presentation
             var ferrari2 = MaranelloCarFactory.CreateNewSportCar(100, 100, 100, EngineTypes.V10, "TestSportCar2", null,
                 pilot);
 
-            pilot.AddCar(ferrari);
+
+          //CarRepository.Save(ferrari2);
+           pilot.AddCar(ferrari);
             pilot.AddCar(ferrari2);
 
-            PilotRepository.AddPilot(pilot);
+           PilotRepository.AddPilot(pilot);
 
             var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
             var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
+         //   electroPilot.AddCar(tesla);
 
-            electroPilot.AddCar(tesla);
-
-            PilotRepository.AddPilot(electroPilot);
+          //  PilotRepository.AddPilot(electroPilot);
             Console.ReadLine();
             log.SaveToFile();
         }

@@ -8,7 +8,7 @@ namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
-        private readonly ElectroEngine _engine;
+        public virtual ElectroEngine Engine { get; protected set; }
 
         public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string specialAdds,
             Pilot pilot, int chargeLevel)
@@ -17,8 +17,8 @@ namespace Domain.CarTypes
             if (chargeLevel < 0 || chargeLevel > 100)
                 throw new ArgumentException("Charge lvl can't be below zero or more than 100");
             ChargeLevel = chargeLevel;
-            _engine = electroEngine;
-            AccelerationSpeed = _engine.HorsePowers/Weight*100;
+            Engine = electroEngine;
+            AccelerationSpeed = Engine.HorsePowers/Weight*100;
         }
 
         [Obsolete]

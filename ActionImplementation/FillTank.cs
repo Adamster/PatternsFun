@@ -3,6 +3,7 @@ using Domain.CarTypes;
 using InterfacesActions;
 using Utils;
 
+
 namespace ActionImplementation
 {
     public class FillTank : ICarActionOnCreation
@@ -16,8 +17,7 @@ namespace ActionImplementation
             Logger.AddMsgToLog("Tank Filled in " + car.Name);
         }
 
-      
-
         #endregion
+
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8852FB48-D501-43B3-925C-529EBDFCF5DA}</ProjectGuid>
+    <ProjectGuid>{ABD127A7-D346-4685-8F55-DB7DDF6850A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastrucuture</RootNamespace>
-    <AssemblyName>Infrastrucuture</AssemblyName>
+    <RootNamespace>ActionImplementation</RootNamespace>
+    <AssemblyName>ActionImplementation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,32 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ElectroActions.cs" />
+    <Compile Include="FillTank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IoC\ServiceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ActionImplementation\ActionImplementation.csproj">
-      <Project>{abd127a7-d346-4685-8f55-db7ddf6850a8}</Project>
-      <Name>ActionImplementation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{25a4e89f-79ba-4d7c-9b09-8a5053c2a0ae}</Project>
+      <Project>{25A4E89F-79BA-4D7C-9B09-8A5053C2A0AE}</Project>
       <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\InterfacesActions\InterfacesActions.csproj">
-      <Project>{bcb6598d-b718-4c52-a00d-98f659751a34}</Project>
+      <Project>{BCB6598D-B718-4C52-A00D-98F659751A34}</Project>
       <Name>InterfacesActions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Repository.Interfaces\Repository.Interfaces.csproj">
-      <Project>{d803ce4a-4a6e-4d23-9413-20668a7a6b50}</Project>
-      <Name>Repository.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{e1efcbbf-cb4d-4fd1-9528-159676bedfbf}</Project>
-      <Name>Repository</Name>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{646374B4-0E49-42E0-8A08-DF43546E145D}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

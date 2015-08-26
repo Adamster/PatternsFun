@@ -47,9 +47,9 @@ namespace Factories
             return sportCar;
         }
 
-        private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineType)
+        private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineTypes)
         {
-            var engine = new GasolineEngine(horsePowers, engineType);
+            var engine = new GasolineEngine(horsePowers, engineTypes);
             OnEngineCreation(engine);
             return engine;
         }

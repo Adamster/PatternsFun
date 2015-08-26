@@ -22,7 +22,6 @@ namespace Domain
             Mileage = mileage;
             Weight = weight;
             SpecialAdds = specialAdds;
-
             OwnerPilot = pilot;
         }
 
