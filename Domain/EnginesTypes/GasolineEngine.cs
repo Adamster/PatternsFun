@@ -5,6 +5,8 @@ namespace Domain.EnginesTypes
 {
     public class GasolineEngine : Engine
     {
+        public virtual Car Car { get;  set; }
+
         public GasolineEngine(int hpValue, EngineTypes engineType)
         {
             HorsePowers = hpValue;

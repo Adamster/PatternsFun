@@ -44,8 +44,8 @@ namespace Presentation
 
             var pilot = PilotFactory.CreateNewPilot("Richman", "20/03/1999", 124, "TestTeam");
 
-            var ferrari = MaranelloCarFactory.CreateNewCar(100, 100, 100, EngineTypes.V10, "TestCar", null, pilot);
-            var ferrari2 = MaranelloCarFactory.CreateNewSportCar(100, 100, 100, EngineTypes.V10, "TestSportCar2", null,
+            var ferrari = MaranelloCarFactory.CreateNewCar(100, 100, 600, EngineTypes.V10, "TestCar", null, pilot);
+            var ferrari2 = MaranelloCarFactory.CreateNewSportCar(100, 600, 100, EngineTypes.V10, "TestSportCar2", null,
                 pilot);
 
 
@@ -58,8 +58,9 @@ namespace Presentation
             var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
             var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
          //   electroPilot.AddCar(tesla);
-
-          //  PilotRepository.AddPilot(electroPilot);
+            //PilotRepository.UpdatePilotAge(101, 244);
+           // PilotRepository.DeletePilot(2121);
+           PilotRepository.AddPilot(electroPilot);
             Console.ReadLine();
             log.SaveToFile();
         }

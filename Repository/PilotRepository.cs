@@ -19,12 +19,12 @@ namespace Repository
                 {
                     Console.WriteLine("trying to add pilot in Database...");
                     _session.Save(pilot);
-                    Console.WriteLine("Succesfully!");
                     tran.Commit();
+                    Console.WriteLine("Succesfully!");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message+"\n"+ ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -46,12 +46,12 @@ namespace Repository
                     }
                     Console.WriteLine("trying to update pilot in Database...");
                     _session.Update(pilot);
-                    Console.WriteLine("Succesfully!");
                     tran.Commit();
+                    Console.WriteLine("Succesfully!");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -66,12 +66,12 @@ namespace Repository
                     var pilot = _session.Get<Pilot>(id);
                     Console.WriteLine("trying to delete pilot in Database...");
                     _session.Delete(pilot);
-                    Console.WriteLine("Succesfully!");
                     tran.Commit();
+                    Console.WriteLine("Succesfully!");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -89,7 +89,7 @@ namespace Repository
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }

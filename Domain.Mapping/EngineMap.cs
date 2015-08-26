@@ -16,7 +16,10 @@ namespace Domain.Mapping
     {
         public GasolineEngineMap()
         {
-           
+            
+            HasOne(x => x.Car.Engine).PropertyRef(x => x.Id)
+                             .Fetch.Join();
+
             Map(x => x.NumberOfCylinders);
         }
     }
