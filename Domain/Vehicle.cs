@@ -23,7 +23,7 @@ namespace Domain
             Speed = speed;
             Weight = weight;
             SpecialAdds = specialAdds;
-            
+
             OwnerPilot = pilot;
         }
         

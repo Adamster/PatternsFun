@@ -13,8 +13,21 @@ namespace Repository
 
         public void Save<TEntity>(TEntity entity) where TEntity : Entity
         {
-            Console.WriteLine("general repository used");
-            _session.Save(entity);
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    Console.WriteLine("general repository used");
+                    _session.Save(entity);
+
+                    tran.Commit();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    tran.Rollback();
+                }
+            }
         }
 
         #endregion

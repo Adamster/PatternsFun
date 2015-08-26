@@ -7,7 +7,7 @@ namespace Domain.Mapping
     {
         protected EntityMap()
         {
-            Id(x => x.Id);
+            Id(x => x.Id).GeneratedBy.HiLo("100");
             DynamicUpdate();
         }
     }

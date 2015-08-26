@@ -11,24 +11,21 @@ namespace Presentation
 {
     internal class Program
     {
-        private static CarFactory MaranelloCarFactory;
+        private static readonly CarFactory MaranelloCarFactory;
         private static ICarRepository CarRepository;
-        private static IPilotRepository PilotRepository;
-
+        private static readonly IPilotRepository PilotRepository;
 
         static Program()
         {
             ServiceLocator.RegisterAll();
-           
+            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+            CarRepository = ServiceLocator.Get<CarRepository>();
+            PilotRepository = ServiceLocator.Get<PilotRepository>();
             NHibernateProfiler.Initialize();
         }
 
         private static void Main(string[] args)
         {
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            CarRepository = ServiceLocator.Get<CarRepository>();
-            PilotRepository = ServiceLocator.Get<PilotRepository>();
-
             var log = Logger.GetLogger();
 
             #region comments
@@ -43,15 +40,16 @@ namespace Presentation
             // CSharpDemo.GetAFunc();
 
             #endregion
-            var pilot = PilotFactory.CreateNewPilot("TestPilot", DateTime.Parse("24/04/1999"), 22, "team");
+
+            var pilot = PilotFactory.CreateNewPilot("Richman", "20/03/1999", 124, "TestTeam");
+
+            var ferrari = MaranelloCarFactory.CreateNewCar(100, 100, 100, EngineTypes.V10, "TestCar", null, pilot);
+            var ferrari2 = MaranelloCarFactory.CreateNewCar(100, 100, 100, EngineTypes.V10, "TestCar2", null, pilot);
+
+            pilot.AddCar(ferrari);
+            pilot.AddCar(ferrari2);
 
             PilotRepository.AddPilot(pilot);
-
-            var car = MaranelloCarFactory.CreateNewCar(100, 1000, 1000, EngineTypes.V12, "Ferrari", null);
-            PilotRepository.AddCar(pilot,car);
-
-
-
             Console.ReadLine();
             log.SaveToFile();
         }

@@ -18,9 +18,9 @@ namespace Factories
         }
 
         public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam, string pilotName, string debutDate, int pilotAge, string team)
+            EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
         {
-            var car = new Car(name, 0, fuelTankVolume, weight, null, 0, new Pilot(pilotName, debutDate, pilotAge, team),
+            var car = new Car(name, 0, fuelTankVolume, weight, null, 0, pilot,
                 0, new GasolineEngine(horsePower, engineType));
             OnCarCreation(car);
 

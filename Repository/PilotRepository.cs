@@ -1,9 +1,6 @@
 ﻿using System;
-<<<<<<< HEAD
-=======
 using Domain;
 using Domain.CarTypes;
->>>>>>> mapWoConstructor
 using Domain.Persons;
 using NHibernate;
 using Repository.Interfaces;
@@ -41,6 +38,8 @@ namespace Repository
                 {
                     var pilot = _session.Load<Pilot>(pilotId);
                     pilot.Age = newAge;
+                   Console.WriteLine("Pilot cars count : {0} ", pilot.CarVehicles.Count);
+                    
                     foreach (var vehicle in pilot.CarVehicles)
                     {
                         Console.WriteLine(vehicle.Name);
