@@ -77,6 +77,10 @@
       <Project>{d803ce4a-4a6e-4d23-9413-20668a7a6b50}</Project>
       <Name>Repository.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{646374b4-0e49-42e0-8a08-df43546e145d}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

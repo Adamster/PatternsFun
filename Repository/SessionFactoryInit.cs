@@ -1,4 +1,5 @@
-﻿using Domain.Mapping;
+﻿using System.Text;
+using Domain.Mapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
@@ -33,7 +34,17 @@ namespace Repository
                         .Server(@"MDDSK40101").TrustedConnection()))
                 .Mappings(x => x.FluentMappings.AddFromAssembly(typeof (EntityMap<>).Assembly))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true));
+
+            var conf = configuration.BuildConfiguration();
+
+            var stringBuilder = new StringBuilder();
+            new SchemaExport(conf).Execute(entry => stringBuilder.Append(entry), false, false);
+
+
+
             return configuration.BuildSessionFactory();
+
+           
         }
     }
 }

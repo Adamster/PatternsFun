@@ -7,7 +7,7 @@ namespace Domain.Mapping
     {
         public EngineMap()
         {
-            Map(x => x.HorsePowers);
+            Map(x => x.HorsePowers).Not.Nullable();
         }
     }
 
@@ -18,7 +18,7 @@ namespace Domain.Mapping
             HasOne(x => x.Car).PropertyRef(x => x.Id)
                 .Fetch.Join();
 
-            Map(x => x.NumberOfCylinders);
+            Map(x => x.NumberOfCylinders).Not.Nullable();
         }
     }
 
@@ -28,7 +28,7 @@ namespace Domain.Mapping
         {
             HasOne(x => x.Car).PropertyRef(x => x.Id)
                .Fetch.Join();
-            Map(x => x.ECE);
+            Map(x => x.ECE).Not.Nullable();
         }
     }
 }

@@ -32,21 +32,21 @@ namespace Presentation
 
             #region comments
 
-            DbCreateService.CreateDbStrucutre();
-            DbCreateService.CreateCustomTable();
-            DbAdapterService.Adapter();
-            DbCreateService.ScalarTest();
-            DbCreateService.ReaderTest();
-            DbCreateService.ParametrQuery(30);
-            DbAdapterService.Adapter();
+            //DbCreateService.CreateDbStrucutre();
+            //DbCreateService.CreateCustomTable();
+            //DbAdapterService.Adapter();
+            //DbCreateService.ScalarTest();
+            //DbCreateService.ReaderTest();
+            //DbCreateService.ParametrQuery(30);
+            //DbAdapterService.Adapter();
             // CSharpDemo.GetAFunc();
-           // TestDb();
+
             #endregion
 
+            TestDb();
+           // ShowPilotCount();
 
-            ShowPilotCount();
-
-           
+            Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
         }
@@ -54,6 +54,7 @@ namespace Presentation
         private static void ShowPilotCount()
         {
             var pilotsCount = PilotRepository.GetPilotsCount();
+            Console.WriteLine("Pilot count: {0}", pilotsCount);
         }
 
         private static void TestDb()
@@ -65,7 +66,6 @@ namespace Presentation
                 pilot);
 
 
-            //CarRepository.Save(ferrari2);
             pilot.AddCar(ferrari);
             pilot.AddCar(ferrari2);
 
@@ -74,7 +74,7 @@ namespace Presentation
             var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
             var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
             electroPilot.AddCar(tesla);
-            //PilotRepository.UpdatePilotAge(101, 244);
+            PilotRepository.UpdatePilotAge(101, 244);
             // PilotRepository.DeletePilot(2121);
             PilotRepository.AddPilot(electroPilot);
         }

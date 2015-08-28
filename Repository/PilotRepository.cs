@@ -4,6 +4,7 @@ using Domain.CarTypes;
 using Domain.Persons;
 using NHibernate;
 using Repository.Interfaces;
+using Utils;
 
 namespace Repository
 {
@@ -21,10 +22,12 @@ namespace Repository
                     _session.Save(pilot);
                     tran.Commit();
                     Console.WriteLine("Succesfully!");
+                    Logger.AddMsgToLog("Succesfully! commited a pilot in database");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -52,6 +55,7 @@ namespace Repository
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -72,6 +76,7 @@ namespace Repository
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -91,6 +96,7 @@ namespace Repository
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }
@@ -98,12 +104,9 @@ namespace Repository
 
         public object GetPilotsCount()
         {
-            using (_session.BeginTransaction())
-            {
-                return 0;
-            }
-            return 1;
+            return new object();
         }
+
 
         public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
         {

@@ -1,9 +1,4 @@
-﻿// File: DbCreateService.cs in
-// PatternsFun by Serghei Adam 
-// Created 20 08 2015 
-// Edited 20 08 2015
-
-using System;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;

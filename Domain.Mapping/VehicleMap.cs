@@ -19,8 +19,6 @@ namespace Domain.Mapping
         public CarMap()
         {
             References(x => x.Engine).Cascade.All().Unique();
-
-
             Map(x => x.FuelTank).Not.Nullable();
             Map(x => x.SpecialAdds);
         }
@@ -30,7 +28,7 @@ namespace Domain.Mapping
     {
         public SportCarMap()
         {
-            Map(x => x.DownForcePressure);
+            Map(x => x.DownForcePressure).Not.Nullable();
         }
     }
 
@@ -40,8 +38,7 @@ namespace Domain.Mapping
         {
             References(x => x.Engine).Cascade.All().Unique();
 
-            Map(x => x.ChargeLevel);
+            Map(x => x.ChargeLevel).Not.Nullable();
         }
     }
-
 }
