@@ -33,8 +33,6 @@ namespace Repository
                         .Server(@"MDDSK40101").TrustedConnection()))
                 .Mappings(x => x.FluentMappings.AddFromAssembly(typeof (EntityMap<>).Assembly))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true));
-
-
             return configuration.BuildSessionFactory();
         }
     }

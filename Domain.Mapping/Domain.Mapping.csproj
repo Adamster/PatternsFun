@@ -67,7 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EngineMap.hbm.xml" />
+    <EmbeddedResource Include="EngineMap.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
