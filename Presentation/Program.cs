@@ -57,7 +57,7 @@ namespace Presentation
 
             var electroPilot = PilotFactory.CreateNewPilot("ElectroPilot", "20/03/2014", 24, "Venturi");
             var tesla = MaranelloCarFactory.CreateNewElectroCar("Tesla", 1500, 452, electroPilot);
-            //   electroPilot.AddCar(tesla);
+               electroPilot.AddCar(tesla);
             //PilotRepository.UpdatePilotAge(101, 244);
             // PilotRepository.DeletePilot(2121);
             PilotRepository.AddPilot(electroPilot);

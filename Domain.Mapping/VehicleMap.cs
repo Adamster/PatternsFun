@@ -1,6 +1,5 @@
 ﻿using Domain.CarTypes;
 using FluentNHibernate.Mapping;
-using NHibernate.Mapping;
 
 namespace Domain.Mapping
 {
@@ -24,7 +23,6 @@ namespace Domain.Mapping
 
             Map(x => x.FuelTank).Not.Nullable();
             Map(x => x.SpecialAdds);
-            
         }
     }
 
@@ -40,9 +38,10 @@ namespace Domain.Mapping
     {
         public ElectroCarMap()
         {
-            HasOne(x => x.Engine);
+            References(x => x.Engine).Cascade.All().Unique();
 
             Map(x => x.ChargeLevel);
         }
     }
+
 }
