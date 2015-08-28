@@ -14,7 +14,7 @@ namespace DbService
     public class DbCreateService
     {
         private static readonly string ConnectionString =
-            ConfigurationManager.ConnectionStrings["VehicleDB"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["test"].ConnectionString;
 
         private static readonly string ConnectionString2 =
             ConfigurationManager.ConnectionStrings["VehicleDBOrig"].ConnectionString;

@@ -1,4 +1,5 @@
 ﻿using System;
+using DbService;
 using Domain.EnginesTypes;
 using Factories;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -18,30 +19,45 @@ namespace Presentation
         static Program()
         {
             ServiceLocator.RegisterAll();
-
+            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+            CarRepository = ServiceLocator.Get<CarRepository>();
+            PilotRepository = ServiceLocator.Get<PilotRepository>();
             NHibernateProfiler.Initialize();
         }
 
         private static void Main(string[] args)
         {
             var log = Logger.GetLogger();
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            CarRepository = ServiceLocator.Get<CarRepository>();
-            PilotRepository = ServiceLocator.Get<PilotRepository>();
+         
 
             #region comments
 
-            //DbCreateService.CreateDbStrucutre();           
-            // DbCreateService.CreateCustomTable();
-            // DbAdapterService.Adapter();
-            // DbCreateService.ScalarTest();
-            //  DbCreateService.ReaderTest();
-            //DbCreateService.ParametrQuery(30);
-            //  DbAdapterService.Adapter();
+            DbCreateService.CreateDbStrucutre();
+            DbCreateService.CreateCustomTable();
+            DbAdapterService.Adapter();
+            DbCreateService.ScalarTest();
+            DbCreateService.ReaderTest();
+            DbCreateService.ParametrQuery(30);
+            DbAdapterService.Adapter();
             // CSharpDemo.GetAFunc();
-
+           // TestDb();
             #endregion
 
+
+            ShowPilotCount();
+
+           
+            Console.ReadLine();
+            log.SaveToFile();
+        }
+
+        private static void ShowPilotCount()
+        {
+            var pilotsCount = PilotRepository.GetPilotsCount();
+        }
+
+        private static void TestDb()
+        {
             var pilot = PilotFactory.CreateNewPilot("Richman", "20/03/1999", 124, "TestTeam");
 
             var ferrari = MaranelloCarFactory.CreateNewCar(100, 100, 600, EngineTypes.V10, "TestCar", null, pilot);
@@ -61,8 +77,6 @@ namespace Presentation
             //PilotRepository.UpdatePilotAge(101, 244);
             // PilotRepository.DeletePilot(2121);
             PilotRepository.AddPilot(electroPilot);
-            Console.ReadLine();
-            log.SaveToFile();
         }
     }
 }

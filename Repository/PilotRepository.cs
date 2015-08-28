@@ -96,6 +96,15 @@ namespace Repository
             }
         }
 
+        public object GetPilotsCount()
+        {
+            using (_session.BeginTransaction())
+            {
+                return 0;
+            }
+            return 1;
+        }
+
         public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
         {
         }
