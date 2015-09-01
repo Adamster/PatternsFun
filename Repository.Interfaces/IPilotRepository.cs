@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Domain.CarTypes;
+using Domain.Dto;
 using Domain.Persons;
 
 namespace Repository.Interfaces
@@ -11,5 +12,7 @@ namespace Repository.Interfaces
         void DeletePilot(long id);
         void AddCar(Pilot pilot, Car car);
         IList<Car> GetVehicleName();
+        IList<object> GetCarCountPerPilotCrutchVersion();
+        IList<PilotDetailsDto> GetCarCountPerPilot();
     }
 }

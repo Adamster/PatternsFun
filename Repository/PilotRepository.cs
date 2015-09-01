@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using Domain;
 using Domain.CarTypes;
+using Domain.Dto;
 using Domain.EnginesTypes;
 using Domain.Persons;
 using NHibernate;
+using NHibernate.Criterion;
 using NHibernate.SqlCommand;
+using NHibernate.Transform;
 using Repository.Interfaces;
 using Utils;
 
@@ -121,6 +124,70 @@ namespace Repository
                         .List();
 
                     tran.Commit();
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
+        }
+
+        public IList<object> GetCarCountPerPilotCrutchVersion()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pilotAlias = null;
+                Vehicle vehicleAlias = null;
+                try
+                {
+                    var res = _session.QueryOver(() => vehicleAlias)
+                        .JoinAlias(() => vehicleAlias.OwnerPilot, () => pilotAlias)
+                        .SelectList(list => list
+                            .SelectGroup(() => pilotAlias.Name)
+                            .SelectCount(() => pilotAlias.Id)
+                            )
+                        .Where(Restrictions.Gt(Projections.Count(Projections.Property(() => pilotAlias.Id)), 1))
+                        .List<object>();
+
+
+                    tran.Commit();
+                    return res;
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
+        }
+
+        public IList<PilotDetailsDto> GetCarCountPerPilot()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pilotAlias = null;
+                Vehicle vehicleAlias = null;
+                PilotDetailsDto pilotDetailsDtoAlias = null;
+
+                try
+                {
+                    var res = _session.QueryOver(() => vehicleAlias)
+                        .JoinAlias(() => vehicleAlias.OwnerPilot, () => pilotAlias)
+                        .SelectList(list => list
+                            .SelectGroup(() => pilotAlias.Name).WithAlias(() => pilotDetailsDtoAlias.Name)
+                            .SelectGroup(() => pilotAlias.Team).WithAlias(() => pilotDetailsDtoAlias.Team)
+                            .SelectCount(() => pilotAlias.Id).WithAlias(() => pilotDetailsDtoAlias.CarCount)
+                        )
+                        .Where(Restrictions.Gt(Projections.Count(Projections.Property(() => pilotAlias.Id)), 1))
+                        .TransformUsing(Transformers.AliasToBean<PilotDetailsDto>())
+                        .List<PilotDetailsDto>();
                     return res;
                 }
                 catch (Exception ex)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Domain.EnginesTypes;
 using Factories;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -44,11 +45,33 @@ namespace Presentation
             //  GenerateData();
             // TestDb();
            // ShowVehicleName();
-
+           // ShowPilotCarCountCrutch();
+            ShowPilotCarCount();
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
         }
+
+        private static void ShowPilotCarCount()
+        {
+            var res = PilotRepository.GetCarCountPerPilot();
+            foreach (var pilotDetailsDto in res)
+            {
+                Console.WriteLine("name: "+ pilotDetailsDto.Name + " from team "+pilotDetailsDto.Team + " has "+pilotDetailsDto.CarCount+" cars");
+            }
+        }
+
+        private static void ShowPilotCarCountCrutch()
+        {
+           var res = PilotRepository.GetCarCountPerPilotCrutchVersion();
+            foreach (object[] re in res)
+            {
+                Console.WriteLine(string.Format(re[0] +" has  " + re[1] + " cars"));
+               
+            }
+        }
+
+
 
         private static void GenerateData()
         {
