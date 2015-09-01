@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<root/>
-<!--<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
   assembly="Domain.Mapping"
   namespace="PatternsFun.Domain">
   <database-object>
@@ -21,4 +20,4 @@
     <drop>
     </drop>
   </database-object>
-</hibernate-mapping>-->
+</hibernate-mapping>

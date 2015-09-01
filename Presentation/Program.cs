@@ -1,5 +1,4 @@
 ﻿using System;
-using DbService;
 using Domain.EnginesTypes;
 using Factories;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -12,9 +11,9 @@ namespace Presentation
 {
     internal class Program
     {
-        private static CarFactory MaranelloCarFactory;
+        private static readonly CarFactory MaranelloCarFactory;
         private static ICarRepository CarRepository;
-        private static IPilotRepository PilotRepository;
+        private static readonly IPilotRepository PilotRepository;
 
         static Program()
         {
@@ -28,7 +27,6 @@ namespace Presentation
         private static void Main(string[] args)
         {
             var log = Logger.GetLogger();
-         
 
             #region comments
 
@@ -43,18 +41,41 @@ namespace Presentation
 
             #endregion
 
-            TestDb();
-           // ShowPilotCount();
+            //  GenerateData();
+            // TestDb();
+           // ShowVehicleName();
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
         }
 
-        private static void ShowPilotCount()
+        private static void GenerateData()
         {
-            var pilotsCount = PilotRepository.GetPilotsCount();
-            Console.WriteLine("Pilot count: {0}", pilotsCount);
+            var pilot = PilotFactory.CreateNewPilot("Pilot W/O Cars", "01/09/2015", 19, "TestTeam #1");
+            PilotRepository.AddPilot(pilot);
+
+            var pilot2 = PilotFactory.CreateNewPilot("Pilot With 3 Cars", "01/09/2015", 19, "TestTeam #2");
+            var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
+            var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
+            var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
+            pilot2.AddCar(car1);
+            pilot2.AddCar(car2);
+            pilot2.AddCar(car3);
+            PilotRepository.AddPilot(pilot2);
+
+        }
+
+        private static void ShowVehicleName()
+        {
+            var vehicleName = PilotRepository.GetVehicleName();
+            if (vehicleName != null)
+            {
+                foreach (var vehicle in vehicleName)
+                {
+                    Console.WriteLine(vehicle.Name);
+                }
+            }
         }
 
         private static void TestDb()

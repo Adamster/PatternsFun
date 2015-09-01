@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Domain;
 using Domain.CarTypes;
+using Domain.EnginesTypes;
 using Domain.Persons;
 using NHibernate;
+using NHibernate.SqlCommand;
 using Repository.Interfaces;
 using Utils;
 
@@ -102,14 +105,32 @@ namespace Repository
             }
         }
 
-        public object GetPilotsCount()
+        public IList<Car> GetVehicleName()
         {
-            return new object();
-        }
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pilotAlias = null;
+                Vehicle vehicleAlias = null;
+                Car carAlias = null;
+                GasolineEngine geAlias = null;
+                try
+                {
+                    var res = _session.QueryOver(() => carAlias)
+                        .JoinAlias(() => carAlias.Engine, () => geAlias, JoinType.InnerJoin)
+                        .Where(() => geAlias.HorsePowers < 500)
+                        .List();
 
-
-        public void DeletePilot<TEntity>(TEntity entity) where TEntity : Entity
-        {
+                    tran.Commit();
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
         }
     }
 }
