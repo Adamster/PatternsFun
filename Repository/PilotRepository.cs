@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain;
 using Domain.CarTypes;
 using Domain.Dto;
@@ -9,6 +10,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
 using NHibernate.Transform;
+using NHibernate.Type;
 using Repository.Interfaces;
 using Utils;
 
@@ -123,6 +125,11 @@ namespace Repository
                         .Where(() => geAlias.HorsePowers < 500)
                         .List();
 
+                    var res1 = _session.QueryOver<Car>()
+                        .JoinQueryOver(x => x.Engine, () => geAlias)
+                        .Where(() => geAlias.HorsePowers > 500)
+                        .List();
+
                     tran.Commit();
                     return res;
                 }
@@ -149,7 +156,7 @@ namespace Repository
                         .SelectList(list => list
                             .SelectGroup(() => pilotAlias.Name)
                             .SelectCount(() => pilotAlias.Id)
-                            )
+                        )
                         .Where(Restrictions.Gt(Projections.Count(Projections.Property(() => pilotAlias.Id)), 1))
                         .List<object>();
 
@@ -195,6 +202,128 @@ namespace Repository
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
+                    return null;
+                }
+            }
+        }
+
+        public IList<Pilot> GetUniquePilots()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var res = _session.QueryOver<Pilot>()
+                        .TransformUsing(Transformers.DistinctRootEntity)
+                        .Future();
+
+
+                    var resL = res.ToList();
+                    tran.Commit();
+
+                    return resL;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
+        }
+
+        public IList<object> GetAvgHorsePowerPerPilot()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pAlias = null;
+                Vehicle vAlias = null;
+                Engine eAlias = null;
+
+                try
+                {
+                    var pilotsWithAvgHp = _session.QueryOver(() => pAlias)
+                        .JoinAlias(() => pAlias.CarVehicles, () => vAlias)
+                        .SelectList(list => list
+                            .SelectSubQuery(
+                                QueryOver.Of<Car>()
+                                    .JoinAlias(x => x.Engine, () => eAlias)
+                                    .Where(x => x.OwnerPilot.Id == pAlias.Id)
+                                    .SelectList(l => l.SelectAvg(() => eAlias.HorsePowers))
+                            )
+                            .Select(() => pAlias.Name)
+                        )
+                        .List<object>();
+
+                    return pilotsWithAvgHp;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
+        }
+
+        public Pilot GetOldestPilot()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    Pilot pAlias = null;
+                    Pilot allPalias = null;
+
+                    var allsubquery = QueryOver.Of<Pilot>()
+                        .SelectList(list => list
+                            .Select(x => x.Age));
+
+                    var res = _session.QueryOver(() => pAlias)
+                        .WithSubquery.WhereProperty(x => x.Age)
+                        .GeAll(allsubquery)
+                        .SingleOrDefault();
+
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
+        public IList<object> GetMTeamDrivers()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pAlias = null;
+                try
+                {
+                    var mTeamSelect = QueryOver.Of<Pilot>()
+                        .SelectList(list => list
+                            .Select(x => x.Team))
+                        .Where(x => x.Team.IsLike("M%"));
+
+
+                    var res = _session.QueryOver(() => pAlias)
+                        .SelectList(list => list
+                            .Select(x => x.Name)
+                            .Select(x => x.Team)
+                        ).WithSubquery.WhereProperty(x => x.Team).In(mTeamSelect)
+                        .List<object>();
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     return null;
                 }
             }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Domain.EnginesTypes;
 using Factories;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
@@ -42,14 +41,46 @@ namespace Presentation
 
             #endregion
 
-            //  GenerateData();
+            //   GenerateData();
             // TestDb();
-           // ShowVehicleName();
-           // ShowPilotCarCountCrutch();
-            ShowPilotCarCount();
+            // ShowVehicleName();
+            // ShowPilotCarCountCrutch();
+              ShowPilotCarCount();
+            //  ShowUniquePilot();
+            // ShowAvgHpPerPilot();
+
+            //   getOldestPilot();
+            //   getMTeamDrivers();
+
+
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void getMTeamDrivers()
+        {
+            var mDrivers = PilotRepository.GetMTeamDrivers();
+            foreach (object[] objects in mDrivers)
+            {
+                Console.WriteLine(objects[0] + " " + objects[1]);
+            }
+        }
+
+        private static void getOldestPilot()
+        {
+            var res = PilotRepository.GetOldestPilot();
+            Console.WriteLine(res.Name + " age:" + res.Age);
+        }
+
+
+        private static void ShowAvgHpPerPilot()
+        {
+            var res = PilotRepository.GetAvgHorsePowerPerPilot();
+            foreach (object[] pilot in res)
+            {
+                Console.WriteLine(pilot[0] == null ? "null" : string.Format(pilot[1] + " has avg power " + pilot[0]));
+            }
         }
 
         private static void ShowPilotCarCount()
@@ -57,36 +88,47 @@ namespace Presentation
             var res = PilotRepository.GetCarCountPerPilot();
             foreach (var pilotDetailsDto in res)
             {
-                Console.WriteLine("name: "+ pilotDetailsDto.Name + " from team "+pilotDetailsDto.Team + " has "+pilotDetailsDto.CarCount+" cars");
+                Console.WriteLine("name: " + pilotDetailsDto.Name + " from team " + pilotDetailsDto.Team + " has " +
+                                  pilotDetailsDto.CarCount + " cars");
+            }
+        }
+
+        private static void ShowUniquePilot()
+        {
+            var i = 0;
+            var res = PilotRepository.GetUniquePilots();
+            foreach (var pilot in res)
+            {
+                i++;
+                Console.WriteLine("{0}) {1} from {2} debuted at {3}\n age {4},\n exp {5} days ", i, pilot.Name,
+                    pilot.Team, pilot.DebutDate.ToShortDateString(), pilot.Age, pilot.ExpierenceTime.TotalDays);
             }
         }
 
         private static void ShowPilotCarCountCrutch()
         {
-           var res = PilotRepository.GetCarCountPerPilotCrutchVersion();
+            var res = PilotRepository.GetCarCountPerPilotCrutchVersion();
             foreach (object[] re in res)
             {
-                Console.WriteLine(string.Format(re[0] +" has  " + re[1] + " cars"));
-               
+                Console.WriteLine(string.Format(re[0] + " has  " + re[1] + " cars"));
             }
         }
 
-
-
         private static void GenerateData()
         {
-            var pilot = PilotFactory.CreateNewPilot("Pilot W/O Cars", "01/09/2015", 19, "TestTeam #1");
+            var pilot = PilotFactory.CreateNewPilot("John Doe", "01/09/2015", 19, "McLaren");
             PilotRepository.AddPilot(pilot);
 
-            var pilot2 = PilotFactory.CreateNewPilot("Pilot With 3 Cars", "01/09/2015", 19, "TestTeam #2");
+            var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
             var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
             var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
             var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
+
+
             pilot2.AddCar(car1);
             pilot2.AddCar(car2);
             pilot2.AddCar(car3);
             PilotRepository.AddPilot(pilot2);
-
         }
 
         private static void ShowVehicleName()

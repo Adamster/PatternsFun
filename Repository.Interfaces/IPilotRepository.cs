@@ -14,5 +14,11 @@ namespace Repository.Interfaces
         IList<Car> GetVehicleName();
         IList<object> GetCarCountPerPilotCrutchVersion();
         IList<PilotDetailsDto> GetCarCountPerPilot();
+        IList<Pilot> GetUniquePilots();
+        IList<object> GetAvgHorsePowerPerPilot();
+       Pilot GetOldestPilot();
+
+
+       IList<object> GetMTeamDrivers();
     }
 }
