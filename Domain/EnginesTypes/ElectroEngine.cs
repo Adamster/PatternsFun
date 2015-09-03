@@ -15,6 +15,7 @@ namespace Domain.EnginesTypes
             HorsePowers = hpValue;
             ECE = 0.87;
         }
+
         public virtual ElectroCar Car { get; set; }
         // dlea liudei ECE == KPD
         public virtual double ECE { get; protected set; }

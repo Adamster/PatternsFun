@@ -27,7 +27,7 @@ namespace Domain.Mapping
         public ElectroEngineMap()
         {
             HasOne(x => x.Car).PropertyRef(x => x.Id)
-               .Fetch.Join();
+                .Fetch.Join();
             Map(x => x.ECE).Not.Nullable();
         }
     }

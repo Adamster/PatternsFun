@@ -27,7 +27,8 @@ namespace Utils
 
         public void SaveToFile()
         {
-            using (var fs = new FileStream(@"C:\Users\" + Environment.UserName + @"\Documents\log.txt", FileMode.Append))
+            using (var fs = new FileStream(@"C:\Users\" + Environment.UserName + @"\Documents\log.txt", FileMode.Append)
+                )
             {
                 AddMsgToLog("log saving into file");
                 var tmp = LogString.ToString();

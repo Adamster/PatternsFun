@@ -109,6 +109,7 @@ namespace Repository
             }
         }
 
+        //queryOver part 1
         public IList<Car> GetVehicleName()
         {
             using (var tran = _session.BeginTransaction())
@@ -169,6 +170,7 @@ namespace Repository
             }
         }
 
+        //aliasToBean
         public IList<PilotDetailsDto> GetCarCountPerPilot()
         {
             using (var tran = _session.BeginTransaction())
@@ -227,6 +229,7 @@ namespace Repository
             }
         }
 
+        //queryOver part 2
         public IList<object> GetAvgHorsePowerPerPilot()
         {
             using (var tran = _session.BeginTransaction())
@@ -323,25 +326,20 @@ namespace Repository
             }
         }
 
-        public IList<Car> GetCarClassifciationByHp()
+        public IList<object> GetCarClassifciationByHp()
         {
             using (var tran = _session.BeginTransaction())
             {
                 try
                 {
-                   
                     Engine eAlias = null;
-
-
                     var res = _session.QueryOver(() => eAlias)
-    
                         .Select(
                             Projections.Conditional(
-                                Restrictions.Where<GasolineEngine>(x=>x.NumberOfCylinders > 2 ),
+                                Restrictions.Where<GasolineEngine>(x => x.NumberOfCylinders > 2),
                                 Projections.Constant("Simple Car", NHibernateUtil.String),
                                 Projections.Constant("Fast Car", NHibernateUtil.String))).List<object>();
-                    return null;
-                    // return res;
+                    return res;
                 }
                 catch (Exception ex)
                 {
@@ -352,9 +350,5 @@ namespace Repository
                 }
             }
         }
-
-
-
-
     }
 }

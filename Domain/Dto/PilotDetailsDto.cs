@@ -6,7 +6,4 @@
         public string Team { get; set; }
         public int CarCount { get; set; }
     }
-
-
-
 }

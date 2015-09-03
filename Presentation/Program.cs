@@ -12,7 +12,7 @@ namespace Presentation
     internal class Program
     {
         private static readonly CarFactory MaranelloCarFactory;
-        private static ICarRepository CarRepository;
+        private static readonly ICarRepository CarRepository;
         private static readonly IPilotRepository PilotRepository;
 
         static Program()
@@ -51,20 +51,48 @@ namespace Presentation
 
             //   getOldestPilot();
             //   getMTeamDrivers();
-            getClassification();
+            //  GetClassification();
+           // GetCarDetails();
+            GetCarDetailsPilot();
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
         }
 
-        private static void getClassification()
+        private static void GetCarDetailsPilot()
         {
-            var res = PilotRepository.GetCarClassifciationByHp();
-
+            var res = CarRepository.GetCarDetailsWithPilot();
+            foreach (var carDetailsDto in res)
+            {
+                Console.WriteLine("Pilot: "+carDetailsDto.PilotName+"\n"+carDetailsDto.Name
+                                  + " hp " + carDetailsDto.HorsePowers + " weight " + carDetailsDto.Weight +
+                                  " tank volume " + carDetailsDto.TankVolume);
+            }
         }
 
-        private static void getMTeamDrivers()
+        private static void GetCarDetails()
+        {
+            var res = CarRepository.GetCarDetails();
+            foreach (var carDetailsDto in res)
+            {
+                Console.WriteLine(carDetailsDto.Name
+                                  + " hp " + carDetailsDto.HorsePowers + " weight " + carDetailsDto.Weight +
+                                  " tank volume " + carDetailsDto.TankVolume);
+            }
+        }
+
+        private static void GetClassification()
+        {
+            var res = PilotRepository.GetCarClassifciationByHp();
+            Console.WriteLine("car types");
+            foreach (var re in res)
+            {
+                Console.WriteLine(re);
+            }
+        }
+
+        private static void GetMTeamDrivers()
         {
             var mDrivers = PilotRepository.GetMTeamDrivers();
             foreach (object[] objects in mDrivers)
@@ -73,7 +101,7 @@ namespace Presentation
             }
         }
 
-        private static void getOldestPilot()
+        private static void GetOldestPilot()
         {
             var res = PilotRepository.GetOldestPilot();
             Console.WriteLine(res.Name + " age:" + res.Age);

@@ -1,21 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
-  assembly="Domain.Mapping"
-  namespace="PatternsFun.Domain">
+                   assembly="Domain.Mapping"
+                   namespace="PatternsFun.Domain">
   <database-object>
     <create>
-    ALTER TABLE [Car]
-    ADD CONSTRAINT [Car.Vehicle_ID] FOREIGN KEY ([Vehicle_ID]) REFERENCES [Vehicle] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT Chk_Weight CHECK ([Weight] > 0),
-        CONSTRAINT Chk_AccelerationSpeed CHECK ([accelerationSpeed] > 0)
-        
-        ALTER TABLE [ElectroCar]
-    ADD  CONSTRAINT EWeight CHECK ([Weight] > 0),
-        CONSTRAINT Chk_EAccelerationSpeed CHECK ([accelerationSpeed] > 0),
-        
-        ALTER TABLE [GasolineEngine]
-    ADD   CONSTRAINT Chk_CylindNum CHECK ([cylinderNumber] > 0);
-        
+      ALTER TABLE [Car]
+      ADD CONSTRAINT [Car.Vehicle_ID] FOREIGN KEY ([Vehicle_ID]) REFERENCES [Vehicle] ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION,
+      CONSTRAINT Chk_Weight CHECK ([Weight] > 0),
+      CONSTRAINT Chk_AccelerationSpeed CHECK ([accelerationSpeed] > 0)
+
+      ALTER TABLE [ElectroCar]
+      ADD  CONSTRAINT EWeight CHECK ([Weight] > 0),
+      CONSTRAINT Chk_EAccelerationSpeed CHECK ([accelerationSpeed] > 0),
+
+      ALTER TABLE [GasolineEngine]
+      ADD   CONSTRAINT Chk_CylindNum CHECK ([cylinderNumber] > 0);
+
     </create>
     <drop>
     </drop>

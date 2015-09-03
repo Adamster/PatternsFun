@@ -43,17 +43,16 @@ namespace Repository
             var stringBuilder = new StringBuilder();
             new SchemaExport(conf).Execute(entry => stringBuilder.Append(entry), false, false);
 
-            using (var configFile = new FileStream(@"C:\Users\" + Environment.UserName + @"\Documents\config.sql", FileMode.Create))
+            using (
+                var configFile = new FileStream(@"C:\Users\" + Environment.UserName + @"\Documents\config.sql",
+                    FileMode.Create))
             {
                 Logger.AddMsgToLog("saving new config sql");
                 var buff = Encoding.Unicode.GetBytes(stringBuilder.ToString());
-                configFile.Write(buff,0, buff.Length);
-
+                configFile.Write(buff, 0, buff.Length);
             }
 
             return configuration.BuildSessionFactory();
-
-           
         }
     }
 }

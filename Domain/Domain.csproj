@@ -42,6 +42,7 @@
     <Compile Include="CarTypes\Car.cs" />
     <Compile Include="CarTypes\ElectroCar.cs" />
     <Compile Include="Dto\PilotDetailsDto.cs" />
+    <Compile Include="Dto\CarDetailsDto.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="FuelTypes\Diesel.cs" />
     <Compile Include="FuelTypes\Petrol.cs" />

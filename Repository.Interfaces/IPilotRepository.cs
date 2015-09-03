@@ -17,7 +17,7 @@ namespace Repository.Interfaces
         IList<Pilot> GetUniquePilots();
         IList<object> GetAvgHorsePowerPerPilot();
         Pilot GetOldestPilot();
-       IList<object> GetMTeamDrivers();
-        IList<Car> GetCarClassifciationByHp();
+        IList<object> GetMTeamDrivers();
+        IList<object> GetCarClassifciationByHp();
     }
 }
