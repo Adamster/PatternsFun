@@ -45,17 +45,23 @@ namespace Presentation
             // TestDb();
             // ShowVehicleName();
             // ShowPilotCarCountCrutch();
-              ShowPilotCarCount();
+            //  ShowPilotCarCount();
             //  ShowUniquePilot();
             // ShowAvgHpPerPilot();
 
             //   getOldestPilot();
             //   getMTeamDrivers();
-
+            getClassification();
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
             log.SaveToFile();
+        }
+
+        private static void getClassification()
+        {
+            var res = PilotRepository.GetCarClassifciationByHp();
+
         }
 
         private static void getMTeamDrivers()

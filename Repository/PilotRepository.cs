@@ -10,7 +10,6 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
 using NHibernate.Transform;
-using NHibernate.Type;
 using Repository.Interfaces;
 using Utils;
 
@@ -123,11 +122,6 @@ namespace Repository
                     var res = _session.QueryOver(() => carAlias)
                         .JoinAlias(() => carAlias.Engine, () => geAlias, JoinType.InnerJoin)
                         .Where(() => geAlias.HorsePowers < 500)
-                        .List();
-
-                    var res1 = _session.QueryOver<Car>()
-                        .JoinQueryOver(x => x.Engine, () => geAlias)
-                        .Where(() => geAlias.HorsePowers > 500)
                         .List();
 
                     tran.Commit();
@@ -318,6 +312,36 @@ namespace Repository
                         ).WithSubquery.WhereProperty(x => x.Team).In(mTeamSelect)
                         .List<object>();
                     return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
+        public IList<Car> GetCarClassifciationByHp()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                   
+                    Engine eAlias = null;
+
+
+                    var res = _session.QueryOver(() => eAlias)
+    
+                        .Select(
+                            Projections.Conditional(
+                                Restrictions.Where<GasolineEngine>(x=>x.NumberOfCylinders > 2 ),
+                                Projections.Constant("Simple Car", NHibernateUtil.String),
+                                Projections.Constant("Fast Car", NHibernateUtil.String))).List<object>();
+                    return null;
+                    // return res;
                 }
                 catch (Exception ex)
                 {
