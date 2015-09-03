@@ -41,19 +41,19 @@ namespace Presentation
 
             #endregion
 
-             //  GenerateData();
+            //  GenerateData();
             // TestDb();
             // ShowVehicleName();
             // ShowPilotCarCountCrutch();
             //  ShowPilotCarCount();
-              ShowUniquePilot();
+            ShowUniquePilot();
             // ShowAvgHpPerPilot();
 
             //   getOldestPilot();
             //   getMTeamDrivers();
             //  GetClassification();
-           // GetCarDetails();
-           // GetCarDetailsPilot();
+            // GetCarDetails();
+            // GetCarDetailsPilot();
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
@@ -65,9 +65,9 @@ namespace Presentation
             var res = CarRepository.GetCarDetailsWithPilot();
             foreach (var carDetailsDto in res)
             {
-                Console.WriteLine("Pilot: "+carDetailsDto.PilotName+"\n"+carDetailsDto.Name
-                                 + " weight " + carDetailsDto.Weight +
-                                  " tank volume " + carDetailsDto.TankVolume+"\n");
+                Console.WriteLine("Pilot: " + carDetailsDto.PilotName + "\n" + carDetailsDto.Name
+                                  + " weight " + carDetailsDto.Weight +
+                                  " tank volume " + carDetailsDto.TankVolume + "\n");
             }
         }
 
@@ -171,7 +171,6 @@ namespace Presentation
             CarRepository.Save(car1);
             CarRepository.Save(car2);
             CarRepository.Save(car3);
-
         }
 
         private static void ShowVehicleName()
