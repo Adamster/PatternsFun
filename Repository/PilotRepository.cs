@@ -213,7 +213,6 @@ namespace Repository
                         .TransformUsing(Transformers.DistinctRootEntity)
                         .Future();
 
-
                     var resL = res.ToList();
                     tran.Commit();
 

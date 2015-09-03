@@ -41,19 +41,19 @@ namespace Presentation
 
             #endregion
 
-            //   GenerateData();
+             //  GenerateData();
             // TestDb();
             // ShowVehicleName();
             // ShowPilotCarCountCrutch();
             //  ShowPilotCarCount();
-            //  ShowUniquePilot();
+              ShowUniquePilot();
             // ShowAvgHpPerPilot();
 
             //   getOldestPilot();
             //   getMTeamDrivers();
             //  GetClassification();
            // GetCarDetails();
-            GetCarDetailsPilot();
+           // GetCarDetailsPilot();
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
@@ -66,8 +66,8 @@ namespace Presentation
             foreach (var carDetailsDto in res)
             {
                 Console.WriteLine("Pilot: "+carDetailsDto.PilotName+"\n"+carDetailsDto.Name
-                                  + " hp " + carDetailsDto.HorsePowers + " weight " + carDetailsDto.Weight +
-                                  " tank volume " + carDetailsDto.TankVolume);
+                                 + " weight " + carDetailsDto.Weight +
+                                  " tank volume " + carDetailsDto.TankVolume+"\n");
             }
         }
 
@@ -150,19 +150,28 @@ namespace Presentation
 
         private static void GenerateData()
         {
-            var pilot = PilotFactory.CreateNewPilot("John Doe", "01/09/2015", 19, "McLaren");
-            PilotRepository.AddPilot(pilot);
+            //var pilot = PilotFactory.CreateNewPilot("John Doe", "01/09/2015", 19, "McLaren");
+            //PilotRepository.AddPilot(pilot);
 
-            var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
-            var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
-            var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
-            var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
+            //var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
+            //var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
+            //var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
+            //var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
 
 
-            pilot2.AddCar(car1);
-            pilot2.AddCar(car2);
-            pilot2.AddCar(car3);
-            PilotRepository.AddPilot(pilot2);
+            //pilot2.AddCar(car1);
+            //pilot2.AddCar(car2);
+            //pilot2.AddCar(car3);
+            //PilotRepository.AddPilot(pilot2);
+
+            var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, null);
+            var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, null);
+            var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, null);
+
+            CarRepository.Save(car1);
+            CarRepository.Save(car2);
+            CarRepository.Save(car3);
+
         }
 
         private static void ShowVehicleName()

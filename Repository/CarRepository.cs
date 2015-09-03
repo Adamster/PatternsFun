@@ -6,6 +6,7 @@ using Domain.EnginesTypes;
 using Domain.Persons;
 using NHibernate;
 using NHibernate.Criterion;
+using NHibernate.SqlCommand;
 using NHibernate.Transform;
 using Repository.Interfaces;
 using Utils;
@@ -58,22 +59,20 @@ namespace Repository
             {
                 Pilot pAlias = null;
                 Car cAlias = null;
-               // GasolineEngine geAlias = null;
-                Engine eAlias = null;
+                GasolineEngine geAlias = null;
                 CarDetailsDto cddtoAlias = null;
                 try
                 {
                     var res = _session.QueryOver(() => pAlias)
-                        .JoinAlias(() => pAlias.CarVehicles, () => cAlias)
-                        .JoinAlias(() => cAlias.Engine, () => eAlias)
+                        .JoinAlias(() => pAlias.CarVehicles, () => cAlias, JoinType.RightOuterJoin)
                         .SelectList(list => list
                             .Select(() => cAlias.Name).WithAlias(() => cddtoAlias.Name)
                             .Select(() => cAlias.Weight).WithAlias(() => cddtoAlias.Weight)
-                            .Select(() => eAlias.HorsePowers).WithAlias(() => cddtoAlias.HorsePowers)
                             .Select(() => cAlias.FuelTank).WithAlias(() => cddtoAlias.TankVolume)
                             .Select(Projections.SqlFunction("coalesce", NHibernateUtil.String,
                                 Projections.Property<Pilot>(p => p.Name),
-                                Projections.Constant("No pilot in this Vehicle", NHibernateUtil.String))).WithAlias(()=> cddtoAlias.PilotName)
+                                Projections.Constant("No pilot in this Vehicle", NHibernateUtil.String)))
+                            .WithAlias(() => cddtoAlias.PilotName)
                         )
                         .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
                         .List<CarDetailsDto>();
