@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Interfaces", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionImplementation", "ActionImplementation\ActionImplementation.csproj", "{ABD127A7-D346-4685-8F55-DB7DDF6850A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPresentation", "WebPresentation\WebPresentation.csproj", "{47B53F18-23E7-498E-BBEE-698B48D42EFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPresentation.Tests", "WebPresentation.Tests\WebPresentation.Tests.csproj", "{F7A2A892-8567-428C-8D90-31C698CF1687}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,14 @@ Global
 		{ABD127A7-D346-4685-8F55-DB7DDF6850A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABD127A7-D346-4685-8F55-DB7DDF6850A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABD127A7-D346-4685-8F55-DB7DDF6850A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B53F18-23E7-498E-BBEE-698B48D42EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B53F18-23E7-498E-BBEE-698B48D42EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B53F18-23E7-498E-BBEE-698B48D42EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B53F18-23E7-498E-BBEE-698B48D42EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A2A892-8567-428C-8D90-31C698CF1687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A2A892-8567-428C-8D90-31C698CF1687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A2A892-8567-428C-8D90-31C698CF1687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A2A892-8567-428C-8D90-31C698CF1687}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
