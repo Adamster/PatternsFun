@@ -1,56 +1,38 @@
-// File: ElectroCar.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
 using System;
 using Domain.EnginesTypes;
 using Domain.Interfaces;
+using Domain.Persons;
 using Utils;
 
 namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
-        public ElectroCar(int chargeLvlValue, int weightValue, ElectroEngine electroEngineValue, string nameValue)
+        public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string specialAdds,
+            Pilot pilot, int chargeLevel)
+            : base(name, mileage, weight, specialAdds, pilot)
         {
-            if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the ElectroCar!");
-            if (chargeLvlValue < 0 || chargeLvlValue > 100)
+            if (chargeLevel < 0 || chargeLevel > 100)
                 throw new ArgumentException("Charge lvl can't be below zero or more than 100");
-            if (weightValue <= 0) throw new ArgumentException("weight can't be below or equal zero");
-
-            Name = nameValue;
-            ChargeLevel = chargeLvlValue;
-            Weight = weightValue;
-            _engine = electroEngineValue;
-            AccelerationSpeed = _engine.HorsePowers/Weight*100;
+            ChargeLevel = chargeLevel;
+            Engine = electroEngine;
+            AccelerationSpeed = Engine.HorsePowers/Weight*100;
         }
 
-        private int ChargeLevel { get; set; }
-
-        public void Horn()
+        [Obsolete]
+        protected ElectroCar()
         {
-            Console.WriteLine("ElectroCar beep");
         }
 
-        public void TurnLeft()
-        {
-            Console.WriteLine("ElectroCar turning left");
-        }
+        public virtual ElectroEngine Engine { get; protected set; }
+        public virtual int ChargeLevel { get; protected set; }
 
-        public void TurnRight()
-        {
-            Console.WriteLine("ElectroCar turning right");
-        }
-
-        private readonly ElectroEngine _engine;
-
-        public override sealed void Accelerate(int toSpeed)
+        public override void Accelerate(int toSpeed)
         {
             PressThrottle(toSpeed);
         }
 
-        private void PressThrottle(int toSpeed)
+        protected virtual void PressThrottle(int toSpeed)
         {
             Mileage = 0;
             while (Speed < toSpeed)
@@ -73,7 +55,7 @@ namespace Domain.CarTypes
             }
         }
 
-        private bool DischargeBattery()
+        protected virtual bool DischargeBattery()
         {
             if (ChargeLevel > 6)
             {
@@ -87,13 +69,13 @@ namespace Domain.CarTypes
             throw new Exception("\nLow Battery!\n");
         }
 
-        public override sealed void Brake()
+        public override void Brake()
         {
             ChargeBatteryByBrakes();
             PrintCurrentSpeed();
         }
 
-        private void ChargeBatteryByBrakes()
+        protected virtual void ChargeBatteryByBrakes()
         {
             Console.WriteLine("remaminng charge lvl : " + ChargeLevel);
             Logger.AddMsgToLog("remaminng charge lvl : " + ChargeLevel);
@@ -112,7 +94,7 @@ namespace Domain.CarTypes
             }
         }
 
-        public void Charge(int chargeLvl)
+        public virtual void Charge(int chargeLvl)
         {
             if (ChargeLevel + chargeLvl > 100)
             {
@@ -122,9 +104,28 @@ namespace Domain.CarTypes
             ChargeLevel += chargeLvl;
         }
 
-        private double GetDeAccelerationSpeed()
+        protected virtual double GetDeAccelerationSpeed()
         {
             return 10000/Weight;
         }
+
+        #region ISteeringWheel Members
+
+        public virtual void Horn()
+        {
+            Console.WriteLine("ElectroCar beep");
+        }
+
+        public virtual void TurnLeft()
+        {
+            Console.WriteLine("ElectroCar turning left");
+        }
+
+        public virtual void TurnRight()
+        {
+            Console.WriteLine("ElectroCar turning right");
+        }
+
+        #endregion
     }
 }

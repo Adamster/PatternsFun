@@ -51,12 +51,24 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ActionImplementation\ActionImplementation.csproj">
-      <Project>{9562b2ff-979c-4e80-a4d4-74992a5f3925}</Project>
+      <Project>{abd127a7-d346-4685-8f55-db7ddf6850a8}</Project>
       <Name>ActionImplementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{25a4e89f-79ba-4d7c-9b09-8a5053c2a0ae}</Project>
+      <Name>Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\InterfacesActions\InterfacesActions.csproj">
       <Project>{bcb6598d-b718-4c52-a00d-98f659751a34}</Project>
       <Name>InterfacesActions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository.Interfaces\Repository.Interfaces.csproj">
+      <Project>{d803ce4a-4a6e-4d23-9413-20668a7a6b50}</Project>
+      <Name>Repository.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{e1efcbbf-cb4d-4fd1-9528-159676bedfbf}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICarActionOnCreation.cs" />
+    <Compile Include="IElectroCarActionOnCreation.cs" />
+    <Compile Include="IParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

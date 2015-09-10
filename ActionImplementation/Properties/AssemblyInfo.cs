@@ -1,20 +1,15 @@
-﻿// File: AssemblyInfo.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("ActionImplementation")]
+[assembly: AssemblyTitle("ActionImplementation1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ActionImplementation")]
+[assembly: AssemblyProduct("ActionImplementation1")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -27,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("fa14f03c-e6bb-4755-8efa-b9ffb71ea74a")]
+[assembly: Guid("113fd13b-296f-4295-a1cd-2d913e80abee")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -1,17 +1,25 @@
-﻿// File: Engine.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
+﻿using System;
 
 namespace Domain.EnginesTypes
 {
-    public abstract class Engine
+    public class Engine : Entity
     {
-        public int HorsePowers { get; protected set; }
-        public abstract void Start();
-        public abstract void Stop();
+        [Obsolete]
+        protected Engine()
+        {
+        }
 
-        public void AddHp(int value)
+        public virtual int HorsePowers { get; protected set; }
+
+        public virtual void Start()
+        {
+        }
+
+        public virtual void Stop()
+        {
+        }
+
+        public virtual void AddHp(int value)
         {
             HorsePowers += value;
         }

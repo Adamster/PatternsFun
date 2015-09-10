@@ -1,14 +1,11 @@
-// File: NameVehicleComparer.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
 using System.Collections.Generic;
 
 namespace Domain
 {
     internal class NameVehicleComparer : IEqualityComparer<Vehicle>
     {
+        #region IEqualityComparer<Vehicle> Members
+
         public bool Equals(Vehicle a, Vehicle b)
         {
             return a.Name == b.Name;
@@ -18,5 +15,7 @@ namespace Domain
         {
             return (obj.Name).GetHashCode();
         }
+
+        #endregion
     }
 }

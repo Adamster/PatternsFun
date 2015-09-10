@@ -1,9 +1,5 @@
-// File: GasolineEngine.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
 using System;
+using Domain.CarTypes;
 
 namespace Domain.EnginesTypes
 {
@@ -15,7 +11,13 @@ namespace Domain.EnginesTypes
             NumberOfCylinders = (int) engineType;
         }
 
-        protected int NumberOfCylinders { get; set; }
+        [Obsolete]
+        protected GasolineEngine()
+        {
+        }
+
+        public virtual Car Car { get; set; }
+        public virtual int NumberOfCylinders { get; protected set; }
 
         public override void Start()
         {

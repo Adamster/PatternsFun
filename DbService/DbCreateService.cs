@@ -1,10 +1,4 @@
-﻿// File: DbCreateService.cs in
-// PatternsFun by Serghei Adam 
-// Created 20 08 2015 
-// Edited 20 08 2015
-
-using System;
-using System.CodeDom;
+﻿using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,16 +8,21 @@ namespace DbService
 {
     public class DbCreateService
     {
-        static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["VehicleDB"].ConnectionString;
+        private static readonly string ConnectionString =
+            ConfigurationManager.ConnectionStrings["test"].ConnectionString;
 
-        static readonly string ConnectionString2 = ConfigurationManager.ConnectionStrings["VehicleDBOrig"].ConnectionString;
+        private static readonly string ConnectionString2 =
+            ConfigurationManager.ConnectionStrings["VehicleDBOrig"].ConnectionString;
+
         public static void CreateDbStrucutre()
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
                 Logger.AddMsgToLog("sql connection created");
-#region sqlText
+
+                #region sqlText
+
                 //indian test code :)
                 var sqlCommandText = @"CREATE TABLE Vehicle
 (
@@ -119,25 +118,26 @@ ALTER TABLE ElectroEngine
     ADD CONSTRAINT [ElectroEngine.ID] FOREIGN KEY ([Engine_ID]) REFERENCES Engine ([ID]) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 Alter table vehicle 
-add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;";
-	
-#endregion
+add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references OwnerPilot ([id]) ON DELETE NO ACTION ON UPDATE NO ACTION;";
+
+                #endregion
+
                 using (var sqlcommand = new SqlCommand(sqlCommandText, sqlConnection))
                 {
                     Logger.AddMsgToLog("sql command started");
                     sqlcommand.ExecuteNonQuery();
                     Logger.AddMsgToLog("sql command executed");
                 }
-
             }
         }
 
         public static void CreateCustomTable()
         {
-            using (var sqlConnection= new SqlConnection(ConnectionString))
+            using (var sqlConnection = new SqlConnection(ConnectionString))
             {
                 sqlConnection.Open();
-                var sqlCommandText = "CREATE TABLE Vehicle1 (ID int not null   identity(1,1) primary key , name varchar(50))";
+                var sqlCommandText =
+                    "CREATE TABLE Vehicle1 (ID int not null   identity(1,1) primary key , name varchar(50))";
                 using (var sqlCommand = new SqlCommand(sqlCommandText, sqlConnection))
                 {
                     sqlCommand.ExecuteNonQuery();
@@ -150,32 +150,31 @@ add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([i
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "Select Count(*) from pilot";
+                var sqlText = "Select Count(*) from OwnerPilot";
                 using (var sqlCommand = new SqlCommand(sqlText, sqlConn))
                 {
-                  var count =  sqlCommand.ExecuteScalar();
+                    var count = sqlCommand.ExecuteScalar();
                     Console.WriteLine(count);
                 }
             }
         }
 
-        public  static void ReaderTest()
+        public static void ReaderTest()
         {
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "select * from pilot";
+                var sqlText = "select * from OwnerPilot";
                 using (var command = new SqlCommand(sqlText, sqlConn))
                 {
-                     SqlDataReader reader =  command.ExecuteReader();
+                    var reader = command.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        string name = (string) reader["Name"];
-                        DateTime DebutTime = (DateTime) reader["DebutDate"];
-                        Console.WriteLine(name+" debuted at "+ DebutTime.ToLongDateString());
+                        var name = (string) reader["Name"];
+                        var DebutTime = (DateTime) reader["DebutDate"];
+                        Console.WriteLine(name + " debuted at " + DebutTime.ToLongDateString());
                     }
-                   
                 }
             }
         }
@@ -185,18 +184,19 @@ add constraint [Vehicle.Owner_ID] foreign key  ([Owner_ID]) references pilot ([i
             using (var sqlConn = new SqlConnection(ConnectionString2))
             {
                 sqlConn.Open();
-                var sqlText = "select * from pilot where id > @ID";
+                var sqlText = "select * from OwnerPilot where id > @ID";
                 using (var sqlCommand = new SqlCommand(sqlText, sqlConn))
                 {
                     sqlCommand.Parameters.Add("@ID", SqlDbType.Int);
                     sqlCommand.Parameters["@ID"].Value = parametr;
 
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    var reader = sqlCommand.ExecuteReader();
                     while (reader.Read())
                     {
-                        string name = (string)reader["Name"];
-                        DateTime debutTime = (DateTime)reader["DebutDate"];
-                        Console.WriteLine("id: "+(int)reader["ID"]+") "+name + " debuted at " + debutTime.ToLongDateString());
+                        var name = (string) reader["Name"];
+                        var debutTime = (DateTime) reader["DebutDate"];
+                        Console.WriteLine("id: " + (int) reader["ID"] + ") " + name + " debuted at " +
+                                          debutTime.ToLongDateString());
                     }
                 }
             }

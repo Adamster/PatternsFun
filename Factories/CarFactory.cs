@@ -1,30 +1,27 @@
-﻿// File: CarFactory.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-using System;
-using Domain;
+﻿using System;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
+using Domain.Persons;
 using InterfacesActions;
 
 namespace Factories
 {
     public class CarFactory
     {
-        public CarFactory(ICarActionOnCreation carActionOnCreation)
-        {
-            _fillCarTank = carActionOnCreation;
-        }
-
+        private readonly IElectroCarActionOnCreation _chargeCar;
         private readonly ICarActionOnCreation _fillCarTank;
 
-        public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam)
+        public CarFactory(ICarActionOnCreation carActionOnCreation, IElectroCarActionOnCreation eCarActionOnCreation)
         {
-            var car = new Car(fuelTankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
-                OptParamStr(optionalParam));
+            _fillCarTank = carActionOnCreation;
+            _chargeCar = eCarActionOnCreation;
+        }
+
+        public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
+            EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
+        {
+            var car = new Car(name, fuelTankVolume, weight, null, pilot,
+                0, CreateGasolineEngine(horsePower, engineType));
             OnCarCreation(car);
 
             return car;
@@ -41,18 +38,18 @@ namespace Factories
             return optParamStr;
         }
 
-        public SportCar CreateNewSportCar(int fueltankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam)
+        public SportCar CreateNewSportCar(int fuelTankVolume, double weight, int horsePower,
+            EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
         {
-            var sportCar = new SportCar(fueltankVolume, weight, CreateGasolineEngine(horsePower, engineType), name,
-                OptParamStr(optionalParam));
+            var sportCar = new SportCar(name, null, weight, null, pilot, fuelTankVolume,
+                CreateGasolineEngine(horsePower, engineType));
             OnCarCreation(sportCar);
             return sportCar;
         }
 
-        private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineType)
+        private GasolineEngine CreateGasolineEngine(int horsePowers, EngineTypes engineTypes)
         {
-            var engine = new GasolineEngine(horsePowers, engineType);
+            var engine = new GasolineEngine(horsePowers, engineTypes);
             OnEngineCreation(engine);
             return engine;
         }
@@ -73,8 +70,26 @@ namespace Factories
             _fillCarTank.FillCarTank(car);
         }
 
+        public ElectroCar CreateNewElectroCar(string name, double weight, int hpValue, Pilot pilot)
+        {
+            var electro = new ElectroCar(name, null, CreateElectroEngine(hpValue), weight, null, pilot, 0);
+            ChargeCar(electro);
+            return electro;
+        }
+
+        private void ChargeCar(ElectroCar electroCar)
+        {
+            _chargeCar.ChargeCar(electroCar);
+        }
+
+        #region Nested type: VehicleParams
+
         public class VehicleParams : IParams
         {
+            private string _params;
+
+            #region IParams Members
+
             public IParams WithParams(Func<string> paramsDelegate)
             {
                 _params = paramsDelegate();
@@ -86,7 +101,9 @@ namespace Factories
                 return _params;
             }
 
-            private string _params;
+            #endregion
         }
+
+        #endregion
     }
 }

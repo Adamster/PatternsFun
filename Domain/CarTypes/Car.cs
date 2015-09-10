@@ -1,62 +1,57 @@
-// File: Car.cs in
-// PatternsFun by Serghei Adam 
-// Created 05 08 2015 
-// Edited 07 08 2015
-
-#region
-
 using System;
 using System.Diagnostics;
 using System.Threading;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Interfaces;
+using Domain.Persons;
 using Utils;
-
-#endregion
 
 namespace Domain.CarTypes
 {
     public class Car : Vehicle, ISteeringWheel, IVehicleComponent, IChangeOil
     {
-        #region  public items
+        protected IFuelConsumeStrategy FuelType;
+        protected Stopwatch Sw = new Stopwatch();
 
-        public Stopwatch Sw = new Stopwatch();
-
-        #endregion
-
-        public Car(int fuelTankValue, double weightValue, GasolineEngine carEngineValue, string nameValue,
-            string addParam)
+        [Obsolete]
+        protected Car()
         {
-            if (string.IsNullOrWhiteSpace(nameValue)) throw new ArgumentException("please name the car!");
-            if (fuelTankValue < 0) throw new ArgumentException("fuel tank volume can't be below or equal zero");
-            if (weightValue <= 0) throw new ArgumentException("weight can't be below or equal zero");
-
-            Name = nameValue;
-            FuelTank = fuelTankValue;
-            Weight = weightValue;
-            Engine = carEngineValue;
-            AccelerationSpeed = GetAccelerationSpeed();
-            SpecialAdds = addParam;
-            FuelType = new Petrol();
         }
 
-        protected double FuelTank { get; set; }
-        public GasolineEngine Engine { get; protected set; }
+        public Car(string name, double? mileage, double weight, string specialAdds,
+            Pilot pilot, double fuelTank, GasolineEngine engine)
+            : base(name, mileage, weight, specialAdds, pilot)
+        {
+            if (fuelTank < 0) throw new ArgumentException("fuel tank volume can't be below or equal zero");
+            FuelTank = fuelTank;
+            Engine = engine;
+            FuelType = new Petrol();
+            AccelerationSpeed = GetAccelerationSpeed();
+        }
 
-        public void TurnLeft()
+        public virtual double Weight
+        {
+            get { return GetWeight(); }
+            protected set { SetWeight(value); }
+        }
+
+        public virtual double FuelTank { get; protected set; }
+        public virtual GasolineEngine Engine { get; set; }
+
+        public virtual void TurnLeft()
         {
             Console.WriteLine("Car turning left");
             Logger.AddMsgToLog("Car turning left");
         }
 
-        public void TurnRight()
+        public virtual void TurnRight()
         {
             Console.WriteLine("Car turning right");
             Logger.AddMsgToLog("Car turning right");
         }
 
-        public void Horn()
+        public virtual void Horn()
         {
             Console.WriteLine("Car beep");
             Logger.AddMsgToLog("Car beep");
@@ -64,16 +59,19 @@ namespace Domain.CarTypes
 
         #region Implementation of IVehicleComponent
 
-        public void TunePart()
+        public virtual void TunePart()
         {
             Console.WriteLine("Welcome to West Coast Customs!");
         }
 
         #endregion
 
-        protected IFuelConsumeStrategy FuelType;
+        public virtual void StopWatch()
+        {
+            Sw.Stop();
+        }
 
-        private double GetAccelerationSpeed()
+        protected virtual double GetAccelerationSpeed()
         {
             return Engine.HorsePowers/Weight*100;
         }
@@ -88,7 +86,7 @@ namespace Domain.CarTypes
             ContinousPressThrottle();
         }
 
-        private void ContinousPressThrottle()
+        protected virtual void ContinousPressThrottle()
         {
             if (Mileage == null)
                 Mileage = 0;
@@ -102,17 +100,17 @@ namespace Domain.CarTypes
             {
                 if (Speed == 0) Speed += GetAccelerationSpeed()/5;
                 else Speed += GetAccelerationSpeed() - Speed/10;
-                double tmp = Math.Ceiling((double) Sw.Elapsed.Milliseconds);
-               // Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
+                var tmp = Math.Ceiling((double) Sw.Elapsed.Milliseconds);
+                // Console.WriteLine("time elapsed: {0}, tmp value: {1}", _sw.Elapsed.Seconds, tmp);
                 Mileage += tmp*Speed;
                 PrintCurrentSpeed();
-               
-                Console.WriteLine("Distance traveled: {0}",Mileage);
+
+                Console.WriteLine("Distance traveled: {0}", Mileage);
                 Sw.Reset();
             }
         }
 
-        private void PressThrottle(int toSpeed)
+        protected virtual void PressThrottle(int toSpeed)
         {
             Engine.Start();
             Mileage = 0;
@@ -152,7 +150,7 @@ namespace Domain.CarTypes
             Console.WriteLine("Fuel remaining in tank: {0}", FuelTank);
         }
 
-        public void StopTheCar()
+        public virtual void StopTheCar()
         {
             while (GetSpeed() != 0)
             {
@@ -165,12 +163,12 @@ namespace Domain.CarTypes
             PressBrakePedal();
         }
 
-        public void FillTank(double value)
+        public virtual void FillTank(double value)
         {
             FuelTank += value;
         }
 
-        private bool BurnFuel()
+        protected virtual bool BurnFuel()
         {
             if (FuelTank > 0)
             {
@@ -182,17 +180,17 @@ namespace Domain.CarTypes
             throw new FuelException();
         }
 
-        protected double BurnFuelRate(IFuelConsumeStrategy fuelType)
+        protected virtual double BurnFuelRate(IFuelConsumeStrategy fuelType)
         {
             return fuelType.BurnFuelRate(Engine.HorsePowers, Weight);
         }
 
-        public void SetFuelType(IFuelConsumeStrategy fuelType)
+        public virtual void SetFuelType(IFuelConsumeStrategy fuelType)
         {
             FuelType = fuelType;
         }
 
-        private void PressBrakePedal()
+        protected virtual void PressBrakePedal()
         {
             if (Speed > GetDeAccelerationSpeed()) Speed -= GetDeAccelerationSpeed();
             else
@@ -203,14 +201,14 @@ namespace Domain.CarTypes
             PrintCurrentSpeed();
         }
 
-        private double GetDeAccelerationSpeed()
+        protected virtual double GetDeAccelerationSpeed()
         {
             return 10000/Weight;
         }
 
         #region Implementation of IChangeOil
 
-        public void ChangeOilRequest()
+        public virtual void ChangeOilRequest()
         {
             StopTheCar();
             OpenBonnet();
@@ -218,7 +216,7 @@ namespace Domain.CarTypes
             CloseBonnet();
         }
 
-        private void OilReplace()
+        protected virtual void OilReplace()
         {
             Console.WriteLine("Oil replaced");
         }
