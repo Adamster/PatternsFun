@@ -11,21 +11,22 @@ namespace Presentation
 {
     internal class Program
     {
-        private static readonly CarFactory MaranelloCarFactory;
-        private static readonly ICarRepository CarRepository;
-        private static readonly IPilotRepository PilotRepository;
+        private static  CarFactory MaranelloCarFactory;
+        private static  ICarRepository CarRepository;
+        private static  IPilotRepository PilotRepository;
 
         static Program()
         {
             ServiceLocator.RegisterAll();
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            CarRepository = ServiceLocator.Get<CarRepository>();
-            PilotRepository = ServiceLocator.Get<PilotRepository>();
+           
             NHibernateProfiler.Initialize();
         }
 
         private static void Main(string[] args)
         {
+            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+            CarRepository = ServiceLocator.Get<CarRepository>();
+            PilotRepository = ServiceLocator.Get<PilotRepository>();
             var log = Logger.GetLogger();
 
             #region comments
@@ -42,11 +43,11 @@ namespace Presentation
             #endregion
 
             //  GenerateData();
-            // TestDb();
+           //  TestDb();
             // ShowVehicleName();
             // ShowPilotCarCountCrutch();
             //  ShowPilotCarCount();
-            ShowUniquePilot();
+           // ShowUniquePilot();
             // ShowAvgHpPerPilot();
 
             //   getOldestPilot();
@@ -150,27 +151,27 @@ namespace Presentation
 
         private static void GenerateData()
         {
-            //var pilot = PilotFactory.CreateNewPilot("John Doe", "01/09/2015", 19, "McLaren");
-            //PilotRepository.AddPilot(pilot);
+            var pilot = PilotFactory.CreateNewPilot("John Doe", "01/09/2015", 19, "McLaren");
+            PilotRepository.AddPilot(pilot);
 
-            //var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
-            //var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
-            //var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
-            //var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
+            var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
+            var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, pilot2);
+            var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, pilot2);
+            var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, pilot2);
 
 
-            //pilot2.AddCar(car1);
-            //pilot2.AddCar(car2);
-            //pilot2.AddCar(car3);
-            //PilotRepository.AddPilot(pilot2);
+            pilot2.AddCar(car1);
+            pilot2.AddCar(car2);
+            pilot2.AddCar(car3);
+            PilotRepository.AddPilot(pilot2);
 
-            var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, null);
-            var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, null);
-            var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, null);
+            //var car1 = MaranelloCarFactory.CreateNewCar(100, 2100, 900, EngineTypes.V10, "Ferrari 900", null, null);
+            //var car2 = MaranelloCarFactory.CreateNewCar(100, 2100, 800, EngineTypes.V10, "Ferrari 800", null, null);
+            //var car3 = MaranelloCarFactory.CreateNewCar(100, 2100, 700, EngineTypes.V10, "Ferrari 700", null, null);
 
-            CarRepository.Save(car1);
-            CarRepository.Save(car2);
-            CarRepository.Save(car3);
+            //CarRepository.Save(car1);
+            //CarRepository.Save(car2);
+            //CarRepository.Save(car3);
         }
 
         private static void ShowVehicleName()
