@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Domain.Persons.Pilot>
+﻿@model IEnumerable<Domain.CarTypes.SportCar>
 
 @{
-    ViewBag.Title = "Pilots";
+    ViewBag.Title = "Index";
 }
 
-<h2>Pilots</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,19 +12,22 @@
 <table>
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.DownForcePressure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelTank)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Team)
+            @Html.DisplayNameFor(model => model.Mileage)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DebutDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExpierenceTime)
+            @Html.DisplayNameFor(model => model.SpecialAdds)
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.Version)
@@ -35,19 +38,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.DownForcePressure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FuelTank)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Team)
+            @Html.DisplayFor(modelItem => item.Mileage)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DebutDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpierenceTime)
+            @Html.DisplayFor(modelItem => item.SpecialAdds)
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.Version)

@@ -9,5 +9,7 @@ namespace Repository.Interfaces
         IList<CarDetailsDto> GetCarDetails();
         IList<CarDetailsDto> GetCarDetailsWithPilot();
         IList<Car> GetAllCars();
+        IList<SportCar> GetAllSportCars();
+
     }
 }

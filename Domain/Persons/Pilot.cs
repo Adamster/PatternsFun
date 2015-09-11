@@ -36,9 +36,9 @@ namespace Domain.Persons
             get { return _carVehicles; }
         }
 
-        public virtual TimeSpan ExpierenceTime
+        public virtual double ExpierenceTime
         {
-            get { return DateTime.Now.Date - DebutDate.Date; }
+            get { return (DateTime.Now.Date - DebutDate.Date).TotalDays; }
             set { }
         }
 

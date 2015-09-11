@@ -116,6 +116,31 @@ namespace Repository
                
             }
         }
+
+        public IList<SportCar> GetAllSportCars()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+
+                try
+                {
+                    var res = _session.QueryOver<SportCar>()
+                  .List();
+
+                    tran.Commit();
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return new List<SportCar>();
+                }
+
+
+            }
+        }
         
     }
 }
