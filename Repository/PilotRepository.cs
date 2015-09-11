@@ -349,5 +349,25 @@ namespace Repository
                 }
             }
         }
+
+        public Pilot GetPilot(long id)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var iPilot = _session.Get<Pilot>(id);
+                        
+                    return iPilot;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
     }
 }
