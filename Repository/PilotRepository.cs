@@ -203,7 +203,7 @@ namespace Repository
             }
         }
 
-        public IList<Pilot> GetUniquePilots()
+        public IList<Pilot> GetAllPilots()
         {
             using (var tran = _session.BeginTransaction())
             {
@@ -211,12 +211,12 @@ namespace Repository
                 {
                     var res = _session.QueryOver<Pilot>()
                         .TransformUsing(Transformers.DistinctRootEntity)
-                        .Future();
+                        .List();
 
-                    var resL = res.ToList();
+                   
                     tran.Commit();
 
-                    return resL;
+                    return res;
                 }
                 catch (Exception ex)
                 {

@@ -131,7 +131,7 @@ namespace Presentation
         private static void ShowUniquePilot()
         {
             var i = 0;
-            var res = PilotRepository.GetUniquePilots();
+            var res = PilotRepository.GetAllPilots();
             foreach (var pilot in res)
             {
                 i++;

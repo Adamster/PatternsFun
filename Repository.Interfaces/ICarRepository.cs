@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Domain.Dto;
+using Domain.CarTypes;
 
 namespace Repository.Interfaces
 {
@@ -7,5 +8,6 @@ namespace Repository.Interfaces
     {
         IList<CarDetailsDto> GetCarDetails();
         IList<CarDetailsDto> GetCarDetailsWithPilot();
+        IList<Car> GetAllCars();
     }
 }

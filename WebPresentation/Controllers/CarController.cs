@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Infrastrucuture.IoC;
+using Repository;
+using Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,41 +9,47 @@ using System.Web.Mvc;
 
 namespace WebPresentation.Controllers
 {
-    public class VehicleController : Controller
+    public class CarController : Controller
     {
         //
-        // GET: /Vehicle/
+        // GET: /Car/
+        internal static ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
 
         public ActionResult Index()
         {
-            return View();
+            var cars = CarRepository.GetAllCars();
+            return View(cars);
         }
 
         //
-        // GET: /Vehicle/Details/5
+        // GET: /Car/Details/5
 
         public ActionResult Details(int id)
         {
+          
             return View();
         }
 
         //
-        // GET: /Vehicle/Create
+        // GET: /Car/Create
 
         public ActionResult Create()
         {
+            
             return View();
         }
 
         //
-        // POST: /Vehicle/Create
+        // POST: /Car/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
             try
             {
+
                 // TODO: Add insert logic here
+               
 
                 return RedirectToAction("Index");
             }
@@ -51,7 +60,7 @@ namespace WebPresentation.Controllers
         }
 
         //
-        // GET: /Vehicle/Edit/5
+        // GET: /Car/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -59,7 +68,7 @@ namespace WebPresentation.Controllers
         }
 
         //
-        // POST: /Vehicle/Edit/5
+        // POST: /Car/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -77,7 +86,7 @@ namespace WebPresentation.Controllers
         }
 
         //
-        // GET: /Vehicle/Delete/5
+        // GET: /Car/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -85,7 +94,7 @@ namespace WebPresentation.Controllers
         }
 
         //
-        // POST: /Vehicle/Delete/5
+        // POST: /Car/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
