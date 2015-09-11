@@ -53,6 +53,46 @@ namespace Repository
             }
         }
 
+
+        public IList<CarDetailsDto> GetCarDetails(long id)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pAlias = null;
+                Car cAlias = null;
+                GasolineEngine geAlias = null;
+                CarDetailsDto cddtoAlias = null;
+                try
+                {
+                    var res = _session.QueryOver(() => cAlias)
+                        .JoinAlias(() => cAlias.Engine, () => geAlias)
+                        .SelectList(list => list
+                            .Select(() => cAlias.Name).WithAlias(() => cddtoAlias.Name)
+                            .Select(() => cAlias.Weight).WithAlias(() => cddtoAlias.Weight)
+                            .Select(() => geAlias.HorsePowers).WithAlias(() => cddtoAlias.HorsePowers)
+                            .Select(() => cAlias.FuelTank).WithAlias(() => cddtoAlias.TankVolume)
+
+                        )
+                        .Where(() => cAlias.Id == id)
+                        .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
+                        .List<CarDetailsDto>();
+
+                    
+                    tran.Commit();
+
+                    return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
+
         public IList<CarDetailsDto> GetCarDetailsWithPilot()
         {
             using (var tran = _session.BeginTransaction())

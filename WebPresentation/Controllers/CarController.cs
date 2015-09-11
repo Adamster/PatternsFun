@@ -1,4 +1,5 @@
-﻿using Infrastrucuture.IoC;
+﻿using Domain.CarTypes;
+using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
 using System;
@@ -26,13 +27,13 @@ namespace WebPresentation.Controllers
 
         public ActionResult Details(int id)
         {
-          
-            return View();
+            var carsDetails = CarRepository.GetCarDetails(id);
+            return View(carsDetails.First());
         }
 
         //
         // GET: /Car/Create
-
+        [HttpGet]
         public ActionResult Create()
         {
             
@@ -43,13 +44,13 @@ namespace WebPresentation.Controllers
         // POST: /Car/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Car car)
         {
             try
             {
-
-                // TODO: Add insert logic here
                
+                // TODO: Add insert logic here
+              
 
                 return RedirectToAction("Index");
             }

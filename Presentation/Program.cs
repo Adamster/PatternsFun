@@ -136,7 +136,7 @@ namespace Presentation
             {
                 i++;
                 Console.WriteLine("{0}) {1} from {2} debuted at {3}\n age {4},\n exp {5} days ", i, pilot.Name,
-                    pilot.Team, pilot.DebutDate.ToShortDateString(), pilot.Age, pilot.ExpierenceTime.TotalDays);
+                    pilot.Team, pilot.DebutDate.ToShortDateString(), pilot.Age, pilot.ExpierenceTime);
             }
         }
 
