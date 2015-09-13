@@ -20,15 +20,19 @@ namespace Domain.Persons
             Age = age;
             Team = team;
         }
-
         [Obsolete]
-        protected Pilot()
+        public Pilot()
         {
         }
 
+        //[Obsolete]
+        //protected Pilot()
+        //{
+        //}
+
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
-        public virtual int Age { get; set; }
+        public virtual int Age { get;  set; }
         public virtual DateTime DebutDate { get; protected set; }
 
         public virtual IList<Vehicle> CarVehicles
@@ -36,10 +40,10 @@ namespace Domain.Persons
             get { return _carVehicles; }
         }
 
-        public virtual TimeSpan ExpierenceTime
+        public virtual double ExpierenceTime
         {
-            get { return DateTime.Now.Date - DebutDate.Date; }
-            set { }
+            get { return (DateTime.Now.Date - DebutDate.Date).TotalDays; }
+          set { }
         }
 
         public virtual PaddockAccessLevels AccessLevel

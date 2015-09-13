@@ -131,12 +131,12 @@ namespace Presentation
         private static void ShowUniquePilot()
         {
             var i = 0;
-            var res = PilotRepository.GetUniquePilots();
+            var res = PilotRepository.GetAllPilots();
             foreach (var pilot in res)
             {
                 i++;
                 Console.WriteLine("{0}) {1} from {2} debuted at {3}\n age {4},\n exp {5} days ", i, pilot.Name,
-                    pilot.Team, pilot.DebutDate.ToShortDateString(), pilot.Age, pilot.ExpierenceTime.TotalDays);
+                    pilot.Team, pilot.DebutDate.ToShortDateString(), pilot.Age, pilot.ExpierenceTime);
             }
         }
 

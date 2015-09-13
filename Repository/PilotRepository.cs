@@ -203,7 +203,7 @@ namespace Repository
             }
         }
 
-        public IList<Pilot> GetUniquePilots()
+        public IList<Pilot> GetAllPilots()
         {
             using (var tran = _session.BeginTransaction())
             {
@@ -211,12 +211,12 @@ namespace Repository
                 {
                     var res = _session.QueryOver<Pilot>()
                         .TransformUsing(Transformers.DistinctRootEntity)
-                        .Future();
+                        .List();
 
-                    var resL = res.ToList();
+                   
                     tran.Commit();
 
-                    return resL;
+                    return res;
                 }
                 catch (Exception ex)
                 {
@@ -339,6 +339,26 @@ namespace Repository
                                 Projections.Constant("Simple Car", NHibernateUtil.String),
                                 Projections.Constant("Fast Car", NHibernateUtil.String))).List<object>();
                     return res;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
+        public Pilot GetPilot(long id)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var iPilot = _session.Get<Pilot>(id);
+                        
+                    return iPilot;
                 }
                 catch (Exception ex)
                 {

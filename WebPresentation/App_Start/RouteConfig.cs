@@ -18,6 +18,12 @@ namespace WebPresentation
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Car",
+                url: "{controller}/{action}/{id}",
+                defaults: new {controlller = "Car", action = "Index", id= UrlParameter.Optional}
+                );
         }
     }
 }
