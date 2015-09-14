@@ -29,11 +29,26 @@ namespace Domain.Persons
         //protected Pilot()
         //{
         //}
-
+        public virtual void SetId(long id)
+        {
+            Id = id;
+        }
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
         public virtual int Age { get;  set; }
         public virtual DateTime DebutDate { get; protected set; }
+
+        public virtual Pilot PilotEdit(Pilot oldPilot, Pilot newPilot)
+        {
+            var editedPilot = oldPilot;
+            editedPilot.Name = newPilot.Name;
+            editedPilot.Age = newPilot.Age;
+            editedPilot.DebutDate = newPilot.DebutDate;
+            
+
+            return editedPilot;
+        }
+
 
         public virtual IList<Vehicle> CarVehicles
         {

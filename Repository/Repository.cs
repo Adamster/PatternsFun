@@ -30,7 +30,28 @@ namespace Repository
             }
         }
 
-        public void Update(long id)
+        public void SaveUpdate<TEntity>(TEntity entity) where TEntity : Entity
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    _session.SaveOrUpdate(entity);
+
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    tran.Rollback();
+                } 
+
+               
+            }
+        }
+
+        public void Delete(long id)
         {
             using (var tran = _session.BeginTransaction())
             {
@@ -51,9 +72,6 @@ namespace Repository
             }
         }
 
-        public void Delete(long id)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

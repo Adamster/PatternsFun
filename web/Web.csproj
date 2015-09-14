@@ -230,9 +230,9 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Pilot\Index.cshtml" />
     <Content Include="Views\Pilot\Details.cshtml" />
-    <Content Include="Views\Pilot\Edit.cshtml" />
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Pilot\Delete.cshtml" />
+    <Content Include="Views\Pilot\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
