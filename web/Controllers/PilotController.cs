@@ -4,6 +4,7 @@ using Factories;
 using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -32,11 +33,12 @@ namespace Web.Controllers
 
         // POST: Pilot/Create
         [HttpPost]
-        public ActionResult Create(string name, string debutdate, string age, string team)
+        public ActionResult Create(PilotModel pilotModel)
         {
             try
             {
-                var pilotNew = PilotFactory.CreateNewPilot(name, debutdate, int.Parse(age), team);
+                var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
+                    int.Parse(pilotModel.Age), pilotModel.Team);
 
                 PilotRepository.AddPilot(pilotNew);
 
@@ -52,12 +54,17 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             var oldPilot = PilotRepository.GetPilot(id);
-            return View(oldPilot);
+            var modelPilot = new PilotModel();
+            modelPilot.Name = oldPilot.Name;
+            modelPilot.Age = oldPilot.Age.ToString();
+            modelPilot.DebutDate = oldPilot.DebutDate;
+            modelPilot.Team = oldPilot.Team;
+            return View(modelPilot);
         }
 
         // POST: Pilot/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, string name, string debutdate, string age, string team)
+        public ActionResult Edit(int id, PilotModel editedPilot)
         {
             try
             {
@@ -65,13 +72,13 @@ namespace Web.Controllers
                 var oldPilot = PilotRepository.GetPilot(id);
                 PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
-                    Id= id,
-                    Name = name,
-                    Debutdate = debutdate,
-                    Age = age,
-                    Team = team
-
+                    Id = id,
+                    Name = editedPilot.Name,
+                    Debutdate = editedPilot.DebutDate.ToString(),
+                    Age = editedPilot.Age,
+                    Team = editedPilot.Team
                 });
+
                 return RedirectToAction("Index");
             }
             catch
@@ -101,6 +108,5 @@ namespace Web.Controllers
                 return View();
             }
         }
-
     }
 }

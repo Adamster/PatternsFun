@@ -79,6 +79,7 @@ namespace Domain.Persons
             Name = pilotUpdateDto.Name;
             Age = int.Parse(pilotUpdateDto.Age);
             DebutDate = DateTime.Parse(pilotUpdateDto.Debutdate);
+            Team = pilotUpdateDto.Team;
 
         }
     }
