@@ -369,5 +369,13 @@ namespace Repository
                 }
             }
         }
+        public void UpdatePilot(Pilot oldPilot, PilotUpdateDto pilotUpdateDto)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                oldPilot.PilotEdit(pilotUpdateDto);
+                tran.Commit();
+            }
+        }
     }
 }

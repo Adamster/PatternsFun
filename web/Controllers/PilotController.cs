@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Domain.Dto;
 using Factories;
 using Infrastrucuture.IoC;
 using Repository;
@@ -62,10 +63,15 @@ namespace Web.Controllers
             {
                 // TODO: Add update logic here
                 var oldPilot = PilotRepository.GetPilot(id);
-                var newPilot = PilotFactory.CreateNewPilot(name, debutdate, int.Parse(age), team);
-                var editedPilot = oldPilot.PilotEdit(oldPilot, newPilot);
+                //var newPilot = PilotFactory.CreateNewPilot(name, debutdate, int.Parse(age), team);
+                //var editedPilot = oldPilot.PilotEdit(oldPilot, newPilot);
 
-                PilotRepository.SaveUpdate(editedPilot);
+                PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
+                {
+                    Id= id,
+                    Name = name,
+
+                });
                 return RedirectToAction("Index");
             }
             catch

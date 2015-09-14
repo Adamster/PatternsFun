@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.CarTypes;
 using Domain.Dto;
 using Domain.EnginesTypes;
@@ -8,6 +9,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
 using NHibernate.Transform;
+using NHibernate.Util;
 using Repository.Interfaces;
 using Utils;
 
@@ -54,7 +56,7 @@ namespace Repository
         }
 
 
-        public IList<CarDetailsDto> GetCarDetails(long id)
+        public CarDetailsDto GetCarDetails(long id)
         {
             using (var tran = _session.BeginTransaction())
             {
@@ -77,10 +79,11 @@ namespace Repository
                         .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
                         .List<CarDetailsDto>();
 
+                   
                     
                     tran.Commit();
-
-                    return res;
+                 
+                    return res.First();
                 }
                 catch (Exception ex)
                 {
@@ -131,6 +134,50 @@ namespace Repository
                 }
             }
         }
+
+        public CarDetailsDto GetCarDetailsWithPilotbyCarId(long id)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                Pilot pAlias = null;
+                Car cAlias = null;
+                GasolineEngine geAlias = null;
+                CarDetailsDto cddtoAlias = null;
+                try
+                {
+                    var res = _session.QueryOver(() => pAlias)
+                        .JoinAlias(() => pAlias.CarVehicles, () => cAlias, JoinType.RightOuterJoin)
+                        .SelectList(list => list
+                            .Select(() => cAlias.Name).WithAlias(() => cddtoAlias.Name)
+                            .Select(() => cAlias.Weight).WithAlias(() => cddtoAlias.Weight)
+                            .Select(() => cAlias.FuelTank).WithAlias(() => cddtoAlias.TankVolume)
+                            .Select(Projections.SqlFunction("coalesce", NHibernateUtil.String,
+                                Projections.Property<Pilot>(p => p.Name),
+                                Projections.Constant("No pilot in this Vehicle", NHibernateUtil.String)))
+                            .WithAlias(() => cddtoAlias.PilotName)
+                            
+                            
+                        )
+                        .Where(()=> cAlias.Id== id)
+                        .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
+                        .List<CarDetailsDto>();
+
+
+                    tran.Commit();
+
+                    return res.First();
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
+
 
         public IList<Car> GetAllCars()
         {

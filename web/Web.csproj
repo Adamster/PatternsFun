@@ -233,10 +233,12 @@
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

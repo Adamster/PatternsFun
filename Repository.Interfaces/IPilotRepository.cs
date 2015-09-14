@@ -20,5 +20,7 @@ namespace Repository.Interfaces
         Pilot GetOldestPilot();
         IList<object> GetMTeamDrivers();
         IList<object> GetCarClassifciationByHp();
+
+        void UpdatePilot(Pilot oldPilot, PilotUpdateDto pilotUpdateDto);
     }
 }

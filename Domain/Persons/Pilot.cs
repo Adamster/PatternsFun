@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Domain.Dto;
 using Domain.Interfaces;
 using Utils;
 
@@ -79,6 +80,11 @@ namespace Domain.Persons
         public virtual void AddCar(Vehicle car)
         {
             _carVehicles.Add(car);
+        }
+
+        public virtual void PilotEdit(PilotUpdateDto pilotUpdateDto)
+        {
+            Name = pilotUpdateDto.Name;
         }
     }
 }
