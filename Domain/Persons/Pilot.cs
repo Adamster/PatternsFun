@@ -26,14 +26,6 @@ namespace Domain.Persons
         {
         }
 
-        //[Obsolete]
-        //protected Pilot()
-        //{
-        //}
-        public virtual void SetId(long id)
-        {
-            Id = id;
-        }
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
         public virtual int Age { get;  set; }
@@ -85,6 +77,9 @@ namespace Domain.Persons
         public virtual void PilotEdit(PilotUpdateDto pilotUpdateDto)
         {
             Name = pilotUpdateDto.Name;
+            Age = int.Parse(pilotUpdateDto.Age);
+            DebutDate = DateTime.Parse(pilotUpdateDto.Debutdate);
+
         }
     }
 }

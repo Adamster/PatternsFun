@@ -63,13 +63,13 @@ namespace Web.Controllers
             {
                 // TODO: Add update logic here
                 var oldPilot = PilotRepository.GetPilot(id);
-                //var newPilot = PilotFactory.CreateNewPilot(name, debutdate, int.Parse(age), team);
-                //var editedPilot = oldPilot.PilotEdit(oldPilot, newPilot);
-
                 PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
                     Id= id,
                     Name = name,
+                    Debutdate = debutdate,
+                    Age = age,
+                    Team = team
 
                 });
                 return RedirectToAction("Index");
@@ -101,5 +101,6 @@ namespace Web.Controllers
                 return View();
             }
         }
+
     }
 }
