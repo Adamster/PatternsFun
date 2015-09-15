@@ -14,7 +14,8 @@ namespace Web.Models
         public string Name { get; set; }
 
         public double Weight { get; set; }
-        
+         
+         [Range(1, 65535)]
         public int HorsePowers { get; set; }
 
         public EngineTypes EngineType { get; set; }

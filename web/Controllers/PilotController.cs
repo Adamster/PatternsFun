@@ -28,7 +28,8 @@ namespace Web.Controllers
         // GET: Pilot/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new PilotModel();
+            return View(model);
         }
 
         // POST: Pilot/Create
@@ -38,7 +39,7 @@ namespace Web.Controllers
             try
             {
                 var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
-                    int.Parse(pilotModel.Age), pilotModel.Team);
+                    pilotModel.Age, pilotModel.Team);
 
                 PilotRepository.AddPilot(pilotNew);
 
@@ -56,7 +57,7 @@ namespace Web.Controllers
             var oldPilot = PilotRepository.GetPilot(id);
             var modelPilot = new PilotModel();
             modelPilot.Name = oldPilot.Name;
-            modelPilot.Age = oldPilot.Age.ToString();
+            modelPilot.Age = oldPilot.Age;
             modelPilot.DebutDate = oldPilot.DebutDate;
             modelPilot.Team = oldPilot.Team;
             return View(modelPilot);
@@ -68,8 +69,7 @@ namespace Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-                var oldPilot = PilotRepository.GetPilot(id);
+                 var oldPilot = PilotRepository.GetPilot(id);
                 PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
                     Id = id,

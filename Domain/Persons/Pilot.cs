@@ -77,7 +77,7 @@ namespace Domain.Persons
         public virtual void PilotEdit(PilotUpdateDto pilotUpdateDto)
         {
             Name = pilotUpdateDto.Name;
-            Age = int.Parse(pilotUpdateDto.Age);
+            Age = pilotUpdateDto.Age;
             DebutDate = DateTime.Parse(pilotUpdateDto.Debutdate);
             Team = pilotUpdateDto.Team;
 

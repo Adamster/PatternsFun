@@ -255,7 +255,7 @@
     <Content Include="Views\Pilot\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EngineTypeDropDownList.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Int.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

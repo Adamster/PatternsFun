@@ -11,8 +11,9 @@ namespace Web.Models
        
         [UIHint("TextBoxEditor")]
         public string Name { get; set; }
-        [UIHint("TextBoxEditor")]
-        public string Age { get; set; }
+       
+        [Range(18,100)]
+        public int Age { get; set; }
         [UIHint("TextBoxEditor")]
         public string Team { get; set; }
         [UIHint("DateTimeEditor")]
