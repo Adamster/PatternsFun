@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Factories;
 using Infrastrucuture.IoC;
 using Repository;
+using Web.Models;
+
 namespace Web.Controllers
 {
     public class CarController : Controller
@@ -31,7 +33,9 @@ namespace Web.Controllers
         // GET: Car/Create
         public ActionResult Create()
         {
-            return View();
+            var carmodel = CarModel.ModelForCreating();
+
+            return View(carmodel);
         }
 
         // POST: Car/Create

@@ -15,7 +15,7 @@
     <AssemblyName>Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -171,6 +171,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PilotModel.cs" />
@@ -242,7 +243,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Pilot\Index.cshtml" />
     <Content Include="Views\Pilot\Details.cshtml" />
     <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
@@ -252,9 +252,14 @@
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextBoxEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTimeEditor.cshtml" />
+    <Content Include="Views\Pilot\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EngineTypeDropDownList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Int.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Car\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -304,7 +309,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54638</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54638/</IISUrl>
+          <IISUrl>http://localhost/Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

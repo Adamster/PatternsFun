@@ -7,7 +7,8 @@ using System.Web;
 namespace Web.Models
 {
     public class PilotModel
-    {
+    {   
+       
         [UIHint("TextBoxEditor")]
         public string Name { get; set; }
         [UIHint("TextBoxEditor")]
