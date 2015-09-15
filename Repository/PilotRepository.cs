@@ -74,7 +74,7 @@ namespace Repository
             {
                 try
                 {
-                    var pilot = _session.Get<Pilot>(id);
+                    var pilot = _session.Load<Pilot>(id);
                     Console.WriteLine("trying to delete pilot in Database...");
                     _session.Delete(pilot);
                     tran.Commit();
