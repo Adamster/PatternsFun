@@ -1,0 +1,10 @@
+﻿@model Enum
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.LabelFor(model => model,  new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EnumDropDownListFor(model => model, new {@class = "form-control"}) 
+      
+    </div>
+</div>

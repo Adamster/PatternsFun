@@ -1,19 +1,16 @@
-﻿using Domain.Persons;
+﻿using System.Web.Mvc;
+using Domain.Dto;
 using Factories;
 using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
     public class PilotController : Controller
     {
-        private static IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
         // GET: Pilot
         public ActionResult Index()
         {
@@ -31,19 +28,21 @@ namespace Web.Controllers
         // GET: Pilot/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new PilotModel();
+            return View(model);
         }
 
         // POST: Pilot/Create
         [HttpPost]
-        public ActionResult Create(string name, string debutdate, string age, string team)
+        public ActionResult Create(PilotModel pilotModel)
         {
             try
             {
-                var pilotNew = PilotFactory.CreateNewPilot(name, debutdate, int.Parse(age), team);
-               
-                PilotRepository.AddPilot(pilotNew); 
-               
+                var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
+                    pilotModel.Age, pilotModel.Team);
+
+                PilotRepository.AddPilot(pilotNew);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -56,18 +55,29 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             var oldPilot = PilotRepository.GetPilot(id);
-            return View();
+            var modelPilot = new PilotModel();
+            modelPilot.Name = oldPilot.Name;
+            modelPilot.Age = oldPilot.Age;
+            modelPilot.DebutDate = oldPilot.DebutDate;
+            modelPilot.Team = oldPilot.Team;
+            return View(modelPilot);
         }
 
         // POST: Pilot/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Pilot pilot)
+        public ActionResult Edit(int id, PilotModel editedPilot)
         {
             try
             {
-                // TODO: Add update logic here
-               var oldPilot = PilotRepository.GetPilot(id);
-               PilotRepository.Save<Pilot>(pilot);
+                 var oldPilot = PilotRepository.GetPilot(id);
+                PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
+                {
+                    Id = id,
+                    Name = editedPilot.Name,
+                    Debutdate = editedPilot.DebutDate.ToString(),
+                    Age = editedPilot.Age,
+                    Team = editedPilot.Team
+                });
 
                 return RedirectToAction("Index");
             }
@@ -80,7 +90,8 @@ namespace Web.Controllers
         // GET: Pilot/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var pilot = PilotRepository.GetPilot(id);
+            return View(pilot);
         }
 
         // POST: Pilot/Delete/5
@@ -89,9 +100,7 @@ namespace Web.Controllers
         {
             try
             {
-              //  var pilotOnDelete = PilotRepository.GetPilot(id);
                 PilotRepository.DeletePilot(id);
-
                 return RedirectToAction("Index");
             }
             catch

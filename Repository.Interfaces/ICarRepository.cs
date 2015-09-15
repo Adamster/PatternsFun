@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Domain.Dto;
 using Domain.CarTypes;
+using Domain.Dto;
 
 namespace Repository.Interfaces
 {
@@ -10,7 +10,7 @@ namespace Repository.Interfaces
         IList<CarDetailsDto> GetCarDetailsWithPilot();
         IList<Car> GetAllCars();
         IList<SportCar> GetAllSportCars();
-        IList<CarDetailsDto> GetCarDetails(long id);
-
+        CarDetailsDto GetCarDetails(long id);
+        CarDetailsDto GetCarDetailsWithPilotbyCarId(long id);
     }
 }

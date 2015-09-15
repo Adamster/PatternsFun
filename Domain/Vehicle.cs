@@ -27,10 +27,10 @@ namespace Domain
 
         public virtual string Name { get; set; }
         public virtual double? Mileage { get; set; }
-        protected virtual double Speed { get; set; }
+        public virtual double Speed { get; set; }
         public virtual double Weight { get; set; }
-        public virtual string SpecialAdds { get; protected set; }
-        protected virtual double AccelerationSpeed { get; set; }
+        public virtual string SpecialAdds { get;  set; }
+        public virtual double AccelerationSpeed { get;  set; }
         public virtual Pilot OwnerPilot { get; set; }
 
         public virtual void Accelerate(int toSpeed)

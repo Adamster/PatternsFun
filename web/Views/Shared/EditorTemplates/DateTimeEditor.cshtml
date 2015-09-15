@@ -1,0 +1,17 @@
+﻿@model DateTime?
+<div class="form-group">
+
+    @Html.LabelFor(model => model, new {@class = "control-label col-md-2"})
+
+    <div class="col-md-10">
+        @{
+            var dt = DateTime.Now;
+            if (Model != null)
+            {
+                dt = (DateTime)Model;
+            }
+            @Html.TextBox("", string.Format("{0:d}", dt.ToShortDateString()), new { @class = "form-control", type = "date" })
+        }
+    </div>
+
+</div>

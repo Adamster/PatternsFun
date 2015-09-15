@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Domain.Dto;
 using Domain.Interfaces;
 using Utils;
 
@@ -25,15 +26,22 @@ namespace Domain.Persons
         {
         }
 
-        //[Obsolete]
-        //protected Pilot()
-        //{
-        //}
-
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
         public virtual int Age { get;  set; }
         public virtual DateTime DebutDate { get; protected set; }
+
+        public virtual Pilot PilotEdit(Pilot oldPilot, Pilot newPilot)
+        {
+            var editedPilot = oldPilot;
+            editedPilot.Name = newPilot.Name;
+            editedPilot.Age = newPilot.Age;
+            editedPilot.DebutDate = newPilot.DebutDate;
+            
+
+            return editedPilot;
+        }
+
 
         public virtual IList<Vehicle> CarVehicles
         {
@@ -64,6 +72,15 @@ namespace Domain.Persons
         public virtual void AddCar(Vehicle car)
         {
             _carVehicles.Add(car);
+        }
+
+        public virtual void PilotEdit(PilotUpdateDto pilotUpdateDto)
+        {
+            Name = pilotUpdateDto.Name;
+            Age = pilotUpdateDto.Age;
+            DebutDate = DateTime.Parse(pilotUpdateDto.Debutdate);
+            Team = pilotUpdateDto.Team;
+
         }
     }
 }

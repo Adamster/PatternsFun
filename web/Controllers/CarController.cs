@@ -4,29 +4,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Factories;
 using Infrastrucuture.IoC;
 using Repository;
+using Web.Models;
+
 namespace Web.Controllers
 {
     public class CarController : Controller
     {
         private static ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
+        private static CarFactory _carFactory = ServiceLocator.Get<CarFactory>();
         // GET: Car
         public ActionResult Index()
         {
-            return View();
+           var list = CarRepository.GetAllCars();
+            return View(list);
         }
 
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var car = CarRepository.GetCarDetailsWithPilotbyCarId(id);
+
+            return View(car);
         }
 
         // GET: Car/Create
         public ActionResult Create()
         {
-            return View();
+            var carmodel = CarModel.ModelForCreating();
+
+            return View(carmodel);
         }
 
         // POST: Car/Create
@@ -36,6 +45,8 @@ namespace Web.Controllers
             try
             {
                 // TODO: Add insert logic here
+
+             //   _carFactory.CreateNewCar(fuelTankVolume, weight, horsePower, engineType, name, null, null)
 
                 return RedirectToAction("Index");
             }

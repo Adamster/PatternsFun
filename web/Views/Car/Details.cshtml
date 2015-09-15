@@ -1,0 +1,58 @@
+﻿@model Domain.Dto.CarDetailsDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car Details </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorsePowers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorsePowers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TankVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TankVolume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PilotName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PilotName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
