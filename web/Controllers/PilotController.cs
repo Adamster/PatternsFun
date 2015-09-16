@@ -55,11 +55,8 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             var oldPilot = PilotRepository.GetPilot(id);
-            var modelPilot = new PilotModel();
-            modelPilot.Name = oldPilot.Name;
-            modelPilot.Age = oldPilot.Age;
-            modelPilot.DebutDate = oldPilot.DebutDate;
-            modelPilot.Team = oldPilot.Team;
+            var modelPilot = new PilotModel(oldPilot);
+
             return View(modelPilot);
         }
 
@@ -69,7 +66,7 @@ namespace Web.Controllers
         {
             try
             {
-                 var oldPilot = PilotRepository.GetPilot(id);
+                var oldPilot = PilotRepository.GetPilot(id);
                 PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
                     Id = id,

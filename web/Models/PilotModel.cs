@@ -4,12 +4,24 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Domain.Persons;
 
 namespace Web.Models
 {
     public class PilotModel
-    {   
-       
+    {
+        public PilotModel(Pilot pilot)
+        {
+            Name = pilot.Name;
+            Age = pilot.Age;
+            Team = pilot.Team;
+            DebutDate = pilot.DebutDate;
+        }
+
+        public PilotModel()
+        {
+        }
+
         [Required]
         public string Name { get; set; }
        

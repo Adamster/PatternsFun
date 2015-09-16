@@ -4,8 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - PatternsFun</title>
+
+    <link href="~/Content/jquery-ui/jquery-ui.structure.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui/jquery-ui.theme.css" rel="stylesheet"/>
+
+    <script src="~/Content/jquery-ui/external/jquery/jquery.js"></script>
+    <script src="~/Content/jquery-ui/jquery-ui.js"></script>
+
+
+
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+
 
 </head>
 <body>
@@ -37,8 +51,8 @@
         </footer>
     </div>
    
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/test.js"></script>
 </body>
