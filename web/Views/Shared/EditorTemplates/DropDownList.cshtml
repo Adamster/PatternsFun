@@ -1,8 +1,8 @@
-﻿@model Domain.Persons.Pilot
+﻿@model IList<SelectListItem>
 <div class="form-group">
     @Html.LabelFor(model => model, new { @class = "control-label col-md-2"})
     <div class="col-md-10">
-        @Html.DropDownList("", null, new {@class = "form-control"})
+        @Html.DropDownList("", Model, new {@class = "form-control"})
     </div>
 </div>
 

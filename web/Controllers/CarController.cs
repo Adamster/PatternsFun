@@ -35,7 +35,8 @@ namespace Web.Controllers
         {
             var items = new List<SelectListItem>();
 
-            var pilots = PilotRepository.GetPilotForCarCreation();
+            //var pilots = PilotRepository.GetPilotForCarCreation();
+           var pilots = PilotRepository.GetAllPilots();
             items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
             foreach (var pilot in pilots)
             {
