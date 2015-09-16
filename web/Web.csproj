@@ -291,7 +291,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Pilot\Details.cshtml" />
     <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
@@ -304,6 +303,8 @@
     <Content Include="Views\Shared\EditorTemplates\EngineTypeDropDownList.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Double.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
+    <Content Include="Views\Pilot\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +326,10 @@
     <ProjectReference Include="..\Infrastrucuture\Infrastructure.csproj">
       <Project>{8852fb48-d501-43b3-925c-529ebdfcf5da}</Project>
       <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InterfacesActions\InterfacesActions.csproj">
+      <Project>{BCB6598D-B718-4C52-A00D-98F659751A34}</Project>
+      <Name>InterfacesActions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository.Interfaces\Repository.Interfaces.csproj">
       <Project>{d803ce4a-4a6e-4d23-9413-20668a7a6b50}</Project>

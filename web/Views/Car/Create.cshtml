@@ -20,6 +20,19 @@
         @Html.EditorFor(model => model.EngineType, "EngineTypeDropDownList")
         @Html.EditorFor(model=>model.TankVolume)
         @Html.EditorFor(model=>model.AdditionalInfo)
+        @*@Html.EditorFor(model => model.PilotId, "PilotDropDownList")*@
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Pilots, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.PilotId, Model.Pilots, new { @class = "form-control" })
+            </div>
+        </div>
+      
+       
+
+
 
         @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

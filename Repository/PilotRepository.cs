@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Domain;
 using Domain.CarTypes;
 using Domain.Dto;
@@ -18,6 +17,7 @@ namespace Repository
     public class PilotRepository : Repository, IPilotRepository
     {
         private readonly ISession _session = SessionGenerator.Instance.GetSession();
+
 
         public void AddPilot(Pilot pilot)
         {
@@ -213,7 +213,7 @@ namespace Repository
                         .TransformUsing(Transformers.DistinctRootEntity)
                         .List();
 
-                   
+
                     tran.Commit();
 
                     return res;
@@ -357,7 +357,7 @@ namespace Repository
                 try
                 {
                     var iPilot = _session.Get<Pilot>(id);
-                        
+
                     return iPilot;
                 }
                 catch (Exception ex)
@@ -369,6 +369,32 @@ namespace Repository
                 }
             }
         }
+
+        public IList<PilotInfoCarForCreate> GetPilotForCarCreation()
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var pilotInfo = _session.QueryOver<Pilot>()
+                        .SelectList(list => list
+                            .Select(x => x.Name)
+                            .Select(x => x.Id))
+                        .TransformUsing(Transformers.AliasToBean<PilotInfoCarForCreate>())
+                        .List<PilotInfoCarForCreate>();
+
+                    return pilotInfo;
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return null;
+                }
+            }
+        }
+
         public void UpdatePilot(Pilot oldPilot, PilotUpdateDto pilotUpdateDto)
         {
             using (var tran = _session.BeginTransaction())

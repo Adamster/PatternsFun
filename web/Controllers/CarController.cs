@@ -1,24 +1,24 @@
-﻿using Repository.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
 using Repository;
+using Repository.Interfaces;
 using Web.Models;
 
 namespace Web.Controllers
 {
     public class CarController : Controller
     {
-        private static ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
-        private static CarFactory _carFactory = ServiceLocator.Get<CarFactory>();
+        private static readonly ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
+        private static readonly CarFactory _carFactory = ServiceLocator.Get<CarFactory>();
+        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
         // GET: Car
         public ActionResult Index()
         {
-           var list = CarRepository.GetAllCars();
+            var list = CarRepository.GetAllCars();
             return View(list);
         }
 
@@ -33,26 +33,42 @@ namespace Web.Controllers
         // GET: Car/Create
         public ActionResult Create()
         {
-            var carmodel = CarModel.ModelForCreating();
+            var items = new List<SelectListItem>();
+
+            var pilots = PilotRepository.GetPilotForCarCreation();
+            items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
+            foreach (var pilot in pilots)
+            {
+                items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
+            }
+
+            var carmodel = new CarModel(items);
 
             return View(carmodel);
         }
 
         // POST: Car/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CarModel car)
         {
+            Pilot owner = null;
+
             try
             {
                 // TODO: Add insert logic here
+                if (car.PilotId != 0)
+                {
+                    owner = PilotRepository.GetPilot(car.PilotId);
+                }
 
-             //   _carFactory.CreateNewCar(fuelTankVolume, weight, horsePower, engineType, name, null, null)
-
+                var createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                    car.Name, car.AdditionalInfo, owner);
+                CarRepository.Save(createdCar);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                return View(ex.Message + "\n" + ex.StackTrace);
             }
         }
 

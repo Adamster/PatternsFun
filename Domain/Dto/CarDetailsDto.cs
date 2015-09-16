@@ -1,4 +1,5 @@
-﻿namespace Domain.Dto
+﻿
+namespace Domain.Dto
 {
     public class CarDetailsDto
     {
