@@ -20,6 +20,7 @@ namespace Web.Models
 
         public PilotModel()
         {
+            DebutDate = DateTime.Today;
         }
 
         [Required]

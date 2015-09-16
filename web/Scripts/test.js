@@ -1,9 +1,19 @@
-﻿$(document).ready(function() {
-    $("#btnAlive").mouseenter(function() {
+﻿$(document).ready(function () {
+
+   
+
+
+    $("#btnAlive").mouseenter(function (e) {
+
+        var test = e;   
+
         $(this).animate({
-                left: "+=250",
-                top: "+100"
-            }, 3
+                left: "+=250"
+            }, 300, "easeInOutBounce"
         );
     });
+
+    $("#datepicker").datepicker();
+
+  
 })
