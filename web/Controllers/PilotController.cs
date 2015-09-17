@@ -22,7 +22,8 @@ namespace Web.Controllers
         public ActionResult Details(int id)
         {
             var pilot = PilotRepository.GetPilot(id);
-            return View(pilot);
+          var  modelPilot = new PilotModel(pilot);
+            return View(modelPilot);
         }
 
         // GET: Pilot/Create

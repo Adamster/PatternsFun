@@ -189,6 +189,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PilotModel.cs" />
+    <Compile Include="Models\SportCarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -294,7 +295,6 @@
     <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
-    <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextBoxEditor.cshtml" />
@@ -305,6 +305,9 @@
     <Content Include="Views\Shared\EditorTemplates\Int32.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
     <Content Include="Views\Pilot\Details.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\DisplayTemplates\SportCarPartial.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

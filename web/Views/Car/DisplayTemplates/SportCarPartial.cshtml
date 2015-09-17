@@ -1,13 +1,7 @@
-﻿@model Web.Models.CarModel
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
+﻿@model Web.Models.SportCarModel
 
 <div>
-    <h4>CarModel</h4>
+    <h4>SportCarModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -50,12 +44,20 @@
             @Html.DisplayFor(model => model.AdditionalInfo)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.PilotId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.PilotId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DownForcePressure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownForcePressure)
         </dd>
 
     </dl>

@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Runtime.InteropServices.ComTypes;
+using Domain;
 
 namespace Repository.Interfaces
 {
@@ -8,5 +9,6 @@ namespace Repository.Interfaces
         void Save<TEntity>(TEntity entity) where TEntity : Entity;
         void SaveUpdate<TEntity>( TEntity entity) where  TEntity: Entity;
         void Delete(long id);
+        TEntity GetEntityById<TEntity>(long id) where TEntity : Entity;
     }
 }

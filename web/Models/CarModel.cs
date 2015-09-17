@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using Domain.CarTypes;
 using Domain.EnginesTypes;
 
 namespace Web.Models
@@ -11,6 +12,17 @@ namespace Web.Models
         public CarModel(IList<SelectListItem> pilots)
         {
             Pilots = pilots;
+        }
+
+        public CarModel(Car car)
+        {
+            Name = car.Name;
+            Weight = car.Weight;
+            HorsePowers = car.Engine.HorsePowers;
+            EngineType = (EngineTypes)car.Engine.NumberOfCylinders;
+            TankVolume = car.FuelTank;
+            AdditionalInfo = car.SpecialAdds;
+            PilotId = car.OwnerPilot.Id;
         }
 
         [Obsolete]
@@ -28,7 +40,7 @@ namespace Web.Models
         [Range(1,24)]
         public EngineTypes EngineType { get; set; }
 
-        public int TankVolume { get; set; }
+        public double TankVolume { get; set; }
 
         [UIHint("TextBoxEditor")]
         public string AdditionalInfo { get; set; }

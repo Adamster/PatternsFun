@@ -17,7 +17,7 @@ namespace Factories
             _chargeCar = eCarActionOnCreation;
         }
 
-        public Car CreateNewCar(int fuelTankVolume, double weight, int horsePower,
+        public Car CreateNewCar(double fuelTankVolume, double weight, int horsePower,
             EngineTypes engineType, string name, string param, Pilot pilot)
         {
             var car = new Car(name, null, weight, param, pilot, fuelTankVolume,

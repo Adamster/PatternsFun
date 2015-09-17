@@ -72,6 +72,24 @@ namespace Repository
             }
         }
 
-     
+        public TEntity GetEntityById<TEntity>(long id) where TEntity : Entity
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var res = _session.Get<TEntity>(id);
+                    tran.Commit();
+                    return res;
+                }
+                catch (Exception e)
+                {
+                    Logger.AddMsgToLog(e.Message + " \n" + e.StackTrace);
+                    Console.WriteLine(e.Message + " \n" + e.StackTrace);
+                    tran.Rollback();
+                    return null;
+                }
+            }
+        }
     }
 }

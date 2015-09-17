@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Domain.CarTypes;
 using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
@@ -25,9 +26,9 @@ namespace Web.Controllers
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            var car = CarRepository.GetCarDetailsWithPilotbyCarId(id);
-
-            return View(car);
+            var car = CarRepository.GetEntityById<Car>(id);
+            var model = new CarModel(car);
+            return View(model);
         }
 
         // GET: Car/Create
@@ -76,7 +77,10 @@ namespace Web.Controllers
         // GET: Car/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var car = CarRepository.GetEntityById<Car>(id);
+            var modelCar = new CarModel(car);
+
+            return View(modelCar);
         }
 
         // POST: Car/Edit/5
