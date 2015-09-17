@@ -12,5 +12,6 @@ namespace Repository.Interfaces
         IList<SportCar> GetAllSportCars();
         CarDetailsDto GetCarDetails(long id);
         CarDetailsDto GetCarDetailsWithPilotbyCarId(long id);
+        void UpdateCarInfo(Car oldCar, CarUpdateDto newCar);
     }
 }

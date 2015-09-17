@@ -19,9 +19,9 @@ namespace Domain.CarTypes
         {
         }
 
-        public Car(string name, double? mileage, double weight, string specialAdds,
+        public Car(string name, double? mileage, double weight, string additionalInfo,
             Pilot pilot, double fuelTank, GasolineEngine engine)
-            : base(name, mileage, weight, specialAdds, pilot)
+            : base(name, mileage, weight, additionalInfo, pilot)
         {
             if (fuelTank < 0) throw new ArgumentException("fuel tank volume can't be below or equal zero");
             FuelTank = fuelTank;
@@ -232,5 +232,19 @@ namespace Domain.CarTypes
         }
 
         #endregion
+
+
+
+
+        public virtual Car CarEdit(Dto.CarUpdateDto updatedCar)
+        {
+            Id = updatedCar.Id;
+            Name = updatedCar.Name;
+            AdditionalInfo = updatedCar.AdditionalInfo;
+            Engine = updatedCar.Engine;
+            FuelTank = updatedCar.TankVolume;
+            Weight = updatedCar.Weight;
+            return this;
+        }
     }
 }

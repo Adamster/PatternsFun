@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
+using Microsoft.Ajax.Utilities;
 
 namespace Web.Models
 {
@@ -14,15 +15,30 @@ namespace Web.Models
             Pilots = pilots;
         }
 
+        public CarModel(Car car, IList<SelectListItem> pilots)
+        {
+            Name =car.Name;
+            Weight = car.Weight;
+            HorsePowers = car.Engine.HorsePowers;
+            EngineType = (EngineTypes)car.Engine.NumberOfCylinders;
+            TankVolume = car.FuelTank;
+            AdditionalInfo = car.AdditionalInfo;
+            if (car.OwnerPilot == null) PilotName = "no owner";
+            else PilotName = car.OwnerPilot.Name;
+            Pilots = pilots;
+        }
+
         public CarModel(Car car)
         {
+            if (car.OwnerPilot == null) PilotName = "no owner";
+            else PilotName = car.OwnerPilot.Name;
             Name = car.Name;
             Weight = car.Weight;
             HorsePowers = car.Engine.HorsePowers;
             EngineType = (EngineTypes)car.Engine.NumberOfCylinders;
             TankVolume = car.FuelTank;
-            AdditionalInfo = car.SpecialAdds;
-            PilotId = car.OwnerPilot.Id;
+            AdditionalInfo = car.AdditionalInfo;
+           
         }
 
         [Obsolete]
@@ -45,6 +61,7 @@ namespace Web.Models
         [UIHint("TextBoxEditor")]
         public string AdditionalInfo { get; set; }
 
+        public string PilotName { get; set; }
 
         public long PilotId { get; set; }
 

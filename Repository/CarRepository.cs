@@ -173,6 +173,25 @@ namespace Repository
             }
         }
 
+        public void UpdateCarInfo(Car oldCar, CarUpdateDto newCar)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var carToSave = oldCar.CarEdit(newCar);
+                    _session.SaveOrUpdate(carToSave);
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+        }
+
 
         public IList<Car> GetAllCars()
         {

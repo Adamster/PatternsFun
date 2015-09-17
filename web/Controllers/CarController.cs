@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Domain.CarTypes;
+using Domain.Dto;
+using Domain.EnginesTypes;
 using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
@@ -36,12 +38,12 @@ namespace Web.Controllers
         {
             var items = new List<SelectListItem>();
 
-         var pilots =    PilotRepository.GetPilotForCarCreation();
-         //  var pilots = PilotRepository.GetAllPilots();
+            var pilots = PilotRepository.GetPilotForCarCreation();
+
             items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
             foreach (var pilot in pilots)
             {
-                items.Add(new SelectListItem { Text = pilot.Name, Value = pilot.Id.ToString() });
+                items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
 
             var carmodel = new CarModel(items);
@@ -78,24 +80,43 @@ namespace Web.Controllers
         public ActionResult Edit(int id)
         {
             var car = CarRepository.GetEntityById<Car>(id);
-            var modelCar = new CarModel(car);
+           
+            var items = new List<SelectListItem>();
 
+            var pilots = PilotRepository.GetPilotForCarCreation();
+
+            items.Add(new SelectListItem { Text = "no owner", Value = "0", Selected = true });
+            foreach (var pilot in pilots)
+            {
+                items.Add(new SelectListItem { Text = pilot.Name, Value = pilot.Id.ToString() });
+            }
+            var modelCar = new CarModel(car, items);
             return View(modelCar);
         }
 
         // POST: Car/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, CarModel carModel)
         {
             try
             {
+              var oldCar =  CarRepository.GetEntityById<Car>(id);
                 // TODO: Add update logic here
-
+                 CarRepository.UpdateCarInfo(oldCar, new CarUpdateDto
+                 {
+                     Id = id,
+                     Name = carModel.Name,
+                     AdditionalInfo = carModel.AdditionalInfo,
+                     Engine = CarRepository.GetEntityById<GasolineEngine>(oldCar.Engine.Id),
+                     Pilot = PilotRepository.GetPilot(carModel.PilotId),
+                     TankVolume = carModel.TankVolume,
+                     Weight = carModel.Weight
+                 });
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                return View(ex.Message);
             }
         }
 

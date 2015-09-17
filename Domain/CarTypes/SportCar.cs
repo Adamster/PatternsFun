@@ -13,9 +13,9 @@ namespace Domain.CarTypes
         {
         }
 
-        public SportCar(string name, double? mileage, double weight, string specialAdds,
+        public SportCar(string name, double? mileage, double weight, string additionalInfo,
             Pilot pilot, double fuelTank, GasolineEngine engine)
-            : base(name, mileage, weight, specialAdds, pilot, fuelTank, engine)
+            : base(name, mileage, weight, additionalInfo, pilot, fuelTank, engine)
         {
             DownForcePressure = 0;
         }

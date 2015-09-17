@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CarTypes\Car.cs" />
     <Compile Include="CarTypes\ElectroCar.cs" />
+    <Compile Include="Dto\CarUpdateDto.cs" />
     <Compile Include="Dto\PilotDetailsDto.cs" />
     <Compile Include="Dto\CarDetailsDto.cs" />
     <Compile Include="Dto\PilotInfoCarForCreate.cs" />

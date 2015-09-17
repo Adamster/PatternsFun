@@ -12,16 +12,16 @@ namespace Domain
         {
         }
 
-        public Vehicle(string name, double? mileage, double weight, string specialAdds,
+        public Vehicle(string name, double? mileage, double weight, string additionalInfo,
             Pilot pilot)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("please name the Vehicle!");
             if (weight <= 0) throw new ArgumentException("weight can't be below or equal zero");
-            if (specialAdds == null) specialAdds = "No additional specs";
+            if (additionalInfo == null) additionalInfo = "No additional specs";
             Name = name;
             Mileage = mileage;
             Weight = weight;
-            SpecialAdds = specialAdds;
+            AdditionalInfo = additionalInfo;
             OwnerPilot = pilot;
         }
 
@@ -29,7 +29,7 @@ namespace Domain
         public virtual double? Mileage { get; set; }
         public virtual double Speed { get; set; }
         public virtual double Weight { get; set; }
-        public virtual string SpecialAdds { get;  set; }
+        public virtual string AdditionalInfo { get;  set; }
         public virtual double AccelerationSpeed { get;  set; }
         public virtual Pilot OwnerPilot { get; set; }
 

@@ -41,7 +41,7 @@ CREATE TABLE Car
     [Engine_ID]         INT           NOT NULL UNIQUE,
     [AccelerationSpeed] FLOAT         NOT NULL,
     [FuelType]          NVARCHAR (15) NOT NULL,
-    [SpecialAdds]       NVARCHAR (30) NULL CONSTRAINT [PK_Car] PRIMARY KEY CLUSTERED ([Vehicle_ID])
+    [AdditionalInfo]       NVARCHAR (30) NULL CONSTRAINT [PK_Car] PRIMARY KEY CLUSTERED ([Vehicle_ID])
 );
 
 CREATE TABLE ElectroCar

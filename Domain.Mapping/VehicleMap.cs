@@ -20,7 +20,7 @@ namespace Domain.Mapping
         {
             References(x => x.Engine).Cascade.All().Unique();
             Map(x => x.FuelTank).Not.Nullable();
-            Map(x => x.SpecialAdds);
+            Map(x => x.AdditionalInfo);
         }
     }
 

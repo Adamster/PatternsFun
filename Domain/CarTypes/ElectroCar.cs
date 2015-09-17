@@ -8,9 +8,9 @@ namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
-        public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string specialAdds,
+        public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string additionalInfo,
             Pilot pilot, int chargeLevel)
-            : base(name, mileage, weight, specialAdds, pilot)
+            : base(name, mileage, weight, additionalInfo, pilot)
         {
             if (chargeLevel < 0 || chargeLevel > 100)
                 throw new ArgumentException("Charge lvl can't be below zero or more than 100");
