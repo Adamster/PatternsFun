@@ -17,7 +17,7 @@ namespace Domain
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("please name the Vehicle!");
             if (weight <= 0) throw new ArgumentException("weight can't be below or equal zero");
-
+            if (specialAdds == null) specialAdds = "No additional specs";
             Name = name;
             Mileage = mileage;
             Weight = weight;

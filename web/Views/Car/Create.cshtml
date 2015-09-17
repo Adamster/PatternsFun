@@ -14,11 +14,11 @@
         <h4>Car</h4>
         <hr/>
 
-        @Html.EditorFor(model=>model.Name)
+        @Html.EditorFor(model=>model.Name, "TextBoxEditor")
         @Html.EditorFor(model=>model.Weight)
         @Html.EditorFor(model=>model.HorsePowers)
         @Html.EditorFor(model => model.EngineType, "EngineTypeDropDownList")
-        @Html.EditorFor(model=>model.TankVolume)
+        @Html.EditorFor(model=> model.TankVolume)
         @Html.EditorFor(model=>model.AdditionalInfo)
         @Html.EditorFor(model => model.Pilots, "DropDownList", "PilotId")
 

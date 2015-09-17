@@ -6,8 +6,9 @@
 <p></p>
 <i class="fa fa-automobile fa-2x"></i>
 <p></p>
-<a href="@Url.Action("Create")"> <i class="fa fa-plus">  New</i> </a>
-
+<a href="@Url.Action("Create")">
+    <i class="fa fa-plus"> New</i>
+</a>
 
 
 <table class="table">
@@ -19,17 +20,12 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mileage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
+            @Html.DisplayNameFor(model => model.Engine.HorsePowers)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SpecialAdds)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FuelTank)
-        </th>
+
         <th></th>
     </tr>
 
@@ -43,17 +39,12 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Mileage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
+                @Html.DisplayFor(modelItem => item.Engine.HorsePowers)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SpecialAdds)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelTank)
-            </td>
+
             <td>
 
                 <a href="@Url.Action("Edit", new {id = item.Id})"><i class="fa fa-edit"></i>Edit </a> |

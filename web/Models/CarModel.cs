@@ -18,14 +18,14 @@ namespace Web.Models
         {
         }
 
-        [UIHint("TextBoxEditor")]
+        [Required]
         public string Name { get; set; }
-
+        [Range(1, 65535)]
         public double Weight { get; set; }
 
         [Range(1, 65535)]
         public int HorsePowers { get; set; }
-
+        [Range(1,24)]
         public EngineTypes EngineType { get; set; }
 
         public int TankVolume { get; set; }

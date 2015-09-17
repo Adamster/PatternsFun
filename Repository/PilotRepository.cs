@@ -210,7 +210,6 @@ namespace Repository
                 try
                 {
                     var res = _session.QueryOver<Pilot>()
-                        .TransformUsing(Transformers.DistinctRootEntity)
                         .List();
 
 
@@ -376,10 +375,12 @@ namespace Repository
             {
                 try
                 {
+                    PilotInfoCarForCreate pAlias = null;
                     var pilotInfo = _session.QueryOver<Pilot>()
                         .SelectList(list => list
-                            .Select(x => x.Name)
-                            .Select(x => x.Id))
+                            .Select(x => x.Name).WithAlias(() => pAlias.Name)
+                            .Select(x => x.Id).WithAlias(() => pAlias.Id))
+                        .TransformUsing(Transformers.AliasToBean<PilotInfoCarForCreate>())
                         .TransformUsing(Transformers.AliasToBean<PilotInfoCarForCreate>())
                         .List<PilotInfoCarForCreate>();
 

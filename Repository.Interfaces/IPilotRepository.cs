@@ -8,7 +8,7 @@ namespace Repository.Interfaces
     public interface IPilotRepository : IRepository
     {
         Pilot GetPilot(long id);
-       IList<PilotInfoCarForCreate> GetPilotForCarCreation();
+        IList<PilotInfoCarForCreate> GetPilotForCarCreation();
         void AddPilot(Pilot pilot);
         void UpdatePilotAge(long pilotId, int newAge);
         void DeletePilot(long id);

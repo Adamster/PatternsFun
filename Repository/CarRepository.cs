@@ -9,7 +9,6 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.SqlCommand;
 using NHibernate.Transform;
-using NHibernate.Util;
 using Repository.Interfaces;
 using Utils;
 
@@ -73,16 +72,14 @@ namespace Repository
                             .Select(() => cAlias.Weight).WithAlias(() => cddtoAlias.Weight)
                             .Select(() => geAlias.HorsePowers).WithAlias(() => cddtoAlias.HorsePowers)
                             .Select(() => cAlias.FuelTank).WithAlias(() => cddtoAlias.TankVolume)
-
                         )
                         .Where(() => cAlias.Id == id)
                         .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
                         .List<CarDetailsDto>();
 
-                   
-                    
+
                     tran.Commit();
-                 
+
                     return res.First();
                 }
                 catch (Exception ex)
@@ -141,7 +138,8 @@ namespace Repository
             {
                 Pilot pAlias = null;
                 Car cAlias = null;
-                GasolineEngine geAlias = null;
+                Engine geAlias = null;
+                ElectroEngine eAlias = null;
                 CarDetailsDto cddtoAlias = null;
                 try
                 {
@@ -155,10 +153,8 @@ namespace Repository
                                 Projections.Property<Pilot>(p => p.Name),
                                 Projections.Constant("No pilot in this Vehicle", NHibernateUtil.String)))
                             .WithAlias(() => cddtoAlias.PilotName)
-                            
-                            
                         )
-                        .Where(()=> cAlias.Id== id)
+                        .Where(() => cAlias.Id == id)
                         .TransformUsing(Transformers.AliasToBean<CarDetailsDto>())
                         .List<CarDetailsDto>();
 
@@ -178,16 +174,14 @@ namespace Repository
         }
 
 
-
         public IList<Car> GetAllCars()
         {
             using (var tran = _session.BeginTransaction())
             {
-
                 try
                 {
                     var res = _session.QueryOver<Car>()
-                  .List();
+                        .List();
 
                     tran.Commit();
                     return res;
@@ -199,8 +193,6 @@ namespace Repository
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     return new List<Car>();
                 }
-              
-               
             }
         }
 
@@ -208,11 +200,10 @@ namespace Repository
         {
             using (var tran = _session.BeginTransaction())
             {
-
                 try
                 {
                     var res = _session.QueryOver<SportCar>()
-                  .List();
+                        .List();
 
                     tran.Commit();
                     return res;
@@ -224,10 +215,7 @@ namespace Repository
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     return new List<SportCar>();
                 }
-
-
             }
         }
-        
     }
 }
