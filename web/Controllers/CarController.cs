@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Domain.CarTypes;
 using Domain.Dto;
-using Domain.EnginesTypes;
 using Domain.Persons;
 using Factories;
 using Infrastrucuture.IoC;
@@ -15,18 +14,21 @@ namespace Web.Controllers
 {
     public class CarController : Controller
     {
-        private static readonly ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
-        private static readonly CarFactory _carFactory = ServiceLocator.Get<CarFactory>();
-        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        private readonly CarFactory CarFactory = ServiceLocator.Get<CarFactory>();
+        private readonly ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
+        private readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
         // GET: Car
+        [HttpGet]
         public ActionResult Index()
         {
             var list = CarRepository.GetAllCars();
+
             return View(list);
         }
 
         // GET: Car/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult Details(long id)
         {
             var car = CarRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
@@ -34,6 +36,7 @@ namespace Web.Controllers
         }
 
         // GET: Car/Create
+        [HttpGet]
         public ActionResult Create()
         {
             var items = new List<SelectListItem>();
@@ -65,7 +68,7 @@ namespace Web.Controllers
                     owner = PilotRepository.GetPilot(car.PilotId);
                 }
 
-                var createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                var createdCar = CarFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
                     car.Name, car.AdditionalInfo, owner);
                 CarRepository.Save(createdCar);
                 return RedirectToAction("Index");
@@ -77,18 +80,19 @@ namespace Web.Controllers
         }
 
         // GET: Car/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(long id)
         {
             var car = CarRepository.GetEntityById<Car>(id);
-           
+
             var items = new List<SelectListItem>();
 
             var pilots = PilotRepository.GetPilotForCarCreation();
 
-            items.Add(new SelectListItem { Text = "no owner", Value = "0", Selected = true });
+            items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
             foreach (var pilot in pilots)
             {
-                items.Add(new SelectListItem { Text = pilot.Name, Value = pilot.Id.ToString() });
+                items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
             var modelCar = new CarModel(car, items);
             return View(modelCar);
@@ -100,30 +104,33 @@ namespace Web.Controllers
         {
             try
             {
-              var oldCar =  CarRepository.GetEntityById<Car>(id);
+                var oldCar = CarRepository.GetEntityById<Car>(id);
                 // TODO: Add update logic here
-                 CarRepository.UpdateCarInfo(oldCar, new CarUpdateDto
-                 {
-                     Id = id,
-                     Name = carModel.Name,
-                     AdditionalInfo = carModel.AdditionalInfo,
-                     Engine = CarRepository.GetEntityById<GasolineEngine>(oldCar.Engine.Id),
-                     Pilot = PilotRepository.GetPilot(carModel.PilotId),
-                     TankVolume = carModel.TankVolume,
-                     Weight = carModel.Weight
-                 });
+                CarRepository.UpdateCarInfo(oldCar, new CarUpdateDto
+                {
+                    Id = id,
+                    Name = carModel.Name,
+                    AdditionalInfo = carModel.AdditionalInfo,
+                    Engine = new EngineUpdateDto(oldCar.Engine),
+                    Pilot = new PilotUpdateDto(oldCar.OwnerPilot),
+                    TankVolume = carModel.TankVolume,
+                    Weight = carModel.Weight
+                });
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View(ex.Message);
             }
         }
 
         // GET: Car/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            var car = CarRepository.GetEntityById<Car>(id);
+            var carModel = new CarModel(car);
+            return View(carModel);
         }
 
         // POST: Car/Delete/5
@@ -133,7 +140,7 @@ namespace Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                CarRepository.DeleteCar(id);
                 return RedirectToAction("Index");
             }
             catch

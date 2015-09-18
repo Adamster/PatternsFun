@@ -1,5 +1,6 @@
 using System;
 using Domain.CarTypes;
+using Domain.Dto;
 
 namespace Domain.EnginesTypes
 {
@@ -27,6 +28,12 @@ namespace Domain.EnginesTypes
         public override void Stop()
         {
             Console.WriteLine("GasolineEngine stoped");
+        }
+
+        public virtual void UpdateEngineInfo(Engine oldEngine, EngineUpdateDto updatedEngine)
+        {
+            HorsePowers = updatedEngine.HorsePowers;
+            NumberOfCylinders = (int) updatedEngine.EngineType;
         }
     }
 }

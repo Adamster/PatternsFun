@@ -45,9 +45,7 @@ namespace Repository
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
-                } 
-
-               
+                }
             }
         }
 

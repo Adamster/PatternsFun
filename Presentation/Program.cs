@@ -11,14 +11,14 @@ namespace Presentation
 {
     internal class Program
     {
-        private static  CarFactory MaranelloCarFactory;
-        private static  ICarRepository CarRepository;
-        private static  IPilotRepository PilotRepository;
+        private static CarFactory MaranelloCarFactory;
+        private static ICarRepository CarRepository;
+        private static IPilotRepository PilotRepository;
 
         static Program()
         {
             ServiceLocator.RegisterAll();
-           
+
             NHibernateProfiler.Initialize();
         }
 
@@ -42,12 +42,12 @@ namespace Presentation
 
             #endregion
 
-              GenerateData();
-           //  TestDb();
+            GenerateData();
+            //  TestDb();
             // ShowVehicleName();
             // ShowPilotCarCountCrutch();
             //  ShowPilotCarCount();
-           // ShowUniquePilot();
+            // ShowUniquePilot();
             // ShowAvgHpPerPilot();
 
             //   getOldestPilot();
@@ -151,9 +151,7 @@ namespace Presentation
 
         private static void GenerateData()
         {
-            
-
-          //  var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
+            //  var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
             var car1 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 900, EngineTypes.V10, "Ferrari FXX", null, null);
             var car2 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 800, EngineTypes.V10, "Ferrari 458", null, null);
             var car3 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 700, EngineTypes.V10, "Ferrari FF", null, null);

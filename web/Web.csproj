@@ -308,6 +308,7 @@
     <Content Include="Views\Car\Edit.cshtml" />
     <Content Include="Views\Car\DisplayTemplates\SportCarPartial.cshtml" />
     <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

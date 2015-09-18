@@ -179,8 +179,26 @@ namespace Repository
             {
                 try
                 {
-                    var carToSave = oldCar.CarEdit(newCar);
-                    _session.SaveOrUpdate(carToSave);
+                    oldCar.CarEdit(newCar);
+                    tran.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tran.Rollback();
+                    Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                }
+            }
+        }
+
+        public void DeleteCar(long id)
+        {
+            using (var tran = _session.BeginTransaction())
+            {
+                try
+                {
+                    var carToDelete = _session.Load<Car>(id);
+                    _session.Delete(carToDelete);
                     tran.Commit();
                 }
                 catch (Exception ex)
@@ -210,7 +228,7 @@ namespace Repository
                     tran.Rollback();
                     Console.WriteLine(ex.Message + "\n" + ex.StackTrace);
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
-                    return new List<Car>();
+                    return null;
                 }
             }
         }

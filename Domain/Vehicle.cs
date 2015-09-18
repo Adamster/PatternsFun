@@ -29,8 +29,8 @@ namespace Domain
         public virtual double? Mileage { get; set; }
         public virtual double Speed { get; set; }
         public virtual double Weight { get; set; }
-        public virtual string AdditionalInfo { get;  set; }
-        public virtual double AccelerationSpeed { get;  set; }
+        public virtual string AdditionalInfo { get; set; }
+        public virtual double AccelerationSpeed { get; set; }
         public virtual Pilot OwnerPilot { get; set; }
 
         public virtual void Accelerate(int toSpeed)

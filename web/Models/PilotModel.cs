@@ -33,6 +33,6 @@ namespace Web.Models
         [Display(Name = "Debut date")]
         public DateTime DebutDate { get; set; }
 
-        public List<Vehicle> VehiclesList { get; set; } 
+        public List<Vehicle> VehiclesList { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using Domain.Dto;
 using Domain.EnginesTypes;
 using Domain.FuelTypes;
 using Domain.Interfaces;
@@ -206,6 +207,17 @@ namespace Domain.CarTypes
             return 10000/Weight;
         }
 
+
+        public virtual void CarEdit(CarUpdateDto updatedCar)
+        {
+            Id = updatedCar.Id;
+            Name = updatedCar.Name;
+            AdditionalInfo = updatedCar.AdditionalInfo;
+            Engine.UpdateEngineInfo(Engine, updatedCar.Engine);
+            FuelTank = updatedCar.TankVolume;
+            Weight = updatedCar.Weight;
+        }
+
         #region Implementation of IChangeOil
 
         public virtual void ChangeOilRequest()
@@ -232,19 +244,5 @@ namespace Domain.CarTypes
         }
 
         #endregion
-
-
-
-
-        public virtual Car CarEdit(Dto.CarUpdateDto updatedCar)
-        {
-            Id = updatedCar.Id;
-            Name = updatedCar.Name;
-            AdditionalInfo = updatedCar.AdditionalInfo;
-            Engine = updatedCar.Engine;
-            FuelTank = updatedCar.TankVolume;
-            Weight = updatedCar.Weight;
-            return this;
-        }
     }
 }

@@ -8,7 +8,8 @@ namespace Domain.CarTypes
 {
     public class ElectroCar : Vehicle, ISteeringWheel
     {
-        public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight, string additionalInfo,
+        public ElectroCar(string name, double? mileage, ElectroEngine electroEngine, double weight,
+            string additionalInfo,
             Pilot pilot, int chargeLevel)
             : base(name, mileage, weight, additionalInfo, pilot)
         {

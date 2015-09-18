@@ -21,6 +21,7 @@ namespace Domain.Persons
             Age = age;
             Team = team;
         }
+
         [Obsolete]
         public Pilot()
         {
@@ -28,19 +29,8 @@ namespace Domain.Persons
 
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
-        public virtual int Age { get;  set; }
+        public virtual int Age { get; set; }
         public virtual DateTime DebutDate { get; protected set; }
-
-        public virtual Pilot PilotEdit(Pilot oldPilot, Pilot newPilot)
-        {
-            var editedPilot = oldPilot;
-            editedPilot.Name = newPilot.Name;
-            editedPilot.Age = newPilot.Age;
-            editedPilot.DebutDate = newPilot.DebutDate;
-            
-
-            return editedPilot;
-        }
 
 
         public virtual IList<Vehicle> CarVehicles
@@ -51,7 +41,7 @@ namespace Domain.Persons
         public virtual double ExpierenceTime
         {
             get { return (DateTime.Now.Date - DebutDate.Date).TotalDays; }
-          set { }
+            set { }
         }
 
         public virtual PaddockAccessLevels AccessLevel
@@ -69,6 +59,17 @@ namespace Domain.Persons
 
         #endregion
 
+        public virtual Pilot PilotEdit(Pilot oldPilot, Pilot newPilot)
+        {
+            var editedPilot = oldPilot;
+            editedPilot.Name = newPilot.Name;
+            editedPilot.Age = newPilot.Age;
+            editedPilot.DebutDate = newPilot.DebutDate;
+
+
+            return editedPilot;
+        }
+
         public virtual void AddCar(Vehicle car)
         {
             _carVehicles.Add(car);
@@ -80,7 +81,6 @@ namespace Domain.Persons
             Age = pilotUpdateDto.Age;
             DebutDate = DateTime.Parse(pilotUpdateDto.Debutdate);
             Team = pilotUpdateDto.Team;
-
         }
     }
 }

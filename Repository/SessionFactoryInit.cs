@@ -35,10 +35,8 @@ namespace Repository
                 .Database(MsSqlConfiguration.MsSql2012
                     .ConnectionString(builder => builder.Database("Garage")
                         .Server(@"MDDSK40101").Username("Test1").Password("over")))
-                .Mappings(x => x.FluentMappings.AddFromAssembly(typeof(EntityMap<>).Assembly))
+                .Mappings(x => x.FluentMappings.AddFromAssembly(typeof (EntityMap<>).Assembly))
                 .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true));
-
-            
 
 
             var conf = configuration.BuildConfiguration();

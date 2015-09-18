@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Domain.CarTypes;
 using Domain.EnginesTypes;
-using Microsoft.Ajax.Utilities;
 
 namespace Web.Models
 {
@@ -17,10 +16,10 @@ namespace Web.Models
 
         public CarModel(Car car, IList<SelectListItem> pilots)
         {
-            Name =car.Name;
+            Name = car.Name;
             Weight = car.Weight;
             HorsePowers = car.Engine.HorsePowers;
-            EngineType = (EngineTypes)car.Engine.NumberOfCylinders;
+            EngineType = (EngineTypes) car.Engine.NumberOfCylinders;
             TankVolume = car.FuelTank;
             AdditionalInfo = car.AdditionalInfo;
             if (car.OwnerPilot == null) PilotName = "no owner";
@@ -35,10 +34,9 @@ namespace Web.Models
             Name = car.Name;
             Weight = car.Weight;
             HorsePowers = car.Engine.HorsePowers;
-            EngineType = (EngineTypes)car.Engine.NumberOfCylinders;
+            EngineType = (EngineTypes) car.Engine.NumberOfCylinders;
             TankVolume = car.FuelTank;
             AdditionalInfo = car.AdditionalInfo;
-           
         }
 
         [Obsolete]
@@ -48,12 +46,14 @@ namespace Web.Models
 
         [Required]
         public string Name { get; set; }
+
         [Range(1, 65535)]
         public double Weight { get; set; }
 
         [Range(1, 65535)]
         public int HorsePowers { get; set; }
-        [Range(1,24)]
+
+        [Range(1, 24)]
         public EngineTypes EngineType { get; set; }
 
         public double TankVolume { get; set; }

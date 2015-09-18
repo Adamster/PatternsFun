@@ -10,8 +10,9 @@ namespace Web.Controllers
 {
     public class PilotController : Controller
     {
-        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        private readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
         // GET: Pilot
+        [HttpGet]
         public ActionResult Index()
         {
             var pilots = PilotRepository.GetAllPilots();
@@ -19,14 +20,16 @@ namespace Web.Controllers
         }
 
         // GET: Pilot/Details/5
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var pilot = PilotRepository.GetPilot(id);
-          var  modelPilot = new PilotModel(pilot);
+            var modelPilot = new PilotModel(pilot);
             return View(modelPilot);
         }
 
         // GET: Pilot/Create
+        [HttpGet]
         public ActionResult Create()
         {
             var model = new PilotModel();
@@ -53,6 +56,7 @@ namespace Web.Controllers
         }
 
         // GET: Pilot/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var oldPilot = PilotRepository.GetPilot(id);
@@ -86,6 +90,7 @@ namespace Web.Controllers
         }
 
         // GET: Pilot/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             var pilot = PilotRepository.GetPilot(id);

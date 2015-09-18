@@ -13,7 +13,6 @@ namespace Web.Models
         [Obsolete]
         public SportCarModel()
         {
-        
         }
 
         public int DownForcePressure { get; set; }

@@ -1,11 +1,9 @@
-﻿$(document).ready(function () {
-
-   
+﻿$(document).ready(function() {
 
 
-    $("#btnAlive").mouseenter(function (e) {
+    $("#btnAlive").mouseenter(function(e) {
 
-        var test = e;   
+        var test = e;
 
         $(this).animate({
                 left: "+=250"
@@ -15,5 +13,5 @@
 
     $("#datepicker").datepicker();
 
-  
+
 })

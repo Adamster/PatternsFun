@@ -13,5 +13,7 @@ namespace Repository.Interfaces
         CarDetailsDto GetCarDetails(long id);
         CarDetailsDto GetCarDetailsWithPilotbyCarId(long id);
         void UpdateCarInfo(Car oldCar, CarUpdateDto newCar);
+
+        void DeleteCar(long id);
     }
 }
