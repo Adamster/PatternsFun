@@ -8,7 +8,7 @@ namespace Repository
 {
     public abstract class Repository : IRepository
     {
-        private readonly ISession _session = SessionGenerator.Instance.GetSession();
+        protected readonly ISession _session = SessionGenerator.Instance.GetSession();
 
         public void Save<TEntity>(TEntity entity) where TEntity : Entity
         {
@@ -22,9 +22,10 @@ namespace Repository
                     tran.Commit();
                     Logger.AddMsgToLog("save by general repository commited succesfully");
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(e.Message + " \n" + e.StackTrace);
+                    Console.WriteLine(ex.Message + " \n" + ex.StackTrace);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     tran.Rollback();
                 }
             }

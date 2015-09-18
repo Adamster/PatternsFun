@@ -36,7 +36,7 @@ namespace Repository
                     .ConnectionString(builder => builder.Database("Garage")
                         .Server(@"MDDSK40101").Username("Test1").Password("over")))
                 .Mappings(x => x.FluentMappings.AddFromAssembly(typeof (EntityMap<>).Assembly))
-                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true));
+                .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(false, true));
 
 
             var conf = configuration.BuildConfiguration();

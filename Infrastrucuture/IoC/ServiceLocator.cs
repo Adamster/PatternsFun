@@ -17,9 +17,11 @@ namespace Infrastrucuture.IoC
             Kernel.Bind<IElectroCarActionOnCreation>()
                 .To<ElectroActions>();
             Kernel.Bind<ICarRepository>()
-                .To<CarRepository>();
+                .To<CarRepository>()    ;
             Kernel.Bind<IPilotRepository>()
                 .To<PilotRepository>();
+           
+            
         }
 
         public static T Get<T>()

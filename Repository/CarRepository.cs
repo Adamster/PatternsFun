@@ -16,8 +16,6 @@ namespace Repository
 {
     public class CarRepository : Repository, ICarRepository
     {
-        private readonly ISession _session = SessionGenerator.Instance.GetSession();
-
         public IList<CarDetailsDto> GetCarDetails()
         {
             using (var tran = _session.BeginTransaction())
@@ -53,8 +51,7 @@ namespace Repository
                 }
             }
         }
-
-
+        
         public CarDetailsDto GetCarDetails(long id)
         {
             using (var tran = _session.BeginTransaction())
@@ -179,7 +176,8 @@ namespace Repository
             {
                 try
                 {
-                    oldCar.CarEdit(newCar);
+                 var edited =    oldCar.CarEdit(newCar);
+                    _session.SaveOrUpdate(edited);
                     tran.Commit();
                 }
                 catch (Exception ex)
@@ -218,6 +216,7 @@ namespace Repository
                 try
                 {
                     var res = _session.QueryOver<Car>()
+                        .Fetch(x=>x).Lazy()
                         .List();
 
                     tran.Commit();

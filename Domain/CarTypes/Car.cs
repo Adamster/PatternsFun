@@ -208,14 +208,16 @@ namespace Domain.CarTypes
         }
 
 
-        public virtual void CarEdit(CarUpdateDto updatedCar)
+        public virtual Car CarEdit(CarUpdateDto updatedCar)
         {
             Id = updatedCar.Id;
             Name = updatedCar.Name;
             AdditionalInfo = updatedCar.AdditionalInfo;
             Engine.UpdateEngineInfo(Engine, updatedCar.Engine);
+            OwnerPilot.PilotEdit(updatedCar.Pilot);
             FuelTank = updatedCar.TankVolume;
             Weight = updatedCar.Weight;
+            return this;
         }
 
         #region Implementation of IChangeOil

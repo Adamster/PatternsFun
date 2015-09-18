@@ -8,10 +8,10 @@ namespace Domain.Dto
         {
         }
 
-        public EngineUpdateDto(GasolineEngine engine)
+        public EngineUpdateDto(int hp, EngineTypes type)
         {
-            HorsePowers = engine.HorsePowers;
-            EngineType = (EngineTypes) engine.NumberOfCylinders;
+            HorsePowers = hp;
+            EngineType = type;
         }
 
         public int HorsePowers { get; set; }

@@ -1,16 +1,18 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Domain.Dto;
 using Factories;
 using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
+using Utils;
 using Web.Models;
 
 namespace Web.Controllers
 {
     public class PilotController : Controller
     {
-        private readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
         // GET: Pilot
         [HttpGet]
         public ActionResult Index()
@@ -49,8 +51,9 @@ namespace Web.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View();
             }
         }
@@ -83,8 +86,9 @@ namespace Web.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View();
             }
         }
@@ -106,8 +110,9 @@ namespace Web.Controllers
                 PilotRepository.DeletePilot(id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View();
             }
         }

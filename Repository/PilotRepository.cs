@@ -16,9 +16,6 @@ namespace Repository
 {
     public class PilotRepository : Repository, IPilotRepository
     {
-        private readonly ISession _session = SessionGenerator.Instance.GetSession();
-
-
         public void AddPilot(Pilot pilot)
         {
             using (var tran = _session.BeginTransaction())

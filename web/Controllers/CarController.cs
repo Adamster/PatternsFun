@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Domain.CarTypes;
 using Domain.Dto;
@@ -8,6 +9,7 @@ using Factories;
 using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
+using Utils;
 using Web.Models;
 
 namespace Web.Controllers
@@ -75,6 +77,7 @@ namespace Web.Controllers
             }
             catch (Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View(ex.Message + "\n" + ex.StackTrace);
             }
         }
@@ -89,7 +92,7 @@ namespace Web.Controllers
 
             var pilots = PilotRepository.GetPilotForCarCreation();
 
-            items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
+            items.Add(new SelectListItem {Text = "no owner", Value = "0"});
             foreach (var pilot in pilots)
             {
                 items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
@@ -100,7 +103,7 @@ namespace Web.Controllers
 
         // POST: Car/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, CarModel carModel)
+        public ActionResult Edit(int id, CarModel carModel, string pilots)
         {
             try
             {
@@ -111,8 +114,8 @@ namespace Web.Controllers
                     Id = id,
                     Name = carModel.Name,
                     AdditionalInfo = carModel.AdditionalInfo,
-                    Engine = new EngineUpdateDto(oldCar.Engine),
-                    Pilot = new PilotUpdateDto(oldCar.OwnerPilot),
+                    Engine = new EngineUpdateDto(carModel.HorsePowers, carModel.EngineType),
+                    Pilot = new PilotUpdateDto(PilotRepository.GetPilot(long.Parse(pilots))),
                     TankVolume = carModel.TankVolume,
                     Weight = carModel.Weight
                 });
@@ -120,6 +123,7 @@ namespace Web.Controllers
             }
             catch (Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View(ex.Message);
             }
         }
@@ -143,8 +147,9 @@ namespace Web.Controllers
                 CarRepository.DeleteCar(id);
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View();
             }
         }
