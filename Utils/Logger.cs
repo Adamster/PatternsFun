@@ -25,12 +25,11 @@ namespace Utils
             return InstanceLogger;
         }
 
-        public void SaveToFile()
+        public static void SaveToFile()
         {
-            using (var fs = new FileStream(@"C:\Users\" + Environment.UserName + @"\Documents\log.txt", FileMode.Append)
+            using (var fs = new FileStream(@"D:\log\log.txt", FileMode.Append)
                 )
             {
-                AddMsgToLog("log saving into file");
                 var tmp = LogString.ToString();
                 var buffBytes = Encoding.Unicode.GetBytes(tmp);
                 fs.Write(buffBytes, 0, buffBytes.Length);
@@ -42,11 +41,13 @@ namespace Utils
             var preLog = string.Format("{0} {1} | {2} logged at {3} from application launch\n",
                 DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString(), msg, Sw.Elapsed.ToString("g"));
             LogString.Append(preLog);
+            SaveToFile();
         }
 
         public static void WriteLIne(string msg)
         {
             AddMsgToLog(msg);
+
             Console.WriteLine(msg);
         }
     }

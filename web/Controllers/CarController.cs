@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using Domain.CarTypes;
 using Domain.Dto;
 using Domain.Persons;
 using Factories;
-using Infrastrucuture.IoC;
-using Repository;
+using InterfacesActions;
 using Repository.Interfaces;
 using Utils;
 using Web.Models;
@@ -16,14 +14,29 @@ namespace Web.Controllers
 {
     public class CarController : Controller
     {
-        private readonly CarFactory CarFactory = ServiceLocator.Get<CarFactory>();
-        private readonly ICarRepository CarRepository = ServiceLocator.Get<CarRepository>();
-        private readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        private readonly CarFactory _carFactory;
+        private readonly ICarRepository _carRepository;
+        private readonly IPilotRepository _pilotRepository;
+
+        [Obsolete]
+        public CarController()
+        {
+        }
+
+        public CarController(ICarRepository carRepository, IPilotRepository pilotRepository,
+            ICarActionOnCreation carActionOnCreation, IElectroCarActionOnCreation electroCarAction)
+        {
+            _carFactory = new CarFactory(carActionOnCreation, electroCarAction);
+            _carRepository = carRepository;
+            _pilotRepository = pilotRepository;
+        }
+
+
         // GET: Car
         [HttpGet]
         public ActionResult Index()
         {
-            var list = CarRepository.GetAllCars();
+            var list = _carRepository.GetAllCars();
 
             return View(list);
         }
@@ -32,7 +45,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Details(long id)
         {
-            var car = CarRepository.GetEntityById<Car>(id);
+            var car = _carRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
             return View(model);
         }
@@ -43,7 +56,7 @@ namespace Web.Controllers
         {
             var items = new List<SelectListItem>();
 
-            var pilots = PilotRepository.GetPilotForCarCreation();
+            var pilots = _pilotRepository.GetPilotForCarCreation();
 
             items.Add(new SelectListItem {Text = "no owner", Value = "0", Selected = true});
             foreach (var pilot in pilots)
@@ -67,12 +80,13 @@ namespace Web.Controllers
                 // TODO: Add insert logic here
                 if (car.PilotId != 0)
                 {
-                    owner = PilotRepository.GetPilot(car.PilotId);
+                    owner = _pilotRepository.GetPilot(car.PilotId);
                 }
 
-                var createdCar = CarFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                var createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
                     car.Name, car.AdditionalInfo, owner);
-                CarRepository.Save(createdCar);
+
+                _carRepository.Save(createdCar);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -86,11 +100,11 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            var car = CarRepository.GetEntityById<Car>(id);
+            var car = _carRepository.GetEntityById<Car>(id);
 
             var items = new List<SelectListItem>();
 
-            var pilots = PilotRepository.GetPilotForCarCreation();
+            var pilots = _pilotRepository.GetPilotForCarCreation();
 
             items.Add(new SelectListItem {Text = "no owner", Value = "0"});
             foreach (var pilot in pilots)
@@ -107,15 +121,15 @@ namespace Web.Controllers
         {
             try
             {
-                var oldCar = CarRepository.GetEntityById<Car>(id);
+                var oldCar = _carRepository.GetEntityById<Car>(id);
                 // TODO: Add update logic here
-                CarRepository.UpdateCarInfo(oldCar, new CarUpdateDto
+                _carRepository.UpdateCarInfo(oldCar, new CarUpdateDto
                 {
                     Id = id,
                     Name = carModel.Name,
                     AdditionalInfo = carModel.AdditionalInfo,
                     Engine = new EngineUpdateDto(carModel.HorsePowers, carModel.EngineType),
-                    Pilot = new PilotUpdateDto(PilotRepository.GetPilot(long.Parse(pilots))),
+                    Pilot = new PilotUpdateDto(_pilotRepository.GetPilot(long.Parse(pilots))),
                     TankVolume = carModel.TankVolume,
                     Weight = carModel.Weight
                 });
@@ -132,7 +146,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var car = CarRepository.GetEntityById<Car>(id);
+            var car = _carRepository.GetEntityById<Car>(id);
             var carModel = new CarModel(car);
             return View(carModel);
         }
@@ -144,10 +158,10 @@ namespace Web.Controllers
             try
             {
                 // TODO: Add delete logic here
-                CarRepository.DeleteCar(id);
+                _carRepository.DeleteCar(id);
                 return RedirectToAction("Index");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                 return View();

@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using Domain.Dto;
 using Factories;
-using Infrastrucuture.IoC;
 using Repository;
 using Repository.Interfaces;
 using Utils;
@@ -12,12 +11,24 @@ namespace Web.Controllers
 {
     public class PilotController : Controller
     {
-        private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+       // private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
+        public readonly IPilotRepository _pilotRepository;
+
+        [Obsolete]
+        public PilotController()
+        {
+        }
+
+        public PilotController(IPilotRepository pilotRepository)
+        {
+            _pilotRepository = pilotRepository;
+        }
+
         // GET: Pilot
         [HttpGet]
         public ActionResult Index()
         {
-            var pilots = PilotRepository.GetAllPilots();
+            var pilots = _pilotRepository.GetAllPilots();
             return View(pilots);
         }
 
@@ -25,7 +36,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var pilot = PilotRepository.GetPilot(id);
+            var pilot = _pilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(pilot);
             return View(modelPilot);
         }
@@ -47,7 +58,7 @@ namespace Web.Controllers
                 var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
                     pilotModel.Age, pilotModel.Team);
 
-                PilotRepository.AddPilot(pilotNew);
+                _pilotRepository.AddPilot(pilotNew);
 
                 return RedirectToAction("Index");
             }
@@ -62,7 +73,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var oldPilot = PilotRepository.GetPilot(id);
+            var oldPilot = _pilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(oldPilot);
 
             return View(modelPilot);
@@ -74,8 +85,8 @@ namespace Web.Controllers
         {
             try
             {
-                var oldPilot = PilotRepository.GetPilot(id);
-                PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
+                var oldPilot = _pilotRepository.GetPilot(id);
+                _pilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
                     Id = id,
                     Name = editedPilot.Name,
@@ -97,7 +108,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var pilot = PilotRepository.GetPilot(id);
+            var pilot = _pilotRepository.GetPilot(id);
             return View(pilot);
         }
 
@@ -107,7 +118,7 @@ namespace Web.Controllers
         {
             try
             {
-                PilotRepository.DeletePilot(id);
+                _pilotRepository.DeletePilot(id);
                 return RedirectToAction("Index");
             }
             catch(Exception ex)

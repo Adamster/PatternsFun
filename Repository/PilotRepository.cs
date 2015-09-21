@@ -353,7 +353,7 @@ namespace Repository
                 try
                 {
                     var iPilot = _session.Get<Pilot>(id);
-
+                    tran.Commit();
                     return iPilot;
                 }
                 catch (Exception ex)

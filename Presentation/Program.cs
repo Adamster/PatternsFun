@@ -17,16 +17,16 @@ namespace Presentation
 
         static Program()
         {
-            ServiceLocator.RegisterAll();
+            //ServiceLocator.RegisterAll();
 
             NHibernateProfiler.Initialize();
         }
 
         private static void Main(string[] args)
         {
-            MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            CarRepository = ServiceLocator.Get<CarRepository>();
-            PilotRepository = ServiceLocator.Get<PilotRepository>();
+            //MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
+            //CarRepository = ServiceLocator.Get<CarRepository>();
+            //PilotRepository = ServiceLocator.Get<PilotRepository>();
             var log = Logger.GetLogger();
 
             #region comments
@@ -58,7 +58,7 @@ namespace Presentation
 
             Console.WriteLine("press any key to exit...");
             Console.ReadLine();
-            log.SaveToFile();
+            //log.SaveToFile();
         }
 
         private static void GetCarDetailsPilot()

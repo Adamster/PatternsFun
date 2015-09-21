@@ -51,7 +51,7 @@ namespace Repository
                 }
             }
         }
-        
+
         public CarDetailsDto GetCarDetails(long id)
         {
             using (var tran = _session.BeginTransaction())
@@ -88,7 +88,6 @@ namespace Repository
                 }
             }
         }
-
 
         public IList<CarDetailsDto> GetCarDetailsWithPilot()
         {
@@ -176,7 +175,7 @@ namespace Repository
             {
                 try
                 {
-                 var edited =    oldCar.CarEdit(newCar);
+                    var edited = oldCar.CarEdit(newCar);
                     _session.SaveOrUpdate(edited);
                     tran.Commit();
                 }
@@ -208,7 +207,6 @@ namespace Repository
             }
         }
 
-
         public IList<Car> GetAllCars()
         {
             using (var tran = _session.BeginTransaction())
@@ -216,7 +214,7 @@ namespace Repository
                 try
                 {
                     var res = _session.QueryOver<Car>()
-                        .Fetch(x=>x).Lazy()
+                        .Fetch(x => x).Lazy()
                         .List();
 
                     tran.Commit();

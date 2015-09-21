@@ -7,7 +7,7 @@ namespace Domain.Mapping
     {
         public VehicleMap()
         {
-            References(x => x.OwnerPilot).Column("Pilot_id");
+            References(x => x.OwnerPilot).Column("Pilot_id").Cascade.SaveUpdate();
             Map(x => x.Name).Not.Nullable();
             Map(x => x.Mileage);
             Map(x => x.Weight).Not.Nullable();
