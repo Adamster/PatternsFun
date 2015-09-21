@@ -16,6 +16,10 @@ namespace Repository
 {
     public class CarRepository : Repository, ICarRepository
     {
+        public CarRepository(ISessionManager sessionManager) : base(sessionManager)
+        {
+        }
+
         public IList<CarDetailsDto> GetCarDetails()
         {
             using (var tran = _session.BeginTransaction())

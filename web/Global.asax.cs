@@ -4,6 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Castle.Windsor;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
+using Repository;
 using Web.CastleWindsorIoC;
 
 namespace Web
@@ -21,7 +22,7 @@ namespace Web
 
             var container = new WindsorContainer();
             container.Install(new ApplicationCastleInstaller());
-
+            
             // Create the Controller Factory
             var castleControllerFactory = new CastleControllerFactory(container);
 

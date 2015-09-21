@@ -40,6 +40,10 @@ namespace Web.CastleWindsorIoC
                     .ImplementedBy(typeof (ElectroActions))
                     .LifestylePerWebRequest());
 
+            container.Register(
+               Component.For(typeof(ISessionManager))
+                   .ImplementedBy(typeof(SessionManager))
+                   .LifestylePerWebRequest());
 
             var contollers =
                 Assembly.GetExecutingAssembly().GetTypes().Where(x => x.BaseType == typeof (Controller)).ToList();

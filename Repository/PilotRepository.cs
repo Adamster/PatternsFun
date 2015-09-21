@@ -16,6 +16,10 @@ namespace Repository
 {
     public class PilotRepository : Repository, IPilotRepository
     {
+        public PilotRepository(ISessionManager sessionManager) : base(sessionManager)
+        {
+        }
+
         public void AddPilot(Pilot pilot)
         {
             using (var tran = _session.BeginTransaction())

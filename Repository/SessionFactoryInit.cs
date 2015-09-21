@@ -20,10 +20,11 @@ namespace Repository
             get { return _sessionGenerator; }
         }
 
-        public ISession GetSession()
+        public ISessionFactory GetSessionFactory()
         {
-            return SessionFactory.OpenSession();
+            return SessionFactory;
         }
+
 
         private static ISessionFactory CreateSessionFactory()
         {
