@@ -11,7 +11,7 @@ namespace Domain.Mapping
             Map(x => x.DebutDate).Not.Nullable();
             Map(x => x.Team).Nullable();
             Map(x => x.ExpierenceTime).Not.Nullable();
-            HasMany(x => x.CarVehicles).Cascade.All().Inverse();
+            HasMany(x => x.CarVehicles).Cascade.SaveUpdate().Inverse().ForeignKeyConstraintName("FK7867CB2454E78567");
         }
     }
 }

@@ -74,7 +74,6 @@ namespace Web.Controllers
         public ActionResult Create(CarModel car)
         {
             Pilot owner = null;
-
             try
             {
                 // TODO: Add insert logic here
@@ -83,8 +82,19 @@ namespace Web.Controllers
                     owner = _pilotRepository.GetPilot(car.PilotId);
                 }
 
-                var createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
-                    car.Name, car.AdditionalInfo, owner);
+                Car createdCar = null;
+                if (!car.IsSportCar)
+                {
+                    createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                        car.Name, car.AdditionalInfo, owner);
+                }
+                else
+                {
+                    createdCar = _carFactory.CreateNewSportCar(car.TankVolume, car.Weight, car.HorsePowers,
+                        car.EngineType,
+                        car.Name, car.AdditionalInfo, owner);
+                }
+
 
                 _carRepository.Save(createdCar);
                 return RedirectToAction("Index");

@@ -3,7 +3,8 @@
 <div class="form-group">
     @Html.LabelFor(model => model, new {@class = "control-label col-md-2"})
     <div class="col-md-10">
-        @Html.TextBoxFor(model => model, new {@class = "form-control"})
+      
+        @Html.TextBoxFor(model => model, new {@class = "form-control" ,@id = "slider"})
         @Html.ValidationMessageFor(model => model, "", new {@class = "text-danger"})
     </div>
 </div>

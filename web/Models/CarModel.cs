@@ -65,6 +65,8 @@ namespace Web.Models
 
         public long PilotId { get; set; }
 
+        public bool IsSportCar { get; set; }
+
         [Display(Name = "Owner")]
         public IList<SelectListItem> Pilots { get; set; }
     }

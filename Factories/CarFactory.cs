@@ -39,10 +39,10 @@ namespace Factories
             return optParamStr;
         }
 
-        public SportCar CreateNewSportCar(int fuelTankVolume, double weight, int horsePower,
-            EngineTypes engineType, string name, Action<IParams> optionalParam, Pilot pilot)
+        public SportCar CreateNewSportCar(double fuelTankVolume, double weight, int horsePower,
+            EngineTypes engineType, string name, string param, Pilot pilot)
         {
-            var sportCar = new SportCar(name, null, weight, null, pilot, fuelTankVolume,
+            var sportCar = new SportCar(name, null, weight, param, pilot, fuelTankVolume,
                 CreateGasolineEngine(horsePower, engineType));
             OnCarCreation(sportCar);
             return sportCar;
