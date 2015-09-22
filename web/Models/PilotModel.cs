@@ -10,6 +10,7 @@ namespace Web.Models
     {
         public PilotModel(Pilot pilot)
         {
+            Id = pilot.Id;
             Name = pilot.Name;
             Age = pilot.Age;
             Team = pilot.Team;
@@ -21,6 +22,7 @@ namespace Web.Models
             DebutDate = DateTime.Today;
         }
 
+        public long Id { get; set; }
         [Required]
         public string Name { get; set; }
 

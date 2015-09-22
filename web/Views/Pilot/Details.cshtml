@@ -9,7 +9,7 @@
 <div>
     <h4>PilotModel</h4>
     <hr/>
-    <dl class="dl-horizontal" id="puff">
+    <dl class="dl-horizontal puff">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-   
+   @Html.ActionLink("Edit", "Edit", new {  id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

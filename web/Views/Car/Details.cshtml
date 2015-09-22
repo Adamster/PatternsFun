@@ -10,9 +10,9 @@
     <h4>CarModel</h4>
     <hr/>
 
-  
 
-    <dl class="dl-horizontal" id="puff" >
+
+    <dl class="dl-horizontal puff">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.HorsePowers)
         </dt>
 
-        <dd>
+        <dd id="HorsePowers">
             @Html.DisplayFor(model => model.HorsePowers)
         </dd>
 
@@ -62,6 +62,8 @@
         </dd>
 
     </dl>
+
+    <input id="Speed" style="display: inline-block"/>
 </div>
 <p>
     

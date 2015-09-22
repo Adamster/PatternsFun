@@ -11,7 +11,7 @@
 <p></p>
 
 
-<table class="table" id="tableList">
+<table class="table tableList">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Version)
@@ -36,7 +36,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="trItem">
             <td>
                 @Html.DisplayFor(modelItem => item.Version)
             </td>
