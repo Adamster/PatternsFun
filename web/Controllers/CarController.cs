@@ -119,9 +119,9 @@ namespace Web.Controllers
             items.Add(new SelectListItem {Text = "no owner", Value = "0"});
             foreach (var pilot in pilots)
             {
-                if (pilot.Name == car.OwnerPilot.Name)
+                if (car.OwnerPilot != null && pilot.Name == car.OwnerPilot.Name)
                 {
-                    items.Add(new SelectListItem { Text = pilot.Name, Value = pilot.Id.ToString() , Selected = true});
+                    items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString(), Selected = true});
                 }
                 items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }

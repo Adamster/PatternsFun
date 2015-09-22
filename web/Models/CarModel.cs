@@ -31,6 +31,7 @@ namespace Web.Models
         {
             if (car.OwnerPilot == null) PilotName = "no owner";
             else PilotName = car.OwnerPilot.Name;
+            Id = car.Id;
             Name = car.Name;
             Weight = car.Weight;
             HorsePowers = car.Engine.HorsePowers;
@@ -44,6 +45,7 @@ namespace Web.Models
         {
         }
 
+        public long Id { get; set; }
         [Required]
         public string Name { get; set; }
 
