@@ -21,7 +21,7 @@ $.fn.myfunc = function (userPref) {
     nobW                : 20,          /**indicator nob width*/
     nobH                : 4,           /**indicator nob height*/
     numbW               : 35,          /**indicator number width*/
-    numbH               : 16,          /**indicator number height*/
+    numbH               : 20,          /**indicator number height*/
     midNobW             : 10,          /**indicator mid nob width*/
     midNobH             : 3,           /**indicator mid nob height*/
     noOfSmallDiv        : 15,           /**no of small div between main div*/
