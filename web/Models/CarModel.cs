@@ -50,12 +50,16 @@ namespace Web.Models
         public string Name { get; set; }
 
         [Range(1, 65535)]
+        [Required]
         public double Weight { get; set; }
 
         [Range(1, 65535)]
+        [Required]
+        [Display(Name = "Horsepowers")]
         public int HorsePowers { get; set; }
 
         [Range(1, 24)]
+        [Display(Name = "Engine type")]
         public EngineTypes EngineType { get; set; }
 
         public double TankVolume { get; set; }

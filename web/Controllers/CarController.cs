@@ -66,7 +66,7 @@ namespace Web.Controllers
 
             var carmodel = new CarModel(items);
 
-            return View(carmodel);
+            return PartialView(carmodel);
         }
 
         // POST: Car/Create
@@ -74,36 +74,42 @@ namespace Web.Controllers
         public ActionResult Create(CarModel car)
         {
             Pilot owner = null;
-            try
+
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-                if (car.PilotId != 0)
+                try
                 {
-                    owner = _pilotRepository.GetPilot(car.PilotId);
-                }
+                    // TODO: Add insert logic here
+                    if (car.PilotId != 0)
+                    {
+                        owner = _pilotRepository.GetPilot(car.PilotId);
+                    }
 
-                Car createdCar = null;
-                if (!car.IsSportCar)
+                    Car createdCar = null;
+                    if (!car.IsSportCar)
+                    {
+                        createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                            car.Name, car.AdditionalInfo, owner);
+                    }
+                    else
+                    {
+                        createdCar = _carFactory.CreateNewSportCar(car.TankVolume, car.Weight, car.HorsePowers,
+                            car.EngineType,
+                            car.Name, car.AdditionalInfo, owner);
+                    }
+
+
+                    _carRepository.Save(createdCar);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
                 {
-                    createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
-                        car.Name, car.AdditionalInfo, owner);
+                    Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
+                    return View(ex.Message + "\n" + ex.StackTrace);
                 }
-                else
-                {
-                    createdCar = _carFactory.CreateNewSportCar(car.TankVolume, car.Weight, car.HorsePowers,
-                        car.EngineType,
-                        car.Name, car.AdditionalInfo, owner);
-                }
-
-
-                _carRepository.Save(createdCar);
-                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-                Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
-                return View(ex.Message + "\n" + ex.StackTrace);
-            }
+
+            return View(car);
         }
 
         // GET: Car/Edit/5

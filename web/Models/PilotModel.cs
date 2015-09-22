@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Razor.Editor;
 using Domain;
 using Domain.Persons;
 
@@ -20,17 +21,19 @@ namespace Web.Models
 
         public PilotModel()
         {
-            DebutDate = DateTime.Today;
+            //DebutDate = DateTime.Today;
         }
 
         public long Id { get; set; }
         [Required]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$" , ErrorMessage = "Enter correct name") ]
         public string Name { get; set; }
 
         [Range(18, 100)]
         public int Age { get; set; }
 
-        [UIHint("TextBoxEditor")]
+     
+        [Required]
         public string Team { get; set; }
 
         [Display(Name = "Debut date")]

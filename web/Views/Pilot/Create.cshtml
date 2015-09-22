@@ -19,7 +19,7 @@
         @Html.EditorFor(model => model.Name, "TextBoxEditor")
         @Html.EditorFor(model => model.Age)
         @Html.EditorFor(model => model.DebutDate, "DateTimeEditor")
-        @Html.EditorFor(model => model.Team)
+        @Html.EditorFor(model => model.Team, "TextBoxEditor")
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -28,6 +28,9 @@
         </div>
     </div>
 }
+
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

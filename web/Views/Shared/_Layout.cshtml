@@ -8,9 +8,11 @@
 
     <link href="~/Content/jquery-ui/jquery-ui.structure.css" rel="stylesheet"/>
     <link href="~/Content/jquery-ui/jquery-ui.theme.css" rel="stylesheet"/>
-    <link href="~/Content/speedometer.css" rel="stylesheet" />
+    <link href="~/Content/speedometer.css" rel="stylesheet"/>
     <script src="~/Content/jquery-ui/external/jquery/jquery.js"></script>
     <script src="~/Content/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/speedometer.js"></script>
 
 
@@ -55,5 +57,6 @@
 @RenderSection("scripts", false)
 @BundleManager.Styles.Render()
 <script src="~/Scripts/someAnimationTest.js"></script>
+<script src="~/Scripts/CreateCarDialog.js"></script>
 </body>
 </html>
