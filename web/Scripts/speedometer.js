@@ -15,12 +15,12 @@ $.fn.myfunc = function (userPref) {
     speedNobeH          : 4,           /**speed nobe height*/
     speedoNobeW         : 95,          /**speed nobe width*/
     speedoNobeL         : 13,          /**speed nobe left position*/
-    indicatorRadius     : 125,         /**radius of indicators position*/
+    indicatorRadius     : 130,         /**radius of indicators position*/
     indicatorNumbRadius : 90,          /**radius of numbers position*/
     speedPositionTxtWH  : 80,          /**speedo-meter current value cont*/
     nobW                : 20,          /**indicator nob width*/
     nobH                : 4,           /**indicator nob height*/
-    numbW               : 30,          /**indicator number width*/
+    numbW               : 35,          /**indicator number width*/
     numbH               : 16,          /**indicator number height*/
     midNobW             : 10,          /**indicator mid nob width*/
     midNobH             : 3,           /**indicator mid nob height*/

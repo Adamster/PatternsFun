@@ -15,6 +15,7 @@ namespace Web.Models
             Age = pilot.Age;
             Team = pilot.Team;
             DebutDate = pilot.DebutDate;
+            ExperienceTime = Convert.ToInt32((DateTime.Now - DebutDate).TotalDays);
         }
 
         public PilotModel()
@@ -34,6 +35,8 @@ namespace Web.Models
 
         [Display(Name = "Debut date")]
         public DateTime DebutDate { get; set; }
+
+        public int ExperienceTime { get; set; }
 
         public List<Vehicle> VehiclesList { get; set; }
     }

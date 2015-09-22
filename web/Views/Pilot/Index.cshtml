@@ -28,9 +28,7 @@
         <th>
             @Html.DisplayNameFor(model => model.DebutDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExpierenceTime)
-        </th>
+      
         <th></th>
     </tr>
 
@@ -51,9 +49,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DebutDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpierenceTime)
             </td>
             <td>
                 <a href="@Url.Action("Edit", new {id = item.Id})"><i class="fa fa-edit"></i>Edit </a> |
