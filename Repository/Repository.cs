@@ -8,8 +8,8 @@ namespace Repository
 {
     public abstract class Repository : IRepository
     {
-        private readonly ISessionManager _sessionManager;
         protected readonly ISession _session;
+        private readonly ISessionManager _sessionManager;
 
         protected Repository(ISessionManager sessionManager)
         {
@@ -18,7 +18,7 @@ namespace Repository
         }
 
         public void Save<TEntity>(TEntity entity) where TEntity : Entity
-        {            
+        {
             using (var tran = _session.BeginTransaction())
             {
                 try

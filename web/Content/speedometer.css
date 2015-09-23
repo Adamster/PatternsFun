@@ -4,99 +4,102 @@
 	*project: Speedometer
 */
 .envelope {
-	background:#0F0F0F;
-	position: relative;
+    -moz-border-radius: 50%;
+    -moz-box-shadow: inset 0 0 5px 5px #000;
 	
-	box-shadow: inset 0 0 5px 5px #000;
-	-webkit-box-shadow: inset 0 0 5px 5px #000;
-	-o-box-shadow: inset 0 0 5px 5px #000;
-	-moz-box-shadow: inset 0 0 5px 5px #000;
+    -o-border-radius: 50%;
+    -o-box-shadow: inset 0 0 5px 5px #000;
+    -webkit-border-radius: 50%;
+    -webkit-box-shadow: inset 0 0 5px 5px #000;
 	
-	border-radius:50%;
-	-webkit-border-radius:50%;
-	-o-border-radius:50%;
-	-moz-border-radius:50%;
-}
-.speedNobe{
-	position:absolute;
-	width:100%;
-	z-index:10;	
-	transition: all 1s;
-	-webkit-transition: all 1s;
-	-o-transition: all 1s;
-	-moz-transition: all 1s;	
-}
-.speedPosition {
-	position: absolute;
-	color: #FFF;
-	text-align: center;
-	line-height: 80PX;
-	font-family:arial;
-	font-size: 30px;
-	font-weight:bold;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-o-border-radius: 50%;
-	-moz-border-radius: 50%;
-	background: #191919;
-	box-shadow: 0 0 3px 3px black;
-	-webkit-box-shadow: 0 0 3px 3px black;
-	-moz-box-shadow: 0 0 3px 3px black;
-	-o-box-shadow: 0 0 3px 3px black;
-}
-.fonts
-{
-	font-family:arial;
-	font-weight:bold;
-	width:100%;
-	text-align:center;
+    background: #0F0F0F;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px 5px #000;
+    position: relative;
 }
 
-.speedNobe div{
-	background: #48a3cb;
-	position: absolute;
-	height: 100%;
-	top: 0;
+.speedNobe {
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+    position: absolute;
+    transition: all 1s;
+    width: 100%;
+    z-index: 10;
 }
-.numb,.nob{
-	transition: opacity 1s;
-	-webkit-transition: opacity 1s;
-	-o-transition: opacity 1s;
-	-moz-transition: opacity 1s;	
-	position: absolute;
-	opacity: 0.5;
+
+.speedPosition {
+    -moz-border-radius: 50%;
+    -moz-box-shadow: 0 0 3px 3px black;
+    -o-border-radius: 50%;
+    -o-box-shadow: 0 0 3px 3px black;
+    -webkit-border-radius: 50%;
+    -webkit-box-shadow: 0 0 3px 3px black;
+    background: #191919;
+    border-radius: 50%;
+    box-shadow: 0 0 3px 3px black;
+    color: #FFF;
+    font-family: arial;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 80PX;
+    position: absolute;
+    text-align: center;
 }
-.nob{
+
+.fonts {
+    font-family: arial;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.speedNobe div {
+    background: #48a3cb;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.numb, .nob {
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    opacity: 0.5;
+    position: absolute;
+    transition: opacity 1s;
+}
+
+.nob {
 	
-	background:#eee;
-	box-shadow: 0 0 2px 1px #eee;
-	-webkit-box-shadow: 0 0 2px 1px #eee;
-	-moz-box-shadow: 0 0 2px 1px #eee;
-	-o-box-shadow: 0 0 2px 1px #eee;
+    -moz-box-shadow: 0 0 2px 1px #eee;
+    -o-box-shadow: 0 0 2px 1px #eee;
+    -webkit-box-shadow: 0 0 2px 1px #eee;
+    background: #eee;
+    box-shadow: 0 0 2px 1px #eee;
 }
-.numb{
+
+.numb {
 	
-	color:#eee;
-	text-align: left;
-	overflow: hidden;
-	opacity: 0.5;
-	font-family: arial;
-	font-size: 16px;
-	font-weight: bold;
+    color: #eee;
+    font-family: arial;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.5;
+    overflow: hidden;
+    text-align: left;
 }
-.nob.bright{
-	opacity: 1;
+
+.nob.bright { opacity: 1; }
+
+.nob.danger {
+    -moz-box-shadow: 0 0 2px 1px #FF113A;
+    -o-box-shadow: 0 0 2px 1px #FF113A;
+    -webkit-box-shadow: 0 0 2px 1px #FF113A;
+    background: #FF113A;
+    box-shadow: 0 0 2px 1px #FF113A;
 }
-.nob.danger{
-	background:#FF113A;
-	box-shadow: 0 0 2px 1px #FF113A;
-	-webkit-box-shadow: 0 0 2px 1px #FF113A;
-	-moz-box-shadow: 0 0 2px 1px #FF113A;
-	-o-box-shadow: 0 0 2px 1px #FF113A;
-}
-.numb.bright{
-	opacity: 1;
-}
-.numb.danger{
-	color: #FF113A;
-}
+
+.numb.bright { opacity: 1; }
+
+.numb.danger { color: #FF113A; }

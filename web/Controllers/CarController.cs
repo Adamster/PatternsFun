@@ -47,7 +47,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
-            return View(model);
+            return PartialView(model);
         }
 
         // GET: Car/Create
@@ -88,7 +88,8 @@ namespace Web.Controllers
                     Car createdCar = null;
                     if (!car.IsSportCar)
                     {
-                        createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers, car.EngineType,
+                        createdCar = _carFactory.CreateNewCar(car.TankVolume, car.Weight, car.HorsePowers,
+                            car.EngineType,
                             car.Name, car.AdditionalInfo, owner);
                     }
                     else
@@ -107,10 +108,8 @@ namespace Web.Controllers
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     return View(ex.Message + "\n" + ex.StackTrace);
                 }
-              
             }
             return PartialView(car);
-          
         }
 
         // GET: Car/Edit/5
@@ -133,15 +132,20 @@ namespace Web.Controllers
                 items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
             var modelCar = new CarModel(car, items);
-            return View(modelCar);
+            return PartialView(modelCar);
         }
 
         // POST: Car/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, CarModel carModel, string pilots)
         {
+            Pilot owner = null;
             try
             {
+                if (pilots != "0")
+                {
+                    owner = _pilotRepository.GetPilot(long.Parse(pilots));
+                }
                 var oldCar = _carRepository.GetEntityById<Car>(id);
                 // TODO: Add update logic here
                 _carRepository.UpdateCarInfo(oldCar, new CarUpdateDto
@@ -150,11 +154,12 @@ namespace Web.Controllers
                     Name = carModel.Name,
                     AdditionalInfo = carModel.AdditionalInfo,
                     Engine = new EngineUpdateDto(carModel.HorsePowers, carModel.EngineType),
-                    Pilot = new PilotUpdateDto(_pilotRepository.GetPilot(long.Parse(pilots))),
+                    Pilot = new PilotUpdateDto(owner),
                     TankVolume = carModel.TankVolume,
                     Weight = carModel.Weight
                 });
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return PartialView("CarTable", _carRepository.GetAllCars());
             }
             catch (Exception ex)
             {
@@ -185,7 +190,7 @@ namespace Web.Controllers
             catch (Exception ex)
             {
                 Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
-              
+                return View();
             }
         }
     }

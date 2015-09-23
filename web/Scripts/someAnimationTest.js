@@ -9,11 +9,11 @@
     });
 
     $("#datepicker").datepicker()
-    .datepicker("option", "dateFormat", "dd/mm/yy");
+        .datepicker("option", "dateFormat", "dd/mm/yy");
 
     $(".puff").hide();
     $(".puff").toggle("blind");
-   
+
     $(".tableList").hide();
     $(".tableList").toggle("highlight");
 
@@ -30,7 +30,7 @@
 
     });
 
-    $(".trItem").mouseleave(function () {
+    $(".trItem").mouseleave(function() {
         $(this).animate({
             backgroundColor: "white",
             color: "black"
@@ -45,12 +45,12 @@
     $("#Speed").hide();
     var t = $("#HorsePowers").contents();
     $("#Speed").val(t.text());
-    
+
 
     $("#Speed").myfunc({ divFact: 10 });
     setTimeout(function() {
         $("#Speed").change();
-    } , 400); 
+    }, 400);
 
-    
+
 })

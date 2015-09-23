@@ -11,7 +11,7 @@
             {
                 text: "Save",
                 click: function() {
-                    var form = $("#content form"); 
+                    var form = $("#content form");
                     var formData = form.serialize();
                     $.post(formUrl, formData, function(result, status, xhr) {
                         if (xhr.status === 200) {

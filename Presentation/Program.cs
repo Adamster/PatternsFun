@@ -1,9 +1,6 @@
 ﻿using System;
 using Domain.EnginesTypes;
 using Factories;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
-using Infrastrucuture.IoC;
-using Repository;
 using Repository.Interfaces;
 using Utils;
 
@@ -15,18 +12,14 @@ namespace Presentation
         private static ICarRepository CarRepository;
         private static IPilotRepository PilotRepository;
 
-        static Program()
+        public Program(CarFactory carFactory, ICarRepository repository)
         {
-            //ServiceLocator.RegisterAll();
-
-            NHibernateProfiler.Initialize();
+            MaranelloCarFactory = carFactory;
+            CarRepository = repository;
         }
 
         private static void Main(string[] args)
         {
-            //MaranelloCarFactory = ServiceLocator.Get<CarFactory>();
-            //CarRepository = ServiceLocator.Get<CarRepository>();
-            //PilotRepository = ServiceLocator.Get<PilotRepository>();
             var log = Logger.GetLogger();
 
             #region comments
@@ -152,9 +145,9 @@ namespace Presentation
         private static void GenerateData()
         {
             //  var pilot2 = PilotFactory.CreateNewPilot("Joan Doe 3 Cars", "01/09/2015", 19, "Mercedes");
-            var car1 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 900, EngineTypes.V10, "Ferrari FXX", null, null);
-            var car2 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 800, EngineTypes.V10, "Ferrari 458", null, null);
-            var car3 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 700, EngineTypes.V10, "Ferrari FF", null, null);
+            var car1 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 900, EngineTypes.V10, "Ferrari FXX", "", null);
+            var car2 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 800, EngineTypes.V10, "Ferrari 458", "", null);
+            var car3 = MaranelloCarFactory.CreateNewSportCar(100, 2100, 700, EngineTypes.V10, "Ferrari FF", "", null);
 
 
             //pilot2.AddCar(car1);

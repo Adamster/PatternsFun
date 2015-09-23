@@ -56,7 +56,6 @@ namespace Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
                 }
                 var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
                     pilotModel.Age, pilotModel.Team);

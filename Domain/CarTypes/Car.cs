@@ -214,11 +214,10 @@ namespace Domain.CarTypes
             Name = updatedCar.Name;
             AdditionalInfo = updatedCar.AdditionalInfo;
             Engine.UpdateEngineInfo(Engine, updatedCar.Engine);
-            if (OwnerPilot == null)
+            if (OwnerPilot != null)
             {
-                OwnerPilot = new Pilot();
+                OwnerPilot.PilotEdit(updatedCar.Pilot);
             }
-            OwnerPilot.PilotEdit(updatedCar.Pilot);
             FuelTank = updatedCar.TankVolume;
             Weight = updatedCar.Weight;
             return this;
