@@ -323,6 +323,7 @@
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Car\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BoolCheckBox.cshtml" />
+    <Content Include="Views\Car\CarTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

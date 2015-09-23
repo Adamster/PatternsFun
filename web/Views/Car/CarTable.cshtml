@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Domain.CarTypes.Car>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelTank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalInfo)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        <tr class="trItem">
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FuelTank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalInfo)
+            </td>
+
+            <td>
+
+                <a class="edd" href="@Url.Action("Edit", new {id = item.Id})"><i class="fa fa-edit  "></i>Edit </a> |
+                <a class="edd" href="@Url.Action("Details", new {id = item.Id})"><i class="fa fa-list "></i> Details </a> |
+                <a class="edd" href="@Url.Action("Delete", new {id = item.Id})"><i class="fa fa-trash "></i> Delete </a>
+
+            </td>
+
+
+        </tr>
+
+    }
+
+</table>
+

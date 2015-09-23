@@ -100,16 +100,17 @@ namespace Web.Controllers
 
 
                     _carRepository.Save(createdCar);
-                    return RedirectToAction("Index");
+                    return PartialView("CarTable", _carRepository.GetAllCars());
                 }
                 catch (Exception ex)
                 {
                     Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
                     return View(ex.Message + "\n" + ex.StackTrace);
                 }
+              
             }
-
-            return View(car);
+            return PartialView(car);
+          
         }
 
         // GET: Car/Edit/5

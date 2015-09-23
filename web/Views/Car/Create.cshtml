@@ -10,9 +10,8 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal CreateForm">
+    <div class="form-horizontal">
         <h4>Car</h4>
-        <hr/>
 
         @Html.EditorFor(model => model.Name, "TextBoxEditor")
         @Html.EditorFor(model => model.Weight)
@@ -21,24 +20,7 @@
         @Html.EditorFor(model => model.TankVolume)
         @Html.EditorFor(model => model.AdditionalInfo)
         @Html.EditorFor(model => model.Pilots, "DropDownList", "PilotId")
-        @Html.EditorFor(model=> model.IsSportCar, "BoolCheckBox")
+        @Html.EditorFor(model => model.IsSportCar, "BoolCheckBox")
 
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
-            </div>
-        </div>
     </div>
-}
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }

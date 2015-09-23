@@ -20,9 +20,14 @@
 
     $(".trItem").hover(function() {
         $(this).animate({
-            backgroundColor: "#FDFF0D",
-            color: "red"
-        },100);
+            backgroundColor: "#336DA6",
+            color: "white"
+        }, 100);
+
+        $(".edd").animate({
+            color: "white"
+        }, 100);
+
     });
 
     $(".trItem").mouseleave(function () {
@@ -30,6 +35,12 @@
             backgroundColor: "white",
             color: "black"
         }, 850);
+
+        $(".edd").animate({
+            color: "#336DA6"
+        }, 850);
+
+
     });
     $("#Speed").hide();
     var t = $("#HorsePowers").contents();
