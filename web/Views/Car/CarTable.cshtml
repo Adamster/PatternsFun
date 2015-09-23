@@ -39,7 +39,7 @@
 
                 <a class="edd" href="@Url.Action("Edit", new {id = item.Id})"><i class="fa fa-edit  "></i>Edit </a> |
                 <a class="edd" href="@Url.Action("Details", new {id = item.Id})"><i class="fa fa-list "></i> Details </a> |
-                <a class="edd" href="@Url.Action("Delete", new {id = item.Id})"><i class="fa fa-trash "></i> Delete </a>
+                <a class="edd delBtn" href="@Url.Action("Delete", new {id = item.Id})" id="@item.Id"><i class="fa fa-trash "></i> Delete </a>
 
             </td>
 

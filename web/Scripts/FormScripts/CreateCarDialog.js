@@ -11,7 +11,7 @@
             {
                 text: "Save",
                 click: function() {
-                    var form = $("#FormCreation form");
+                    var form = $("#content form"); 
                     var formData = form.serialize();
                     $.post(formUrl, formData, function(result, status, xhr) {
                         if (xhr.status === 200) {
@@ -35,8 +35,8 @@
     $("#CreateBtn").click(function(e) {
         e.preventDefault();
 
-        $("#FormCreation").load(formUrl, function() {
-            $.validator.unobtrusive.parse("#FormCreation");
+        $("#content").load(formUrl, function() {
+            $.validator.unobtrusive.parse("#content");
             createDialog.dialog("open");
         });
 

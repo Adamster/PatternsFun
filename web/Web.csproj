@@ -235,7 +235,8 @@
     <Content Include="Content\jquery-ui\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="Content\speedometer.css" />
-    <Content Include="Scripts\CreateCarDialog.js" />
+    <Content Include="Scripts\FormScripts\CreateCarDialog.js" />
+    <Content Include="Scripts\FormScripts\DeleteCarDialog.js" />
     <Content Include="Scripts\speedometer.js" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

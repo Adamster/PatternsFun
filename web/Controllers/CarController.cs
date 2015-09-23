@@ -169,7 +169,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var carModel = new CarModel(car);
-            return View(carModel);
+            return PartialView(carModel);
         }
 
         // POST: Car/Delete/5
@@ -180,12 +180,12 @@ namespace Web.Controllers
             {
                 // TODO: Add delete logic here
                 _carRepository.DeleteCar(id);
-                return RedirectToAction("Index");
+                return PartialView("CarTable", _carRepository.GetAllCars());
             }
             catch (Exception ex)
             {
                 Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
-                return View();
+              
             }
         }
     }
