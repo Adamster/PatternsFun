@@ -6,7 +6,7 @@
     {
       
         autoOpen: false,
-
+        width: 500,
         show: {
             effect: "scale",
             duration: 1000
@@ -16,9 +16,7 @@
             duration: 500
         },
 
-
-        width: 900,
-        height: 700,
+        autoResize: true,
         buttons: [
             {
                 text: "Save",
@@ -27,6 +25,7 @@
                     var formData = form.serialize();
                     $.post(fullUrl, formData, function(result, status, xhr) {
                         if (xhr.status === 200) {
+                            $("#tableContainer").html(result);
                             $(".delBtn").click(mydelete);
                             $(".edBtn").click(edit);
                             $(".detailBtn").click(details);
@@ -85,8 +84,9 @@
         },
 
 
-
-        width: 600,
+       
+        autoResize: true,
+        width: 400,
         buttons: [
             {
                 text: "Delete",
@@ -138,7 +138,7 @@
 
     detailDialog.dialog({
         autoOpen: false,
-
+        autoResize: true,
 
         show: {
             effect: "puff",
@@ -150,7 +150,7 @@
         },
 
 
-        width: 600,
+        width: 500,
         buttons: [
             {
                 text: "OK",
@@ -184,8 +184,8 @@
     createDialog.dialog(
     {
         autoOpen: false,
-        width: 900,
-        height: 700,
+        autoResize: true,
+      
         buttons: [
             {
                 text: "Save",

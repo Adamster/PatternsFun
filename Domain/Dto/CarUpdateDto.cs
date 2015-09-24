@@ -1,4 +1,6 @@
-﻿namespace Domain.Dto
+﻿using Domain.Persons;
+
+namespace Domain.Dto
 {
     public class CarUpdateDto
     {
@@ -8,6 +10,6 @@
         public double Weight { get; set; }
         public double TankVolume { get; set; }
         public string AdditionalInfo { get; set; }
-        public PilotUpdateDto Pilot { get; set; }
+        public Pilot Pilot { get; set; }
     }
 }

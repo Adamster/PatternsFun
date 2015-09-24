@@ -56,22 +56,23 @@ namespace Web.Models
 
         [Range(1, 65535)]
         [Required]
-        [Display(Name = "Horsepowers")]
+        [Display(Name = "HP")]
         public int HorsePowers { get; set; }
 
         [Range(1, 24)]
-        [Display(Name = "Engine type")]
+        [Display(Name = "Engine")]
         public EngineTypes EngineType { get; set; }
-
+        [Display(Name = "Fuel")]
         public double TankVolume { get; set; }
 
         [UIHint("TextBoxEditor")]
+        [Display(Name = "Info")]
         public string AdditionalInfo { get; set; }
 
         public string PilotName { get; set; }
 
         public long PilotId { get; set; }
-
+        
         public bool IsSportCar { get; set; }
 
         [Display(Name = "Owner")]

@@ -154,7 +154,7 @@ namespace Web.Controllers
                     Name = carModel.Name,
                     AdditionalInfo = carModel.AdditionalInfo,
                     Engine = new EngineUpdateDto(carModel.HorsePowers, carModel.EngineType),
-                    Pilot = new PilotUpdateDto(owner),
+                    Pilot = owner,
                     TankVolume = carModel.TankVolume,
                     Weight = carModel.Weight
                 });
