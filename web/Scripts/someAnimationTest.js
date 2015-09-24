@@ -1,10 +1,20 @@
 ﻿$(document).ready(function() {
     var dirChange = false;
 
-    $("#btnAlive").mouseenter(function(e) {
+    $("#btnAlive").mouseenter(function (e) {
+        e.preventDefault(); 
         $(this).animate({
-                left: "+=250"
+               opacity : 0
             }, 300, "easeInOutBounce"
+        );
+       
+    });
+
+
+    $("#btnAlive").mouseleave(function (e) {
+        $(this).animate({
+            opacity: 1
+        }, 300, "easeInOutBounce"
         );
     });
 
@@ -14,20 +24,18 @@
     $(".puff").hide();
     $(".puff").toggle("blind");
 
-    $(".tableList").hide();
-    $(".tableList").toggle("highlight");
+    //$(".tableList").hide();
+    //$(".tableList").toggle("highlight");
 
 
     $(".trItem").hover(function() {
         $(this).animate({
-            backgroundColor: "#336DA6",
-            color: "white"
+           // backgroundColor: "#336DA6",
+            backgroundColor: "#87EBE2",
+            color: "#175485"
         }, 100);
 
-        $(".edd").animate({
-            color: "white"
-        }, 100);
-
+       
     });
 
     $(".trItem").mouseleave(function() {
@@ -36,10 +44,7 @@
             color: "black"
         }, 850);
 
-        $(".edd").animate({
-            color: "#336DA6"
-        }, 850);
-
+      
 
     });
     $("#Speed").hide();

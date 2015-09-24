@@ -4,7 +4,19 @@
     var fullUrl;
     editDialog.dialog(
     {
+      
         autoOpen: false,
+
+        show: {
+            effect: "scale",
+            duration: 1000
+        },
+        hide: {
+            effect: "fold",
+            duration: 500
+        },
+
+
         width: 900,
         height: 700,
         buttons: [
@@ -13,17 +25,17 @@
                 click: function () {
                     var form = $("#EditForm form");
                     var formData = form.serialize();
-                    $.post(fullUrl, formData, function (result, status, xhr) {
+                    $.post(fullUrl, formData, function(result, status, xhr) {
                         if (xhr.status === 200) {
-                            $("#tableContainer").html(result);
-                            $(".edBtn").click(edit);
                             $(".delBtn").click(mydelete);
+                            $(".edBtn").click(edit);
                             $(".detailBtn").click(details);
+                            $("#CreateBtn").click(createForm);
                             editDialog.dialog("close");
                         } else {
                             alert("ABORT MISSION \nerror: " + xhr.status);
                         }
-                    });
+                    }); 
                 }
             },
             {
@@ -42,7 +54,9 @@
 
         $("#EditForm").load(fullUrl, function () {
             $.validator.unobtrusive.parse("#EditForm");
+           
             editDialog.dialog("open");
+           
         });
     }
 
@@ -59,6 +73,19 @@
 
     delDialog.dialog({
         autoOpen: false,
+
+
+        show: {
+            effect: "bounce",
+            duration: 500
+        },
+        hide: {
+            effect: "puff",
+            duration: 500
+        },
+
+
+
         width: 600,
         buttons: [
             {
@@ -70,6 +97,7 @@
                             $(".delBtn").click(mydelete);
                             $(".edBtn").click(edit);
                             $(".detailBtn").click(details);
+                            $("#CreateBtn").click(createForm);
                             delDialog.dialog("close");
                         } else {
                             alert("HOUSTON WE HAVE A PROBLEM");
@@ -110,10 +138,22 @@
 
     detailDialog.dialog({
         autoOpen: false,
+
+
+        show: {
+            effect: "puff",
+            duration: 500
+        },
+        hide: {
+            effect: "puff",
+            duration: 500
+        },
+
+
         width: 600,
         buttons: [
             {
-                text: "Ok",
+                text: "OK",
                 click: function () {
                     detailDialog.dialog("close");
                 }
@@ -137,6 +177,54 @@
         });
     }
 
+
+    var createFormUrl = "/Car/Create";
+    var createDialog = $("#test");
+
+    createDialog.dialog(
+    {
+        autoOpen: false,
+        width: 900,
+        height: 700,
+        buttons: [
+            {
+                text: "Save",
+                click: function () {
+                    var form = $("#content form");
+                    var formData = form.serialize();
+                    $.post(createFormUrl, formData, function (result, status, xhr) {
+                        if (xhr.status === 200) {
+                            $("#tableContainer").html(result);
+                            $(".delBtn").click(mydelete);
+                            $(".edBtn").click(edit);
+                            $(".detailBtn").click(details);
+                            $("#CreateBtn").click(createForm);
+                            createDialog.dialog("close");
+                        } else {
+                            alert("ABORT MISSION \nerror: " + xhr.status);
+                        }
+                    });
+                }
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    createDialog.dialog("close");
+                }
+            }
+        ]
+    });
+
+
+    $("#CreateBtn").click(createForm);
+    function createForm(e) {
+        e.preventDefault();
+
+        $("#content").load(createFormUrl, function () {
+            $.validator.unobtrusive.parse("#content");
+            createDialog.dialog("open");
+        });
+    }
 
 
 

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<Domain.CarTypes.Car>
-<table class="table">
+<table class="table" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Version)
@@ -35,9 +35,9 @@
 
             <td>
 
-                <a class="edd edBtn" href="@Url.Action("Edit", new {id = item.Id})" id="@item.Id"><i class="fa fa-edit"></i>Edit </a> |
-                <a class="edd detailBtn" href="@Url.Action("Details", new {id = item.Id})" id="@item.Id"><i class="fa fa-list "></i> Details </a> |
-                <a class="edd delBtn" href="@Url.Action("Delete", new {id = item.Id})" id="@item.Id"><i class="fa fa-trash "></i> Delete </a>
+                <a class=" edBtn" href="@Url.Action("Edit", new {id = item.Id})" id="@item.Id" ><i class="fa fa-edit"></i>Edit </a> |
+                <a class=" detailBtn" href="@Url.Action("Details", new {id = item.Id})" id="@item.Id" ><i class="fa fa-list "></i> Details </a> |
+                <a class=" delBtn" href="@Url.Action("Delete", new {id = item.Id})" id="@item.Id" ><i class="fa fa-trash "></i> Delete </a>
 
             </td>
 
