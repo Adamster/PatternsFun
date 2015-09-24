@@ -141,11 +141,11 @@
         autoResize: true,
 
         show: {
-            effect: "puff",
+            effect: "blind",
             duration: 500
         },
         hide: {
-            effect: "puff",
+            effect: "fold",
             duration: 500
         },
 
@@ -169,6 +169,19 @@
         e.preventDefault();
         var itemId = $(this).attr("id");
         fullUrl = detailFormUrl + itemId;
+       
+        $("#Speed").hide();
+        var t = $("#HorsePowers").contents();
+        $("#Speed").val(t.text());
+
+
+        $("#Speed").myfunc({ divFact: 10 });
+        setTimeout(function () {
+            $("#Speed").change();
+        }, 400);
+
+
+
 
         $("#detailForm").load(fullUrl, function () {
 

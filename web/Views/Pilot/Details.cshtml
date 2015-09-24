@@ -7,7 +7,6 @@
 <h2>Details</h2>
 
 <div>
-    <h4>PilotModel</h4>
     <hr/>
     <dl class="dl-horizontal puff">
         <dt>
@@ -49,9 +48,12 @@
             @Html.DisplayFor(model => model.ExperienceTime)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CarCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CarCount)
+        </dd>
+       
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new {id = Model.Id}) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

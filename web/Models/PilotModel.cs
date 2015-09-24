@@ -16,11 +16,12 @@ namespace Web.Models
             Team = pilot.Team;
             DebutDate = pilot.DebutDate;
             ExperienceTime = Convert.ToInt32((DateTime.Now - DebutDate).TotalDays);
+            CarCount = pilot.CarVehicles.Count;
         }
 
         public PilotModel()
         {
-            //DebutDate = DateTime.Today;
+            DebutDate = DateTime.Today;
         }
 
         public long Id { get; set; }
@@ -29,6 +30,7 @@ namespace Web.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$", ErrorMessage = "Enter correct name")]
         public string Name { get; set; }
 
+        [Required]
         [Range(18, 100)]
         public int Age { get; set; }
 
@@ -37,10 +39,12 @@ namespace Web.Models
         public string Team { get; set; }
 
         [Display(Name = "Debut date")]
+        [DataType(DataType.Date), DisplayFormat(DataFormatString = "dd-MM-yyyy", ApplyFormatInEditMode = true)]
         public DateTime DebutDate { get; set; }
 
         public int ExperienceTime { get; set; }
 
         public List<Vehicle> VehiclesList { get; set; }
+        public int CarCount { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Web.Mvc;
 using Domain.Dto;
 using Factories;
@@ -28,6 +29,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var pilots = PilotRepository.GetAllPilots();
+            Logger.AddMsgToLog("Pilot index loaded");
             return View(pilots);
         }
 
@@ -37,7 +39,7 @@ namespace Web.Controllers
         {
             var pilot = PilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(pilot);
-            return View(modelPilot);
+            return PartialView(modelPilot);
         }
 
         // GET: Pilot/Create
@@ -45,7 +47,7 @@ namespace Web.Controllers
         public ActionResult Create()
         {
             var model = new PilotModel();
-            return View(model);
+            return PartialView(model);
         }
 
         // POST: Pilot/Create
@@ -54,15 +56,12 @@ namespace Web.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                }
-                var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(),
+                if (!ModelState.IsValid) return PartialView(pilotModel);
+                var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(CultureInfo.InvariantCulture),
                     pilotModel.Age, pilotModel.Team);
-
                 PilotRepository.AddPilot(pilotNew);
 
-                return RedirectToAction("Index");
+                return PartialView("PilotTable", PilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {
@@ -78,7 +77,7 @@ namespace Web.Controllers
             var oldPilot = PilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(oldPilot);
 
-            return View(modelPilot);
+            return PartialView(modelPilot);
         }
 
         // POST: Pilot/Edit/5
@@ -97,7 +96,7 @@ namespace Web.Controllers
                     Team = editedPilot.Team
                 });
 
-                return RedirectToAction("Index");
+                return PartialView("PilotTable", PilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {

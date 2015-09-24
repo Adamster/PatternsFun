@@ -236,7 +236,8 @@
     <Content Include="Content\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="Content\speedometer.css" />
     <Content Include="Scripts\FormScripts\CreateCarDialog.js" />
-    <Content Include="Scripts\FormScripts\DetailsEditDeleteCarDialog.js" />
+    <Content Include="Scripts\FormScripts\carCRUD.js" />
+    <Content Include="Scripts\FormScripts\pilotCRUD.js" />
     <Content Include="Scripts\speedometer.js" />
     <Content Include="Views\favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -309,7 +310,6 @@
     <Content Include="Views\Pilot\Delete.cshtml" />
     <Content Include="Views\Pilot\Edit.cshtml" />
     <Content Include="Views\Car\Index.cshtml" />
-    <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Pilot\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextBoxEditor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTimeEditor.cshtml" />
@@ -325,6 +325,8 @@
     <Content Include="Views\Car\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BoolCheckBox.cshtml" />
     <Content Include="Views\Car\CarTable.cshtml" />
+    <Content Include="Views\Pilot\PilotTable.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,14 +4,14 @@
 }
 
 <h2>Create</h2>
-<hr/>
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        
+
 
         @Html.EditorFor(model => model.Name, "TextBoxEditor")
         @Html.EditorFor(model => model.Weight)

@@ -21,19 +21,5 @@
         @Html.EditorFor(model => model.DebutDate, "DateTimeEditor")
         @Html.EditorFor(model => model.Team, "TextBoxEditor")
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default"/>
-            </div>
-        </div>
-    </div>
-}
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+       </div>
 }
