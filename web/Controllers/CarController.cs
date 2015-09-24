@@ -47,7 +47,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
-            Logger.AddMsgToLog("Details on car with id:"+id+" requested");
+            Logger.AddMsgToLog("Details on car with id:" + id + " requested");
             return PartialView(model);
         }
 
@@ -102,7 +102,7 @@ namespace Web.Controllers
 
 
                     _carRepository.Save(createdCar);
-                    Logger.AddMsgToLog("Car created and saved\nName: "+ createdCar.Name);
+                    Logger.AddMsgToLog("Car created and saved Name: " + createdCar.Name);
                     return PartialView("CarTable", _carRepository.GetAllCars());
                 }
                 catch (Exception ex)
@@ -127,14 +127,21 @@ namespace Web.Controllers
             items.Add(new SelectListItem {Text = "no owner", Value = "0"});
             foreach (var pilot in pilots)
             {
+
                 if (car.OwnerPilot != null && pilot.Name == car.OwnerPilot.Name)
                 {
-                    items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString(), Selected = true});
+                    var item = new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString(), Selected = true};
+                    if (!items.Contains(item))
+                    {
+                        items.Add(item);
+                    }
+                   
                 }
-                items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
+                else  items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
             var modelCar = new CarModel(car, items);
-            Logger.AddMsgToLog("Car requested to edit with\nName: "+ car.Name);
+
+            Logger.AddMsgToLog("Car requested to edit with Name: " + car.Name);
             return PartialView(modelCar);
         }
 
@@ -178,7 +185,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var carModel = new CarModel(car);
-            Logger.AddMsgToLog("Car delete request with name\nName: "+ car.Name);
+            Logger.AddMsgToLog("Car delete request with name\nName: " + car.Name);
             return PartialView(carModel);
         }
 
