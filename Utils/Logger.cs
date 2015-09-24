@@ -38,7 +38,7 @@ namespace Utils
 
         public static void AddMsgToLog(string msg)
         {
-            var preLog = string.Format("{0} {1} | {2} logged at {3} from application launch\n",
+            var preLog = string.Format("{0} {1} | {2}\tLogged at {3} from application launch\n",
                 DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString(), msg, Sw.Elapsed.ToString("g"));
             LogString.Append(preLog);
             SaveToFile();

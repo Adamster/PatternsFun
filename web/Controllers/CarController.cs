@@ -37,7 +37,7 @@ namespace Web.Controllers
         public ActionResult Index()
         {
             var list = _carRepository.GetAllCars();
-
+            Logger.AddMsgToLog("Car Index requested");
             return View(list);
         }
 
@@ -47,6 +47,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
+            Logger.AddMsgToLog("Details on car with id:"+id+" requested");
             return PartialView(model);
         }
 
@@ -65,7 +66,7 @@ namespace Web.Controllers
             }
 
             var carmodel = new CarModel(items);
-
+            Logger.AddMsgToLog("Create form opened");
             return PartialView(carmodel);
         }
 
@@ -101,6 +102,7 @@ namespace Web.Controllers
 
 
                     _carRepository.Save(createdCar);
+                    Logger.AddMsgToLog("Car created and saved\nName: "+ createdCar.Name);
                     return PartialView("CarTable", _carRepository.GetAllCars());
                 }
                 catch (Exception ex)
@@ -132,6 +134,7 @@ namespace Web.Controllers
                 items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
             var modelCar = new CarModel(car, items);
+            Logger.AddMsgToLog("Car requested to edit with\nName: "+ car.Name);
             return PartialView(modelCar);
         }
 
@@ -159,6 +162,7 @@ namespace Web.Controllers
                     Weight = carModel.Weight
                 });
                 //return RedirectToAction("Index");
+                Logger.AddMsgToLog("Car edited");
                 return PartialView("CarTable", _carRepository.GetAllCars());
             }
             catch (Exception ex)
@@ -174,6 +178,7 @@ namespace Web.Controllers
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var carModel = new CarModel(car);
+            Logger.AddMsgToLog("Car delete request with name\nName: "+ car.Name);
             return PartialView(carModel);
         }
 
@@ -185,6 +190,7 @@ namespace Web.Controllers
             {
                 // TODO: Add delete logic here
                 _carRepository.DeleteCar(id);
+                Logger.AddMsgToLog("Car deleted");
                 return PartialView("CarTable", _carRepository.GetAllCars());
             }
             catch (Exception ex)

@@ -4,11 +4,11 @@
     var fullUrl;
     editDialog.dialog(
     {
-      
+
         autoOpen: false,
         width: 500,
         show: {
-            effect: "scale",
+            effect: "blind",
             duration: 1000
         },
         hide: {
@@ -23,7 +23,7 @@
                 click: function () {
                     var form = $("#EditForm form");
                     var formData = form.serialize();
-                    $.post(fullUrl, formData, function(result, status, xhr) {
+                    $.post(fullUrl, formData, function (result, status, xhr) {
                         if (xhr.status === 200) {
                             $("#tableContainer").html(result);
                             $(".delBtn").click(mydelete);
@@ -34,7 +34,7 @@
                         } else {
                             alert("ABORT MISSION \nerror: " + xhr.status);
                         }
-                    }); 
+                    });
                 }
             },
             {
@@ -53,9 +53,9 @@
 
         $("#EditForm").load(fullUrl, function () {
             $.validator.unobtrusive.parse("#EditForm");
-           
+
             editDialog.dialog("open");
-           
+
         });
     }
 
@@ -75,7 +75,7 @@
 
 
         show: {
-            effect: "bounce",
+            effect: "clip",
             duration: 500
         },
         hide: {
@@ -84,14 +84,14 @@
         },
 
 
-       
+
         autoResize: true,
         width: 400,
         buttons: [
             {
                 text: "Delete",
-                click: function() {
-                    $.post(fullUrl, function(result, status, xhr) {
+                click: function () {
+                    $.post(fullUrl, function (result, status, xhr) {
                         if (xhr.status === 200) {
                             $("#tableContainer").html(result);
                             $(".delBtn").click(mydelete);
@@ -109,7 +109,7 @@
             },
             {
                 text: "Cancel",
-                click: function() {
+                click: function () {
                     delDialog.dialog("close");
                 }
 
@@ -125,7 +125,7 @@
         var itemId = $(this).attr("id");
         fullUrl = delFormUrl + itemId;
 
-        $("#DeleteForm").load(fullUrl, function() {
+        $("#DeleteForm").load(fullUrl, function () {
 
             delDialog.dialog("open");
 
@@ -185,7 +185,15 @@
     {
         autoOpen: false,
         autoResize: true,
-      
+        width: 500,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "fold",
+            duration: 500
+        },
         buttons: [
             {
                 text: "Save",
