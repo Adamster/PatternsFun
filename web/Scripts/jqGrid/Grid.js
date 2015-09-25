@@ -4,7 +4,7 @@
         datatype: "json",
         colNames: ['Name', 'Age', 'Team', 'Debut'],
         colModel: [
-            { name: 'Name', index: 'Name' },
+            { name: 'Name', index: 'Name', sortable: false },
             { name: 'Age', index: 'Age' },
             { name: 'Team', index: 'Team' },
             { name: 'Debut', index: 'DebutDate' , formatter: "date" }

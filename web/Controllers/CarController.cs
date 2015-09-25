@@ -34,7 +34,7 @@ namespace Web.Controllers
 
         // GET: Car
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
             var list = _carRepository.GetAllCars();
             Logger.AddMsgToLog("Car Index requested");
@@ -43,7 +43,7 @@ namespace Web.Controllers
 
         // GET: Car/Details/5
         [HttpGet]
-        public ActionResult Details(long id)
+        public PartialViewResult Details(long id)
         {
             var car = _carRepository.GetEntityById<Car>(id);
             var model = new CarModel(car);
@@ -53,7 +53,7 @@ namespace Web.Controllers
 
         // GET: Car/Create
         [HttpGet]
-        public ActionResult Create()
+        public PartialViewResult Create()
         {
             var items = new List<SelectListItem>();
 
@@ -116,7 +116,7 @@ namespace Web.Controllers
 
         // GET: Car/Edit/5
         [HttpGet]
-        public ActionResult Edit(long id)
+        public PartialViewResult Edit(long id)
         {
             var car = _carRepository.GetEntityById<Car>(id);
 
@@ -127,7 +127,6 @@ namespace Web.Controllers
             items.Add(new SelectListItem {Text = "no owner", Value = "0"});
             foreach (var pilot in pilots)
             {
-
                 if (car.OwnerPilot != null && pilot.Name == car.OwnerPilot.Name)
                 {
                     var item = new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString(), Selected = true};
@@ -135,9 +134,8 @@ namespace Web.Controllers
                     {
                         items.Add(item);
                     }
-                   
                 }
-                else  items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
+                else items.Add(new SelectListItem {Text = pilot.Name, Value = pilot.Id.ToString()});
             }
             var modelCar = new CarModel(car, items);
 
