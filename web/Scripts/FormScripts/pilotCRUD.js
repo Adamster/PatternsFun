@@ -1,4 +1,5 @@
 ﻿
+//=======================================CREATE================================================
 $(function () {
     var createFormUrl = "/Pilot/Create";
     var createPilotDialog = $("#createPilot");
@@ -45,6 +46,8 @@ $(function () {
                     $("#pilotTableContainer").html(result);
                     $("#pCreatBtn").click(createPilot);
                     $(".pDetails").click(detailPilot);
+                    $(".pEdit").click(editPilot);
+                    $(".pDelete").click(pilotDelete);
                     createPilotDialog.dialog("close");
                 } else {
                     alert("ABORT MISSION \nerror: " + xhr.status);
@@ -58,21 +61,20 @@ $(function () {
     function createPilot(e) {
         e.preventDefault();
         $("#createPilotForm").load(createFormUrl, function () {
-
-            $("#datepicker").datepicker().datepicker("option", "dateFormat", "dd/mm/yy");
-            
+            $("#datepicker").datepicker({
+                dateFormat: 'mm/dd/yy',
+                maxDate: new Date()
+        });
 
             $("#createPilotForm form").submit(submitpilot);
-
             $.validator.unobtrusive.parse("#createPilotForm");
-
             createPilotDialog.dialog("open");
         });
     }
 
     $("#pCreatBtn").click(createPilot);
 
-
+//=======================================DETAILS================================================
     var detailtFormUrl = "/Pilot/Details/";
     var detailPilotDialog = $("#detailPilot");
 
@@ -110,6 +112,7 @@ $(function () {
     }
 
 
+    //=======================================EDIT================================================
     var editFormUrl = "/Pilot/Edit/";
     var editPilotDialog = $("#EditPilot");
 
@@ -138,6 +141,7 @@ $(function () {
                         $("#pCreatBtn").click(createPilot);
                         $(".pDetails").click(detailPilot);
                         $(".pEdit").click(editPilot);
+                        $(".pDelete").click(pilotDelete);
                         editPilotDialog.dialog("close");
                 }
                 else {
@@ -170,5 +174,64 @@ $(function () {
         });
     }
 
+    //=======================================DELETE================================================
+    var delFormUrl = "/Pilot/Delete/";
+    var delFormDialog = $("#DelPilot");
+
+    delFormDialog.dialog({
+        autoOpen: false,
+        show: {
+            effect: "clip",
+            duration: 500
+        },
+        hide: {
+            effect: "puff",
+            duration: 500
+        },
+        autoResize: true,
+        width: 400,
+        buttons: [
+            {
+                text: "Delete",
+                click: function () {
+                    $.post(fullUrl, function (result, status, xhr) {
+                        if (xhr.status === 200) {
+                            $("#pilotTableContainer").html(result);
+                            $("#pCreatBtn").click(createPilot);
+                            $(".pDetails").click(detailPilot);
+                            $(".pEdit").click(editPilot);
+                            $(".pDelete").click(pilotDelete);
+                            delFormDialog.dialog("close");
+                        } else {
+                            alert("HOUSTON WE HAVE A PROBLEM");
+                        }
+                    });
+
+
+                }
+            },
+            {
+                text: "Cancel",
+                click: function () {
+                    delFormDialog.dialog("close");
+                }
+
+            }
+        ]
+    });
+
+
+    $(".pDelete").click(pilotDelete);
+
+    function pilotDelete(e) {
+        e.preventDefault();
+        var itemId = $(this).attr("id");
+        fullUrl = delFormUrl + itemId;
+
+        $("#delPilotForm").load(fullUrl, function () {
+            delFormDialog.dialog("open");
+
+        });
+    }
 
 })

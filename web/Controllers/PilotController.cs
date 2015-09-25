@@ -110,7 +110,7 @@ namespace Web.Controllers
         public ActionResult Delete(int id)
         {
             var pilot = PilotRepository.GetPilot(id);
-            return View(pilot);
+            return PartialView(pilot);
         }
 
         // POST: Pilot/Delete/5
@@ -120,12 +120,12 @@ namespace Web.Controllers
             try
             {
                 PilotRepository.DeletePilot(id);
-                return RedirectToAction("Index");
+                return PartialView("PilotTable", PilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {
                 Logger.AddMsgToLog(ex.Message + "\n" + ex.StackTrace);
-                return View();
+                return PartialView();
             }
         }
     }

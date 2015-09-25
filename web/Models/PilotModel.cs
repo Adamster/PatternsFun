@@ -39,7 +39,7 @@ namespace Web.Models
         public string Team { get; set; }
 
         [Display(Name = "Debut date")]
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "dd-MM-yyyy", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime DebutDate { get; set; }
 
         public int ExperienceTime { get; set; }
