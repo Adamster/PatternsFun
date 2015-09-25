@@ -170,15 +170,14 @@
         var itemId = $(this).attr("id");
         fullUrl = detailFormUrl + itemId;
        
-        $("#Speed").hide();
-        var t = $("#HorsePowers").contents();
-        $("#Speed").val(t.text());
+        $(".HorsePowersMeter").hide();
+        var t = $(".HorsePowersMeter").contents();
+        $(".HorsePowersMeter").val(t.text());
 
+        $(".HorsePowersMeter").myfunc({ divFact: 10 });
+        $(".HorsePowersMeter").change();
 
-        $("#Speed").myfunc({ divFact: 10 });
-        setTimeout(function () {
-            $("#Speed").change();
-        }, 400);
+       
 
 
 

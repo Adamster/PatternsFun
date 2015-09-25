@@ -12,9 +12,13 @@
 
     <script src="~/Content/jquery-ui/external/jquery/jquery.js"></script>
     <script src="~/Content/jquery-ui/jquery-ui.js"></script>
+
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/speedometer.js"></script>
+     <script src="~/Scripts/jquery.jqGrid.src.js"></script>
+    <script src="~/Scripts/i18n/grid.locale-en.js"></script>
+
+    <script src="~/Scripts/speedometer.js" defer="true"></script>
 
 
     @Styles.Render("~/Content/css")
@@ -40,6 +44,7 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Pilot Grid", "Index1", "Grid")</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -61,5 +66,6 @@
 <script src="~/Scripts/FormScripts/CreateCarDialog.js"></script>
 <script src="~/Scripts/FormScripts/carCRUD.js"></script>
 <script src="~/Scripts/FormScripts/pilotCRUD.js"></script>
+    <script src="~/Scripts/jqGrid/Grid.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ namespace Web.Controllers
     public class PilotController : Controller
     {
         // private static readonly IPilotRepository PilotRepository = ServiceLocator.Get<PilotRepository>();
-        public readonly IPilotRepository PilotRepository;
+        private readonly IPilotRepository _pilotRepository;
 
         [Obsolete]
         public PilotController()
@@ -21,14 +21,14 @@ namespace Web.Controllers
 
         public PilotController(IPilotRepository pilotRepository)
         {
-            PilotRepository = pilotRepository;
+            _pilotRepository = pilotRepository;
         }
 
         // GET: Pilot
         [HttpGet]
         public ActionResult Index()
         {
-            var pilots = PilotRepository.GetAllPilots();
+            var pilots = _pilotRepository.GetAllPilots();
             Logger.AddMsgToLog("Pilot index loaded");
             return View(pilots);
         }
@@ -37,7 +37,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var pilot = PilotRepository.GetPilot(id);
+            var pilot = _pilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(pilot);
             return PartialView(modelPilot);
         }
@@ -59,9 +59,9 @@ namespace Web.Controllers
                 if (!ModelState.IsValid) return PartialView(pilotModel);
                 var pilotNew = PilotFactory.CreateNewPilot(pilotModel.Name, pilotModel.DebutDate.ToString(CultureInfo.InvariantCulture),
                     pilotModel.Age, pilotModel.Team);
-                PilotRepository.AddPilot(pilotNew);
+                _pilotRepository.AddPilot(pilotNew);
 
-                return PartialView("PilotTable", PilotRepository.GetAllPilots());
+                return PartialView("PilotTable", _pilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var oldPilot = PilotRepository.GetPilot(id);
+            var oldPilot = _pilotRepository.GetPilot(id);
             var modelPilot = new PilotModel(oldPilot);
 
             return PartialView(modelPilot);
@@ -86,8 +86,8 @@ namespace Web.Controllers
         {
             try
             {
-                var oldPilot = PilotRepository.GetPilot(id);
-                PilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
+                var oldPilot = _pilotRepository.GetPilot(id);
+                _pilotRepository.UpdatePilot(oldPilot, new PilotUpdateDto
                 {
                     Id = id,
                     Name = editedPilot.Name,
@@ -96,7 +96,7 @@ namespace Web.Controllers
                     Team = editedPilot.Team
                 });
 
-                return PartialView("PilotTable", PilotRepository.GetAllPilots());
+                return PartialView("PilotTable", _pilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {
@@ -109,7 +109,7 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var pilot = PilotRepository.GetPilot(id);
+            var pilot = _pilotRepository.GetPilot(id);
             return PartialView(pilot);
         }
 
@@ -119,8 +119,8 @@ namespace Web.Controllers
         {
             try
             {
-                PilotRepository.DeletePilot(id);
-                return PartialView("PilotTable", PilotRepository.GetAllPilots());
+                _pilotRepository.DeletePilot(id);
+                return PartialView("PilotTable", _pilotRepository.GetAllPilots());
             }
             catch (Exception ex)
             {
