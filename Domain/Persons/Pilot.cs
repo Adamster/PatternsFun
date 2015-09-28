@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Domain.Dto;
 using Domain.Interfaces;
 using Utils;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Persons
 {
@@ -30,6 +31,10 @@ namespace Domain.Persons
         public virtual string Name { get; protected set; }
         public virtual string Team { get; protected set; }
         public virtual int Age { get; set; }
+
+        [Display(Name = "Debut date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         public virtual DateTime DebutDate { get; protected set; }
 
 

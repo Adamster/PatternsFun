@@ -130,5 +130,10 @@ namespace Web.Controllers
             }
         }
 
+        public ViewResult View()
+        {
+            return View(_pilotRepository.GetAllPilots());
+        }
+
     }
 }

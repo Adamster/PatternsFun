@@ -1,9 +1,6 @@
-﻿@model IEnumerable<Domain.Persons.Pilot>
+﻿@model  IEnumerable<Domain.Persons.Pilot>
 <table class="table tableList">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Version)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -23,9 +20,7 @@
     @foreach (var item in Model)
     {
         <tr class="trItem">
-            <td>
-                @Html.DisplayFor(modelItem => item.Version)
-            </td>
+         
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

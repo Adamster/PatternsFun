@@ -23,7 +23,7 @@ namespace Web.Models
         {
             DebutDate = DateTime.Today;
         }
-
+        [ScaffoldColumn (false)]
         public long Id { get; set; }
 
         [Required]
@@ -34,14 +34,15 @@ namespace Web.Models
         [Range(18, 100)]
         public int Age { get; set; }
 
-
+      
         [Required]
         public string Team { get; set; }
 
         [Display(Name = "Debut date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DebutDate { get; set; }
-
+        [DataType(DataType.Duration)]
         public int ExperienceTime { get; set; }
 
         public List<Vehicle> VehiclesList { get; set; }

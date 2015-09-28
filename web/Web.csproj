@@ -360,6 +360,7 @@
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Grid\PilotGridView.cshtml" />
     <Content Include="Views\Grid\CarGridView.cshtml" />
+    <Content Include="Views\Pilot\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
