@@ -1,4 +1,8 @@
-﻿$(function () {
+﻿
+
+//=======================================EDIT================================================
+
+$(function () {
     var editFormUrl = "/Car/Edit/";
     var editDialog = $("#editTest");
     var fullUrl;
@@ -21,20 +25,7 @@
             {
                 text: "Save",
                 click: function () {
-                    var form = $("#EditForm form");
-                    var formData = form.serialize();
-                    $.post(fullUrl, formData, function (result, status, xhr) {
-                        if (xhr.status === 200) {
-                            $("#tableContainer").html(result);
-                            $(".delBtn").click(mydelete);
-                            $(".edBtn").click(edit);
-                            $(".detailBtn").click(details);
-                            $("#CreateBtn").click(createForm);
-                            editDialog.dialog("close");
-                        } else {
-                            alert("ABORT MISSION \nerror: " + xhr.status);
-                        }
-                    });
+                    $("#EditForm form").submit();
                 }
             },
             {
@@ -46,12 +37,34 @@
         ]
     });
 
+
+    function editSubmit(e) {
+        if ($(this).valid()) {
+            var form = $("#EditForm form");
+            var formData = form.serialize();
+            $.post(fullUrl, formData, function (result, status, xhr) {
+                if (xhr.status === 200) {
+                    $("#tableContainer").html(result);
+                    $(".delBtn").click(mydelete);
+                    $(".edBtn").click(edit);
+                    $(".detailBtn").click(details);
+                    $("#CreateBtn").click(createForm);
+                    editDialog.dialog("close");
+                } else {
+                    alert("ABORT MISSION \nerror: " + xhr.status);
+                }
+            });
+        }
+
+    }
+
     function edit(e) {
         e.preventDefault();
         var itemId = $(this).attr("id");
         fullUrl = editFormUrl + itemId;
 
         $("#EditForm").load(fullUrl, function () {
+            $("#EditForm form").submit(editSubmit);
             $.validator.unobtrusive.parse("#EditForm");
 
             editDialog.dialog("open");
@@ -66,6 +79,7 @@
 
 
 
+    //=======================================DELETE================================================
 
     var delFormUrl = "/Car/Delete/";
     var delDialog = $("#delTest");
@@ -133,6 +147,7 @@
     }
 
 
+    //=======================================DETAILS================================================
     var detailFormUrl = "/Car/Details/";
     var detailDialog = $("#detailTest");
 
@@ -189,7 +204,7 @@
         });
     }
 
-
+    //=======================================CREATE================================================
     var createFormUrl = "/Car/Create";
     var createDialog = $("#test");
 
@@ -210,20 +225,7 @@
             {
                 text: "Save",
                 click: function () {
-                    var form = $("#content form");
-                    var formData = form.serialize();
-                    $.post(createFormUrl, formData, function (result, status, xhr) {
-                        if (xhr.status === 200) {
-                            $("#tableContainer").html(result);
-                            $(".delBtn").click(mydelete);
-                            $(".edBtn").click(edit);
-                            $(".detailBtn").click(details);
-                            $("#CreateBtn").click(createForm);
-                            createDialog.dialog("close");
-                        } else {
-                            alert("ABORT MISSION \nerror: " + xhr.status);
-                        }
-                    });
+                    $("#content form").submit();
                 }
             },
             {
@@ -236,11 +238,33 @@
     });
 
 
+    function createCarSubmit(e) {
+        if ($(this).valid()) {
+            
+            var form = $("#content form");
+            var formData = form.serialize();
+            $.post(createFormUrl, formData, function (result, status, xhr) {
+                if (xhr.status === 200) {
+                    $("#tableContainer").html(result);
+                    $(".delBtn").click(mydelete);
+                    $(".edBtn").click(edit);
+                    $(".detailBtn").click(details);
+                    $("#CreateBtn").click(createForm);
+                    createDialog.dialog("close");
+                } else {
+                    alert("ABORT MISSION \nerror: " + xhr.status);
+                }
+            });
+        }
+        return false;
+    }
+
     $("#CreateBtn").click(createForm);
     function createForm(e) {
         e.preventDefault();
 
         $("#content").load(createFormUrl, function () {
+            $("#content form").submit(createCarSubmit);
             $.validator.unobtrusive.parse("#content");
             createDialog.dialog("open");
         });

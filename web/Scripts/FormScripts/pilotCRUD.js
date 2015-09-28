@@ -133,25 +133,9 @@ $(function () {
             text: "Save",
             click: function () {
 
-                var editForm = $("#EditPilotForm form");
-                var editFormData = editForm.serialize();
-                     $.post(fullUrl, editFormData, function (result, status, xhr) {
-                    if (xhr.status === 200) {
-                        $("#pilotTableContainer").html(result);
-                        $("#pCreatBtn").click(createPilot);
-                        $(".pDetails").click(detailPilot);
-                        $(".pEdit").click(editPilot);
-                        $(".pDelete").click(pilotDelete);
-                        editPilotDialog.dialog("close");
-                }
-                else {
-                        alert("ABORT MISSION \nerror: " + xhr.status);
-                }
-                   
-                });
-               
+                $("#EditPilotForm form").submit();
 
-              
+
             }
         },
            {
@@ -165,11 +149,39 @@ $(function () {
 
     $(".pEdit").click(editPilot);
 
+    function sumbitEditPilot(e) {
+        if($(this).valid()){
+            var editForm = $("#EditPilotForm form");
+            var editFormData = editForm.serialize();
+            $.post(fullUrl, editFormData, function (result, status, xhr) {
+                if (xhr.status === 200) {
+                    $("#pilotTableContainer").html(result);
+                    $("#pCreatBtn").click(createPilot);
+                    $(".pDetails").click(detailPilot);
+                    $(".pEdit").click(editPilot);
+                    $(".pDelete").click(pilotDelete);
+                    editPilotDialog.dialog("close");
+                }
+                else {
+                    alert("ABORT MISSION \nerror: " + xhr.status);
+                }
+
+            });
+        }
+        return false;
+
+
+    }
+
+
     function editPilot(e) {
         e.preventDefault();
         var itemId = $(this).attr('id');
         fullUrl = editFormUrl + itemId;
-        $("#EditPilotForm").load(fullUrl, function() {
+        $("#EditPilotForm").load(fullUrl, function () {
+
+            $("#EditPilotForm form").submit(sumbitEditPilot);
+            $.validator.unobtrusive.parse("#EditPilotForm");
             editPilotDialog.dialog("open");
         });
     }
