@@ -115,8 +115,8 @@ namespace Web.Controllers
         }
 
         // POST: Pilot/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirm(int id)
         {
             try
             {
