@@ -1,12 +1,12 @@
 ﻿$(function() {
     $("#PilotJq").jqGrid({
-        url: 'Grid/',
+        url: "/Grid/PilotGridData",
         datatype: "json",
-        colNames: ['Name', 'Age', 'Team', 'Debut'],
+        colNames: ["Name", "Age", "Team", "Debut"],
         colModel: [
-            { name: 'Name', index: 'Name', sortable: false },
-            { name: 'Age', index: 'Age' },
-            { name: 'Team', index: 'Team' },
+            { name: "Name", index: 'Name' },
+            { name: "Age", index: 'Age' },
+            { name: "Team", index: 'Team' },
             { name: 'Debut', index: 'DebutDate' , formatter: "date" }
         ],
         rowNum: 5,

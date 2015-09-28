@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Repository;
 using Repository.Interfaces;
 
 namespace Web.Controllers
@@ -11,29 +8,24 @@ namespace Web.Controllers
     public class GridController : Controller
     {
         private readonly IPilotRepository _pilotRepository;
-        public GridController(IPilotRepository pilotRepository)
+        private readonly ICarRepository _carRepository;
+
+        public GridController(IPilotRepository pilotRepository, ICarRepository carRepository)
         {
             _pilotRepository = pilotRepository;
-        }
-
-        public class JqSettings
-        {
-            public int q { get; set; }
-            public bool _search { get; set; }
-            public int rows { get; set; }
-            public int page { get; set; }
+            _carRepository = carRepository;
         }
 
         // GET: Grid
         [HttpGet]
-        public JsonResult Index(JqSettings settings)
+        public JsonResult PilotGridData(JqSettings settings)
         {
-            int skip = settings.rows * (settings.page - 1);
+            var skip = settings.rows*(settings.page - 1);
             var dbData = _pilotRepository.GetAllPilots();
             var filteredDbData = dbData.Skip(skip).Take(settings.rows);
-            int count = dbData.Count();
-           
-           
+            var count = dbData.Count();
+
+
             var gridData = from record in filteredDbData
                 select new
                 {
@@ -47,17 +39,61 @@ namespace Web.Controllers
                 };
             var jsonData = new
             {
-                total = (int)Math.Ceiling((double)count / settings.rows), //totalPages
-                page = settings.page,
+                total = (int) Math.Ceiling((double) count/settings.rows), //totalPages
+                settings.page,
                 records = count,
                 rows = gridData
             };
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Index1()
+        public ViewResult PilotGridView()
         {
             return View();
         }
+
+        public class JqSettings
+        {
+            public int q { get; set; }
+            public bool _search { get; set; }
+            public int rows { get; set; }
+            public int page { get; set; }
+        }
+
+        public JsonResult CarGridData(JqSettings settings)
+        {
+            var skip = settings.rows * (settings.page - 1);
+            var dbData = _carRepository.GetAllCars();
+            var filteredDbData = dbData.Skip(skip).Take(settings.rows);
+            var count = dbData.Count();
+
+
+            var gridData = from record in filteredDbData
+                           select new
+                           {
+                               cell = new object[]
+                    {
+                        record.Version,
+                        record.Name,
+                        record.FuelTank,
+                        record.AdditionalInfo
+                    }
+                           };
+            var jsonData = new
+            {
+                total = (int)Math.Ceiling((double)count / settings.rows), //totalPages
+                settings.page,
+                records = count,
+                rows = gridData
+            };
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
+
+        public ViewResult CarGridView()
+        {
+            return View();
+        }
+
     }
+
 }

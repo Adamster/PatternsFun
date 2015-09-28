@@ -8,8 +8,10 @@
 
     <link href="~/Content/jquery-ui/jquery-ui.structure.css" rel="stylesheet"/>
     <link href="~/Content/jquery-ui/jquery-ui.theme.css" rel="stylesheet"/>
+    <link href="~/Content/customMy.css" rel="stylesheet"/>
+  
     <link href="~/Content/speedometer.css" rel="stylesheet"/>
-
+    <link href="~/Content/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
     <script src="~/Content/jquery-ui/external/jquery/jquery.js"></script>
     <script src="~/Content/jquery-ui/jquery-ui.js"></script>
 
@@ -44,7 +46,8 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Pilot Grid", "Index1", "Grid")</li>
+                <li>@Html.ActionLink("Pilot Grid", "PilotGridView", "Grid")</li>
+                <li>@Html.ActionLink("Car Grid", "CarGridView", "Grid")</li>
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -66,6 +69,7 @@
 <script src="~/Scripts/FormScripts/CreateCarDialog.js"></script>
 <script src="~/Scripts/FormScripts/carCRUD.js"></script>
 <script src="~/Scripts/FormScripts/pilotCRUD.js"></script>
-    <script src="~/Scripts/jqGrid/Grid.js"></script>
+<script src="~/Scripts/jqGrid/PilotGrid.js"></script>
+    <script src="~/Scripts/jqGrid/CarGrid.js"></script>
 </body>
 </html>

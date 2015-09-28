@@ -209,6 +209,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\customMy.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui\external\jquery\jquery.js" />
@@ -268,7 +269,8 @@
     <Content Include="Scripts\FormScripts\carCRUD.js" />
     <Content Include="Scripts\FormScripts\pilotCRUD.js" />
     <Content Include="Scripts\i18n\grid.locale-en.js" />
-    <Content Include="Scripts\jqGrid\Grid.js" />
+    <Content Include="Scripts\jqGrid\CarGrid.js" />
+    <Content Include="Scripts\jqGrid\PilotGrid.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.jqGrid.min.js" />
     <Content Include="Scripts\speedometer.js" />
@@ -356,7 +358,8 @@
     <Content Include="Views\Car\CarTable.cshtml" />
     <Content Include="Views\Pilot\PilotTable.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
-    <Content Include="Views\Grid\Index1.cshtml" />
+    <Content Include="Views\Grid\PilotGridView.cshtml" />
+    <Content Include="Views\Grid\CarGridView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
